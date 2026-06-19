@@ -279,6 +279,40 @@ body::after{
   white-space:nowrap;
 }
 .gs-chip.lead{background:rgba(10,132,255,.08);border-color:rgba(10,132,255,.25)}
+.big-timer{
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:900;
+  letter-spacing:.06em;
+  color:var(--accent);
+  text-align:center;
+  background:rgba(255,255,255,.9);
+  border:3px solid rgba(10,132,255,.25);
+  border-radius:24px;
+  padding:8px 24px;
+  min-width:140px;
+  box-shadow:0 8px 24px rgba(10,132,255,.10);
+  flex-shrink:0;
+}
+.big-timer.urgent{color:#ff3b30;border-color:rgba(255,59,48,.4);animation:pulse .5s ease infinite alternate}
+.times-up-overlay{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(4px);
+}
+.times-up-box{
+  background:#fff;
+  border-radius:32px;
+  padding:40px;
+  text-align:center;
+  max-width:420px;
+  width:90%;
+  box-shadow:0 30px 60px rgba(0,0,0,.2);
+  border:3px solid rgba(255,59,48,.3);
+}
+.times-up-icon{font-size:4rem;margin-bottom:12px}
+.times-up-title{font-size:2rem;font-weight:800;color:#ff3b30;letter-spacing:-.03em;margin-bottom:8px}
+.times-up-sub{color:var(--muted);line-height:1.6;margin-bottom:20px;font-size:1rem}
 .quiz-bar{
   height:8px;
   background:rgba(0,0,0,.06);
@@ -1184,7 +1218,6 @@ body::after{
       </div>
     </div>
     <div class="header-actions">
-      <span class="timer-pill" data-round-clock style="display:none;">25:00</span>
       <button class="pixel-btn btn-blue home-btn" id="headerNavBtn" onclick="go('scrHome')" style="display:none;">返回主頁</button>
       <span class="ver">v4.1 · soft pixel</span>
     </div>
@@ -1256,6 +1289,7 @@ body::after{
       <div class="round-controls">
         <button class="pixel-btn btn-pink btn-block" onclick="beginSelectedRound()">開始回合</button>
         <button class="pixel-btn btn-purple btn-block btn-sm" onclick="go('scrAdmin')">管理排行榜</button>
+        <button class="pixel-btn btn-green btn-block btn-sm" onclick="go('scrRecord')">📊 積分紀錄</button>
       </div>
     </section>
   </div>
@@ -1264,6 +1298,7 @@ body::after{
   <div class="screen" id="scrQuiz" style="display:none">
     <div class="quiz-top" id="quizTopBar">
       <span id="qCounter">第 1 / 10 題</span>
+      <div class="big-timer" id="bigTimer" style="display:none;">3:30</div>
       <div class="global-scores" id="globalScores"></div>
     </div>
     <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
@@ -1272,6 +1307,14 @@ body::after{
       <div class="q-text" id="qText">正在連接伺服器...</div>
       <div class="q-options" id="qOptions" style="display:none;"></div>
       <div class="q-answer" id="qAnswer" style="display:none;">✅ 正確答案：</div>
+    </div>
+    <div class="times-up-overlay" id="timesUpOverlay" style="display:none;">
+      <div class="times-up-box">
+        <div class="times-up-icon">⏰</div>
+        <div class="times-up-title">停止作答</div>
+        <div class="times-up-sub">時間到！請切換下一組或下一題。</div>
+        <button class="pixel-btn btn-pink btn-block" onclick="dismissTimesUp()">知道了</button>
+      </div>
     </div>
     <div class="round1-control" id="round1Control">
       <div class="round1-head">
@@ -1311,6 +1354,24 @@ body::after{
     <button class="pixel-btn btn-pink btn-block btn-sm" style="margin-top:8px;" onclick="go('scrDash')">開新遊戲</button>
   </div>
 
+  <!-- ====== RECORD ====== -->
+  <div class="screen" id="scrRecord" style="display:none">
+    <div class="surface-panel">
+      <h2 style="font-size:1.4rem;letter-spacing:-.03em;margin-bottom:6px;">📊 積分紀錄</h2>
+      <p style="color:var(--muted);line-height:1.6;">各組累積分數紀錄。只要不關閉此網頁，分數會一直保留。</p>
+    </div>
+    <div style="margin-top:8px;">
+      <table class="admin-lb-table">
+        <thead><tr><th>#</th><th>組別</th><th>分數</th><th>回合</th><th>最後更新</th></tr></thead>
+        <tbody id="recordBody"></tbody>
+      </table>
+    </div>
+    <div class="control-row" style="margin-top:8px;">
+      <button class="pixel-btn btn-danger btn-block btn-sm" onclick="clearRecord()">清除紀錄</button>
+      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="go('scrDash')">返回</button>
+    </div>
+  </div>
+
   <!-- ====== ADMIN ====== -->
   <div class="screen" id="scrAdmin" style="display:none">
     <div class="surface-panel">
@@ -1335,7 +1396,7 @@ const A=(location.origin&&location.origin!=='null'&&location.origin.startsWith('
 const T='lyt:lyt';
 const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'};
 const ROUNDS={
-  r1:{key:'r1',tag:'ROUND 1',name:'必答題',duration:5*60,summary:'每組 5 分鐘輪流作答，答對 +20，答錯 -10。',points:{correct:20,wrong:-10},mode:'single'},
+  r1:{key:'r1',tag:'ROUND 1',name:'必答題',duration:210,summary:'每組 3:30 輪流作答，答對 +20，答錯 -10。',points:{correct:20,wrong:-10},mode:'single'},
   r2:{key:'r2',tag:'ROUND 2',name:'分組搶答題',duration:15*60,summary:'答對 +30，答錯 -20；其他組可補答一次，補答答中 +20。',points:{correct:30,wrong:-20,bonus:20},mode:'bonus'},
   r3:{key:'r3',tag:'ROUND 3',name:'至尊挑戰題',duration:20*60,summary:'可自選基礎、中階、進階三種封信難度。',mode:'difficulty',difficulties:{
     basic:{name:'基礎挑戰',correct:30,wrong:-10},
@@ -1350,6 +1411,7 @@ let timerRemaining=ROUNDS.r1.duration;
 let timerRunning=false;
 let timerHandle=null;
 let sessionReady=false;
+let savedScores=loadScores();
 
 function go(id){
   document.getElementById('scrDash').style.display='none';
@@ -1357,9 +1419,11 @@ function go(id){
   document.getElementById('scrResult').style.display='none';
   document.getElementById('scrAdmin').style.display='none';
   document.getElementById('scrHome').style.display='none';
+  document.getElementById('scrRecord').style.display='none';
   document.getElementById(id).style.display='flex';
   syncChrome(id);
   if(id==='scrAdmin')admin();
+  if(id==='scrRecord')renderRecord();
   if(id==='scrHome'){
     stopRoundTimer();
     sessionReady=false;
@@ -1368,16 +1432,11 @@ function go(id){
 }
 function syncChrome(id){
   const navBtn=document.getElementById('headerNavBtn');
-  const clock=document.querySelector('[data-round-clock]');
   const isHome=id==='scrHome';
   if(navBtn){
     navBtn.style.display=isHome?'none':'inline-flex';
     navBtn.textContent='返回主頁';
     navBtn.onclick=()=>go('scrHome');
-  }
-  if(clock){
-    clock.style.display=isHome?'none':'inline-flex';
-    if(!isHome) clock.textContent=formatTime(timerRemaining);
   }
 }
 function setGC(){GC=5;}
@@ -1392,11 +1451,54 @@ function formatTime(sec){
 }
 function syncTimerUI(){
   const text=formatTime(timerRemaining);
-  document.querySelectorAll('[data-round-clock]').forEach(el=>{el.textContent=text;});
+  const big=document.getElementById('bigTimer');
+  if(big) big.textContent=text;
+  if(timerRemaining<=10&&timerRemaining>0){
+    if(big)big.classList.add('urgent');
+    playBeep();
+  } else {
+    if(big)big.classList.remove('urgent');
+  }
+}
+function playBeep(){
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator();const g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.type='square';o.frequency.setValueAtTime(880,ctx.currentTime);
+    g.gain.setValueAtTime(timerRemaining<=5?.3:.15,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.15);
+    o.start(ctx.currentTime);o.stop(ctx.currentTime+.18);
+  }catch(e){}
 }
 function stopRoundTimer(){
   if(timerHandle){clearInterval(timerHandle);timerHandle=null;}
   timerRunning=false;
+  const big=document.getElementById('bigTimer');if(big)big.classList.remove('urgent');
+  document.getElementById('timesUpOverlay').style.display='none';
+}
+function startRoundTimer(){
+  const round=getRound();
+  timerRemaining=round.duration;
+  stopRoundTimer();
+  timerRunning=true;
+  const big=document.getElementById('bigTimer');
+  if(big)big.style.display='inline-block';
+  syncTimerUI();
+  timerHandle=setInterval(()=>{
+    timerRemaining-=1;
+    syncTimerUI();
+    if(timerRemaining<=0){
+      timerRemaining=0;
+      syncTimerUI();
+      stopRoundTimer();
+      if(big)big.classList.remove('urgent');
+      document.getElementById('timesUpOverlay').style.display='flex';
+    }
+  },1000);
+}
+function dismissTimesUp(){
+  document.getElementById('timesUpOverlay').style.display='none';
 }
 function renderR1Scores(groups, sessionData){
   const box=document.getElementById('r1AllScores');
@@ -1658,6 +1760,7 @@ async function sc(group,type,btn){
       if(isRound1) renderR1Scores(d.groups, d);
       const el=document.getElementById('s_'+group); if(el)el.textContent=d.groups[group];
       renderGlobalScores(d.groups);
+      saveScores(d.groups);
       document.getElementById('btnNext').disabled=false;
     }
   }catch(e){ 
@@ -1691,6 +1794,7 @@ async function handleOptClick(group,optIdx,isCorrect,correctIdx,btn){
 
 async function onR1GroupChange(){
   renderR1Scores();
+  if(getRound().mode==='single'){startRoundTimer();}
   await loadQ();
 }
 
@@ -1728,6 +1832,33 @@ async function admin(){
 }
 async function del(i){if(!confirm('確定刪除？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({index:i})});admin();}
 async function clearAll(){if(!confirm('⚠️ 確定清除全部紀錄？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({})});admin();}
+
+// ====== LOCAL STORAGE ======
+const STORE_KEY='chinesepoetry_scores';
+function loadScores(){
+  try{const raw=localStorage.getItem(STORE_KEY);return raw?JSON.parse(raw):{};}catch(e){return {};}
+}
+function saveScores(groups){
+  const store=loadScores();
+  const now=new Date().toLocaleString('zh-HK');
+  const keys=getGroupKeys();
+  keys.forEach(g=>{const v=groups[g];if(v!==undefined){store[g]={score:v,round:activeRoundKey,time:now};}});
+  try{localStorage.setItem(STORE_KEY,JSON.stringify(store));}catch(e){}
+}
+function renderRecord(){
+  const store=loadScores();
+  const keys=getGroupKeys();
+  const arr=keys.map(g=>({group:g,...(store[g]||{score:0,round:'-',time:'-'})})).sort((a,b)=>b.score-a.score);
+  const rn={r1:'必答題',r2:'分組搶答題',r3:'至尊挑戰題'};
+  const tb=document.getElementById('recordBody');
+  if(!arr.length||arr.every(x=>x.score===0)){tb.innerHTML='<tr><td colspan="5" style="padding:20px;color:var(--muted);">未有積分紀錄</td></tr>';return;}
+  tb.innerHTML=arr.map((e,i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+e.group+'組</td><td>'+e.score+' 分</td><td>'+(rn[e.round]||e.round)+'</td><td>'+e.time+'</td></tr>').join('');
+}
+function clearRecord(){
+  if(!confirm('⚠️ 確定清除全部積分紀錄？'))return;
+  try{localStorage.removeItem(STORE_KEY);}catch(e){}
+  renderRecord();
+}
 
 // ====== INIT ======
 selectRound('r1');
