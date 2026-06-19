@@ -1557,7 +1557,7 @@ async function loadQ(){
     if(!d.success)throw new Error(d.error);
     if(d.state==='finished'){finish(d);return;}
     
-    const gcq=(d.groupCurrentQ||0);
+    const gcq=(d.gCurrentQ||0);
     document.getElementById('qCounter').textContent='第 '+((gcq)+1)+' / '+(d.totalQ||10)+' 題';
     document.getElementById('qBar').style.width=((gcq)/(d.totalQ||10)*100)+'%';
     

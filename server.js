@@ -116,7 +116,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`📜 唐詩小狀元 API server running on port ${PORT}`);
+  console.log(`📜 中文至叻挑戰賽 API server running on port ${PORT}`);
   console.log(`   GET  /api/leaderboard  - 拎排行榜`);
   console.log(`   POST /api/leaderboard  - 提交分數`);
   console.log(`   GET  /api/health       - 健康檢查`);

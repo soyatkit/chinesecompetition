@@ -1,6 +1,6 @@
-# 唐詩小狀元 v3.1 — 專案移交文件
+# 中文至叻挑戰賽 v4.1 — 專案移交文件
 
-> 課堂唐詩搶答系統 · Cloudflare Worker 全棧 SPA · 給 Codex 快速接手
+> 課堂中文詩詞分組挑戰系統 · Cloudflare Worker 全棧 SPA · 固定五組、三回合、教師即開即用
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 項目 | 說明 |
 |------|------|
-| **用途** | 小學課堂唐詩搶答遊戲（P4-P6 年級），投影幕上實時分組競賽 |
+| **用途** | 小學課堂中文詩詞挑戰賽（P4-P6 年級），老師開連結即時開始 |
 | **架構** | 單頁前端 (index.html) + Cloudflare Worker 後端 (worker.js) |
 | **備用後端** | Node.js 簡易 API (`server.js`)，僅排行榜功能，無 session 機制 |
 | **部署** | Cloudflare Workers + KV，前端從 GitHub raw 動態拉取 |
@@ -20,8 +20,8 @@
 
 | 檔案 | 角色 | 關鍵細節 |
 |------|------|----------|
-| `index.html` | **全前端 SPA** | HTML + CSS + JS 全部內聯，零依賴，單檔 ~730 行。含全部 UI、答題邏輯、離線 fallback、音效 |
-| `worker.js` | **Cloudflare Worker 後端** | ~200 行，處理 session 生命週期、計分、排行榜、管理 API、serve 前端 |
+| `index.html` | **全前端 SPA** | HTML + CSS + JS 全部內聯，零依賴。首頁即控制台，固定五組、三回合、倒數計時、離線 fallback、音效 |
+| `worker.js` | **Cloudflare Worker 後端** | ~200 行，處理 session 生命週期、回合計時資料、計分、排行榜、管理 API、serve 前端 |
 | `server.js` | **Node.js 備用後端** | ~120 行，純排行榜 CRUD + 健康檢查，使用 `leaderboard.json` 本地檔案 |
 | `wrangler.toml` | **Cloudflare 部署配置** | 定義 KV namespace binding (`LEADERBOARD`, `SESSIONS`) |
 | `package.json` | **Node 端依賴** | 僅定義 `server.js` 的啟動腳本 (`npm start` / `npm run dev`)，零 npm 依賴 |
@@ -67,8 +67,9 @@
 
 | Screen ID | 用途 |
 |-----------|------|
-| `scrDash` | 遊戲設定：選擇年級 (P4/P5/P6)、分組數量 (2-6)、開始遊戲、管理排行榜入口 |
-| `scrQuiz` | 答題主畫面：題目區 + 分組計分卡 (A-F 組) + 進度條 + 揭示答案 / 下一題 |
+| `scrHome` | 規則首頁：先閱讀遊戲規則，再按「進入遊戲」前往控制台 |
+| `scrDash` | 主控制台：選擇年級、查看遊戲規則、選回合、選至尊挑戰難度、開始回合 |
+| `scrQuiz` | 答題主畫面：題目區 + 固定五組計分卡 + 進度條 + 揭示答案 / 下一題 |
 | `scrResult` | 結果頁：冠軍組展示 + 小組排行榜 |
 | `scrAdmin` | 管理面板：查看 / 刪除排行榜全部資料 |
 
@@ -78,7 +79,7 @@
 const A = Worker origin (自動偵測 or fallback 到 workers.dev)
 const T = 'lyt:lyt'   // Bearer token
 const C = { A:'#FF8C94', B:'#8AB8E8', ... }  // 各組顏色
-let GC = 4             // 分組數量 (2-6)
+let GC = 5             // 固定五組
 let SES = {...}        // 當前 session 狀態 cache
 ```
 
@@ -87,11 +88,11 @@ let SES = {...}        // 當前 session 狀態 cache
 ```
 goStart()
   → POST /api/session/create  (建立 session)
-  → POST /api/session/:code/start  (開始遊戲)
+  → POST /api/session/:code/start  (開始回合 / 啟動倒數)
   → loadQ()  (載入第一題)
       ↓
   每次答題:
-      sc(group, type) → POST /api/session/:code/score  (±10 / -5)
+    sc(group, type) → POST /api/session/:code/score  (依回合而定)
       → btnNext enabled
       ↓
   nextQ() → POST /api/session/:code/next  (下一題 / 結束)
@@ -113,10 +114,10 @@ goStart()
 
 ### 4.6 UI 設計
 
-- iOS 風格 (SF Pro 字體、frosted glass 毛玻璃、大圓角)
-- 16:9 比例自適應容器，適合投影幕
+- 柔和 Apple 式現代美學，偏淺色、層次乾淨
+- 內容優先於比例限制，頁面可自然延展並以清楚展示所有內容為主
 - CSS 變數系統 (`--bg`, `--accent`, `--success`, `--danger` 等)
-- 響應式：>980px 4 欄、680-980px 2 欄、<680px 1 欄
+- 響應式：桌面重視橫向資訊密度，手機則壓縮間距與字級
 
 ---
 
@@ -150,10 +151,10 @@ goStart()
 
 | Method | Path | Auth | Body | 說明 |
 |--------|------|------|------|------|
-| POST | `/api/session/create` | Bearer | `{ grade, groupCount }` | 建立 6 位數 session code，隨機抽 10 題，TTL 2h |
+| POST | `/api/session/create` | Bearer | `{ grade, groupCount }` | 建立 6 位數 session code，隨機抽 10 題，TTL 2h；前端固定 `groupCount = 5` |
 | GET | `/api/session/:code` | 無 | - | 取得 session 完整狀態 (含當前題目，playing 時才露出答案) |
 | POST | `/api/session/:code/start` | Bearer | - | state: `waiting` → `playing` |
-| POST | `/api/session/:code/score` | Bearer | `{ group, type }` | type=`correct` +10 / `wrong` -5，記入 history |
+| POST | `/api/session/:code/score` | Bearer | `{ group, type, delta, round, difficulty }` | 記入 history，分數由前端依回合帶入 |
 | POST | `/api/session/:code/next` | Bearer | - | currentQ++，到最後一題自動 finished |
 | POST | `/api/session/:code/end` | Bearer | - | 手動結束，強制 finished |
 
@@ -163,12 +164,12 @@ goStart()
 {
   "code": "123456",
   "grade": "P4",
-  "groupCount": 4,
+  "groupCount": 5,
   "state": "waiting | playing | finished",
   "currentQ": 0,
   "questions": [ { "poem", "text", "options[]", "answer" }, ... ],
-  "groups": { "A": 0, "B": 10, "C": -5, "D": 20 },
-  "history": [ { "q", "group", "type", "delta", "time" }, ... ],
+  "groups": { "A": 0, "B": 10, "C": -5, "D": 20, "E": 0 },
+  "history": [ { "q", "group", "type", "delta", "round", "difficulty", "time" }, ... ],
   "createdAt": "ISO string"
 }
 ```
@@ -264,6 +265,6 @@ npm run dev  # node --watch server.js
 
 ---
 
-> **版本**: v3.1 · polished UI  
+> **版本**: v4.1 · 中文至叻挑戰賽  
 > **最後更新**: 2025  
 > **維護者**: Yatkit → 現移交 Codex
