@@ -162,6 +162,7 @@ function draw(){
 
 // ====== START GAME ======
 async function goStart(){
+  alert('✅ goStart 已觸發！即將進入遊戲畫面。');
   const grade=document.getElementById('sesGrade').value;
   GC=GC||4; SES.groupCount=GC; SES.grade=grade; SES.groups={};
   const L='ABCDEF'.slice(0,GC); L.forEach(l=>SES.groups[l]=0);
