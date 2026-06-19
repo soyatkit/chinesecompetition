@@ -1626,7 +1626,7 @@ async function goStart(){
   // Fetch from API
   try{
     if(!sessionReady){
-      const createBody={grade,groupCount:GC};
+      const createBody={grade,groupCount:GC,round:activeRoundKey};
       if(getRound().mode!=='single'){
         const scores=loadScores();
         const initial={};
