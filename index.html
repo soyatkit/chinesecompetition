@@ -6,106 +6,530 @@
 <title>唐詩小狀元 v3 — 課堂搶答系統</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--pink:#FFB5C2;--pink-dark:#E8909E;--blue:#B5D8FF;--blue-dark:#8AB8E8;--green:#B5FFC2;--green-dark:#8AE89A;--yellow:#FFF5B5;--yellow-dark:#E8D98A;--purple:#D8C2FF;--purple-dark:#B89AE8;--bg:#FFF8F0;--text:#5C4033;--text-light:#8B7355;--white:#FFFAF5;}
-body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
-.app-container{width:100%;max-width:1120px;aspect-ratio:16/9;max-height:calc(100vh - 40px);background:var(--white);border:4px solid var(--text);border-radius:8px;box-shadow:4px 4px 0px rgba(92,64,51,0.15),0 0 0 4px var(--white),0 0 0 8px var(--pink-dark);padding:24px 28px;display:flex;flex-direction:column;overflow:hidden;}
-.app-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:3px dashed var(--pink-dark);margin-bottom:12px;flex-shrink:0;}
-.app-header h1{font-size:24px;color:var(--pink-dark);}
-.ver{font-size:10px;color:var(--text-light);}
+:root{
+  --bg:#f5f5f7;
+  --bg-strong:#ffffff;
+  --surface:rgba(255,255,255,.78);
+  --surface-strong:rgba(255,255,255,.92);
+  --text:#1d1d1f;
+  --muted:#6e6e73;
+  --line:rgba(60,60,67,.14);
+  --line-strong:rgba(60,60,67,.2);
+  --accent:#0a84ff;
+  --accent-soft:rgba(10,132,255,.12);
+  --success:#34c759;
+  --success-soft:rgba(52,199,89,.14);
+  --danger:#ff3b30;
+  --danger-soft:rgba(255,59,48,.12);
+  --warning:#ff9f0a;
+  --warning-soft:rgba(255,159,10,.12);
+  --shadow:0 22px 60px rgba(15,23,42,.12);
+}
+html,body{min-height:100%}
+body{
+  font-family:'SF Pro Display','SF Pro Text','Helvetica Neue',-apple-system,BlinkMacSystemFont,'PingFang TC','Microsoft JhengHei',sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(10,132,255,.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(52,199,89,.12), transparent 22%),
+    radial-gradient(circle at bottom left, rgba(255,159,10,.12), transparent 26%),
+    linear-gradient(180deg,#f8f8fb 0%,#ececf3 100%);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  overflow:hidden;
+}
+body::before,body::after{
+  content:'';
+  position:fixed;
+  inset:auto;
+  width:28vw;
+  height:28vw;
+  min-width:220px;
+  min-height:220px;
+  border-radius:50%;
+  filter:blur(40px);
+  pointer-events:none;
+  opacity:.6;
+}
+body::before{
+  top:-10vw;
+  left:-8vw;
+  background:radial-gradient(circle, rgba(10,132,255,.22), rgba(10,132,255,0) 68%);
+}
+body::after{
+  right:-9vw;
+  bottom:-12vw;
+  background:radial-gradient(circle, rgba(52,199,89,.18), rgba(52,199,89,0) 70%);
+}
+.app-container{
+  width:min(1200px, calc(100vw - 32px), calc((100svh - 32px) * 16 / 9));
+  aspect-ratio:16 / 9;
+  height:auto;
+  max-height:calc(100svh - 32px);
+  background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:32px;
+  box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.7);
+  backdrop-filter:blur(26px);
+  -webkit-backdrop-filter:blur(26px);
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  overflow:hidden;
+}
+.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-shrink:0;
+}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#0a84ff,#5ac8fa);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:1rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  box-shadow:0 12px 24px rgba(10,132,255,.24);
+}
+.app-header h1{
+  font-size:clamp(1.35rem,2vw,1.95rem);
+  letter-spacing:-.04em;
+}
+.app-header p{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:.92rem;
+}
+.ver{
+  align-self:flex-start;
+  font-size:.82rem;
+  color:var(--muted);
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--line);
+  padding:10px 14px;
+  border-radius:999px;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);
+}
+.screen{
+  flex:1;
+  overflow-y:auto;
+  flex-direction:column;
+  min-height:0;
+  gap:16px;
+  animation:fadeIn .35s ease;
+}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
 
-.screen{flex:1;overflow-y:auto;flex-direction:column;min-height:0;}
-.screen.active{animation:fadeIn .3s;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dashboard-shell{
+  flex:1;
+  min-height:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.dashboard-card{
+  width:min(100%, 560px);
+  padding:24px;
+  border-radius:28px;
+  background:rgba(255,255,255,.8);
+  border:1px solid var(--line);
+  box-shadow:0 18px 36px rgba(15,23,42,.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:0;
+}
+.card-title{
+  font-size:1.15rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin-bottom:8px;
+}
+.card-subtitle{
+  font-size:.95rem;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:20px;
+}
+.form-group{margin-bottom:16px}
+.form-group label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.86rem;
+  font-weight:700;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:10px;
+}
+.pixel-input{
+  width:100%;
+  padding:14px 16px;
+  font-family:inherit;
+  font-size:1rem;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.92);
+  color:var(--text);
+  outline:none;
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85);
+}
+.pixel-input:focus{
+  border-color:rgba(10,132,255,.45);
+  box-shadow:0 0 0 4px rgba(10,132,255,.12);
+}
+.control-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.pixel-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-family:inherit;
+  font-size:.98rem;
+  font-weight:600;
+  padding:13px 20px;
+  border:none;
+  cursor:pointer;
+  border-radius:16px;
+  color:var(--text);
+  background:rgba(255,255,255,.84);
+  border:1px solid var(--line);
+  box-shadow:0 10px 20px rgba(15,23,42,.08);
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, opacity .18s ease;
+}
+.pixel-btn:hover{transform:translateY(-1px);box-shadow:0 14px 24px rgba(15,23,42,.12)}
+.pixel-btn:active{transform:translateY(0)}
+.pixel-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-pink{background:linear-gradient(135deg,#0a84ff,#5aa9ff);color:#fff;border-color:transparent}
+.btn-blue{background:rgba(10,132,255,.10);color:#0a84ff;border-color:rgba(10,132,255,.18)}
+.btn-green{background:rgba(52,199,89,.12);color:#1e8e3e;border-color:rgba(52,199,89,.18)}
+.btn-yellow{background:rgba(255,159,10,.12);color:#a35b00;border-color:rgba(255,159,10,.18)}
+.btn-purple{background:rgba(88,86,214,.10);color:#5856d6;border-color:rgba(88,86,214,.18)}
+.btn-danger{background:rgba(255,59,48,.10);color:#d93025;border-color:rgba(255,59,48,.18)}
+.btn-block{display:block;width:100%}
+.btn-sm{font-size:.88rem;padding:10px 14px;border-radius:14px}
+#groupCountBtns .pixel-btn.btn-blue{
+  background:linear-gradient(135deg,#0a84ff,#5aa9ff);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 14px 26px rgba(10,132,255,.22);
+}
 
-.form-group{margin-bottom:12px;}
-.form-group label{display:block;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
-.pixel-input{width:100%;padding:10px 14px;font-family:inherit;font-size:16px;border:3px solid var(--pink-dark);background:var(--white);color:var(--text);outline:none;border-radius:6px;}
-.pixel-btn{display:inline-block;font-family:inherit;font-size:15px;font-weight:700;padding:12px 24px;border:3px solid;cursor:pointer;box-shadow:3px 3px 0px rgba(92,64,51,0.12);border-radius:6px;color:var(--text);}
-.pixel-btn:hover{transform:translateY(-2px);box-shadow:5px 5px 0px rgba(92,64,51,0.18);}
-.pixel-btn:active{transform:translateY(1px);}
-.pixel-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
-.btn-pink{background:var(--pink);border-color:var(--pink-dark);}
-.btn-blue{background:var(--blue);border-color:var(--blue-dark);}
-.btn-green{background:var(--green);border-color:var(--green-dark);}
-.btn-yellow{background:var(--yellow);border-color:var(--yellow-dark);}
-.btn-purple{background:var(--purple);border-color:var(--purple-dark);}
-.btn-danger{background:#FFE0E0;border-color:#E89090;}
-.btn-block{display:block;width:100%;}
-.btn-sm{font-size:13px;padding:8px 16px;}
+.quiz-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px 18px;
+  background:rgba(255,255,255,.76);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:0 12px 24px rgba(15,23,42,.06);
+  font-size:.95rem;
+  font-weight:600;
+  flex-shrink:0;
+}
+.quiz-top strong{font-size:1.1rem}
+.quiz-bar{
+  height:8px;
+  background:rgba(0,0,0,.06);
+  border-radius:999px;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.quiz-bar-fill{
+  height:100%;
+  background:linear-gradient(90deg,#0a84ff,#5ac8fa);
+  border-radius:inherit;
+  transition:width .28s ease;
+}
+.quiz-q-box{
+  border-radius:28px;
+  padding:24px;
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.76));
+  border:1px solid var(--line);
+  box-shadow:0 18px 36px rgba(15,23,42,.08);
+  flex-shrink:0;
+}
+.quiz-q-box .q-poem{
+  font-size:.88rem;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.quiz-q-box .q-text{
+  font-size:clamp(1.5rem,2.6vw,2.5rem);
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:-.03em;
+  text-align:center;
+  color:var(--text);
+}
+.quiz-q-box .q-answer{
+  font-size:1rem;
+  color:#16803c;
+  margin-top:16px;
+  font-weight:700;
+  text-align:center;
+  padding:12px 16px;
+  border-radius:18px;
+  background:var(--success-soft);
+  display:none;
+}
+.groups-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  flex:1;
+  min-height:160px;
+}
+.group-card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background:rgba(255,255,255,.86);
+  min-height:190px;
+  overflow:hidden;
+  box-shadow:0 14px 28px rgba(15,23,42,.08);
+}
+.group-head{
+  width:100%;
+  text-align:center;
+  padding:12px 0;
+  font-size:.9rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  color:#fff;
+}
+.group-body{
+  flex:1;
+  display:grid;
+  place-items:center;
+  font-size:clamp(2.8rem,5vw,4rem);
+  font-weight:700;
+  letter-spacing:-.05em;
+  color:var(--text);
+}
+.group-foot{
+  display:grid;
+  gap:8px;
+  width:100%;
+  padding:12px;
+}
+.gbtn{
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  font-family:inherit;
+  font-size:.92rem;
+  font-weight:700;
+  cursor:pointer;
+  width:100%;
+  background:#fff;
+  color:var(--text);
+}
+.gbtn:active{transform:scale(.98)}
+.gbtn.good{background:var(--success-soft);border-color:rgba(52,199,89,.18);color:#16803c}
+.gbtn.bad{background:var(--danger-soft);border-color:rgba(255,59,48,.18);color:#d93025}
+.gbtn.flash{animation:btnFlash .28s ease}
+@keyframes btnFlash{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
 
-.dash-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:500px;margin:0 auto;}
+.next-q-bar{
+  display:flex;
+  gap:12px;
+  justify-content:flex-end;
+  align-items:center;
+  margin-top:auto;
+  flex-shrink:0;
+  padding-top:4px;
+}
+.next-q-bar .btn-block{width:auto;flex:1}
 
-.quiz-top{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--yellow);border:3px solid var(--yellow-dark);border-radius:6px;font-size:16px;font-weight:700;margin-bottom:8px;flex-shrink:0;}
-.quiz-bar{height:10px;background:var(--bg);border:2px solid var(--pink-dark);border-radius:5px;margin-bottom:10px;flex-shrink:0;}
-.quiz-bar-fill{height:100%;background:var(--pink);border-radius:4px;transition:width .3s;}
-.quiz-q-box{border:3px solid var(--purple-dark);padding:16px;margin-bottom:10px;border-radius:8px;background:#FFFBF5;flex-shrink:0;}
-.quiz-q-box .q-poem{font-size:14px;color:var(--purple-dark);margin-bottom:6px;padding-bottom:6px;border-bottom:2px dashed var(--purple);}
-.quiz-q-box .q-text{font-size:24px;font-weight:900;color:var(--text);line-height:1.4;text-align:center;}
-.quiz-q-box .q-answer{font-size:16px;color:var(--green-dark);margin-top:10px;font-weight:900;text-align:center;padding:6px;border:3px solid var(--green-dark);border-radius:6px;background:#E8FFE8;display:none;}
-
-.groups-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;flex:1;min-height:140px;}
-.group-card{border:3px solid;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;background:var(--white);min-height:120px;overflow:hidden;}
-.group-head{width:100%;text-align:center;padding:6px 0;font-size:20px;font-weight:900;color:#fff;}
-.group-body{flex:1;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;color:var(--text);}
-.group-foot{display:flex;flex-direction:column;gap:3px;width:100%;padding:4px 6px;}
-.gbtn{padding:8px;border:3px solid;border-radius:6px;font-family:inherit;font-size:13px;font-weight:900;cursor:pointer;width:100%;}
-.gbtn:active{transform:scale(.95);}
-.gbtn.good{background:#E8FFE8;border-color:var(--green-dark);color:#2d7a2d;}
-.gbtn.bad{background:#FFE8E8;border-color:#E89090;color:#a33;}
-.gbtn.flash{animation:btnFlash .3s;}
-@keyframes btnFlash{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-
-.next-q-bar{display:flex;gap:10px;justify-content:center;margin-top:8px;flex-shrink:0;}
-
-.result-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;}
-.result-summary{text-align:center;padding:16px;border:3px solid var(--yellow-dark);border-radius:8px;background:linear-gradient(135deg,var(--yellow),#FFF8DC);display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.result-summary .trophy{font-size:52px;}
-.result-summary .winner{font-size:20px;font-weight:900;margin:4px 0;}
-.result-summary .winner-score{font-size:32px;color:var(--pink-dark);font-weight:900;}
-.lb-panel{border:3px solid var(--yellow-dark);border-radius:8px;background:#FFFEFA;overflow-y:auto;}
-.lb-title{font-size:16px;font-weight:700;text-align:center;padding:8px;background:var(--yellow);border-bottom:3px solid var(--yellow-dark);}
-.lb-table{width:100%;border-collapse:collapse;font-size:14px;}
-.lb-table th{padding:6px;background:var(--blue);border-bottom:2px solid var(--blue-dark);font-weight:700;font-size:13px;}
-.lb-table td{padding:6px;text-align:center;border-bottom:1px dashed var(--text-light);}
-.lb-table .r-1{color:#FFD700;font-size:22px;font-weight:900;}
-.lb-table .r-2{color:#C0C0C0;font-size:18px;font-weight:900;}
-.lb-table .r-3{color:#CD7F32;font-size:16px;font-weight:900;}
-.highlight-row{background:#FFF8E1;animation:pulse 1.5s infinite;}
-@keyframes pulse{0%,100%{background:#FFF8E1}50%{background:#FFECB3}}
-.admin-lb-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;}
-.admin-lb-table th{padding:6px;background:var(--purple);border-bottom:2px solid var(--purple-dark);font-size:13px;}
-.admin-lb-table td{padding:6px;text-align:center;border-bottom:1px dashed var(--text-light);}
-@media(max-width:800px){.app-container{aspect-ratio:auto;max-height:none;padding:14px 10px;}.groups-grid{grid-template-columns:1fr;}.result-layout{grid-template-columns:1fr;}}
+.result-layout{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:16px;
+  flex:1;
+  min-height:0;
+}
+.result-summary{
+  padding:28px;
+  border-radius:28px;
+  background:linear-gradient(180deg, rgba(10,132,255,.14), rgba(255,255,255,.86));
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+  min-height:0;
+  box-shadow:0 18px 36px rgba(15,23,42,.08);
+}
+.result-summary .trophy{font-size:4rem;line-height:1;margin-bottom:20px}
+.result-summary .winner{
+  font-size:clamp(1.7rem,3vw,2.5rem);
+  font-weight:700;
+  letter-spacing:-.04em;
+}
+.result-summary .winner-score{
+  font-size:clamp(3rem,6vw,4.8rem);
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:-.06em;
+  margin-top:4px;
+}
+.lb-panel{
+  border-radius:28px;
+  background:rgba(255,255,255,.86);
+  border:1px solid var(--line);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  box-shadow:0 18px 36px rgba(15,23,42,.08);
+}
+.lb-title{
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--muted);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:16px 18px;
+  border-bottom:1px solid var(--line);
+}
+.lb-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.95rem;
+}
+.lb-table th{
+  padding:12px 10px;
+  color:var(--muted);
+  font-size:.82rem;
+  font-weight:700;
+  border-bottom:1px solid var(--line);
+}
+.lb-table td{
+  padding:12px 10px;
+  text-align:center;
+  border-bottom:1px solid rgba(60,60,67,.08);
+}
+.lb-table .r-1{color:#f5a623;font-size:1.2rem;font-weight:700}
+.lb-table .r-2{color:#8e8e93;font-size:1.1rem;font-weight:700}
+.lb-table .r-3{color:#b87333;font-size:1.05rem;font-weight:700}
+.highlight-row{background:rgba(10,132,255,.08)}
+.highlight-row td{border-bottom-color:rgba(10,132,255,.12)}
+@keyframes pulse{0%,100%{background:rgba(10,132,255,.08)}50%{background:rgba(10,132,255,.14)}}
+.admin-lb-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.95rem;
+  margin-top:10px;
+  background:rgba(255,255,255,.82);
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 14px 28px rgba(15,23,42,.06);
+}
+.admin-lb-table th{
+  padding:12px 10px;
+  background:rgba(255,255,255,.86);
+  border-bottom:1px solid var(--line);
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--muted);
+}
+.admin-lb-table td{
+  padding:12px 10px;
+  text-align:center;
+  border-bottom:1px solid rgba(60,60,67,.08);
+}
+.admin-lb-table tr:last-child td{border-bottom:none}
+.surface-panel{
+  padding:20px;
+  border-radius:24px;
+  background:rgba(255,255,255,.82);
+  border:1px solid var(--line);
+  box-shadow:0 14px 28px rgba(15,23,42,.06);
+}
+@media(max-width:980px){
+  .groups-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  body{padding:10px}
+  .app-container{
+    width:min(calc(100vw - 20px), calc((100svh - 20px) * 16 / 9));
+    height:auto;
+    max-height:calc(100svh - 20px);
+    padding:12px;
+    border-radius:24px;
+  }
+  .app-header{flex-direction:column;align-items:flex-start}
+  .ver{align-self:flex-start}
+  .dashboard-card,.quiz-q-box,.result-summary,.lb-panel,.surface-panel{border-radius:22px}
+  .groups-grid{grid-template-columns:1fr}
+  .next-q-bar{flex-direction:column;align-items:stretch}
+  .control-row{flex-direction:column}
+  .control-row .pixel-btn,.next-q-bar .btn-block{width:100%}
+}
 </style>
 </head>
 <body>
 <div class="app-container" id="app">
-  <div class="app-header"><h1>📜 唐詩小狀元</h1><span class="ver">v3.0</span></div>
+  <div class="app-header">
+    <div class="brand">
+      <div class="brand-mark">唐</div>
+      <div>
+        <h1>唐詩小狀元</h1>
+      </div>
+    </div>
+    <span class="ver">v3.1 · polished UI</span>
+  </div>
 
   <!-- ====== DASHBOARD ====== -->
   <div class="screen" id="scrDash" style="display:flex">
-    <div class="dash-center">
-      <h2 style="color:var(--purple-dark);margin-bottom:16px;">🎮 開設搶答遊戲</h2>
-      <div class="form-group" style="width:100%;"><label>選擇年級</label>
-        <select class="pixel-input" id="sesGrade"><option value="P4">📗 四年級</option><option value="P5">📘 五年級</option><option value="P6">📙 六年級</option></select>
-      </div>
-      <div class="form-group" style="width:100%;"><label>分組數量</label>
-        <div style="display:flex;gap:8px;" id="groupCountBtns">
-          <button class="pixel-btn btn-sm" onclick="setGC(2)" data-gc="2">2 組</button>
-          <button class="pixel-btn btn-sm" onclick="setGC(3)" data-gc="3">3 組</button>
-          <button class="pixel-btn btn-sm btn-blue" onclick="setGC(4)" data-gc="4">4 組</button>
-          <button class="pixel-btn btn-sm" onclick="setGC(5)" data-gc="5">5 組</button>
-          <button class="pixel-btn btn-sm" onclick="setGC(6)" data-gc="6">6 組</button>
+    <div class="dashboard-shell">
+      <div class="dashboard-card">
+        <div class="card-title">設定分組</div>
+        <div class="card-subtitle">選擇年級與分組數量，然後開始遊戲。</div>
+        <div class="form-group"><label>選擇年級</label>
+          <select class="pixel-input" id="sesGrade"><option value="P4">四年級</option><option value="P5">五年級</option><option value="P6">六年級</option></select>
         </div>
+        <div class="form-group"><label>分組數量</label>
+          <div class="control-row" id="groupCountBtns">
+            <button class="pixel-btn btn-sm" onclick="setGC(2)" data-gc="2">2 組</button>
+            <button class="pixel-btn btn-sm" onclick="setGC(3)" data-gc="3">3 組</button>
+            <button class="pixel-btn btn-sm btn-blue" onclick="setGC(4)" data-gc="4">4 組</button>
+            <button class="pixel-btn btn-sm" onclick="setGC(5)" data-gc="5">5 組</button>
+            <button class="pixel-btn btn-sm" onclick="setGC(6)" data-gc="6">6 組</button>
+          </div>
+        </div>
+        <button class="pixel-btn btn-pink btn-block" onclick="goStart()">開始遊戲</button>
+        <button class="pixel-btn btn-purple btn-block btn-sm" style="margin-top:10px;" onclick="go('scrAdmin')">管理排行榜</button>
       </div>
-      <button class="pixel-btn btn-pink btn-block" onclick="goStart()">🚀 開始遊戲</button>
-      <button class="pixel-btn btn-purple btn-block btn-sm" style="margin-top:10px;" onclick="go('scrAdmin')">📊 管理排行榜</button>
     </div>
   </div>
 
   <!-- ====== QUIZ ====== -->
   <div class="screen" id="scrQuiz" style="display:none">
-    <div class="quiz-top"><span id="qCounter">第 1 / 10 題</span><span>總分：<strong id="sumScore" style="color:var(--pink-dark);">0</strong></span></div>
+    <div class="quiz-top"><span id="qCounter">第 1 / 10 題</span><span>總分：<strong id="sumScore" style="color:var(--accent);">0</strong></span></div>
     <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
     <div class="quiz-q-box">
       <div class="q-poem" id="qPoem">📖 載入中...</div>
@@ -125,24 +549,35 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(-
   <div class="screen" id="scrResult" style="display:none">
     <div class="result-layout">
       <div class="result-summary" id="resultSummary"></div>
-      <div class="lb-panel"><div class="lb-title">🏆 小組排行榜</div><table class="lb-table"><thead><tr><th>#</th><th>組別</th><th>分數</th></tr></thead><tbody id="lbBody"></tbody></table></div>
+      <div class="lb-panel">
+        <div class="lb-title">小組排行榜</div>
+        <table class="lb-table"><thead><tr><th>#</th><th>組別</th><th>分數</th></tr></thead><tbody id="lbBody"></tbody></table>
+      </div>
     </div>
-    <button class="pixel-btn btn-pink btn-block btn-sm" style="margin-top:8px;" onclick="go('scrDash')">🔄 開新遊戲</button>
+    <button class="pixel-btn btn-pink btn-block btn-sm" style="margin-top:8px;" onclick="go('scrDash')">開新遊戲</button>
   </div>
 
   <!-- ====== ADMIN ====== -->
   <div class="screen" id="scrAdmin" style="display:none">
-    <h2 style="text-align:center;color:var(--purple-dark);margin-bottom:10px;">📊 管理積分排行榜</h2>
-    <div style="overflow-y:auto;flex:1;"><table class="admin-lb-table"><thead><tr><th>#</th><th>年級</th><th>組別</th><th>分數</th><th>操作</th></tr></thead><tbody id="adminBody"></tbody></table></div>
-    <div style="display:flex;gap:8px;margin-top:8px;">
-      <button class="pixel-btn btn-danger btn-block btn-sm" onclick="clearAll()">🗑 清除全部</button>
-      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="go('scrDash')">← 返回</button>
+    <div class="surface-panel">
+      <h2 style="font-size:1.4rem;letter-spacing:-.03em;margin-bottom:6px;">管理積分排行榜</h2>
+      <p style="color:var(--muted);line-height:1.6;">這裡可以快速整理歷史紀錄，清理舊資料，或移除單筆成績。</p>
+    </div>
+    <div style="overflow-y:auto;flex:1;">
+      <table class="admin-lb-table">
+        <thead><tr><th>#</th><th>年級</th><th>組別</th><th>分數</th><th>操作</th></tr></thead>
+        <tbody id="adminBody"></tbody>
+      </table>
+    </div>
+    <div class="control-row" style="margin-top:8px;">
+      <button class="pixel-btn btn-danger btn-block btn-sm" onclick="clearAll()">清除全部</button>
+      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="go('scrDash')">返回</button>
     </div>
   </div>
 </div>
 
 <script>
-const A='https://chinesepoetry-api.chinesepoetry-api.workers.dev';
+const A=(location.origin&&location.origin!=='null'&&location.origin.startsWith('http'))?location.origin:'https://chinesepoetry-api.chinesepoetry-api.workers.dev';
 const T='lyt:lyt';
 const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'};
 let GC=4, SES={code:'',grade:'',groupCount:4,groups:{A:0,B:0,C:0,D:0}};
@@ -284,7 +719,7 @@ async function admin(){
   try{
     let r=await fetch(A+'/api/leaderboard'); let d=await r.json(); let lb=d.leaderboard||[];
     const gM={P4:'四年級',P5:'五年級',P6:'六年級'}; const tb=document.getElementById('adminBody');
-    if(!lb.length){tb.innerHTML='<tr><td colspan="5" style="padding:20px;color:var(--text-light);">未有紀錄</td></tr>';return;}
+    if(!lb.length){tb.innerHTML='<tr><td colspan="5" style="padding:20px;color:var(--muted);">未有紀錄</td></tr>';return;}
     tb.innerHTML=lb.map((e,i)=>'<tr><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>'+(gM[e.grade]||e.grade)+'</td><td>'+(e.className||'第'+e.group+'組')+'</td><td>'+e.score+'</td><td><button class="pixel-btn btn-danger btn-sm" onclick="del('+i+')" style="padding:4px 8px;font-size:11px;">刪除</button></td></tr>').join('');
   }catch(e){}
 }
