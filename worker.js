@@ -1,5 +1,5 @@
 // 唐詩小狀元 — Cloudflare Worker (小組搶答版)
-// Admin: laoshi / tangshi2026
+// Admin: lyt / lyt
 
 export default {
   async fetch(request, env) {
@@ -14,7 +14,7 @@ export default {
     const p = url.pathname;
     function ok(data) { return Response.json(data, { headers: CORS }); }
     function err(msg, code) { return Response.json({ success: false, error: msg }, { status: code, headers: CORS }); }
-    function auth(req) { return (req.headers.get('Authorization') || '') === 'Bearer laoshi:tangshi2026'; }
+    function auth(req) { return (req.headers.get('Authorization') || '') === 'Bearer lyt:lyt'; }
 
     // ── HEALTH ──
     if (p === '/api/health') { const d = (await env.LEADERBOARD.get('top20', 'json')) || []; return ok({ status: 'ok', entries: d.length }); }
@@ -26,7 +26,7 @@ export default {
     // ── ADMIN LOGIN ──
     if (p === '/api/admin/login' && request.method === 'POST') {
       const { username, password } = await request.json().catch(() => ({}));
-      return (username === 'laoshi' && password === 'tangshi2026') ? ok({ token: 'laoshi:tangshi2026' }) : err('Wrong credentials', 401);
+      return (username === 'lyt' && password === 'lyt') ? ok({ token: 'lyt:lyt' }) : err('Wrong credentials', 401);
     }
 
     // ── ADMIN DELETE LB ──
