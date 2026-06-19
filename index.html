@@ -162,17 +162,24 @@ function draw(){
 
 // ====== START GAME ======
 async function goStart(){
-  alert('✅ goStart 已觸發！即將進入遊戲畫面。');
+  alert('✅ Step 1: goStart fired');
   const grade=document.getElementById('sesGrade').value;
   GC=GC||4; SES.groupCount=GC; SES.grade=grade; SES.groups={};
   const L='ABCDEF'.slice(0,GC); L.forEach(l=>SES.groups[l]=0);
   
-  // IMMEDIATELY show quiz with groups
-  go('scrQuiz');
-  draw();
-  document.getElementById('qPoem').textContent='📖 載入中...';
-  document.getElementById('qText').textContent='正在連接伺服器...';
-  document.getElementById('qAnswer').style.display='none';
+  // FORCE show quiz with direct style
+  document.querySelectorAll('.screen').forEach(s=>s.style.display='none');
+  document.getElementById('scrQuiz').style.display='flex';
+  alert('✅ Step 2: force-displayed scrQuiz');
+  
+  // draw groups
+  try{ draw(); alert('✅ Step 3: draw() done'); }catch(e){alert('❌ draw() crashed: '+e.message);}
+  
+  // set text (with null guards)
+  const pe=document.getElementById('qPoem'); if(pe)pe.textContent='📖 載入中...';
+  const te=document.getElementById('qText'); if(te)te.textContent='正在連接伺服器...';
+  const ae=document.getElementById('qAnswer'); if(ae)ae.style.display='none';
+  alert('✅ Step 4: text set, now calling API');
   
   try{
     // create session
