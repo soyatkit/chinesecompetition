@@ -1,3 +1,6 @@
 node_modules/
 leaderboard.json
 .env
+.wrangler/
+.dev.vars
+
