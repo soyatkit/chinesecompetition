@@ -13,8 +13,8 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(-
 .app-header h1{font-size:24px;color:var(--pink-dark);}
 .ver{font-size:10px;color:var(--text-light);}
 
-.screen{display:none;flex:1;overflow-y:auto;flex-direction:column;min-height:0;}
-.screen.active{display:flex;animation:fadeIn .3s;}
+.screen{flex:1;overflow-y:auto;flex-direction:column;min-height:0;}
+.screen.active{animation:fadeIn .3s;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 .form-group{margin-bottom:12px;}
@@ -83,7 +83,7 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(-
   <div class="app-header"><h1>📜 唐詩小狀元</h1><span class="ver">v3.0</span></div>
 
   <!-- ====== DASHBOARD ====== -->
-  <div class="screen active" id="scrDash">
+  <div class="screen" id="scrDash" style="display:flex">
     <div class="dash-center">
       <h2 style="color:var(--purple-dark);margin-bottom:16px;">🎮 開設搶答遊戲</h2>
       <div class="form-group" style="width:100%;"><label>選擇年級</label>
@@ -104,7 +104,7 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(-
   </div>
 
   <!-- ====== QUIZ ====== -->
-  <div class="screen" id="scrQuiz">
+  <div class="screen" id="scrQuiz" style="display:none">
     <div class="quiz-top"><span id="qCounter">第 1 / 10 題</span><span>總分：<strong id="sumScore" style="color:var(--pink-dark);">0</strong></span></div>
     <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
     <div class="quiz-q-box">
@@ -122,7 +122,7 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(-
   </div>
 
   <!-- ====== RESULT ====== -->
-  <div class="screen" id="scrResult">
+  <div class="screen" id="scrResult" style="display:none">
     <div class="result-layout">
       <div class="result-summary" id="resultSummary"></div>
       <div class="lb-panel"><div class="lb-title">🏆 小組排行榜</div><table class="lb-table"><thead><tr><th>#</th><th>組別</th><th>分數</th></tr></thead><tbody id="lbBody"></tbody></table></div>
@@ -131,7 +131,7 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(-
   </div>
 
   <!-- ====== ADMIN ====== -->
-  <div class="screen" id="scrAdmin">
+  <div class="screen" id="scrAdmin" style="display:none">
     <h2 style="text-align:center;color:var(--purple-dark);margin-bottom:10px;">📊 管理積分排行榜</h2>
     <div style="overflow-y:auto;flex:1;"><table class="admin-lb-table"><thead><tr><th>#</th><th>年級</th><th>組別</th><th>分數</th><th>操作</th></tr></thead><tbody id="adminBody"></tbody></table></div>
     <div style="display:flex;gap:8px;margin-top:8px;">
@@ -148,9 +148,11 @@ const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'
 let GC=4, SES={code:'',grade:'',groupCount:4,groups:{A:0,B:0,C:0,D:0}};
 
 function go(id){
-  document.querySelectorAll('.screen').forEach(s=>{s.style.display='none';s.classList.remove('active');});
+  document.getElementById('scrDash').style.display='none';
+  document.getElementById('scrQuiz').style.display='none';
+  document.getElementById('scrResult').style.display='none';
+  document.getElementById('scrAdmin').style.display='none';
   document.getElementById(id).style.display='flex';
-  document.getElementById(id).classList.add('active');
   if(id==='scrAdmin')admin();
 }
 function setGC(n){GC=n;document.querySelectorAll('#groupCountBtns .pixel-btn').forEach(b=>b.classList.toggle('btn-blue',+b.dataset.gc===n));}
@@ -164,15 +166,9 @@ function draw(){
 
 // ====== START GAME ======
 async function goStart(){
-  const grade=document.getElementById('sesGrade').value;
-  GC=GC||4; SES.groupCount=GC; SES.grade=grade; SES.groups={};
-  'ABCDEF'.slice(0,GC).forEach(l=>SES.groups[l]=0);
-  
-  // Switch screens
   document.getElementById('scrDash').style.display='none';
-  document.getElementById('scrDash').classList.remove('active');
   document.getElementById('scrQuiz').style.display='flex';
-  document.getElementById('scrQuiz').classList.add('active');
+  const grade=document.getElementById('sesGrade').value;
   
   // Draw groups
   draw();

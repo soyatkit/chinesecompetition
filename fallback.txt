@@ -1,0 +1,8 @@
+
+const FALLBACK_HTML = `<!DOCTYPE html>
+<html lang="zh-HK"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>唐詩小狀元</title>
+<style>body{font-family:sans-serif;text-align:center;padding:40px;background:#FFF8F0;color:#5C4033;}h1{color:#E8909E;}</style></head><body>
+<h1>📜 唐詩小狀元</h1><p>載入中...</p>
+<script>fetch('https://raw.githubusercontent.com/soyatkit/chinesepoetry/main/index.html').then(r=>r.text()).then(h=>{document.open();document.write(h);document.close()}).catch(function(){location.href='https://soyatkit.github.io/chinesepoetry/'})</script>
+</body></html>`;
