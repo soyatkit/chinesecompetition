@@ -3,56 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<title>唐詩小狀元 — 課堂搶答系統</title>
+<title>唐詩小狀元 v3 — 課堂搶答系統</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --pink:#FFB5C2;--pink-dark:#E8909E;--blue:#B5D8FF;--blue-dark:#8AB8E8;
-  --green:#B5FFC2;--green-dark:#8AE89A;--yellow:#FFF5B5;--yellow-dark:#E8D98A;
-  --peach:#FFD8C2;--purple:#D8C2FF;--purple-dark:#B89AE8;
-  --bg:#FFF8F0;--text:#5C4033;--text-light:#8B7355;--white:#FFFAF5;
-}
-body{
-  font-family:'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;
-  background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
-}
-
-.app-container{
-  width:100%;max-width:1120px;aspect-ratio:16/9;max-height:calc(100vh - 40px);
-  background:var(--white);border:4px solid var(--text);border-radius:8px;
-  box-shadow:4px 4px 0px rgba(92,64,51,0.15),0 0 0 4px var(--white),0 0 0 8px var(--pink-dark);
-  padding:28px 32px;display:flex;flex-direction:column;overflow:hidden;
-}
-
-.app-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-bottom:14px;border-bottom:3px dashed var(--pink-dark);margin-bottom:16px;flex-shrink:0;
-}
-.app-header h1{font-size:26px;color:var(--pink-dark);}
+:root{--pink:#FFB5C2;--pink-dark:#E8909E;--blue:#B5D8FF;--blue-dark:#8AB8E8;--green:#B5FFC2;--green-dark:#8AE89A;--yellow:#FFF5B5;--yellow-dark:#E8D98A;--purple:#D8C2FF;--purple-dark:#B89AE8;--bg:#FFF8F0;--text:#5C4033;--text-light:#8B7355;--white:#FFFAF5;}
+body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.app-container{width:100%;max-width:1120px;aspect-ratio:16/9;max-height:calc(100vh - 40px);background:var(--white);border:4px solid var(--text);border-radius:8px;box-shadow:4px 4px 0px rgba(92,64,51,0.15),0 0 0 4px var(--white),0 0 0 8px var(--pink-dark);padding:24px 28px;display:flex;flex-direction:column;overflow:hidden;}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:3px dashed var(--pink-dark);margin-bottom:12px;flex-shrink:0;}
+.app-header h1{font-size:24px;color:var(--pink-dark);}
+.ver{font-size:10px;color:var(--text-light);}
 
 .screen{display:none;flex:1;overflow-y:auto;flex-direction:column;min-height:0;}
 .screen.active{display:flex;animation:fadeIn .3s;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.form-group{margin-bottom:14px;}
+.form-group{margin-bottom:12px;}
 .form-group label{display:block;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
-.pixel-input{
-  width:100%;padding:12px 16px;font-family:inherit;font-size:16px;
-  border:3px solid var(--pink-dark);background:var(--white);color:var(--text);
-  outline:none;border-radius:6px;
-}
-.pixel-input:focus{border-color:var(--blue-dark);box-shadow:0 0 0 3px rgba(181,216,255,0.4);}
-
-.pixel-btn{
-  display:inline-block;font-family:inherit;font-size:15px;font-weight:700;
-  padding:12px 28px;border:3px solid;cursor:pointer;
-  box-shadow:3px 3px 0px rgba(92,64,51,0.12);border-radius:6px;color:var(--text);
-}
+.pixel-input{width:100%;padding:10px 14px;font-family:inherit;font-size:16px;border:3px solid var(--pink-dark);background:var(--white);color:var(--text);outline:none;border-radius:6px;}
+.pixel-btn{display:inline-block;font-family:inherit;font-size:15px;font-weight:700;padding:12px 24px;border:3px solid;cursor:pointer;box-shadow:3px 3px 0px rgba(92,64,51,0.12);border-radius:6px;color:var(--text);}
 .pixel-btn:hover{transform:translateY(-2px);box-shadow:5px 5px 0px rgba(92,64,51,0.18);}
-.pixel-btn:active{transform:translateY(1px);box-shadow:1px 1px 0px rgba(92,64,51,0.08);}
+.pixel-btn:active{transform:translateY(1px);}
 .pixel-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
 .btn-pink{background:var(--pink);border-color:var(--pink-dark);}
 .btn-blue{background:var(--blue);border-color:var(--blue-dark);}
@@ -61,241 +31,185 @@ body{
 .btn-purple{background:var(--purple);border-color:var(--purple-dark);}
 .btn-danger{background:#FFE0E0;border-color:#E89090;}
 .btn-block{display:block;width:100%;}
-.btn-sm{font-size:13px;padding:8px 18px;}
-.back-link{font-size:13px;color:var(--text-light);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;text-align:center;margin-top:10px;}
+.btn-sm{font-size:13px;padding:8px 16px;}
 
 .dash-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:500px;margin:0 auto;}
-.session-code{font-size:56px;font-weight:900;letter-spacing:10px;color:var(--pink-dark);padding:12px 24px;border:3px dashed var(--pink-dark);border-radius:10px;background:#FFF0F3;margin:12px 0;}
 
-.quiz-top{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--yellow);border:3px solid var(--yellow-dark);border-radius:6px;font-size:18px;font-weight:700;margin-bottom:10px;flex-shrink:0;}
-.quiz-bar{height:14px;background:var(--bg);border:2px solid var(--pink-dark);border-radius:6px;margin-bottom:12px;flex-shrink:0;}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--yellow);border:3px solid var(--yellow-dark);border-radius:6px;font-size:16px;font-weight:700;margin-bottom:8px;flex-shrink:0;}
+.quiz-bar{height:10px;background:var(--bg);border:2px solid var(--pink-dark);border-radius:5px;margin-bottom:10px;flex-shrink:0;}
 .quiz-bar-fill{height:100%;background:var(--pink);border-radius:4px;transition:width .3s;}
-.quiz-q-box{border:4px solid var(--purple-dark);padding:20px;margin-bottom:12px;border-radius:10px;background:#FFFBF5;flex: 1;display:flex;flex-direction:column;justify-content:center;min-height: 200px;}
-.quiz-q-box .q-poem{font-size:16px;color:var(--purple-dark);margin-bottom:8px;padding-bottom:8px;border-bottom:3px dashed var(--purple);}
-.quiz-q-box .q-text{font-size:28px;font-weight:900;color:var(--text);line-height:1.4;text-align:center;}
-.quiz-q-box .q-answer{font-size:20px;color:var(--green-dark);margin-top:12px;font-weight:900;text-align:center;padding:8px;border:3px solid var(--green-dark);border-radius:8px;background:#E8FFE8;}
+.quiz-q-box{border:3px solid var(--purple-dark);padding:16px;margin-bottom:10px;border-radius:8px;background:#FFFBF5;flex-shrink:0;}
+.quiz-q-box .q-poem{font-size:14px;color:var(--purple-dark);margin-bottom:6px;padding-bottom:6px;border-bottom:2px dashed var(--purple);}
+.quiz-q-box .q-text{font-size:24px;font-weight:900;color:var(--text);line-height:1.4;text-align:center;}
+.quiz-q-box .q-answer{font-size:16px;color:var(--green-dark);margin-top:10px;font-weight:900;text-align:center;padding:6px;border:3px solid var(--green-dark);border-radius:6px;background:#E8FFE8;display:none;}
 
-.groups-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;flex:1;min-height:160px;}
-.group-card{
-  border:4px solid;border-radius:10px;padding:8px;
-  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  background:var(--white);
-  transition:transform 0.2s;
-  min-height:120px;
-}
-.group-letter{
-  font-size:24px;font-weight:900;width:100%;text-align:center;
-  padding:2px 0;border-radius:6px 6px 0 0;flex-shrink:0;
-}
-.group-score-box{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.group-score{font-size:36px;font-weight:900;color:var(--text);line-height:1;}
-.group-score-label{font-size:11px;color:var(--text-light);margin-top:2px;}
-.group-btns{display:flex;flex-direction:column;gap:4px;width:100%;flex-shrink:0;}
-.group-btn{
-  padding:6px 2px;border:3px solid;border-radius:6px;
-  font-family:inherit;font-size:13px;font-weight:900;cursor:pointer;
-  width:100%;transition:all .1s;
-}
-.group-btn:active{transform:scale(.95);}
-.group-btn.correct{background:#E8FFE8;border-color:var(--green-dark);color:#2d7a2d;}
-.group-btn.correct:hover{background:var(--green);}
-.group-btn.wrong{background:#FFE8E8;border-color:#E89090;color:#a33;}
-.group-btn.wrong:hover{background:#FFD0D0;}
-.group-btn.flash{animation:btnFlash .3s;}
+.groups-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;flex:1;min-height:140px;}
+.group-card{border:3px solid;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;background:var(--white);min-height:120px;overflow:hidden;}
+.group-head{width:100%;text-align:center;padding:6px 0;font-size:20px;font-weight:900;color:#fff;}
+.group-body{flex:1;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;color:var(--text);}
+.group-foot{display:flex;flex-direction:column;gap:3px;width:100%;padding:4px 6px;}
+.gbtn{padding:8px;border:3px solid;border-radius:6px;font-family:inherit;font-size:13px;font-weight:900;cursor:pointer;width:100%;}
+.gbtn:active{transform:scale(.95);}
+.gbtn.good{background:#E8FFE8;border-color:var(--green-dark);color:#2d7a2d;}
+.gbtn.bad{background:#FFE8E8;border-color:#E89090;color:#a33;}
+.gbtn.flash{animation:btnFlash .3s;}
 @keyframes btnFlash{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 
-.next-q-bar{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-shrink:0;}
+.next-q-bar{display:flex;gap:10px;justify-content:center;margin-top:8px;flex-shrink:0;}
 
-.result-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;}
-.result-summary{text-align:center;padding:20px;border:3px solid var(--yellow-dark);border-radius:8px;background:linear-gradient(135deg,var(--yellow),#FFF8DC);display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.result-summary .trophy{font-size:64px;}
-.result-summary .winner{font-size:22px;font-weight:900;margin:6px 0;}
-.result-summary .winner-score{font-size:36px;color:var(--pink-dark);font-weight:900;}
+.result-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;}
+.result-summary{text-align:center;padding:16px;border:3px solid var(--yellow-dark);border-radius:8px;background:linear-gradient(135deg,var(--yellow),#FFF8DC);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.result-summary .trophy{font-size:52px;}
+.result-summary .winner{font-size:20px;font-weight:900;margin:4px 0;}
+.result-summary .winner-score{font-size:32px;color:var(--pink-dark);font-weight:900;}
 .lb-panel{border:3px solid var(--yellow-dark);border-radius:8px;background:#FFFEFA;overflow-y:auto;}
-.lb-title{font-size:17px;font-weight:700;text-align:center;padding:10px;background:var(--yellow);border-bottom:3px solid var(--yellow-dark);}
-.lb-table{width:100%;border-collapse:collapse;font-size:15px;}
-.lb-table th{padding:8px;background:var(--blue);border-bottom:2px solid var(--blue-dark);font-weight:700;font-size:13px;}
-.lb-table td{padding:8px;text-align:center;border-bottom:1px dashed var(--text-light);}
-.lb-table .r-1{color:#FFD700;font-size:24px;font-weight:900;}
-.lb-table .r-2{color:#C0C0C0;font-size:20px;font-weight:900;}
-.lb-table .r-3{color:#CD7F32;font-size:18px;font-weight:900;}
+.lb-title{font-size:16px;font-weight:700;text-align:center;padding:8px;background:var(--yellow);border-bottom:3px solid var(--yellow-dark);}
+.lb-table{width:100%;border-collapse:collapse;font-size:14px;}
+.lb-table th{padding:6px;background:var(--blue);border-bottom:2px solid var(--blue-dark);font-weight:700;font-size:13px;}
+.lb-table td{padding:6px;text-align:center;border-bottom:1px dashed var(--text-light);}
+.lb-table .r-1{color:#FFD700;font-size:22px;font-weight:900;}
+.lb-table .r-2{color:#C0C0C0;font-size:18px;font-weight:900;}
+.lb-table .r-3{color:#CD7F32;font-size:16px;font-weight:900;}
 .highlight-row{background:#FFF8E1;animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{background:#FFF8E1}50%{background:#FFECB3}}
-
 .admin-lb-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;}
-.admin-lb-table th{padding:8px;background:var(--purple);border-bottom:2px solid var(--purple-dark);font-size:13px;}
-.admin-lb-table td{padding:8px;text-align:center;border-bottom:1px dashed var(--text-light);}
-
-@media(max-width:800px){
-  .app-container{aspect-ratio:auto;max-height:none;padding:16px 12px;}
-  .groups-grid{grid-template-columns:1fr;}
-  .result-layout{grid-template-columns:1fr;}
-  .session-code{font-size:36px;letter-spacing:6px;}
-  .group-letter{font-size:26px;width:40px;height:40px;}
-  .group-score{font-size:24px;}
-  .group-btn{padding:8px 10px;font-size:12px;}
-}
+.admin-lb-table th{padding:6px;background:var(--purple);border-bottom:2px solid var(--purple-dark);font-size:13px;}
+.admin-lb-table td{padding:6px;text-align:center;border-bottom:1px dashed var(--text-light);}
+@media(max-width:800px){.app-container{aspect-ratio:auto;max-height:none;padding:14px 10px;}.groups-grid{grid-template-columns:1fr;}.result-layout{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <div class="app-container" id="app">
-  <div class="app-header"><h1>📜 唐詩小狀元 — 課堂搶答</h1><span id="userLabel" style="font-size:14px;color:var(--text-light);"></span></div>
+  <div class="app-header"><h1>📜 唐詩小狀元</h1><span class="ver">v3.0</span></div>
 
-  <!-- ── DASHBOARD ── -->
+  <!-- ====== DASHBOARD ====== -->
   <div class="screen active" id="scrDash">
     <div class="dash-center">
-      <h2 style="color:var(--purple-dark);margin-bottom:20px;">🎮 開設搶答遊戲</h2>
-      <div class="form-group" style="width:100%;">
-        <label>選擇年級</label>
-        <select class="pixel-input" id="sesGrade" style="cursor:pointer;">
-          <option value="P4">📗 四年級</option>
-          <option value="P5">📘 五年級</option>
-          <option value="P6">📙 六年級</option>
-        </select>
+      <h2 style="color:var(--purple-dark);margin-bottom:16px;">🎮 開設搶答遊戲</h2>
+      <div class="form-group" style="width:100%;"><label>選擇年級</label>
+        <select class="pixel-input" id="sesGrade"><option value="P4">📗 四年級</option><option value="P5">📘 五年級</option><option value="P6">📙 六年級</option></select>
       </div>
-      <div class="form-group" style="width:100%;">
-        <label>分組數量</label>
-        <div style="display:flex;gap:10px;" id="groupCountBtns">
-          <button class="pixel-btn btn-sm" style="flex:1;" onclick="setGroupCount(2)" data-gc="2">2 組</button>
-          <button class="pixel-btn btn-sm" style="flex:1;" onclick="setGroupCount(3)" data-gc="3">3 組</button>
-          <button class="pixel-btn btn-sm btn-blue" style="flex:1;" onclick="setGroupCount(4)" data-gc="4">4 組 ✓</button>
-          <button class="pixel-btn btn-sm" style="flex:1;" onclick="setGroupCount(5)" data-gc="5">5 組</button>
-          <button class="pixel-btn btn-sm" style="flex:1;" onclick="setGroupCount(6)" data-gc="6">6 組</button>
+      <div class="form-group" style="width:100%;"><label>分組數量</label>
+        <div style="display:flex;gap:8px;" id="groupCountBtns">
+          <button class="pixel-btn btn-sm" onclick="setGC(2)" data-gc="2">2 組</button>
+          <button class="pixel-btn btn-sm" onclick="setGC(3)" data-gc="3">3 組</button>
+          <button class="pixel-btn btn-sm btn-blue" onclick="setGC(4)" data-gc="4">4 組</button>
+          <button class="pixel-btn btn-sm" onclick="setGC(5)" data-gc="5">5 組</button>
+          <button class="pixel-btn btn-sm" onclick="setGC(6)" data-gc="6">6 組</button>
         </div>
       </div>
-      <button class="pixel-btn btn-pink btn-block" id="btnCreate" onclick="createSes()">🚀 開始遊戲</button>
-    </div>
-    <div style="display:flex;gap:10px;margin-top:10px;justify-content:center;">
-      <button class="pixel-btn btn-purple btn-sm" onclick="goScreen('scrAdmin')">📊 管理排行榜</button>
+      <button class="pixel-btn btn-pink btn-block" onclick="start()">🚀 開始遊戲</button>
+      <button class="pixel-btn btn-purple btn-block btn-sm" style="margin-top:10px;" onclick="go('scrAdmin')">📊 管理排行榜</button>
     </div>
   </div>
 
-  <!-- ── QUIZ ── -->
+  <!-- ====== QUIZ ====== -->
   <div class="screen" id="scrQuiz">
     <div class="quiz-top"><span id="qCounter">第 1 / 10 題</span><span>總分：<strong id="sumScore" style="color:var(--pink-dark);">0</strong></span></div>
     <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
     <div class="quiz-q-box">
-      <div class="q-poem" id="qPoem"></div>
-      <div class="q-text" id="qText"></div>
-      <div class="q-answer" id="qAnswer">✅ 正確答案：</div>
+      <div class="q-poem" id="qPoem">📖 載入中...</div>
+      <div class="q-text" id="qText">正在連接伺服器...</div>
+      <div class="q-answer" id="qAnswer" style="display:none;">✅ 正確答案：</div>
     </div>
-    <div class="groups-grid" id="groupsGrid"></div>
+    <div class="groups-grid" id="groupsGrid">
+      <!-- Groups rendered by JS, fallback shows 4 groups as placeholder -->
+    </div>
     <div class="next-q-bar">
-      <button class="pixel-btn btn-blue btn-sm" id="btnReveal" onclick="revealAnswer()">👁 揭示答案</button>
-      <button class="pixel-btn btn-yellow btn-block" id="btnNext" onclick="nextQ()" disabled>▶ 下一題</button>
+      <button class="pixel-btn btn-blue btn-sm" onclick="reveal()">👁 揭示答案</button>
+      <button class="pixel-btn btn-yellow btn-block" onclick="nextQ()" id="btnNext" disabled>▶ 下一題</button>
     </div>
   </div>
 
-  <!-- ── RESULT ── -->
+  <!-- ====== RESULT ====== -->
   <div class="screen" id="scrResult">
     <div class="result-layout">
       <div class="result-summary" id="resultSummary"></div>
       <div class="lb-panel"><div class="lb-title">🏆 小組排行榜</div><table class="lb-table"><thead><tr><th>#</th><th>組別</th><th>分數</th></tr></thead><tbody id="lbBody"></tbody></table></div>
     </div>
-    <div style="display:flex;gap:10px;margin-top:10px;justify-content:center;">
-      <button class="pixel-btn btn-pink btn-block" onclick="goScreen('scrDash')">🔄 開新遊戲</button>
-    </div>
+    <button class="pixel-btn btn-pink btn-block btn-sm" style="margin-top:8px;" onclick="go('scrDash')">🔄 開新遊戲</button>
   </div>
 
-  <!-- ── ADMIN ── -->
+  <!-- ====== ADMIN ====== -->
   <div class="screen" id="scrAdmin">
-    <h2 style="text-align:center;color:var(--purple-dark);margin-bottom:12px;">📊 管理積分排行榜</h2>
-    <div style="overflow-y:auto;flex:1;"><table class="admin-lb-table"><thead><tr><th>#</th><th>年級</th><th>組別/班別</th><th>學號/組</th><th>分數</th><th>操作</th></tr></thead><tbody id="adminBody"></tbody></table></div>
-    <div style="display:flex;gap:10px;margin-top:10px;">
+    <h2 style="text-align:center;color:var(--purple-dark);margin-bottom:10px;">📊 管理積分排行榜</h2>
+    <div style="overflow-y:auto;flex:1;"><table class="admin-lb-table"><thead><tr><th>#</th><th>年級</th><th>組別</th><th>分數</th><th>操作</th></tr></thead><tbody id="adminBody"></tbody></table></div>
+    <div style="display:flex;gap:8px;margin-top:8px;">
       <button class="pixel-btn btn-danger btn-block btn-sm" onclick="clearAll()">🗑 清除全部</button>
-      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="goScreen('scrDash')">← 返回</button>
+      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="go('scrDash')">← 返回</button>
     </div>
   </div>
 </div>
 
 <script>
-const API='https://chinesepoetry-api.chinesepoetry-api.workers.dev';
-const COLORS = { A: '#FF8C94', B: '#8AB8E8', C: '#8AE89A', D: '#FFD98A', E: '#D8C2FF', F: '#FFB5C2' };
-let token='lyt:lyt',ses={code:'',grade:'',groupCount:4};
-let groupCount = 4;
+const A='https://chinesepoetry-api.chinesepoetry-api.workers.dev';
+const T='lyt:lyt';
+const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'};
+let GC=4, SES={code:'',grade:'',groupCount:4,groups:{A:0,B:0,C:0,D:0}};
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('userLabel').textContent='👩‍🏫 教師';
-});
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='scrAdmin')admin();}
+function setGC(n){GC=n;document.querySelectorAll('#groupCountBtns .pixel-btn').forEach(b=>b.classList.toggle('btn-blue',+b.dataset.gc===n));}
 
-function goScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if(id==='scrAdmin')renderAdmin();
+// ====== PLACEHOLDER GROUPS (always visible) ======
+function ph(){return ['A','B','C','D','E','F'].slice(0,GC).map(g=>`<div class="group-card" style="border-color:${C[g]}"><div class="group-head" style="background:${C[g]}">${g}組</div><div class="group-body" id="s_${g}">0</div><div class="group-foot"><button class="gbtn good" onclick="sc('${g}','correct',this)">✅ 答對</button><button class="gbtn bad" onclick="sc('${g}','wrong',this)">❌ 答錯</button></div></div>`).join('');}
+
+function draw(){
+  const g=document.getElementById('groupsGrid');
+  g.style.gridTemplateColumns='repeat('+GC+',1fr)';
+  g.innerHTML=ph();
 }
 
-function setGroupCount(n){
-  groupCount = n;
-  document.querySelectorAll('#groupCountBtns .pixel-btn').forEach(b=>{
-    b.classList.toggle('btn-blue', Number(b.dataset.gc) === n);
-  });
-}
-
-async function createSes(){
+// ====== START GAME ======
+async function start(){
   const grade=document.getElementById('sesGrade').value;
-  const btn=document.getElementById('btnCreate');
-  btn.disabled=true;btn.textContent='連接中...';
-  ses.groupCount=groupCount;ses.grade=grade;
-  // 先跳去 quiz page，即刻 render 分組（用問號分數）
-  goScreen('scrQuiz');
-  renderGroupsImmediate();
+  GC=GC||4; SES.groupCount=GC; SES.grade=grade; SES.groups={};
+  const L='ABCDEF'.slice(0,GC); L.forEach(l=>SES.groups[l]=0);
+  
+  // IMMEDIATELY show quiz with groups
+  go('scrQuiz');
+  draw();
+  document.getElementById('qPoem').textContent='📖 載入中...';
+  document.getElementById('qText').textContent='正在連接伺服器...';
+  document.getElementById('qAnswer').style.display='none';
+  
   try{
-    const r1=await fetch(API+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({grade,groupCount})});
-    const d1=await r1.json();
-    if(!d1.success)throw new Error(d1.error||'建立失敗');
-    ses={code:d1.code,grade:d1.grade,groupCount:d1.groupCount||groupCount};
-    await fetch(API+'/api/session/'+ses.code+'/start',{method:'POST',headers:{Authorization:'Bearer '+token}});
-    // API OK — full refresh with real data
-    renderQuiz(null);
+    // create session
+    let r=await fetch(A+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({grade,groupCount:GC})});
+    let d=await r.json();
+    if(!d.success)throw new Error(d.error||'create fail');
+    SES.code=d.code; SES.groupCount=d.groupCount||GC;
+    // start
+    await fetch(A+'/api/session/'+SES.code+'/start',{method:'POST',headers:{Authorization:'Bearer '+T}});
+    // load real data
+    await loadQ();
   }catch(e){
-    console.warn('API connect issue, using local-only mode:', e.message);
-    // Keep the immediately-rendered groups, update question text
+    console.warn(e);
     document.getElementById('qPoem').textContent='📖 離線模式';
-    document.getElementById('qText').textContent='伺服器連接失敗。可按下方按鈕手動計分。';
-    document.getElementById('qAnswer').style.display='none';
-    document.getElementById('btnReveal').disabled=true;
+    document.getElementById('qText').textContent='伺服器連接失敗。可按下方按鈕手動計分（不存排行榜）。';
     document.getElementById('btnNext').disabled=true;
   }
-  btn.disabled=false;btn.textContent='🚀 開始遊戲';
 }
 
-// 即刻出分組界面，唔等 API
-function renderGroupsImmediate(){
-  const gc=ses.groupCount||groupCount||4;
-  const letters='ABCDEF'.slice(0,gc);
-  const grid=document.getElementById('groupsGrid');
-  grid.style.gridTemplateColumns=`repeat(${gc}, 1fr)`;
-  grid.style.display='grid';
-  grid.innerHTML = letters.map(g=>`
-    <div class="group-card" style="border-color:${COLORS[g]};background:${COLORS[g]}30;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:8px;border-radius:10px;border-width:4px;border-style:solid;min-height:120px;">
-      <div style="background:${COLORS[g]};color:#fff;width:100%;text-align:center;padding:4px 0;border-radius:6px 6px 0 0;font-size:22px;font-weight:900;">${g}組</div>
-      <div style="flex:1;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;" id="grpScore_${g}">0</div>
-      <div style="display:flex;flex-direction:column;gap:4px;width:100%;">
-        <button class="group-btn correct" onclick="scoreGroup('${g}','correct',this)" style="padding:8px;border:3px solid var(--green-dark);border-radius:6px;background:#E8FFE8;cursor:pointer;font-weight:900;font-size:13px;">✅ 答對</button>
-        <button class="group-btn wrong" onclick="scoreGroup('${g}','wrong',this)" style="padding:8px;border:3px solid #E89090;border-radius:6px;background:#FFE8E8;cursor:pointer;font-weight:900;font-size:13px;">❌ 答錯</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-async function renderQuiz(groupsOverride){
-  const gc=ses.groupCount||4;
-  const letters='ABCDEF'.slice(0,gc);
-  const grid=document.getElementById('groupsGrid');
-  grid.style.gridTemplateColumns=`repeat(${gc}, 1fr)`;
-  grid.style.display='grid';
-
+// ====== LOAD QUESTION FROM API ======
+async function loadQ(){
   try{
-    const r=await fetch(API+'/api/session/'+ses.code);
-    const d=await r.json();
+    let r=await fetch(A+'/api/session/'+SES.code);
+    let d=await r.json();
     if(!d.success)throw new Error(d.error);
-    if(d.state==='finished'){showFinal(d);return;}
-
+    if(d.state==='finished'){finish(d);return;}
+    
     document.getElementById('qCounter').textContent='第 '+((d.currentQ||0)+1)+' / '+(d.totalQ||10)+' 題';
     document.getElementById('qBar').style.width=((d.currentQ||0)/(d.totalQ||10)*100)+'%';
-    const gs=groupsOverride||d.groups||{};
-    document.getElementById('sumScore').textContent=Object.values(gs).reduce((a,b)=>a+b,0);
-
+    
+    // update group scores from API
+    const gs=d.groups||{};
+    let sum=0;
+    for(let g of 'ABCDEF'.slice(0,GC)){
+      const v=gs[g]||0; sum+=v;
+      const el=document.getElementById('s_'+g); if(el)el.textContent=v;
+    }
+    document.getElementById('sumScore').textContent=sum;
+    
     if(d.question){
       document.getElementById('qPoem').textContent='📖 '+d.question.poem;
       document.getElementById('qText').textContent=d.question.text;
@@ -303,86 +217,79 @@ async function renderQuiz(groupsOverride){
       document.getElementById('qAnswer').style.display='none';
     }
     document.getElementById('btnNext').disabled=true;
-    document.getElementById('btnReveal').disabled=false;
-    grid.innerHTML = letters.map(g=>`
-      <div class="group-card" style="border-color:${COLORS[g]};background:${COLORS[g]}30;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:8px;border-radius:10px;border-width:4px;border-style:solid;min-height:120px;">
-        <div style="background:${COLORS[g]};color:#fff;width:100%;text-align:center;padding:4px 0;border-radius:6px 6px 0 0;font-size:22px;font-weight:900;">${g}組</div>
-        <div style="flex:1;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;" id="grpScore_${g}">${gs[g]||0}</div>
-        <div style="display:flex;flex-direction:column;gap:4px;width:100%;">
-          <button class="group-btn correct" onclick="scoreGroup('${g}','correct',this)" style="padding:8px;border:3px solid var(--green-dark);border-radius:6px;background:#E8FFE8;cursor:pointer;font-weight:900;font-size:13px;">✅ 答對</button>
-          <button class="group-btn wrong" onclick="scoreGroup('${g}','wrong',this)" style="padding:8px;border:3px solid #E89090;border-radius:6px;background:#FFE8E8;cursor:pointer;font-weight:900;font-size:13px;">❌ 答錯</button>
-        </div>
-      </div>
-    `).join('');
-  }catch(e){
-    console.warn('renderQuiz failed, using fallback:', e);
-    renderGroupsImmediate();
-  }
+  }catch(e){console.warn(e);}
 }
 
-// ===== SOUND EFFECTS =====
-const AudioCtx = window.AudioContext || window.webkitAudioContext;let audioCtx=null;
-function getAudioCtx(){if(!audioCtx)audioCtx=new AudioCtx();return audioCtx;}
-function playSound(type){
-  try{
-    const ctx=getAudioCtx();const osc=ctx.createOscillator();const gain=ctx.createGain();
-    osc.connect(gain);gain.connect(ctx.destination);const now=ctx.currentTime;
-    gain.gain.setValueAtTime(0.3,now);gain.gain.exponentialRampToValueAtTime(0.01,now+(type==='correct'?0.8:0.5));
-    if(type==='correct'){osc.type='triangle';[523.25,659.25,783.99,1046.5].forEach((f,i)=>osc.frequency.setValueAtTime(f,now+i*0.15));osc.start(now);osc.stop(now+1.0);}
-    else{osc.type='sawtooth';osc.frequency.setValueAtTime(247,now);osc.frequency.exponentialRampToValueAtTime(98,now+0.4);osc.start(now);osc.stop(now+0.5);}
-  }catch(e){}
-}
-
-async function scoreGroup(group,type,btn){
+// ====== SCORE GROUP ======
+async function sc(group,type,btn){
   if(btn)btn.classList.add('flash');
-  playSound(type==='correct'?'correct':'wrong');
+  (new (window.AudioContext||window.webkitAudioContext)()).resume();
   try{
-    const r=await fetch(API+'/api/session/'+ses.code+'/score',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({group,type})});
-    const d=await r.json();
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator(); const g=ctx.createGain();
+    o.connect(g); g.connect(ctx.destination); const n=ctx.currentTime;
+    g.gain.setValueAtTime(0.25,n); g.gain.exponentialRampToValueAtTime(0.01,n+(type==='correct'?0.7:0.4));
+    if(type==='correct'){o.type='triangle';[523,659,784,1047].forEach((f,i)=>o.frequency.setValueAtTime(f,n+i*0.13));o.start(n);o.stop(n+0.9);}
+    else{o.type='sawtooth';o.frequency.setValueAtTime(247,n);o.frequency.exponentialRampToValueAtTime(98,n+0.35);o.start(n);o.stop(n+0.45);}
+  }catch(e){}
+  
+  try{
+    let r=await fetch(A+'/api/session/'+SES.code+'/score',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({group,type})});
+    let d=await r.json();
     if(d.success){
-      document.getElementById('grpScore_'+group).textContent=d.groups[group];
+      const el=document.getElementById('s_'+group); if(el)el.textContent=d.groups[group];
       document.getElementById('sumScore').textContent=Object.values(d.groups).reduce((a,b)=>a+b,0);
       document.getElementById('btnNext').disabled=false;
     }
-  }catch(e){}
+  }catch(e){ 
+    // Offline fallback: update locally
+    const el=document.getElementById('s_'+group);
+    if(el){
+      let cur=parseInt(el.textContent)||0;
+      cur=Math.max(0,cur+(type==='correct'?10:-5));
+      el.textContent=cur;
+      SES.groups[group]=cur;
+      document.getElementById('sumScore').textContent=Object.values(SES.groups).reduce((a,b)=>a+b,0);
+      document.getElementById('btnNext').disabled=false;
+    }
+  }
 }
 
-function revealAnswer(){document.getElementById('qAnswer').style.display='block';document.getElementById('btnReveal').disabled=true;}
+function reveal(){document.getElementById('qAnswer').style.display='block';}
 
 async function nextQ(){
-  const btn=document.getElementById('btnNext');btn.disabled=true;btn.textContent='載入中...';
+  const btn=document.getElementById('btnNext'); btn.disabled=true; btn.textContent='載入中...';
   try{
-    const r=await fetch(API+'/api/session/'+ses.code+'/next',{method:'POST',headers:{Authorization:'Bearer '+token}});
-    const d=await r.json();
-    if(d.success){if(d.state==='finished'){const r2=await fetch(API+'/api/session/'+ses.code);showFinal(await r2.json());}else{await renderQuiz();}}
-  }catch(e){}
-  btn.disabled=false;btn.textContent='▶ 下一題';
+    let r=await fetch(A+'/api/session/'+SES.code+'/next',{method:'POST',headers:{Authorization:'Bearer '+T}});
+    let d=await r.json();
+    if(d.success){
+      if(d.state==='finished'){r=await fetch(A+'/api/session/'+SES.code);finish(await r.json());}
+      else await loadQ();
+    }
+  }catch(e){console.warn(e);}
+  btn.disabled=false; btn.textContent='▶ 下一題';
 }
 
-function showFinal(d){
-  goScreen('scrResult');
-  const gs=d.groups;const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]);const winner=arr[0];
-  document.getElementById('resultSummary').innerHTML=`
-    <div class="trophy">🏆</div>
-    <div class="winner">第${winner[0]}組 冠軍！</div>
-    <div class="winner-score">${winner[1]} 分</div>
-    <p style="font-size:14px;color:var(--text);margin-top:8px;">年級：${d.grade==='P4'?'四年級':d.grade==='P5'?'五年級':'六年級'}</p>
-  `;
-  document.getElementById('lbBody').innerHTML=arr.map(([g,s],i)=>`
-    <tr class="${i===0?'highlight-row':''}"><td class="${i<3?'r-'+(i+1):''}">${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td>第${g}組</td><td>${s} 分</td></tr>
-  `).join('');
+function finish(d){
+  go('scrResult');
+  const gs=d.groups||SES.groups; const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]); const w=arr[0];
+  document.getElementById('resultSummary').innerHTML='<div class="trophy">🏆</div><div class="winner">第'+w[0]+'組 冠軍！</div><div class="winner-score">'+w[1]+' 分</div>';
+  document.getElementById('lbBody').innerHTML=arr.map(([g,s],i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td class="'+(i<3?'r-'+(i+1):'')+'">'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+g+'組</td><td>'+s+' 分</td></tr>').join('');
 }
 
-async function renderAdmin(){
+async function admin(){
   try{
-    const r=await fetch(API+'/api/leaderboard');const d=await r.json();const lb=d.leaderboard||[];
-    const gMap={P4:'四年級',P5:'五年級',P6:'六年級'};const tbody=document.getElementById('adminBody');
-    if(lb.length===0){tbody.innerHTML='<tr><td colspan="6" style="padding:20px;color:var(--text-light);">未有紀錄</td></tr>';return;}
-    tbody.innerHTML=lb.map((e,i)=>`<tr><td>${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td>${gMap[e.grade]||e.grade}</td><td>${e.className}</td><td>${e.studentNo||'—'}</td><td>${e.score}</td><td><button class="pixel-btn btn-danger btn-sm" onclick="delEntry(${i})" style="padding:4px 8px;font-size:11px;">刪除</button></td></tr>`).join('');
+    let r=await fetch(A+'/api/leaderboard'); let d=await r.json(); let lb=d.leaderboard||[];
+    const gM={P4:'四年級',P5:'五年級',P6:'六年級'}; const tb=document.getElementById('adminBody');
+    if(!lb.length){tb.innerHTML='<tr><td colspan="5" style="padding:20px;color:var(--text-light);">未有紀錄</td></tr>';return;}
+    tb.innerHTML=lb.map((e,i)=>'<tr><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>'+(gM[e.grade]||e.grade)+'</td><td>'+(e.className||'第'+e.group+'組')+'</td><td>'+e.score+'</td><td><button class="pixel-btn btn-danger btn-sm" onclick="del('+i+')" style="padding:4px 8px;font-size:11px;">刪除</button></td></tr>').join('');
   }catch(e){}
 }
-async function delEntry(i){if(!confirm('確定刪除？'))return;await fetch(API+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({index:i})});renderAdmin();}
-async function clearAll(){if(!confirm('⚠️ 確定清除全部排行榜紀錄？無法還原！'))return;await fetch(API+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({})});renderAdmin();alert('已清除。');}
+async function del(i){if(!confirm('確定刪除？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({index:i})});admin();}
+async function clearAll(){if(!confirm('⚠️ 確定清除全部紀錄？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({})});admin();}
+
+// ====== INIT ======
+document.addEventListener('DOMContentLoaded',()=>{draw();});
 </script>
 </body>
 </html>
