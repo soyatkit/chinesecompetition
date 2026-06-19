@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>唐詩小狀元 — 課堂搶答系統</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -228,18 +231,22 @@ function logout(){token='lyt:lyt';ses={code:'',grade:''};goScreen('scrDash');}
 
 async function createSes(){
   const grade=document.getElementById('sesGrade').value;
-  const btn=document.getElementById('btnCreate');btn.disabled=true;btn.textContent='建立中...';
+  const btn=document.getElementById('btnCreate');
+  btn.disabled=true;btn.textContent='建立中...';
+  console.log('createSes grade:',grade,'token:',token);
   try{
-    const r=await fetch(API+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({grade})});
+    const url=API+'/api/session/create';
+    const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({grade})});
     const d=await r.json();
+    console.log('createSes response:',d);
     if(d.success){
       ses={code:d.code,grade:d.grade};
       document.getElementById('sesInfo').style.display='block';
       document.getElementById('sesCodeDisp').textContent=d.code;
       document.getElementById('sesGradeDisp').textContent=grade==='P4'?'四年級':grade==='P5'?'五年級':'六年級';
       document.getElementById('btnStart').disabled=false;
-    }
-  }catch(e){alert('錯誤: '+e.message);}
+    }else{alert('伺服器回應: '+(d.error||'不明'));}
+  }catch(e){console.error(e);alert('無法連接: '+e.message+'\n請開 F12 Console 睇');}
   btn.disabled=false;btn.textContent='建立課堂遊戲';
 }
 
