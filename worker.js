@@ -63,10 +63,19 @@ export default {
       const letters = 'ABCDEF'.slice(0, gc);
       const groups = {};
       for (const ch of letters) groups[ch] = 0;
+      const questions = genQ(grade);
+      // Round-robin: assign each question to a group (no overlap)
+      const groupQuestions = {};
+      const groupCurrentQ = {};
+      for (const ch of letters) { groupQuestions[ch] = []; groupCurrentQ[ch] = 0; }
+      for (let i = 0; i < questions.length; i++) {
+        const g = letters[i % gc];
+        groupQuestions[g].push(i);
+      }
       const session = {
         code, grade, groupCount: gc,
         state: 'waiting', currentQ: 0,
-        questions: genQ(grade),
+        questions, groupQuestions, groupCurrentQ,
         groups, history: [],
         createdAt: new Date().toISOString(),
       };
@@ -80,10 +89,29 @@ export default {
       const raw = await env.SESSIONS.get(sm[1]);
       if (!raw) return err('Session not found', 404);
       const s = JSON.parse(raw);
-      const q = s.state === 'playing' && s.questions[s.currentQ]
-        ? { poem: s.questions[s.currentQ].poem, text: s.questions[s.currentQ].text, options: s.questions[s.currentQ].options, answer: s.questions[s.currentQ].answer }
-        : null;
-      return ok({ code: s.code, grade: s.grade, groupCount: s.groupCount || 4, state: s.state, currentQ: s.currentQ, totalQ: s.questions.length, question: q, groups: s.groups, history: s.history });
+      const group = (new URL(request.url)).searchParams.get('group') || '';
+      let q = null;
+      let qIndex = null;
+      let totalForGroup = s.questions.length;
+      let gCurrentQ = 0;
+      if (s.state === 'playing') {
+        let idx;
+        if (group && s.groupQuestions && s.groupQuestions[group]) {
+          const cq = s.groupCurrentQ ? (s.groupCurrentQ[group] || 0) : 0;
+          const gqs = s.groupQuestions[group];
+          idx = cq < gqs.length ? gqs[cq] : -1;
+          totalForGroup = gqs.length;
+          gCurrentQ = cq;
+        } else {
+          idx = s.currentQ;
+        }
+        if (idx >= 0 && idx < s.questions.length) {
+          const qq = s.questions[idx];
+          q = { poem: qq.poem, text: qq.text, options: qq.options, answer: qq.answer };
+          qIndex = idx;
+        }
+      }
+      return ok({ code: s.code, grade: s.grade, groupCount: s.groupCount || 4, state: s.state, currentQ: qIndex != null ? qIndex : s.currentQ, totalQ: totalForGroup, groupCurrentQ: gCurrentQ, question: q, groups: s.groups, history: s.history, groupQuestions: s.groupQuestions, groupCurrentQ: s.groupCurrentQ });
     }
 
     // ── SESSION START ──
@@ -100,7 +128,7 @@ export default {
     const scoreM = p.match(/^\/api\/session\/(\d{6})\/score$/);
     if (scoreM && request.method === 'POST') {
       if (!auth(request)) return err('Unauthorized', 401);
-      const { group, type, delta, round, difficulty } = await request.json().catch(() => ({}));
+      const { group, type, delta, round, difficulty, advanceGroup } = await request.json().catch(() => ({}));
       if (!/^[A-F]$/.test(group) || !['correct','wrong','bonus'].includes(type)) return err('Invalid params', 400);
       const raw = await env.SESSIONS.get(scoreM[1]); if (!raw) return err('Not found', 404);
       const s = JSON.parse(raw);
@@ -110,6 +138,9 @@ export default {
         : (type === 'correct' ? 10 : type === 'bonus' ? 20 : -5);
       s.groups[group] = (s.groups[group] || 0) + appliedDelta;
       s.history.push({ q: s.currentQ, group, type, delta: appliedDelta, round: round || null, difficulty: difficulty || null, time: new Date().toISOString() });
+      if (advanceGroup && s.groupCurrentQ) {
+        s.groupCurrentQ[group] = (s.groupCurrentQ[group] || 0) + 1;
+      }
       await env.SESSIONS.put(scoreM[1], JSON.stringify(s), { expirationTtl: 7200 });
       return ok({ groups: s.groups });
     }

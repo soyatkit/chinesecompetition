@@ -391,6 +391,46 @@ body::after{
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:10px;
 }
+.r1-all-scores{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.r1-score-card{
+  flex:1;
+  min-width:80px;
+  padding:10px 12px;
+  border-radius:16px;
+  border:2px solid rgba(185,177,211,.9);
+  background:rgba(255,255,255,.88);
+  text-align:center;
+  box-shadow:0 6px 14px rgba(61,54,95,.06);
+}
+.r1-score-card.active{
+  border-color:#ff7bbf;
+  background:rgba(255,123,191,.08);
+  transform:translateY(-1px);
+}
+.r1-score-card .r1sc-label{
+  font-size:.78rem;
+  font-weight:700;
+  color:var(--muted);
+}
+.r1-score-card .r1sc-value{
+  font-size:clamp(1.2rem,2vw,1.6rem);
+  font-weight:800;
+  letter-spacing:-.03em;
+  margin-top:2px;
+}
+.r1-score-card.done .r1sc-label{color:#16803c}
+.r1-score-card.done{opacity:.7}
+.opt-item{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.opt-item:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(61,54,95,.10)}
+.opt-item:active{transform:scale(.98)}
+.opt-item:disabled{cursor:default;opacity:.7;transform:none}
+.opt-item.correct{background:rgba(52,199,89,.14);border-color:#34c759}
+.opt-item.wrong{background:rgba(255,59,48,.10);border-color:#ff3b30}
+.opt-item.show-correct{background:rgba(52,199,89,.06);border-color:rgba(52,199,89,.3)}
 .group-card{
   border:1px solid var(--line);
   border-radius:24px;
@@ -795,6 +835,10 @@ body::after{
   background:rgba(255,123,191,.10);
   color:#ff7bbf;
 }
+.q-options .opt-item.correct{background:rgba(52,199,89,.12);border-color:rgba(52,199,89,.5)}
+.q-options .opt-item.wrong{background:rgba(255,59,48,.08);border-color:rgba(255,59,48,.4)}
+.q-options .opt-item.show-correct{background:rgba(52,199,89,.04);border-color:rgba(52,199,89,.25)}
+.r1-score-card{border:2px solid rgba(185,177,211,.95);background:#fff}
 .groups-grid{
   gap:12px;
 }
@@ -1216,23 +1260,17 @@ body::after{
         <div class="round1-title">ROUND 1 · 必答題</div>
         <span class="soft-chip">答對 +20 / 答錯 -10</span>
       </div>
-      <div class="round1-grid">
-        <div class="form-group" style="margin-bottom:0;">
-          <label>目前組別</label>
-          <select class="pixel-input" id="r1GroupSelect" onchange="syncRound1GroupUI()">
-            <option value="A">第 A 組</option>
-            <option value="B">第 B 組</option>
-            <option value="C">第 C 組</option>
-            <option value="D">第 D 組</option>
-            <option value="E">第 E 組</option>
-          </select>
-        </div>
-        <div class="round1-score" id="r1GroupScore">第 A 組 · 0 分</div>
+      <div class="form-group" style="margin-bottom:8px;">
+        <label>目前組別</label>
+        <select class="pixel-input" id="r1GroupSelect" onchange="onR1GroupChange()">
+          <option value="A">第 A 組</option>
+          <option value="B">第 B 組</option>
+          <option value="C">第 C 組</option>
+          <option value="D">第 D 組</option>
+          <option value="E">第 E 組</option>
+        </select>
       </div>
-      <div class="round1-actions">
-        <button class="pixel-btn btn-green btn-block" onclick="sc(getR1Group(),'correct',this)">答對 +20</button>
-        <button class="pixel-btn btn-danger btn-block" onclick="sc(getR1Group(),'wrong',this)">答錯 -10</button>
-      </div>
+      <div class="r1-all-scores" id="r1AllScores"></div>
     </div>
     <div class="groups-grid" id="groupsGrid">
       <!-- Groups rendered by JS, fallback shows 4 groups as placeholder -->
@@ -1342,12 +1380,24 @@ function stopRoundTimer(){
   if(timerHandle){clearInterval(timerHandle);timerHandle=null;}
   timerRunning=false;
 }
-function syncRound1GroupUI(groups){
-  const box=document.getElementById('r1GroupScore');
+function renderR1Scores(groups, sessionData){
+  const box=document.getElementById('r1AllScores');
   if(!box)return;
   const source=groups || SES.groups || {};
-  const g=getR1Group();
-  box.textContent=`第 ${g} 組 · ${(source[g] ?? 0)} 分`;
+  const currGroup=getR1Group();
+  const keys=getGroupKeys();
+  // Check if each group is done
+  const gqs=(sessionData && sessionData.groupQuestions) || {};
+  const gcqs=(sessionData && sessionData.groupCurrentQ) || {};
+  box.innerHTML=keys.map(g=>{
+    const score=source[g]||0;
+    const totalForGroup=(gqs[g]||[]).length;
+    const done=(gcqs[g]||0) >= totalForGroup && totalForGroup > 0;
+    return `<div class="r1-score-card ${g===currGroup?'active':''} ${done?'done':''}">
+      <div class="r1sc-label">${g}組${done?' ✓':''}</div>
+      <div class="r1sc-value">${score}</div>
+    </div>`;
+  }).join('');
 }
 function renderQuizMode(){
   const round=getRound();
@@ -1356,7 +1406,7 @@ function renderQuizMode(){
   const isSingle=round.mode==='single';
   if(r1)r1.style.display=isSingle?'grid':'none';
   if(grid)grid.style.display=isSingle?'none':'grid';
-  if(isSingle) syncRound1GroupUI();
+  if(isSingle) renderR1Scores();
 }
 function startRoundTimer(){
   const round=getRound();
@@ -1500,13 +1550,16 @@ async function goStart(){
 // ====== LOAD QUESTION FROM API ======
 async function loadQ(){
   try{
-    let r=await fetch(A+'/api/session/'+SES.code);
+    const group=getRound().mode==='single' ? getR1Group() : '';
+    const url=A+'/api/session/'+SES.code+(group ? '?group='+group : '');
+    let r=await fetch(url);
     let d=await r.json();
     if(!d.success)throw new Error(d.error);
     if(d.state==='finished'){finish(d);return;}
     
-    document.getElementById('qCounter').textContent='第 '+((d.currentQ||0)+1)+' / '+(d.totalQ||10)+' 題';
-    document.getElementById('qBar').style.width=((d.currentQ||0)/(d.totalQ||10)*100)+'%';
+    const gcq=(d.groupCurrentQ||0);
+    document.getElementById('qCounter').textContent='第 '+((gcq)+1)+' / '+(d.totalQ||10)+' 題';
+    document.getElementById('qBar').style.width=((gcq)/(d.totalQ||10)*100)+'%';
     
     // update group scores from API
     const gs=d.groups||{};
@@ -1516,7 +1569,7 @@ async function loadQ(){
       const el=document.getElementById('s_'+g); if(el)el.textContent=v;
     }
     document.getElementById('sumScore').textContent=sum;
-    if(getRound().mode==='single') syncRound1GroupUI(gs);
+    if(getRound().mode==='single') renderR1Scores(gs, d);
     
     if(d.question){
       document.getElementById('qPoem').textContent='📖 '+d.question.poem;
@@ -1525,7 +1578,17 @@ async function loadQ(){
       document.getElementById('qAnswer').style.display='none';
       const optsContainer=document.getElementById('qOptions');
       if(optsContainer && d.question.options){
-        optsContainer.innerHTML=d.question.options.map((o,i)=>`<div class="opt-item"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="opt-text">${o}</span></div>`).join('');
+        const isRound1=getRound().mode==='single';
+        if(isRound1){
+          const currGroup=getR1Group();
+          const correctIdx=d.question.answer;
+          optsContainer.innerHTML=d.question.options.map((o,i)=>{
+            const isCorrect=i===correctIdx;
+            return `<button class="opt-item" onclick="handleOptClick('${currGroup}',${i},${isCorrect},${correctIdx},this)" id="opt_${i}"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="opt-text">${o}</span></button>`;
+          }).join('');
+        } else {
+          optsContainer.innerHTML=d.question.options.map((o,i)=>`<div class="opt-item"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="opt-text">${o}</span></div>`).join('');
+        }
         optsContainer.style.display='grid';
       }
     }
@@ -1553,12 +1616,15 @@ async function sc(group,type,btn){
   }catch(e){}
   const pack=getScoringPack();
   const delta=type==='correct' ? pack.correct : type==='wrong' ? pack.wrong : (pack.bonus||0);
+  const isRound1=getRound().mode==='single';
   
   try{
-    let r=await fetch(A+'/api/session/'+SES.code+'/score',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({group,type,delta,round:activeRoundKey,difficulty:activeDifficulty})});
+    const body={group,type,delta,round:activeRoundKey,difficulty:activeDifficulty};
+    if(isRound1) body.advanceGroup=true;
+    let r=await fetch(A+'/api/session/'+SES.code+'/score',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify(body)});
     let d=await r.json();
     if(d.success){
-      if(getRound().mode==='single') syncRound1GroupUI(d.groups);
+      if(isRound1) renderR1Scores(d.groups, d);
       const el=document.getElementById('s_'+group); if(el)el.textContent=d.groups[group];
       document.getElementById('sumScore').textContent=Object.values(d.groups).reduce((a,b)=>a+b,0);
       document.getElementById('btnNext').disabled=false;
@@ -1571,11 +1637,30 @@ async function sc(group,type,btn){
       cur=cur+delta;
       el.textContent=cur;
       SES.groups[group]=cur;
-      if(getRound().mode==='single') syncRound1GroupUI(SES.groups);
+      if(isRound1) renderR1Scores(SES.groups);
       document.getElementById('sumScore').textContent=Object.values(SES.groups).reduce((a,b)=>a+b,0);
       document.getElementById('btnNext').disabled=false;
     }
   }
+}
+
+async function handleOptClick(group,optIdx,isCorrect,correctIdx,btn){
+  document.querySelectorAll('.opt-item').forEach(b=>{b.disabled=true;});
+  if(isCorrect){
+    btn.classList.add('correct');
+  } else {
+    btn.classList.add('wrong');
+    const correctBtn=document.getElementById('opt_'+correctIdx);
+    if(correctBtn) correctBtn.classList.add('correct');
+  }
+  const type=isCorrect?'correct':'wrong';
+  await sc(group,type,btn);
+  setTimeout(()=>loadQ(), 700);
+}
+
+async function onR1GroupChange(){
+  renderR1Scores();
+  await loadQ();
 }
 
 function reveal(){document.getElementById('qAnswer').style.display='block';}
