@@ -615,6 +615,11 @@ body {
 <div class="confetti-container" id="confettiContainer"></div>
 
 <script>
+// ==================== API CONFIG ====================
+// 將呢個 URL 改成你部署咗嘅 server 地址
+const API_BASE = 'https://chinesepoetry-api.onrender.com';
+// 本地測試用: const API_BASE = 'http://localhost:3000';
+
 // ==================== QUESTION BANK ====================
 const questionBank = {
   P4: [
@@ -943,11 +948,18 @@ function nextQuestion() {
 }
 
 // ==================== SHOW RESULT ====================
-function showResult() {
+async function showResult() {
   goToScreen('screenResult');
-  saveScore();
   renderResult();
-  renderLeaderboard();
+  document.getElementById('leaderboardContent').innerHTML =
+    '<div class="leaderboard-empty">⏳ 上傳分數中...</div>';
+  try {
+    await saveScore();
+  } catch (e) {
+    console.warn('Server offline — 改用本地儲存:', e);
+    saveScoreLocal();
+  }
+  await renderLeaderboard();
   spawnConfetti();
 }
 
@@ -968,32 +980,56 @@ function renderResult() {
   `;
 }
 
-// ==================== LEADERBOARD ====================
-function getLeaderboard() {
-  try {
-    return JSON.parse(localStorage.getItem('tangPoetryLB') || '[]');
-  } catch { return []; }
+// ==================== LEADERBOARD (Server API) ====================
+async function fetchLeaderboard() {
+  const res = await fetch(`${API_BASE}/api/leaderboard`);
+  if (!res.ok) throw new Error('Server error');
+  const data = await res.json();
+  return data.leaderboard || [];
 }
 
-function saveScore() {
-  const lb = getLeaderboard();
-  lb.push({
+async function saveScore() {
+  const body = {
     grade: state.grade,
     className: state.className,
     studentNo: state.studentNo,
     score: state.score,
-    time: new Date().toISOString()
+  };
+  const res = await fetch(`${API_BASE}/api/leaderboard`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
   });
-  lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
-  const top20 = lb.slice(0, 20);
-  localStorage.setItem('tangPoetryLB', JSON.stringify(top20));
+  if (!res.ok) throw new Error('Server error');
+  const data = await res.json();
+  return data;
 }
 
-function renderLeaderboard() {
-  const lb = getLeaderboard();
-  const container = document.getElementById('leaderboardContent');
+// ---- local fallback (server offline 時用) ----
+function saveScoreLocal() {
+  try {
+    const lb = JSON.parse(localStorage.getItem('tangPoetryLB') || '[]');
+    lb.push({
+      grade: state.grade, className: state.className,
+      studentNo: state.studentNo, score: state.score,
+      time: new Date().toISOString(),
+    });
+    lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
+    localStorage.setItem('tangPoetryLB', JSON.stringify(lb.slice(0, 20)));
+  } catch (_) {}
+}
 
-  if (lb.length === 0) {
+async function renderLeaderboard() {
+  const container = document.getElementById('leaderboardContent');
+  let lb;
+  try {
+    lb = await fetchLeaderboard();
+  } catch (e) {
+    try { lb = JSON.parse(localStorage.getItem('tangPoetryLB') || '[]'); }
+      catch (_) { lb = []; }
+  }
+
+  if (!lb || lb.length === 0) {
     container.innerHTML = '<div class="leaderboard-empty">🏮 未有紀錄～<br>快啲玩成為第一名啦！</div>';
     return;
   }
@@ -1009,8 +1045,7 @@ function renderLeaderboard() {
 
   lb.forEach((entry, i) => {
     const entryKey = `${entry.grade}|${entry.className}|${entry.studentNo}`;
-    const isCurrent = entryKey === currentKey &&
-                      entry.score === state.score;
+    const isCurrent = entryKey === currentKey && entry.score === state.score;
     const rankDisplay = i < 3
       ? `<span class="rank-${i+1}">${rankEmoji[i]}</span>`
       : `<span class="no-rank">${i + 1}</span>`;
