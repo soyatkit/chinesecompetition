@@ -264,6 +264,21 @@ body::after{
   flex-shrink:0;
 }
 .quiz-top strong{font-size:1.1rem}
+.global-scores{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.gs-chip{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:.82rem;
+  font-weight:700;
+  border:1.5px solid var(--line);
+  background:rgba(255,255,255,.9);
+  white-space:nowrap;
+}
+.gs-chip.lead{background:rgba(10,132,255,.08);border-color:rgba(10,132,255,.25)}
 .quiz-bar{
   height:8px;
   background:rgba(0,0,0,.06);
@@ -1247,7 +1262,10 @@ body::after{
 
   <!-- ====== QUIZ ====== -->
   <div class="screen" id="scrQuiz" style="display:none">
-    <div class="quiz-top"><span id="qCounter">第 1 / 10 題</span><span>總分：<strong id="sumScore" style="color:var(--accent);">0</strong></span></div>
+    <div class="quiz-top" id="quizTopBar">
+      <span id="qCounter">第 1 / 10 題</span>
+      <div class="global-scores" id="globalScores"></div>
+    </div>
     <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
     <div class="quiz-q-box">
       <div class="q-poem" id="qPoem">📖 載入中...</div>
@@ -1398,6 +1416,20 @@ function renderR1Scores(groups, sessionData){
       <div class="r1sc-value">${score}</div>
     </div>`;
   }).join('');
+}
+function renderGlobalScores(groups){
+  const box=document.getElementById('globalScores');
+  if(!box)return;
+  const source=groups || SES.groups || {};
+  const keys=getGroupKeys();
+  const maxScore=Math.max(1, ...keys.map(g=>source[g]||0));
+  const total=keys.reduce((s,g)=>s+(source[g]||0),0);
+  const chips=keys.map(g=>{
+    const v=source[g]||0;
+    const lead=v===maxScore&&maxScore>0;
+    return `<span class="gs-chip${lead?' lead':''}">${g}組: ${v}分</span>`;
+  }).join('');
+  box.innerHTML=`總分: ${total} &nbsp; `+chips;
 }
 function renderQuizMode(){
   const round=getRound();
@@ -1563,12 +1595,11 @@ async function loadQ(){
     
     // update group scores from API
     const gs=d.groups||{};
-    let sum=0;
     for(let g of getGroupKeys()){
-      const v=gs[g]||0; sum+=v;
+      const v=gs[g]||0;
       const el=document.getElementById('s_'+g); if(el)el.textContent=v;
     }
-    document.getElementById('sumScore').textContent=sum;
+    renderGlobalScores(gs);
     if(getRound().mode==='single') renderR1Scores(gs, d);
     
     if(d.question){
@@ -1626,7 +1657,7 @@ async function sc(group,type,btn){
     if(d.success){
       if(isRound1) renderR1Scores(d.groups, d);
       const el=document.getElementById('s_'+group); if(el)el.textContent=d.groups[group];
-      document.getElementById('sumScore').textContent=Object.values(d.groups).reduce((a,b)=>a+b,0);
+      renderGlobalScores(d.groups);
       document.getElementById('btnNext').disabled=false;
     }
   }catch(e){ 
@@ -1638,7 +1669,7 @@ async function sc(group,type,btn){
       el.textContent=cur;
       SES.groups[group]=cur;
       if(isRound1) renderR1Scores(SES.groups);
-      document.getElementById('sumScore').textContent=Object.values(SES.groups).reduce((a,b)=>a+b,0);
+      renderGlobalScores(SES.groups);
       document.getElementById('btnNext').disabled=false;
     }
   }
