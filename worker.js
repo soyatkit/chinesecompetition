@@ -43,19 +43,22 @@ export default {
     // ── SESSION CREATE ──
     if (p === '/api/session/create' && request.method === 'POST') {
       if (!auth(request)) return err('Unauthorized', 401);
-      const { grade } = await request.json().catch(() => ({}));
+      const { grade, groupCount } = await request.json().catch(() => ({}));
       if (!['P4', 'P5', 'P6'].includes(grade)) return err('Invalid grade', 400);
+      const gc = Math.max(2, Math.min(6, Number(groupCount) || 4));
       const code = String(Math.floor(100000 + Math.random() * 900000));
+      const letters = 'ABCDEF'.slice(0, gc);
+      const groups = {};
+      for (const ch of letters) groups[ch] = 0;
       const session = {
-        code, grade,
+        code, grade, groupCount: gc,
         state: 'waiting', currentQ: 0,
         questions: genQ(grade),
-        groups: { A: 0, B: 0, C: 0, D: 0 },
-        history: [],
+        groups, history: [],
         createdAt: new Date().toISOString(),
       };
       await env.SESSIONS.put(code, JSON.stringify(session), { expirationTtl: 7200 });
-      return ok({ code, grade });
+      return ok({ code, grade, groupCount: gc });
     }
 
     // ── SESSION GET ──
@@ -67,7 +70,7 @@ export default {
       const q = s.state === 'playing' && s.questions[s.currentQ]
         ? { poem: s.questions[s.currentQ].poem, text: s.questions[s.currentQ].text, options: s.questions[s.currentQ].options, answer: s.questions[s.currentQ].answer }
         : null;
-      return ok({ code: s.code, grade: s.grade, state: s.state, currentQ: s.currentQ, totalQ: s.questions.length, question: q, groups: s.groups, history: s.history });
+      return ok({ code: s.code, grade: s.grade, groupCount: s.groupCount || 4, state: s.state, currentQ: s.currentQ, totalQ: s.questions.length, question: q, groups: s.groups, history: s.history });
     }
 
     // ── SESSION START ──
@@ -85,7 +88,7 @@ export default {
     if (scoreM && request.method === 'POST') {
       if (!auth(request)) return err('Unauthorized', 401);
       const { group, type } = await request.json().catch(() => ({}));
-      if (!['A','B','C','D'].includes(group) || !['correct','wrong'].includes(type)) return err('Invalid params', 400);
+      if (!/^[A-F]$/.test(group) || !['correct','wrong'].includes(type)) return err('Invalid params', 400);
       const raw = await env.SESSIONS.get(scoreM[1]); if (!raw) return err('Not found', 404);
       const s = JSON.parse(raw);
       if (s.state !== 'playing') return err('Game not started', 400);
