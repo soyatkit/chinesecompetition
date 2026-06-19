@@ -1,18 +1,7 @@
-# Cloudflare Worker 設定 — 唐詩小狀元排行榜 API
-# 部署步驟:
-#   1. npm install -g wrangler    (如果未有)
-#   2. wrangler login               (瀏覽器授權)
-#   3. wrangler kv:namespace create LEADERBOARD
-#      → 複製輸出嘅 id，貼落下面 kv_namespaces.id
-#   4. wrangler deploy
-#   5. 攞到 URL (e.g. chinesepoetry-api.yourname.workers.dev)
-#      → 貼去 index.html 嘅 API_BASE
-
 name = "chinesepoetry-api"
 main = "worker.js"
 compatibility_date = "2025-01-01"
 
-# 下面呢行部署前請換成你 create KV namespace 時攞到嘅 id
-# [[kv_namespaces]]
-# binding = "LEADERBOARD"
-# id = "your-kv-namespace-id-here"
+[[kv_namespaces]]
+binding = "LEADERBOARD"
+id = "cedd420f61d047868ac1a17e5954b3f3"
