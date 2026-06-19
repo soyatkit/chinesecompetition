@@ -147,12 +147,14 @@ const T='lyt:lyt';
 const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'};
 let GC=4, SES={code:'',grade:'',groupCount:4,groups:{A:0,B:0,C:0,D:0}};
 
-function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='scrAdmin')admin();}
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>{s.style.display='none';s.classList.remove('active');});
+  document.getElementById(id).style.display='flex';
+  document.getElementById(id).classList.add('active');
+  if(id==='scrAdmin')admin();
+}
 function setGC(n){GC=n;document.querySelectorAll('#groupCountBtns .pixel-btn').forEach(b=>b.classList.toggle('btn-blue',+b.dataset.gc===n));}
-
-// ====== PLACEHOLDER GROUPS (always visible) ======
-function ph(){return ['A','B','C','D','E','F'].slice(0,GC).map(g=>`<div class="group-card" style="border-color:${C[g]}"><div class="group-head" style="background:${C[g]}">${g}組</div><div class="group-body" id="s_${g}">0</div><div class="group-foot"><button class="gbtn good" onclick="sc('${g}','correct',this)">✅ 答對</button><button class="gbtn bad" onclick="sc('${g}','wrong',this)">❌ 答錯</button></div></div>`).join('');}
-
+function ph(){return 'ABCDEF'.slice(0,GC).split('').map(g=>`<div class="group-card" style="border-color:${C[g]}"><div class="group-head" style="background:${C[g]}">${g}組</div><div class="group-body" id="s_${g}">0</div><div class="group-foot"><button class="gbtn good" onclick="sc('${g}','correct',this)">✅ 答對</button><button class="gbtn bad" onclick="sc('${g}','wrong',this)">❌ 答錯</button></div></div>`).join('');}
 function draw(){
   const g=document.getElementById('groupsGrid');
   if(!g)return;
@@ -162,37 +164,33 @@ function draw(){
 
 // ====== START GAME ======
 async function goStart(){
-  alert('✅ Step 1: goStart fired');
   const grade=document.getElementById('sesGrade').value;
   GC=GC||4; SES.groupCount=GC; SES.grade=grade; SES.groups={};
-  const L='ABCDEF'.slice(0,GC); L.forEach(l=>SES.groups[l]=0);
+  'ABCDEF'.slice(0,GC).forEach(l=>SES.groups[l]=0);
   
-  // FORCE show quiz with direct style
-  document.querySelectorAll('.screen').forEach(s=>s.style.display='none');
+  // Switch screens
+  document.getElementById('scrDash').style.display='none';
+  document.getElementById('scrDash').classList.remove('active');
   document.getElementById('scrQuiz').style.display='flex';
-  alert('✅ Step 2: force-displayed scrQuiz');
+  document.getElementById('scrQuiz').classList.add('active');
   
-  // draw groups
-  try{ draw(); alert('✅ Step 3: draw() done'); }catch(e){alert('❌ draw() crashed: '+e.message);}
+  // Draw groups
+  draw();
   
-  // set text (with null guards)
-  const pe=document.getElementById('qPoem'); if(pe)pe.textContent='📖 載入中...';
-  const te=document.getElementById('qText'); if(te)te.textContent='正在連接伺服器...';
-  const ae=document.getElementById('qAnswer'); if(ae)ae.style.display='none';
-  alert('✅ Step 4: text set, now calling API');
+  // Set text
+  document.getElementById('qPoem').textContent='📖 載入中...';
+  document.getElementById('qText').textContent='正在連接伺服器...';
+  document.getElementById('qAnswer').style.display='none';
   
+  // Fetch from API
   try{
-    // create session
     let r=await fetch(A+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({grade,groupCount:GC})});
     let d=await r.json();
     if(!d.success)throw new Error(d.error||'create fail');
     SES.code=d.code; SES.groupCount=d.groupCount||GC;
-    // start
     await fetch(A+'/api/session/'+SES.code+'/start',{method:'POST',headers:{Authorization:'Bearer '+T}});
-    // load real data
     await loadQ();
   }catch(e){
-    console.warn(e);
     document.getElementById('qPoem').textContent='📖 離線模式';
     document.getElementById('qText').textContent='伺服器連接失敗。可按下方按鈕手動計分（不存排行榜）。';
     document.getElementById('btnNext').disabled=true;
