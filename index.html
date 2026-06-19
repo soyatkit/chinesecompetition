@@ -1397,7 +1397,7 @@ const T='lyt:lyt';
 const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'};
 const ROUNDS={
   r1:{key:'r1',tag:'ROUND 1',name:'必答題',duration:210,summary:'每組 3:30 輪流作答，答對 +20，答錯 -10。',points:{correct:20,wrong:-10},mode:'single'},
-  r2:{key:'r2',tag:'ROUND 2',name:'分組搶答題',duration:15*60,summary:'答對 +30，答錯 -20；其他組可補答一次，補答答中 +20。',points:{correct:30,wrong:-20,bonus:20},mode:'bonus'},
+  r2:{key:'r2',tag:'ROUND 2',name:'分組搶答題',duration:15*60,summary:'答對 +30，答錯 -20。不設補答。',points:{correct:30,wrong:-20},mode:'bonus'},
   r3:{key:'r3',tag:'ROUND 3',name:'至尊挑戰題',duration:20*60,summary:'可自選基礎、中階、進階三種封信難度。',mode:'difficulty',difficulties:{
     basic:{name:'基礎挑戰',correct:30,wrong:-10},
     medium:{name:'中階挑戰',correct:50,wrong:-30},
@@ -1533,11 +1533,7 @@ function setGroupButtons(){
   const pack=round.mode==='difficulty' ? round.difficulties[activeDifficulty] : round.points;
   const goodLabel=round.mode==='difficulty' ? `✅ ${pack.name} +${pack.correct}` : `✅ 答對 +${pack.correct}`;
   const badLabel=round.mode==='difficulty' ? `❌ ${pack.name} ${pack.wrong}` : `❌ 答錯 ${pack.wrong}`;
-  const bonusLabel=round.mode==='bonus' ? `↩ 補答 +${pack.bonus}` : '';
-  return getGroupKeys().map(g=>{
-    const extra=round.mode==='bonus' ? `<button class="gbtn" onclick="sc('${g}','bonus',this)">${bonusLabel}</button>` : '';
-    return `<div class="group-card" style="border-color:${C[g]}"><div class="group-head" style="background:${C[g]}">${g}組</div><div class="group-body" id="s_${g}">0</div><div class="group-foot"><button class="gbtn good" onclick="sc('${g}','correct',this)">${goodLabel}</button><button class="gbtn bad" onclick="sc('${g}','wrong',this)">${badLabel}</button>${extra}</div></div>`;
-  }).join('');
+  return getGroupKeys().map(g=>`<div class="group-card" style="border-color:${C[g]}"><div class="group-head" style="background:${C[g]}">${g}組</div><div class="group-body" id="s_${g}">0</div><div class="group-foot"><button class="gbtn good" onclick="sc('${g}','correct',this)">${goodLabel}</button><button class="gbtn bad" onclick="sc('${g}','wrong',this)">${badLabel}</button></div></div>`).join('');
 }
 function ph(){return setGroupButtons();}
 function draw(){
@@ -1630,7 +1626,14 @@ async function goStart(){
   // Fetch from API
   try{
     if(!sessionReady){
-      let r=await fetch(A+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({grade,groupCount:GC})});
+      const createBody={grade,groupCount:GC};
+      if(getRound().mode!=='single'){
+        const scores=loadScores();
+        const initial={};
+        getGroupKeys().forEach(g=>{initial[g]=scores[g]?scores[g].score:0;});
+        createBody.initialScores=initial;
+      }
+      let r=await fetch(A+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify(createBody)});
       let d=await r.json();
       if(!d.success)throw new Error(d.error||'create fail');
       SES.code=d.code; SES.groupCount=d.groupCount||GC;
@@ -1673,11 +1676,14 @@ async function loadQ(){
     if(d.question){
       document.getElementById('qPoem').textContent='📖 '+d.question.poem;
       document.getElementById('qText').textContent=d.question.text;
-      document.getElementById('qAnswer').textContent='✅ 正確答案：'+String.fromCharCode(65+d.question.answer)+'. '+d.question.options[d.question.answer];
+      const correctAnswerText=d.question.options[d.question.answer];
+      const isRound1=getRound().mode==='single';
+      document.getElementById('qAnswer').textContent=isRound1
+        ?'✅ 正確答案：'+String.fromCharCode(65+d.question.answer)+'. '+correctAnswerText
+        :'✅ 答案：'+correctAnswerText;
       document.getElementById('qAnswer').style.display='none';
       const optsContainer=document.getElementById('qOptions');
       if(optsContainer && d.question.options){
-        const isRound1=getRound().mode==='single';
         if(isRound1){
           const currGroup=getR1Group();
           const correctIdx=d.question.answer;
@@ -1685,10 +1691,10 @@ async function loadQ(){
             const isCorrect=i===correctIdx;
             return `<button class="opt-item" onclick="handleOptClick('${currGroup}',${i},${isCorrect},${correctIdx},this)" id="opt_${i}"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="opt-text">${o}</span></button>`;
           }).join('');
+          optsContainer.style.display='grid';
         } else {
-          optsContainer.innerHTML=d.question.options.map((o,i)=>`<div class="opt-item"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="opt-text">${o}</span></div>`).join('');
+          optsContainer.style.display='none';
         }
-        optsContainer.style.display='grid';
       }
     }
     document.getElementById('btnNext').disabled=true;
@@ -1780,7 +1786,8 @@ function finish(d){
   stopRoundTimer();
   sessionReady=false;
   go('scrResult');
-  const gs=d.groups||SES.groups; const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]); const w=arr[0];
+  const gs=d.groups||SES.groups; saveScores(gs);
+  const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]); const w=arr[0];
   document.getElementById('resultSummary').innerHTML='<div class="trophy">🏆</div><div class="winner">第'+w[0]+'組 冠軍！</div><div class="winner-score">'+w[1]+' 分</div>';
   document.getElementById('lbBody').innerHTML=arr.map(([g,s],i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td class="'+(i<3?'r-'+(i+1):'')+'">'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+g+'組</td><td>'+s+' 分</td></tr>').join('');
 }

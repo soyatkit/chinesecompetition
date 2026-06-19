@@ -56,13 +56,13 @@ export default {
     // ── SESSION CREATE ──
     if (p === '/api/session/create' && request.method === 'POST') {
       if (!auth(request)) return err('Unauthorized', 401);
-      const { grade, groupCount } = await request.json().catch(() => ({}));
+      const { grade, groupCount, initialScores } = await request.json().catch(() => ({}));
       if (!['P4', 'P5', 'P6'].includes(grade)) return err('Invalid grade', 400);
       const gc = Math.max(2, Math.min(6, Number(groupCount) || 4));
       const code = String(Math.floor(100000 + Math.random() * 900000));
       const letters = 'ABCDEF'.slice(0, gc);
       const groups = {};
-      for (const ch of letters) groups[ch] = 0;
+      for (const ch of letters) groups[ch] = (initialScores && typeof initialScores[ch] === 'number') ? initialScores[ch] : 0;
       const questions = genQ(grade);
       // Round-robin: assign each question to a group (no overlap)
       const groupQuestions = {};
