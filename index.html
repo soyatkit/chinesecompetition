@@ -280,7 +280,7 @@ body::after{
 }
 .gs-chip.lead{background:rgba(10,132,255,.08);border-color:rgba(10,132,255,.25)}
 .big-timer{
-  font-size:clamp(2rem,4vw,3rem);
+  font-size:clamp(3rem,6vw,5rem);
   font-weight:900;
   letter-spacing:.06em;
   color:var(--accent);
@@ -288,8 +288,8 @@ body::after{
   background:rgba(255,255,255,.9);
   border:3px solid rgba(10,132,255,.25);
   border-radius:24px;
-  padding:8px 24px;
-  min-width:140px;
+  padding:12px 36px;
+  min-width:180px;
   box-shadow:0 8px 24px rgba(10,132,255,.10);
   flex-shrink:0;
 }
@@ -1300,7 +1300,6 @@ body::after{
     <div class="quiz-top" id="quizTopBar">
       <span id="qCounter">第 1 / 10 題</span>
       <div class="big-timer" id="bigTimer" style="display:none;">3:30</div>
-      <div class="global-scores" id="globalScores"></div>
     </div>
     <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
     <div class="quiz-q-box">
@@ -1520,20 +1519,6 @@ function renderR1Scores(groups, sessionData){
     </div>`;
   }).join('');
 }
-function renderGlobalScores(groups){
-  const box=document.getElementById('globalScores');
-  if(!box)return;
-  const source=groups || SES.groups || {};
-  const keys=getGroupKeys();
-  const maxScore=Math.max(1, ...keys.map(g=>source[g]||0));
-  const total=keys.reduce((s,g)=>s+(source[g]||0),0);
-  const chips=keys.map(g=>{
-    const v=source[g]||0;
-    const lead=v===maxScore&&maxScore>0;
-    return `<span class="gs-chip${lead?' lead':''}">${g}組: ${v}分</span>`;
-  }).join('');
-  box.innerHTML=`總分: ${total} &nbsp; `+chips;
-}
 function renderQuizMode(){
   const round=getRound();
   const r1=document.getElementById('round1Control');
@@ -1683,7 +1668,6 @@ async function loadQ(){
       const v=gs[g]||0;
       const el=document.getElementById('s_'+g); if(el)el.textContent=v;
     }
-    renderGlobalScores(gs);
     if(getRound().mode==='single') renderR1Scores(gs, d);
     
     if(d.question){
@@ -1741,12 +1725,10 @@ async function sc(group,type,btn){
     if(d.success){
       if(isRound1) renderR1Scores(d.groups, d);
       const el=document.getElementById('s_'+group); if(el)el.textContent=d.groups[group];
-      renderGlobalScores(d.groups);
       saveScores(d.groups);
       document.getElementById('btnNext').disabled=false;
     }
   }catch(e){ 
-    // Offline fallback: update locally
     const el=document.getElementById('s_'+group);
     if(el){
       let cur=parseInt(el.textContent)||0;
@@ -1754,7 +1736,6 @@ async function sc(group,type,btn){
       el.textContent=cur;
       SES.groups[group]=cur;
       if(isRound1) renderR1Scores(SES.groups);
-      renderGlobalScores(SES.groups);
       document.getElementById('btnNext').disabled=false;
     }
   }
