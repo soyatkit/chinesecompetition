@@ -98,7 +98,7 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(-
           <button class="pixel-btn btn-sm" onclick="setGC(6)" data-gc="6">6 組</button>
         </div>
       </div>
-      <button class="pixel-btn btn-pink btn-block" onclick="start()">🚀 開始遊戲</button>
+      <button class="pixel-btn btn-pink btn-block" onclick="goStart()">🚀 開始遊戲</button>
       <button class="pixel-btn btn-purple btn-block btn-sm" style="margin-top:10px;" onclick="go('scrAdmin')">📊 管理排行榜</button>
     </div>
   </div>
@@ -155,12 +155,13 @@ function ph(){return ['A','B','C','D','E','F'].slice(0,GC).map(g=>`<div class="g
 
 function draw(){
   const g=document.getElementById('groupsGrid');
+  if(!g)return;
   g.style.gridTemplateColumns='repeat('+GC+',1fr)';
   g.innerHTML=ph();
 }
 
 // ====== START GAME ======
-async function start(){
+async function goStart(){
   const grade=document.getElementById('sesGrade').value;
   GC=GC||4; SES.groupCount=GC; SES.grade=grade; SES.groups={};
   const L='ABCDEF'.slice(0,GC); L.forEach(l=>SES.groups[l]=0);
@@ -289,7 +290,7 @@ async function del(i){if(!confirm('確定刪除？'))return;await fetch(A+'/api/
 async function clearAll(){if(!confirm('⚠️ 確定清除全部紀錄？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({})});admin();}
 
 // ====== INIT ======
-document.addEventListener('DOMContentLoaded',()=>{draw();});
+document.querySelector('.ver').textContent='v3.1 | JS ✓';
 </script>
 </body>
 </html>
