@@ -34,7 +34,6 @@ body{
 .screen.active{display:flex;animation:fadeIn .3s;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── LOGIN ── */
 .form-group{margin-bottom:14px;}
 .form-group label{display:block;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .pixel-input{
@@ -44,7 +43,6 @@ body{
 }
 .pixel-input:focus{border-color:var(--blue-dark);box-shadow:0 0 0 3px rgba(181,216,255,0.4);}
 
-/* ── BUTTONS ── */
 .pixel-btn{
   display:inline-block;font-family:inherit;font-size:15px;font-weight:700;
   padding:12px 28px;border:3px solid;cursor:pointer;
@@ -63,11 +61,9 @@ body{
 .btn-sm{font-size:13px;padding:8px 18px;}
 .back-link{font-size:13px;color:var(--text-light);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;text-align:center;margin-top:10px;}
 
-/* ── DASHBOARD ── */
 .dash-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:500px;margin:0 auto;}
 .session-code{font-size:56px;font-weight:900;letter-spacing:10px;color:var(--pink-dark);padding:12px 24px;border:3px dashed var(--pink-dark);border-radius:10px;background:#FFF0F3;margin:12px 0;}
 
-/* ── QUIZ ── */
 .quiz-top{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--yellow);border:3px solid var(--yellow-dark);border-radius:6px;font-size:16px;font-weight:700;margin-bottom:10px;flex-shrink:0;}
 .quiz-bar{height:12px;background:var(--bg);border:2px solid var(--pink-dark);border-radius:6px;margin-bottom:12px;flex-shrink:0;}
 .quiz-bar-fill{height:100%;background:var(--pink);border-radius:4px;transition:width .3s;}
@@ -76,7 +72,6 @@ body{
 .quiz-q-box .q-text{font-size:18px;font-weight:700;color:var(--text);line-height:1.7;}
 .quiz-q-box .q-answer{font-size:14px;color:var(--green-dark);margin-top:6px;font-weight:700;display:none;}
 
-/* ── GROUP PANELS (2x2 grid) ── */
 .groups-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;}
 .group-card{
   border:3px solid;border-radius:8px;padding:14px 16px;
@@ -113,10 +108,8 @@ body{
 .group-btn.flash{animation:btnFlash .3s;}
 @keyframes btnFlash{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 
-/* ── NEXT BUTTON ── */
 .next-q-bar{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-shrink:0;}
 
-/* ── RESULT ── */
 .result-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;}
 .result-summary{text-align:center;padding:20px;border:3px solid var(--yellow-dark);border-radius:8px;background:linear-gradient(135deg,var(--yellow),#FFF8DC);display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .result-summary .trophy{font-size:64px;}
@@ -133,7 +126,6 @@ body{
 .highlight-row{background:#FFF8E1;animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{background:#FFF8E1}50%{background:#FFECB3}}
 
-/* ── ADMIN ── */
 .admin-lb-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;}
 .admin-lb-table th{padding:8px;background:var(--purple);border-bottom:2px solid var(--purple-dark);font-size:13px;}
 .admin-lb-table td{padding:8px;text-align:center;border-bottom:1px dashed var(--text-light);}
@@ -153,19 +145,8 @@ body{
 <div class="app-container" id="app">
   <div class="app-header"><h1>📜 唐詩小狀元 — 課堂搶答</h1><span id="userLabel" style="font-size:14px;color:var(--text-light);"></span></div>
 
-  <!-- ── LOGIN ── -->
-  <div class="screen active" id="scrLogin">
-    <div class="dash-center">
-      <h2 style="margin-bottom:20px;color:var(--purple-dark);">👩‍🏫 教師登入</h2>
-      <div class="form-group"><label>帳號</label><input class="pixel-input" id="loginUser" placeholder="帳號"></div>
-      <div class="form-group"><label>密碼</label><input class="pixel-input" type="password" id="loginPass" placeholder="密碼"></div>
-      <button class="pixel-btn btn-purple btn-block" onclick="doLogin()">登入</button>
-      <p id="loginErr" style="color:var(--pink-dark);text-align:center;margin-top:8px;font-weight:700;font-size:15px;"></p>
-    </div>
-  </div>
-
   <!-- ── DASHBOARD ── -->
-  <div class="screen" id="scrDash">
+  <div class="screen active" id="scrDash">
     <div class="dash-center">
       <h2 style="color:var(--purple-dark);margin-bottom:16px;">🎮 開設搶答遊戲</h2>
       <div class="form-group" style="width:100%;">
@@ -186,7 +167,6 @@ body{
     </div>
     <div style="display:flex;gap:10px;margin-top:10px;justify-content:center;">
       <button class="pixel-btn btn-purple btn-sm" onclick="goScreen('scrAdmin')">📊 管理排行榜</button>
-      <button class="back-link" onclick="logout()">登出</button>
     </div>
   </div>
 
@@ -230,7 +210,11 @@ body{
 
 <script>
 const API='https://chinesepoetry-api.chinesepoetry-api.workers.dev';
-let token='',ses={code:'',grade:''};
+let token='lyt:lyt',ses={code:'',grade:''};
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('userLabel').textContent='👩‍🏫 教師';
+});
 
 function goScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -238,20 +222,10 @@ function goScreen(id){
   if(id==='scrAdmin')renderAdmin();
 }
 
-// ── LOGIN ──
-async function doLogin(){
-  const u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value.trim();
-  document.getElementById('loginErr').textContent='';
-  try{
-    const r=await fetch(API+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
-    const d=await r.json();
-    if(d.success){token=d.token;document.getElementById('userLabel').textContent='👩‍🏫 教師';goScreen('scrDash');}
-    else document.getElementById('loginErr').textContent='帳號或密碼不正確';
-  }catch(e){document.getElementById('loginErr').textContent='無法連接伺服器';}
-}
-function logout(){token='';ses={code:'',grade:''};document.getElementById('userLabel').textContent='';goScreen('scrLogin');}
+function doLogin(){}
 
-// ── CREATE SESSION ──
+function logout(){token='lyt:lyt';ses={code:'',grade:''};goScreen('scrDash');}
+
 async function createSes(){
   const grade=document.getElementById('sesGrade').value;
   const btn=document.getElementById('btnCreate');btn.disabled=true;btn.textContent='建立中...';
@@ -265,21 +239,19 @@ async function createSes(){
       document.getElementById('sesGradeDisp').textContent=grade==='P4'?'四年級':grade==='P5'?'五年級':'六年級';
       document.getElementById('btnStart').disabled=false;
     }
-  }catch(e){alert('錯誤');}
+  }catch(e){alert('錯誤: '+e.message);}
   btn.disabled=false;btn.textContent='建立課堂遊戲';
 }
 
-// ── START GAME ──
 async function startGame(){
   const btn=document.getElementById('btnStart');btn.disabled=true;btn.textContent='開始中...';
   try{
     await fetch(API+'/api/session/'+ses.code+'/start',{method:'POST',headers:{Authorization:'Bearer '+token}});
     goScreen('scrQuiz');renderQuiz(null);
-  }catch(e){alert('錯誤');}
+  }catch(e){alert('錯誤: '+e.message);}
   btn.disabled=false;btn.textContent='▶ 開始遊戲';
 }
 
-// ── RENDER QUIZ ──
 async function renderQuiz(groupsOverride){
   try{
     const r=await fetch(API+'/api/session/'+ses.code);
@@ -290,12 +262,10 @@ async function renderQuiz(groupsOverride){
     const qi=d.currentQ+1;
     document.getElementById('qCounter').textContent='第 '+qi+' / '+d.totalQ+' 題';
     document.getElementById('qBar').style.width=(d.currentQ/d.totalQ*100)+'%';
-    // sum score
     const gs=groupsOverride||d.groups;
     const sum=Object.values(gs).reduce((a,b)=>a+b,0);
     document.getElementById('sumScore').textContent=sum;
 
-    // question
     if(d.question){
       document.getElementById('qPoem').textContent='📖 '+d.question.poem;
       document.getElementById('qText').textContent=d.question.text;
@@ -303,11 +273,9 @@ async function renderQuiz(groupsOverride){
       document.getElementById('qAnswer').style.display='none';
     }
 
-    // group panels
     document.getElementById('btnNext').disabled=true;
     document.getElementById('btnReveal').disabled=false;
 
-    const colors={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A'};
     const grid=document.getElementById('groupsGrid');
     grid.innerHTML=['A','B','C','D'].map(g=>`
       <div class="group-card ${g}">
@@ -325,27 +293,21 @@ async function renderQuiz(groupsOverride){
   }catch(e){}
 }
 
-// ── SCORE GROUP ──
 async function scoreGroup(group,type,btn){
   if(btn)btn.classList.add('flash');
   try{
     const r=await fetch(API+'/api/session/'+ses.code+'/score',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({group,type})});
     const d=await r.json();
     if(d.success){
-      const el=document.getElementById('grpScore_'+group);
-      if(el)el.textContent=d.groups[group];
-      const sum=Object.values(d.groups).reduce((a,b)=>a+b,0);
-      document.getElementById('sumScore').textContent=sum;
-      // enable next after scoring at least once
+      document.getElementById('grpScore_'+group).textContent=d.groups[group];
+      document.getElementById('sumScore').textContent=Object.values(d.groups).reduce((a,b)=>a+b,0);
       document.getElementById('btnNext').disabled=false;
     }
   }catch(e){}
 }
 
-// ── REVEAL ANSWER ──
 function revealAnswer(){document.getElementById('qAnswer').style.display='block';document.getElementById('btnReveal').disabled=true;}
 
-// ── NEXT Q ──
 async function nextQ(){
   const btn=document.getElementById('btnNext');btn.disabled=true;btn.textContent='載入中...';
   try{
@@ -353,15 +315,13 @@ async function nextQ(){
     const d=await r.json();
     if(d.success){
       if(d.state==='finished'){
-        const r2=await fetch(API+'/api/session/'+ses.code);const d2=await r2.json();
-        showFinal(d2);
+        const r2=await fetch(API+'/api/session/'+ses.code);showFinal(await r2.json());
       }else{await renderQuiz();}
     }
   }catch(e){}
   btn.disabled=false;btn.textContent='▶ 下一題';
 }
 
-// ── FINAL ──
 function showFinal(d){
   goScreen('scrResult');
   const gs=d.groups;const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]);
@@ -380,7 +340,6 @@ function showFinal(d){
   `).join('');
 }
 
-// ── ADMIN ──
 async function renderAdmin(){
   try{
     const r=await fetch(API+'/api/leaderboard');const d=await r.json();const lb=d.leaderboard||[];
