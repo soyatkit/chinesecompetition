@@ -5,3 +5,7 @@ compatibility_date = "2025-01-01"
 [[kv_namespaces]]
 binding = "LEADERBOARD"
 id = "cedd420f61d047868ac1a17e5954b3f3"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "8a6cba2b051c429e8ab4be4347193f57"
