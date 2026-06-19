@@ -5,716 +5,403 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>唐詩小狀元 — 課堂搶答系統</title>
 <style>
-/* ============ RESET ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
   --pink:#FFB5C2;--pink-dark:#E8909E;--blue:#B5D8FF;--blue-dark:#8AB8E8;
   --green:#B5FFC2;--green-dark:#8AE89A;--yellow:#FFF5B5;--yellow-dark:#E8D98A;
   --peach:#FFD8C2;--purple:#D8C2FF;--purple-dark:#B89AE8;
   --bg:#FFF8F0;--text:#5C4033;--text-light:#8B7355;--white:#FFFAF5;
-  --shadow:4px 4px 0px rgba(92,64,51,0.15);
 }
-
 body{
   font-family:'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;
-  background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;
-  padding:20px;
+  background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
 }
 
-/* ============ 16:9 CONTAINER ============ */
 .app-container{
-  width:100%;max-width:1100px;
-  aspect-ratio:16/9; max-height:calc(100vh - 40px);
+  width:100%;max-width:1120px;aspect-ratio:16/9;max-height:calc(100vh - 40px);
   background:var(--white);border:4px solid var(--text);border-radius:8px;
-  box-shadow:var(--shadow),0 0 0 4px var(--white),0 0 0 8px var(--pink-dark);
-  padding:32px 36px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+  box-shadow:4px 4px 0px rgba(92,64,51,0.15),0 0 0 4px var(--white),0 0 0 8px var(--pink-dark);
+  padding:28px 32px;display:flex;flex-direction:column;overflow:hidden;
 }
 
-/* ============ HEADER ============ */
 .app-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding-bottom:16px;border-bottom:3px dashed var(--pink-dark);margin-bottom:20px;
-  flex-shrink:0;
+  padding-bottom:14px;border-bottom:3px dashed var(--pink-dark);margin-bottom:16px;flex-shrink:0;
 }
-.app-header h1{font-size:26px;color:var(--pink-dark);letter-spacing:2px;}
-.app-header .mode-badge{
-  padding:6px 16px;border:2px solid;font-size:14px;font-weight:700;border-radius:4px;
-}
+.app-header h1{font-size:26px;color:var(--pink-dark);}
 
-/* ============ SCREENS ============ */
 .screen{display:none;flex:1;overflow-y:auto;flex-direction:column;}
-.screen.active{display:flex;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.screen.active{animation:fadeIn .3s ease-out;}
+.screen.active{display:flex;animation:fadeIn .3s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ============ MODE CHOICE ============ */
-.mode-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:24px;
-  flex:1;align-content:center;max-width:700px;margin:0 auto;
-}
-.mode-card{
-  background:var(--white);border:4px solid;padding:40px 28px;text-align:center;
-  cursor:pointer;transition:all .2s;box-shadow:var(--shadow);border-radius:8px;
-}
-.mode-card:hover{transform:translateY(-4px);box-shadow:6px 6px 0px rgba(92,64,51,0.2);}
-.mode-card.teacher{border-color:var(--purple-dark);background:linear-gradient(135deg,#F8F0FF,#FFF);}
-.mode-card.student{border-color:var(--blue-dark);background:linear-gradient(135deg,#F0F6FF,#FFF);}
-.mode-card .mode-icon{font-size:56px;display:block;margin-bottom:12px;}
-.mode-card .mode-label{font-size:22px;font-weight:700;color:var(--text);}
-.mode-card .mode-desc{font-size:15px;color:var(--text-light);margin-top:8px;line-height:1.6;}
-
-/* ============ FORM ELEMENTS ============ */
-.form-group{margin-bottom:16px;}
+/* ── LOGIN ── */
+.form-group{margin-bottom:14px;}
 .form-group label{display:block;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .pixel-input{
   width:100%;padding:12px 16px;font-family:inherit;font-size:16px;
   border:3px solid var(--pink-dark);background:var(--white);color:var(--text);
-  outline:none;border-radius:6px;transition:border-color .2s;
+  outline:none;border-radius:6px;
 }
 .pixel-input:focus{border-color:var(--blue-dark);box-shadow:0 0 0 3px rgba(181,216,255,0.4);}
 
-/* ============ BUTTONS ============ */
+/* ── BUTTONS ── */
 .pixel-btn{
-  display:inline-block;font-family:inherit;font-size:16px;font-weight:700;
-  padding:14px 32px;border:3px solid;cursor:pointer;transition:all .15s;
-  box-shadow:var(--shadow);border-radius:6px;color:var(--text);text-align:center;
+  display:inline-block;font-family:inherit;font-size:15px;font-weight:700;
+  padding:12px 28px;border:3px solid;cursor:pointer;
+  box-shadow:3px 3px 0px rgba(92,64,51,0.12);border-radius:6px;color:var(--text);
 }
-.pixel-btn:hover{transform:translateY(-2px);box-shadow:6px 6px 0px rgba(92,64,51,0.2);}
-.pixel-btn:active{transform:translateY(1px);box-shadow:2px 2px 0px rgba(92,64,51,0.1);}
-.pixel-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.pixel-btn:hover{transform:translateY(-2px);box-shadow:5px 5px 0px rgba(92,64,51,0.18);}
+.pixel-btn:active{transform:translateY(1px);box-shadow:1px 1px 0px rgba(92,64,51,0.08);}
+.pixel-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
 .btn-pink{background:var(--pink);border-color:var(--pink-dark);}
 .btn-blue{background:var(--blue);border-color:var(--blue-dark);}
 .btn-green{background:var(--green);border-color:var(--green-dark);}
 .btn-yellow{background:var(--yellow);border-color:var(--yellow-dark);}
 .btn-purple{background:var(--purple);border-color:var(--purple-dark);}
-.btn-peach{background:var(--peach);border-color:#E8B89A;}
+.btn-danger{background:#FFE0E0;border-color:#E89090;}
 .btn-block{display:block;width:100%;}
 .btn-sm{font-size:13px;padding:8px 18px;}
-.btn-danger{background:#FFE0E0;border-color:#E89090;}
+.back-link{font-size:13px;color:var(--text-light);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;text-align:center;margin-top:10px;}
 
-/* ============ TEACHER DASHBOARD ============ */
-.dash-panels{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;}
-.dash-panel{
-  border:3px solid var(--purple-dark);border-radius:8px;
-  padding:20px;background:#FFFBFD;overflow-y:auto;
-}
-.dash-panel h3{font-size:18px;margin-bottom:14px;color:var(--purple-dark);}
-.session-code-display{
-  font-size:48px;font-weight:900;text-align:center;letter-spacing:8px;
-  color:var(--pink-dark);margin:10px 0;padding:10px;
-  border:3px dashed var(--pink-dark);border-radius:8px;background:#FFF0F3;
-}
-.grade-badge{
-  display:inline-block;padding:4px 14px;border:2px solid var(--text);
-  border-radius:4px;font-size:14px;font-weight:700;
-}
-.player-list{max-height:200px;overflow-y:auto;}
-.player-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:8px 10px;margin:4px 0;border-bottom:1px dashed var(--text-light);
-  font-size:15px;
-}
-.player-row .score{font-weight:700;color:var(--pink-dark);}
-.control-bar{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;}
+/* ── DASHBOARD ── */
+.dash-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:500px;margin:0 auto;}
+.session-code{font-size:56px;font-weight:900;letter-spacing:10px;color:var(--pink-dark);padding:12px 24px;border:3px dashed var(--pink-dark);border-radius:10px;background:#FFF0F3;margin:12px 0;}
 
-/* ============ QUIZ SCREEN ============ */
-.quiz-header{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 16px;background:var(--yellow);border:3px solid var(--yellow-dark);
-  border-radius:6px;font-size:16px;font-weight:700;margin-bottom:16px;flex-shrink:0;
-}
-.quiz-progress{width:100%;height:14px;background:var(--bg);border:2px solid var(--pink-dark);border-radius:7px;margin-bottom:16px;flex-shrink:0;}
-.quiz-progress-fill{height:100%;background:var(--pink);border-radius:6px;transition:width .3s;}
-.quiz-question-box{
-  border:3px solid var(--purple-dark);padding:18px;margin-bottom:16px;
-  border-radius:8px;background:#FFFBF5;flex-shrink:0;
-}
-.q-poem-ref{font-size:14px;color:var(--purple-dark);margin-bottom:8px;padding-bottom:8px;border-bottom:2px dashed var(--purple);}
-.q-text{font-size:18px;font-weight:700;color:var(--text);line-height:1.7;}
-.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex-shrink:0;}
-.option-btn{
-  display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;
-  font-family:inherit;font-size:16px;text-align:left;border:3px solid var(--blue-dark);
-  background:var(--white);color:var(--text);cursor:pointer;border-radius:6px;
-  transition:all .15s;font-weight:700;
-}
-.option-btn:hover:not(.disabled){background:#F0F6FF;transform:translateX(4px);}
-.option-btn .opt-letter{
-  flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--blue-dark);font-size:18px;background:var(--blue);font-weight:900;border-radius:4px;
-}
-.option-btn.correct{border-color:var(--green-dark)!important;background:#E8FFE8!important;}
-.option-btn.correct .opt-letter{background:var(--green);border-color:var(--green-dark);}
-.option-btn.wrong{border-color:var(--pink-dark)!important;background:#FFE8E8!important;}
-.option-btn.wrong .opt-letter{background:var(--pink);border-color:var(--pink-dark);}
-.option-btn.disabled{pointer-events:none;opacity:.7;}
-.quiz-feedback{text-align:center;padding:8px;font-size:16px;font-weight:700;min-height:30px;flex-shrink:0;}
+/* ── QUIZ ── */
+.quiz-top{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--yellow);border:3px solid var(--yellow-dark);border-radius:6px;font-size:16px;font-weight:700;margin-bottom:10px;flex-shrink:0;}
+.quiz-bar{height:12px;background:var(--bg);border:2px solid var(--pink-dark);border-radius:6px;margin-bottom:12px;flex-shrink:0;}
+.quiz-bar-fill{height:100%;background:var(--pink);border-radius:4px;transition:width .3s;}
+.quiz-q-box{border:3px solid var(--purple-dark);padding:14px 18px;margin-bottom:12px;border-radius:8px;background:#FFFBF5;flex-shrink:0;}
+.quiz-q-box .q-poem{font-size:13px;color:var(--purple-dark);margin-bottom:6px;padding-bottom:6px;border-bottom:2px dashed var(--purple);}
+.quiz-q-box .q-text{font-size:18px;font-weight:700;color:var(--text);line-height:1.7;}
+.quiz-q-box .q-answer{font-size:14px;color:var(--green-dark);margin-top:6px;font-weight:700;display:none;}
 
-/* ============ WAITING SCREEN ============ */
-.waiting-box{text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.waiting-spinner{font-size:56px;animation:spin 1.5s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg)}}
-.waiting-text{font-size:20px;color:var(--text);margin-top:16px;}
+/* ── GROUP PANELS (2x2 grid) ── */
+.groups-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;}
+.group-card{
+  border:3px solid;border-radius:8px;padding:14px 16px;
+  display:flex;align-items:center;gap:14px;
+  background:var(--white);
+}
+.group-card.A{border-color:#FF8C94;background:#FFF5F5;}
+.group-card.B{border-color:#8AB8E8;background:#F5F9FF;}
+.group-card.C{border-color:#8AE89A;background:#F5FFF5;}
+.group-card.D{border-color:#FFD98A;background:#FFFDF5;}
+.group-letter{
+  font-size:36px;font-weight:900;width:52px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:8px;flex-shrink:0;
+}
+.group-card.A .group-letter{background:#FF8C94;color:#fff;}
+.group-card.B .group-letter{background:#8AB8E8;color:#fff;}
+.group-card.C .group-letter{background:#8AE89A;color:#fff;}
+.group-card.D .group-letter{background:#FFD98A;color:#fff;}
+.group-score-box{flex:1;text-align:center;}
+.group-score{font-size:32px;font-weight:900;color:var(--text);}
+.group-score-label{font-size:11px;color:var(--text-light);}
+.group-btns{display:flex;gap:8px;flex-shrink:0;}
+.group-btn{
+  padding:10px 14px;border:3px solid;border-radius:6px;
+  font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;
+  min-width:60px;transition:all .1s;white-space:nowrap;
+}
+.group-btn:active{transform:scale(.95);}
+.group-btn.correct{background:#E8FFE8;border-color:var(--green-dark);color:#2d7a2d;}
+.group-btn.correct:hover{background:var(--green);}
+.group-btn.wrong{background:#FFE8E8;border-color:#E89090;color:#a33;}
+.group-btn.wrong:hover{background:#FFD0D0;}
+.group-btn.flash{animation:btnFlash .3s;}
+@keyframes btnFlash{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 
-/* ============ RESULT & LEADERBOARD ============ */
-.result-panel{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;}
-.result-box{
-  text-align:center;padding:24px;border:3px solid var(--yellow-dark);
-  border-radius:8px;background:linear-gradient(135deg,var(--yellow),#FFF8DC);
-}
-.result-box .big-emoji{font-size:56px;display:block;}
-.result-box .score-number{font-size:42px;color:var(--pink-dark);margin:8px 0;font-weight:900;}
-.result-box .score-label{font-size:18px;color:var(--text);}
-.leaderboard-panel{
-  border:3px solid var(--yellow-dark);border-radius:8px;
-  background:#FFFEFA;overflow-y:auto;
-}
-.lb-title{font-size:18px;font-weight:700;text-align:center;padding:12px;background:var(--yellow);border-bottom:3px solid var(--yellow-dark);}
+/* ── NEXT BUTTON ── */
+.next-q-bar{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-shrink:0;}
+
+/* ── RESULT ── */
+.result-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;}
+.result-summary{text-align:center;padding:20px;border:3px solid var(--yellow-dark);border-radius:8px;background:linear-gradient(135deg,var(--yellow),#FFF8DC);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.result-summary .trophy{font-size:64px;}
+.result-summary .winner{font-size:22px;font-weight:900;margin:6px 0;}
+.result-summary .winner-score{font-size:36px;color:var(--pink-dark);font-weight:900;}
+.lb-panel{border:3px solid var(--yellow-dark);border-radius:8px;background:#FFFEFA;overflow-y:auto;}
+.lb-title{font-size:17px;font-weight:700;text-align:center;padding:10px;background:var(--yellow);border-bottom:3px solid var(--yellow-dark);}
 .lb-table{width:100%;border-collapse:collapse;font-size:15px;}
-.lb-table th{padding:8px 4px;background:var(--blue);border-bottom:2px solid var(--blue-dark);font-weight:700;font-size:14px;}
-.lb-table td{padding:8px 4px;text-align:center;border-bottom:1px dashed var(--text-light);}
-.lb-table .rank-1{color:#FFD700;font-size:22px;font-weight:900;}
-.lb-table .rank-2{color:#C0C0C0;font-size:20px;font-weight:900;}
-.lb-table .rank-3{color:#CD7F32;font-size:18px;font-weight:900;}
-.lb-table .highlight-row{background:#FFF8E1;animation:pulse 1.5s infinite;}
+.lb-table th{padding:8px;background:var(--blue);border-bottom:2px solid var(--blue-dark);font-weight:700;font-size:13px;}
+.lb-table td{padding:8px;text-align:center;border-bottom:1px dashed var(--text-light);}
+.lb-table .r-1{color:#FFD700;font-size:24px;font-weight:900;}
+.lb-table .r-2{color:#C0C0C0;font-size:20px;font-weight:900;}
+.lb-table .r-3{color:#CD7F32;font-size:18px;font-weight:900;}
+.highlight-row{background:#FFF8E1;animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{background:#FFF8E1}50%{background:#FFECB3}}
 
-/* ============ ADMIN LEADERBOARD TABLE ============ */
+/* ── ADMIN ── */
 .admin-lb-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;}
-.admin-lb-table th{padding:8px 4px;background:var(--purple);border-bottom:2px solid var(--purple-dark);font-size:13px;}
-.admin-lb-table td{padding:8px 4px;text-align:center;border-bottom:1px dashed var(--text-light);}
+.admin-lb-table th{padding:8px;background:var(--purple);border-bottom:2px solid var(--purple-dark);font-size:13px;}
+.admin-lb-table td{padding:8px;text-align:center;border-bottom:1px dashed var(--text-light);}
 
-/* ============ BACK LINKS ============ */
-.back-link{font-size:14px;color:var(--text-light);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;display:block;text-align:center;margin-top:12px;}
-
-/* ============ CONFETTI ============ */
-.confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;}
-.confetti-piece{position:absolute;width:10px;height:10px;animation:confettiFall 3s ease-out forwards;}
-@keyframes confettiFall{0%{transform:translateY(-100px) rotate(0deg);opacity:1}100%{transform:translateY(105vh) rotate(720deg);opacity:0}}
-
-/* ============ RESPONSIVE ============ */
-@media(max-width:900px){
-  .app-container{aspect-ratio:auto;max-height:none;padding:20px 16px;}
-  .mode-grid{grid-template-columns:1fr;}
-  .dash-panels{grid-template-columns:1fr;}
-  .result-panel{grid-template-columns:1fr;}
-  .session-code-display{font-size:36px;letter-spacing:4px;}
-  .app-header h1{font-size:20px;}
-  .options-grid{grid-template-columns:1fr;}
+@media(max-width:800px){
+  .app-container{aspect-ratio:auto;max-height:none;padding:16px 12px;}
+  .groups-grid{grid-template-columns:1fr;}
+  .result-layout{grid-template-columns:1fr;}
+  .session-code{font-size:36px;letter-spacing:6px;}
+  .group-letter{font-size:26px;width:40px;height:40px;}
+  .group-score{font-size:24px;}
+  .group-btn{padding:8px 10px;font-size:12px;}
 }
 </style>
 </head>
 <body>
 <div class="app-container" id="app">
-  <!-- ============ HEADER ============ -->
-  <div class="app-header">
-    <h1>📜 唐詩小狀元</h1>
-    <span class="mode-badge" id="modeBadge" style="background:var(--blue);border-color:var(--blue-dark);">課堂系統</span>
-  </div>
+  <div class="app-header"><h1>📜 唐詩小狀元 — 課堂搶答</h1><span id="userLabel" style="font-size:14px;color:var(--text-light);"></span></div>
 
-  <!-- ============ SCREEN: MODE CHOICE ============ -->
-  <div class="screen active" id="scrMode">
-    <div class="mode-grid">
-      <div class="mode-card teacher" onclick="chooseMode('teacher')">
-        <span class="mode-icon">👩‍🏫</span>
-        <span class="mode-label">教師模式</span>
-        <span class="mode-desc">開設搶答遊戲<br>管理積分排行榜</span>
-      </div>
-      <div class="mode-card student" onclick="chooseMode('student')">
-        <span class="mode-icon">🧑‍🎓</span>
-        <span class="mode-label">學生模式</span>
-        <span class="mode-desc">輸入課堂代碼<br>參與搶答挑戰</span>
-      </div>
+  <!-- ── LOGIN ── -->
+  <div class="screen active" id="scrLogin">
+    <div class="dash-center">
+      <h2 style="margin-bottom:20px;color:var(--purple-dark);">👩‍🏫 教師登入</h2>
+      <div class="form-group"><label>帳號</label><input class="pixel-input" id="loginUser" placeholder="帳號"></div>
+      <div class="form-group"><label>密碼</label><input class="pixel-input" type="password" id="loginPass" placeholder="密碼"></div>
+      <button class="pixel-btn btn-purple btn-block" onclick="doLogin()">登入</button>
+      <p id="loginErr" style="color:var(--pink-dark);text-align:center;margin-top:8px;font-weight:700;font-size:15px;"></p>
     </div>
   </div>
 
-  <!-- ============ SCREEN: TEACHER LOGIN ============ -->
-  <div class="screen" id="scrTeacherLogin">
-    <div style="max-width:450px;margin:auto;flex:1;display:flex;flex-direction:column;justify-content:center;">
-      <h2 style="text-align:center;margin-bottom:24px;color:var(--purple-dark);">👩‍🏫 教師登入</h2>
-      <div class="form-group">
-        <label>帳號</label>
-        <input class="pixel-input" id="loginUser" placeholder="輸入帳號" value="">
+  <!-- ── DASHBOARD ── -->
+  <div class="screen" id="scrDash">
+    <div class="dash-center">
+      <h2 style="color:var(--purple-dark);margin-bottom:16px;">🎮 開設搶答遊戲</h2>
+      <div class="form-group" style="width:100%;">
+        <label>選擇年級</label>
+        <select class="pixel-input" id="sesGrade" style="cursor:pointer;">
+          <option value="P4">📗 四年級</option>
+          <option value="P5">📘 五年級</option>
+          <option value="P6">📙 六年級</option>
+        </select>
       </div>
-      <div class="form-group">
-        <label>密碼</label>
-        <input class="pixel-input" type="password" id="loginPass" placeholder="輸入密碼" value="">
+      <button class="pixel-btn btn-pink btn-block" id="btnCreate" onclick="createSes()">建立課堂遊戲</button>
+      <div id="sesInfo" style="display:none;margin-top:16px;text-align:center;">
+        <p style="font-size:13px;color:var(--text-light);">課堂代碼</p>
+        <div class="session-code" id="sesCodeDisp">------</div>
+        <p style="font-size:14px;color:var(--text);margin:6px 0;">年級：<strong id="sesGradeDisp"></strong></p>
+        <button class="pixel-btn btn-green btn-block" id="btnStart" onclick="startGame()">▶ 開始遊戲</button>
       </div>
-      <button class="pixel-btn btn-purple btn-block" onclick="teacherLogin()">登入</button>
-      <p id="loginError" style="color:var(--pink-dark);text-align:center;margin-top:10px;font-weight:700;font-size:15px;"></p>
-      <button class="back-link" onclick="goScreen('scrMode')">← 返回首頁</button>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:10px;justify-content:center;">
+      <button class="pixel-btn btn-purple btn-sm" onclick="goScreen('scrAdmin')">📊 管理排行榜</button>
+      <button class="back-link" onclick="logout()">登出</button>
     </div>
   </div>
 
-  <!-- ============ SCREEN: TEACHER DASHBOARD ============ -->
-  <div class="screen" id="scrTeacherDash">
-    <div class="dash-panels">
-      <!-- Left: Create Session -->
-      <div class="dash-panel" id="dashCreate">
-        <h3>🎮 開設搶答遊戲</h3>
-        <div class="form-group">
-          <label>選擇年級</label>
-          <select class="pixel-input" id="sessionGrade" style="cursor:pointer;">
-            <option value="P4">📗 四年級</option>
-            <option value="P5">📘 五年級</option>
-            <option value="P6">📙 六年級</option>
-          </select>
-        </div>
-        <button class="pixel-btn btn-pink btn-block" id="btnCreateSession" onclick="createSession()">建立課堂遊戲</button>
-        <div id="sessionInfo" style="display:none;margin-top:16px;">
-          <p style="font-size:14px;color:var(--text-light);text-align:center;">課堂代碼（請展示給學生）：</p>
-          <div class="session-code-display" id="sessionCodeDisplay">------</div>
-          <p style="font-size:13px;color:var(--text-light);text-align:center;">年級：<span id="sessionGradeLabel" style="font-weight:700;"></span></p>
-          <button class="pixel-btn btn-green btn-block btn-sm" id="btnStartGame" onclick="startGame()" style="margin-top:12px;" disabled>▶ 開始遊戲</button>
-          <button class="pixel-btn btn-peach btn-block btn-sm" id="btnEndGame" onclick="endGame()" style="display:none;margin-top:8px;">⏹ 結束遊戲</button>
-        </div>
-      </div>
-      <!-- Right: Player list + Controls -->
-      <div class="dash-panel" id="dashPlayers">
-        <h3>👥 已加入學生 (<span id="playerCount">0</span>)</h3>
-        <div class="player-list" id="playerList">
-          <p style="color:var(--text-light);text-align:center;padding:20px;">等待學生加入...</p>
-        </div>
-        <div class="control-bar" id="teacherControls">
-          <button class="pixel-btn btn-blue btn-block" id="btnNextQ" onclick="teacherNextQ()" style="display:none;">▶ 下一題</button>
-        </div>
-        <div id="teacherQInfo" style="display:none;margin-top:12px;padding:12px;border:2px solid var(--blue-dark);border-radius:6px;background:#F0F6FF;">
-          <p style="font-size:14px;font-weight:700;color:var(--text);" id="teacherQText"></p>
-          <p style="font-size:12px;color:var(--green-dark);margin-top:6px;" id="teacherQAnswer"></p>
-        </div>
-      </div>
+  <!-- ── QUIZ ── -->
+  <div class="screen" id="scrQuiz">
+    <div class="quiz-top"><span id="qCounter">第 1 / 10 題</span><span>總分：<strong id="sumScore" style="color:var(--pink-dark);">0</strong></span></div>
+    <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
+    <div class="quiz-q-box">
+      <div class="q-poem" id="qPoem"></div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-answer" id="qAnswer">✅ 正確答案：</div>
     </div>
-    <button class="pixel-btn btn-purple btn-block btn-sm" onclick="goScreen('scrAdminLB')" style="margin-top:12px;">📊 管理積分排行榜</button>
-    <button class="back-link" onclick="teacherLogout()">← 登出返回首頁</button>
-  </div>
-
-  <!-- ============ SCREEN: ADMIN LEADERBOARD ============ -->
-  <div class="screen" id="scrAdminLB">
-    <h2 style="text-align:center;color:var(--purple-dark);margin-bottom:16px;">📊 管理積分排行榜</h2>
-    <div style="overflow-y:auto;flex:1;">
-      <table class="admin-lb-table"><thead><tr><th>#</th><th>年級</th><th>班別</th><th>學號</th><th>分數</th><th>操作</th></tr></thead>
-        <tbody id="adminLbBody"></tbody>
-      </table>
-    </div>
-    <div style="display:flex;gap:10px;margin-top:12px;">
-      <button class="pixel-btn btn-danger btn-block btn-sm" onclick="clearAllLeaderboard()">🗑 清除全部紀錄</button>
-      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="goScreen('scrTeacherDash')">← 返回教師面板</button>
-    </div>
-    <button class="back-link" onclick="teacherLogout()">登出返回首頁</button>
-  </div>
-
-  <!-- ============ SCREEN: STUDENT JOIN ============ -->
-  <div class="screen" id="scrStudentJoin">
-    <div style="max-width:500px;margin:auto;flex:1;display:flex;flex-direction:column;justify-content:center;">
-      <h2 style="text-align:center;margin-bottom:24px;color:var(--blue-dark);">🧑‍🎓 加入課堂遊戲</h2>
-      <div class="form-group">
-        <label>課堂代碼（6位數字）</label>
-        <input class="pixel-input" id="joinCode" placeholder="例如：123456" maxlength="6" inputmode="numeric" pattern="[0-9]*">
-      </div>
-      <div class="form-group">
-        <label>🏫 你的班別</label>
-        <input class="pixel-input" id="joinClass" placeholder="例如：4A" maxlength="10">
-      </div>
-      <div class="form-group">
-        <label>🔢 你的學號</label>
-        <input class="pixel-input" id="joinSNo" placeholder="例如：12" maxlength="6">
-      </div>
-      <button class="pixel-btn btn-blue btn-block" onclick="joinSession()">加入遊戲</button>
-      <p id="joinError" style="color:var(--pink-dark);text-align:center;margin-top:10px;font-weight:700;font-size:15px;"></p>
-      <button class="back-link" onclick="goScreen('scrMode')">← 返回首頁</button>
+    <div class="groups-grid" id="groupsGrid"></div>
+    <div class="next-q-bar">
+      <button class="pixel-btn btn-blue btn-sm" id="btnReveal" onclick="revealAnswer()">👁 揭示答案</button>
+      <button class="pixel-btn btn-yellow btn-block" id="btnNext" onclick="nextQ()" disabled>▶ 下一題</button>
     </div>
   </div>
 
-  <!-- ============ SCREEN: STUDENT WAITING ============ -->
-  <div class="screen" id="scrStudentWait">
-    <div class="waiting-box">
-      <div class="waiting-spinner">⏳</div>
-      <div class="waiting-text" id="waitMsg">等待老師開始遊戲...</div>
-      <p style="font-size:14px;color:var(--text-light);margin-top:8px;">課堂代碼：<strong id="waitCode"></strong></p>
-      <p style="font-size:14px;color:var(--text-light);" id="waitPlayer"></p>
+  <!-- ── RESULT ── -->
+  <div class="screen" id="scrResult">
+    <div class="result-layout">
+      <div class="result-summary" id="resultSummary"></div>
+      <div class="lb-panel"><div class="lb-title">🏆 小組排行榜</div><table class="lb-table"><thead><tr><th>#</th><th>組別</th><th>分數</th></tr></thead><tbody id="lbBody"></tbody></table></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:10px;justify-content:center;">
+      <button class="pixel-btn btn-pink btn-block" onclick="goScreen('scrDash')">🔄 開新遊戲</button>
     </div>
   </div>
 
-  <!-- ============ SCREEN: STUDENT QUIZ ============ -->
-  <div class="screen" id="scrStudentQuiz">
-    <div class="quiz-header">
-      <span id="stuQCounter">第 1 / 10 題</span>
-      <span id="stuQScore">🏆 0 分</span>
+  <!-- ── ADMIN ── -->
+  <div class="screen" id="scrAdmin">
+    <h2 style="text-align:center;color:var(--purple-dark);margin-bottom:12px;">📊 管理積分排行榜</h2>
+    <div style="overflow-y:auto;flex:1;"><table class="admin-lb-table"><thead><tr><th>#</th><th>年級</th><th>組別/班別</th><th>學號/組</th><th>分數</th><th>操作</th></tr></thead><tbody id="adminBody"></tbody></table></div>
+    <div style="display:flex;gap:10px;margin-top:10px;">
+      <button class="pixel-btn btn-danger btn-block btn-sm" onclick="clearAll()">🗑 清除全部</button>
+      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="goScreen('scrDash')">← 返回</button>
     </div>
-    <div class="quiz-progress"><div class="quiz-progress-fill" id="stuProgress" style="width:0%"></div></div>
-    <div class="quiz-question-box">
-      <div class="q-poem-ref" id="stuPoemRef"></div>
-      <div class="q-text" id="stuQText"></div>
-    </div>
-    <div class="options-grid" id="stuOptions"></div>
-    <div class="quiz-feedback" id="stuFeedback"></div>
-    <p id="stuWaitNext" style="display:none;text-align:center;color:var(--text-light);font-size:15px;margin-top:8px;">等待老師出下一題...</p>
-  </div>
-
-  <!-- ============ SCREEN: STUDENT RESULT ============ -->
-  <div class="screen" id="scrStudentResult">
-    <div class="result-panel">
-      <div class="result-box" id="stuResultBox"></div>
-      <div class="leaderboard-panel">
-        <div class="lb-title">🏆 課堂排行榜</div>
-        <table class="lb-table"><thead><tr><th>#</th><th>班別</th><th>學號</th><th>分數</th></tr></thead>
-          <tbody id="stuLbBody"></tbody>
-        </table>
-      </div>
-    </div>
-    <button class="pixel-btn btn-blue btn-block btn-sm" onclick="goScreen('scrStudentJoin')" style="margin-top:12px;">🔄 加入新遊戲</button>
   </div>
 </div>
 
-<div class="confetti-container" id="confetti"></div>
-
 <script>
-// ==================== CONFIG ====================
-const API = 'https://chinesepoetry-api.chinesepoetry-api.workers.dev';
-let authToken = '';
-let gameSession = null;  // teacher current session
-let studentState = { code:'', playerKey:'', grade:'', name:'' };
-let studentAnswered = false;
-let pollTimer = null;
+const API='https://chinesepoetry-api.chinesepoetry-api.workers.dev';
+let token='',ses={code:'',grade:''};
 
-// ==================== SCREEN NAVIGATION ====================
 function goScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
-  if(id==='scrTeacherDash') refreshTeacherDash();
+  if(id==='scrAdmin')renderAdmin();
 }
 
-// ==================== MODE CHOICE ====================
-function chooseMode(mode){
-  if(mode==='teacher'){goScreen('scrTeacherLogin');}
-  else{goScreen('scrStudentJoin');}
-}
-
-// ==================== TEACHER LOGIN ====================
-async function teacherLogin(){
-  const u=document.getElementById('loginUser').value.trim();
-  const p=document.getElementById('loginPass').value.trim();
-  document.getElementById('loginError').textContent='';
+// ── LOGIN ──
+async function doLogin(){
+  const u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value.trim();
+  document.getElementById('loginErr').textContent='';
   try{
     const r=await fetch(API+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
     const d=await r.json();
-    if(d.success){authToken=d.token;goScreen('scrTeacherDash');}
-    else{document.getElementById('loginError').textContent='帳號或密碼不正確';}
-  }catch(e){document.getElementById('loginError').textContent='無法連接伺服器';}
+    if(d.success){token=d.token;document.getElementById('userLabel').textContent='👩‍🏫 教師';goScreen('scrDash');}
+    else document.getElementById('loginErr').textContent='帳號或密碼不正確';
+  }catch(e){document.getElementById('loginErr').textContent='無法連接伺服器';}
 }
+function logout(){token='';ses={code:'',grade:''};document.getElementById('userLabel').textContent='';goScreen('scrLogin');}
 
-function teacherLogout(){authToken='';gameSession=null;if(pollTimer){clearInterval(pollTimer);pollTimer=null;}goScreen('scrMode');}
-
-// ==================== TEACHER: CREATE SESSION ====================
-async function createSession(){
-  const grade=document.getElementById('sessionGrade').value;
-  const btn=document.getElementById('btnCreateSession');
-  btn.disabled=true;btn.textContent='建立中...';
+// ── CREATE SESSION ──
+async function createSes(){
+  const grade=document.getElementById('sesGrade').value;
+  const btn=document.getElementById('btnCreate');btn.disabled=true;btn.textContent='建立中...';
   try{
-    const r=await fetch(API+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+authToken},body:JSON.stringify({grade})});
+    const r=await fetch(API+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({grade})});
     const d=await r.json();
     if(d.success){
-      gameSession={code:d.code,grade:d.grade};
-      document.getElementById('sessionInfo').style.display='block';
-      document.getElementById('sessionCodeDisplay').textContent=d.code;
-      document.getElementById('sessionGradeLabel').textContent=grade==='P4'?'四年級':grade==='P5'?'五年級':'六年級';
-      document.getElementById('btnStartGame').disabled=false;
-      document.getElementById('btnEndGame').style.display='none';
-      document.getElementById('teacherQInfo').style.display='none';
-      document.getElementById('btnNextQ').style.display='none';
-      startTeacherPolling();
+      ses={code:d.code,grade:d.grade};
+      document.getElementById('sesInfo').style.display='block';
+      document.getElementById('sesCodeDisp').textContent=d.code;
+      document.getElementById('sesGradeDisp').textContent=grade==='P4'?'四年級':grade==='P5'?'五年級':'六年級';
+      document.getElementById('btnStart').disabled=false;
     }
-  }catch(e){alert('無法連接伺服器');}
+  }catch(e){alert('錯誤');}
   btn.disabled=false;btn.textContent='建立課堂遊戲';
 }
 
-function startTeacherPolling(){
-  if(pollTimer)clearInterval(pollTimer);
-  pollTimer=setInterval(pollTeacherState,1500);
-}
-
-async function pollTeacherState(){
-  if(!gameSession)return;
-  try{
-    const r=await fetch(API+'/api/session/'+gameSession.code);
-    const d=await r.json();
-    if(!d.success)return;
-    // update player list
-    const players=Object.values(d.players||{});
-    document.getElementById('playerCount').textContent=players.length;
-    const list=document.getElementById('playerList');
-    if(players.length===0){
-      list.innerHTML='<p style="color:var(--text-light);text-align:center;padding:20px;">等待學生加入...</p>';
-    }else{
-      list.innerHTML=players.sort((a,b)=>b.score-a.score).map((p,i)=>
-        `<div class="player-row"><span>${i+1}. ${p.className} #${p.studentNo}</span><span class="score">${p.score}分</span></div>`
-      ).join('');
-    }
-    // if game started, show teacher controls
-    if(d.state==='playing'){
-      document.getElementById('btnStartGame').style.display='none';
-      document.getElementById('btnEndGame').style.display='inline-block';
-      document.getElementById('btnNextQ').style.display='block';
-      document.getElementById('teacherQInfo').style.display='block';
-      if(d.question){
-        document.getElementById('teacherQText').textContent='📖 當前題目：'+d.question.poem+' — '+d.question.text;
-        // find the correct answer text
-        const correctIdx=d.question.answer;
-        document.getElementById('teacherQAnswer').textContent='✅ 答案：'+String.fromCharCode(65+correctIdx)+'. '+d.question.options[correctIdx];
-      }
-      const answeredCount=players.filter(p=>p.answered).length;
-      document.getElementById('btnNextQ').textContent=answeredCount+'/'+players.length+' 人已答 ▶ 下一題';
-      document.getElementById('btnNextQ').style.display='block';
-    }
-    if(d.state==='finished'){
-      document.getElementById('btnNextQ').style.display='none';
-      document.getElementById('btnEndGame').style.display='none';
-      document.getElementById('btnStartGame').disabled=true;
-      document.getElementById('teacherQInfo').style.display='none';
-      if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
-      alert('遊戲結束！分數已自動存入排行榜。');
-    }
-  }catch(e){}
-}
-
+// ── START GAME ──
 async function startGame(){
-  if(!gameSession)return;
-  const btn=document.getElementById('btnStartGame');
-  btn.disabled=true;btn.textContent='開始中...';
+  const btn=document.getElementById('btnStart');btn.disabled=true;btn.textContent='開始中...';
   try{
-    const r=await fetch(API+'/api/session/'+gameSession.code+'/start',{method:'POST',headers:{Authorization:'Bearer '+authToken}});
-    const d=await r.json();
-    if(d.success){btn.style.display='none';}
+    await fetch(API+'/api/session/'+ses.code+'/start',{method:'POST',headers:{Authorization:'Bearer '+token}});
+    goScreen('scrQuiz');renderQuiz(null);
   }catch(e){alert('錯誤');}
   btn.disabled=false;btn.textContent='▶ 開始遊戲';
 }
 
-async function teacherNextQ(){
-  if(!gameSession)return;
-  const btn=document.getElementById('btnNextQ');
-  btn.disabled=true;btn.textContent='進行中...';
+// ── RENDER QUIZ ──
+async function renderQuiz(groupsOverride){
   try{
-    const r=await fetch(API+'/api/session/'+gameSession.code+'/next',{method:'POST',headers:{Authorization:'Bearer '+authToken}});
+    const r=await fetch(API+'/api/session/'+ses.code);
+    const d=await r.json();
+    if(!d.success)return;
+    if(d.state==='finished'){showFinal(d);return;}
+
+    const qi=d.currentQ+1;
+    document.getElementById('qCounter').textContent='第 '+qi+' / '+d.totalQ+' 題';
+    document.getElementById('qBar').style.width=(d.currentQ/d.totalQ*100)+'%';
+    // sum score
+    const gs=groupsOverride||d.groups;
+    const sum=Object.values(gs).reduce((a,b)=>a+b,0);
+    document.getElementById('sumScore').textContent=sum;
+
+    // question
+    if(d.question){
+      document.getElementById('qPoem').textContent='📖 '+d.question.poem;
+      document.getElementById('qText').textContent=d.question.text;
+      document.getElementById('qAnswer').textContent='✅ 正確答案：'+String.fromCharCode(65+d.question.answer)+'. '+d.question.options[d.question.answer];
+      document.getElementById('qAnswer').style.display='none';
+    }
+
+    // group panels
+    document.getElementById('btnNext').disabled=true;
+    document.getElementById('btnReveal').disabled=false;
+
+    const colors={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A'};
+    const grid=document.getElementById('groupsGrid');
+    grid.innerHTML=['A','B','C','D'].map(g=>`
+      <div class="group-card ${g}">
+        <div class="group-letter">${g}</div>
+        <div class="group-score-box">
+          <div class="group-score" id="grpScore_${g}">${gs[g]||0}</div>
+          <div class="group-score-label">第${g}組</div>
+        </div>
+        <div class="group-btns">
+          <button class="group-btn correct" onclick="scoreGroup('${g}','correct',this)">✅ +10</button>
+          <button class="group-btn wrong" onclick="scoreGroup('${g}','wrong',this)">❌ −5</button>
+        </div>
+      </div>
+    `).join('');
+  }catch(e){}
+}
+
+// ── SCORE GROUP ──
+async function scoreGroup(group,type,btn){
+  if(btn)btn.classList.add('flash');
+  try{
+    const r=await fetch(API+'/api/session/'+ses.code+'/score',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({group,type})});
+    const d=await r.json();
+    if(d.success){
+      const el=document.getElementById('grpScore_'+group);
+      if(el)el.textContent=d.groups[group];
+      const sum=Object.values(d.groups).reduce((a,b)=>a+b,0);
+      document.getElementById('sumScore').textContent=sum;
+      // enable next after scoring at least once
+      document.getElementById('btnNext').disabled=false;
+    }
+  }catch(e){}
+}
+
+// ── REVEAL ANSWER ──
+function revealAnswer(){document.getElementById('qAnswer').style.display='block';document.getElementById('btnReveal').disabled=true;}
+
+// ── NEXT Q ──
+async function nextQ(){
+  const btn=document.getElementById('btnNext');btn.disabled=true;btn.textContent='載入中...';
+  try{
+    const r=await fetch(API+'/api/session/'+ses.code+'/next',{method:'POST',headers:{Authorization:'Bearer '+token}});
     const d=await r.json();
     if(d.success){
       if(d.state==='finished'){
-        document.getElementById('btnNextQ').style.display='none';
-        document.getElementById('btnEndGame').style.display='none';
-        document.getElementById('teacherQInfo').style.display='none';
-        if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
-        alert('全部題目完成！排行榜已更新。');
-      }
+        const r2=await fetch(API+'/api/session/'+ses.code);const d2=await r2.json();
+        showFinal(d2);
+      }else{await renderQuiz();}
     }
   }catch(e){}
   btn.disabled=false;btn.textContent='▶ 下一題';
 }
 
-async function endGame(){
-  if(!gameSession||!confirm('確定要結束遊戲嗎？所有學生的分數會存入排行榜。'))return;
-  try{
-    await fetch(API+'/api/session/'+gameSession.code+'/end',{method:'POST',headers:{Authorization:'Bearer '+authToken}});
-    document.getElementById('btnEndGame').style.display='none';
-    document.getElementById('btnNextQ').style.display='none';
-    document.getElementById('teacherQInfo').style.display='none';
-    if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
-    alert('遊戲已結束。');
-  }catch(e){}
+// ── FINAL ──
+function showFinal(d){
+  goScreen('scrResult');
+  const gs=d.groups;const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]);
+  const winner=arr[0];
+  document.getElementById('resultSummary').innerHTML=`
+    <div class="trophy">🏆</div>
+    <div class="winner">第${winner[0]}組 冠軍！</div>
+    <div class="winner-score">${winner[1]} 分</div>
+    <p style="font-size:14px;color:var(--text);margin-top:8px;">年級：${d.grade==='P4'?'四年級':d.grade==='P5'?'五年級':'六年級'}</p>
+  `;
+  document.getElementById('lbBody').innerHTML=arr.map(([g,s],i)=>`
+    <tr class="${i===0?'highlight-row':''}">
+      <td class="${i<3?'r-'+(i+1):''}">${i<3?['🥇','🥈','🥉'][i]:i+1}</td>
+      <td>第${g}組</td><td>${s} 分</td>
+    </tr>
+  `).join('');
 }
 
-// ==================== ADMIN LEADERBOARD ====================
-async function refreshTeacherDash(){
-  await renderAdminLB();
-}
-
-async function renderAdminLB(){
+// ── ADMIN ──
+async function renderAdmin(){
   try{
-    const r=await fetch(API+'/api/leaderboard');
-    const d=await r.json();
-    const lb=d.leaderboard||[];
+    const r=await fetch(API+'/api/leaderboard');const d=await r.json();const lb=d.leaderboard||[];
     const gMap={P4:'四年級',P5:'五年級',P6:'六年級'};
-    const tbody=document.getElementById('adminLbBody');
-    if(!tbody)return;
+    const tbody=document.getElementById('adminBody');
     if(lb.length===0){tbody.innerHTML='<tr><td colspan="6" style="padding:20px;color:var(--text-light);">未有紀錄</td></tr>';return;}
     tbody.innerHTML=lb.map((e,i)=>`<tr>
-      <td>${i<3?['🥇','🥈','🥉'][i]:i+1}</td>
-      <td>${gMap[e.grade]||e.grade}</td><td>${e.className}</td><td>${e.studentNo}</td><td>${e.score}</td>
-      <td><button class="pixel-btn btn-danger btn-sm" onclick="deleteLBEntry(${i})" style="padding:4px 10px;font-size:12px;">刪除</button></td>
+      <td>${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td>${gMap[e.grade]||e.grade}</td><td>${e.className}</td><td>${e.studentNo||'—'}</td><td>${e.score}</td>
+      <td><button class="pixel-btn btn-danger btn-sm" onclick="delEntry(${i})" style="padding:4px 8px;font-size:11px;">刪除</button></td>
     </tr>`).join('');
   }catch(e){}
 }
-
-async function deleteLBEntry(index){
-  if(!confirm('確定刪除這條紀錄？'))return;
-  try{
-    const r=await fetch(API+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+authToken},body:JSON.stringify({index})});
-    const d=await r.json();
-    if(d.success){await renderAdminLB();}
-  }catch(e){alert('刪除失敗');}
+async function delEntry(i){
+  if(!confirm('確定刪除？'))return;
+  await fetch(API+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({index:i})});
+  renderAdmin();
 }
-
-async function clearAllLeaderboard(){
-  if(!confirm('⚠️ 確定清除全部排行榜紀錄？此操作無法還原！'))return;
-  try{
-    const r=await fetch(API+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+authToken},body:JSON.stringify({})});
-    const d=await r.json();
-    if(d.success){await renderAdminLB();alert('已清除全部紀錄。');}
-  }catch(e){alert('清除失敗');}
-}
-
-// ==================== STUDENT: JOIN ====================
-async function joinSession(){
-  const code=document.getElementById('joinCode').value.trim();
-  const cls=document.getElementById('joinClass').value.trim();
-  const sno=document.getElementById('joinSNo').value.trim();
-  document.getElementById('joinError').textContent='';
-  if(!code||code.length!==6){document.getElementById('joinError').textContent='請輸入6位數課堂代碼';return;}
-  if(!cls){document.getElementById('joinError').textContent='請輸入班別';return;}
-  if(!sno){document.getElementById('joinError').textContent='請輸入學號';return;}
-  try{
-    const r=await fetch(API+'/api/session/join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code,className:cls,studentNo:sno})});
-    const d=await r.json();
-    if(d.success){
-      studentState={code,playerKey:d.playerKey,grade:d.grade,name:cls+' #'+sno};
-      document.getElementById('waitCode').textContent=code;
-      document.getElementById('waitPlayer').textContent=studentState.name;
-      goScreen('scrStudentWait');
-      startStudentPolling();
-    } else {document.getElementById('joinError').textContent=d.error||'加入失敗';}
-  }catch(e){document.getElementById('joinError').textContent='無法連接伺服器';}
-}
-
-function startStudentPolling(){
-  if(pollTimer)clearInterval(pollTimer);
-  pollTimer=setInterval(pollStudentState,1500);
-}
-
-async function pollStudentState(){
-  if(!studentState.code)return;
-  try{
-    const r=await fetch(API+'/api/session/'+studentState.code);
-    const d=await r.json();
-    if(!d.success)return;
-    if(d.state==='playing'&&document.getElementById('scrStudentWait').classList.contains('active')){
-      studentAnswered=false;
-      goScreen('scrStudentQuiz');
-      renderStudentQuestion(d);
-      return;
-    }
-    if(d.state==='finished'){
-      if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
-      if(!document.getElementById('scrStudentResult').classList.contains('active')){
-        await showStudentResult(d);
-      }
-      return;
-    }
-    // if playing and we're on quiz screen, check for new question
-    if(d.state==='playing'&&document.getElementById('scrStudentQuiz').classList.contains('active')){
-      // check if question changed
-      const qCounter=document.getElementById('stuQCounter');
-      const expected=`第 ${d.currentQ+1} / ${d.totalQ} 題`;
-      if(qCounter.textContent!==expected&&d.question&&!studentAnswered){
-        studentAnswered=false;
-        renderStudentQuestion(d);
-      }
-    }
-  }catch(e){}
-}
-
-function renderStudentQuestion(d){
-  const q=d.question;
-  if(!q)return;
-  document.getElementById('stuQCounter').textContent=`第 ${d.currentQ+1} / ${d.totalQ} 題`;
-  document.getElementById('stuProgress').style.width=(d.currentQ/d.totalQ*100)+'%';
-  document.getElementById('stuPoemRef').textContent='📖 '+q.poem;
-  document.getElementById('stuQText').textContent=q.text;
-  document.getElementById('stuFeedback').textContent='';
-  document.getElementById('stuWaitNext').style.display='none';
-  const grid=document.getElementById('stuOptions');
-  grid.innerHTML='';
-  const labels=['A','B','C','D'];
-  q.options.forEach((opt,i)=>{
-    const btn=document.createElement('button');
-    btn.className='option-btn';
-    btn.innerHTML=`<span class="opt-letter">${labels[i]}</span><span>${opt}</span>`;
-    btn.onclick=()=>studentAnswer(d,i);
-    grid.appendChild(btn);
-  });
-  studentAnswered=false;
-}
-
-async function studentAnswer(q,chosen){
-  if(studentAnswered)return;
-  studentAnswered=true;
-  const btns=document.querySelectorAll('#stuOptions .option-btn');
-  btns.forEach(b=>b.classList.add('disabled'));
-  try{
-    const r=await fetch(API+'/api/session/'+studentState.code+'/answer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({playerKey:studentState.playerKey,answer:chosen})});
-    const d=await r.json();
-    const feedback=document.getElementById('stuFeedback');
-    if(d.success){
-      const correctIdx=q.answer;
-      btns[correctIdx].classList.add('correct');
-      if(d.correct){
-        feedback.innerHTML='<span style="color:var(--green-dark)">✅ 答對了！+10分</span>';
-        document.getElementById('stuQScore').textContent='🏆 '+d.score+' 分';
-        spawnMiniConfetti();
-      }else{
-        btns[chosen].classList.add('wrong');
-        feedback.innerHTML='<span style="color:var(--pink-dark)">❌ 答錯了～ 正確答案：'+String.fromCharCode(65+correctIdx)+'</span>';
-      }
-      document.getElementById('stuWaitNext').style.display='block';
-      // poll for next question
-      startStudentPolling();
-    }
-  }catch(e){}
-}
-
-async function showStudentResult(d){
-  goScreen('scrStudentResult');
-  const player=d.players[studentState.playerKey];
-  const score=player?player.score:0;
-  let emoji,msg;
-  if(score===100){emoji='👑';msg='狀元之才！';}
-  else if(score>=80){emoji='🌟';msg='好厲害！';}
-  else if(score>=60){emoji='📚';msg='不錯喔！';}
-  else if(score>=40){emoji='💪';msg='繼續加油！';}
-  else{emoji='🌱';msg='再試一次！';}
-  document.getElementById('stuResultBox').innerHTML=`<span class="big-emoji">${emoji}</span><div class="score-number">${score} 分</div><div class="score-label">${msg}</div><p style="margin-top:8px;font-size:14px;">${studentState.name}</p>`;
-  // render classroom leaderboard
-  const players=Object.values(d.players||{}).sort((a,b)=>b.score-a.score);
-  const tbody=document.getElementById('stuLbBody');
-  tbody.innerHTML=players.map((p,i)=>
-    `<tr class="${p.className===studentState.name.split(' #')[0]&&p.studentNo===studentState.name.split(' #')[1]?'highlight-row':''}">
-      <td>${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td>${p.className}</td><td>${p.studentNo}</td><td>${p.score}</td>
-    </tr>`
-  ).join('');
-  spawnConfetti();
-}
-
-// ==================== CONFETTI ====================
-function spawnConfetti(){
-  const c=document.getElementById('confetti');
-  const colors=['#FFB5C2','#B5D8FF','#B5FFC2','#FFF5B5','#FFD8C2','#D8C2FF','#FFD700','#FF8C94'];
-  for(let i=0;i<60;i++){
-    const p=document.createElement('div');p.className='confetti-piece';
-    p.style.left=Math.random()*100+'%';p.style.background=colors[Math.floor(Math.random()*colors.length)];
-    p.style.animationDelay=Math.random()*2+'s';p.style.animationDuration=(2.5+Math.random()*3)+'s';
-    p.style.width=(6+Math.random()*10)+'px';p.style.height=(6+Math.random()*10)+'px';
-    c.appendChild(p);setTimeout(()=>p.remove(),5500);
-  }
-}
-function spawnMiniConfetti(){
-  const c=document.getElementById('confetti');
-  const colors=['#B5FFC2','#FFD700','#B5D8FF'];
-  for(let i=0;i<15;i++){
-    const p=document.createElement('div');p.className='confetti-piece';
-    p.style.left=(30+Math.random()*40)+'%';p.style.background=colors[Math.floor(Math.random()*colors.length)];
-    p.style.animationDelay=Math.random()*.5+'s';p.style.animationDuration=(1.5+Math.random()*1.5)+'s';
-    p.style.width=(4+Math.random()*6)+'px';p.style.height=(4+Math.random()*6)+'px';
-    c.appendChild(p);setTimeout(()=>p.remove(),3000);
-  }
+async function clearAll(){
+  if(!confirm('⚠️ 確定清除全部排行榜紀錄？無法還原！'))return;
+  await fetch(API+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({})});
+  renderAdmin();alert('已清除。');
 }
 </script>
 </body>

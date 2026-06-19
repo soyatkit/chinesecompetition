@@ -1,6 +1,5 @@
-// ==================== 唐詩小狀元 — Cloudflare Worker ====================
-// KV bindings: LEADERBOARD, SESSIONS
-// Admin:  laoshi / tangshi2026
+// 唐詩小狀元 — Cloudflare Worker (小組搶答版)
+// Admin: laoshi / tangshi2026
 
 export default {
   async fetch(request, env) {
@@ -10,243 +9,135 @@ export default {
       'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type,Authorization',
     };
+    if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
 
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: CORS });
-    }
+    const p = url.pathname;
+    function ok(data) { return Response.json(data, { headers: CORS }); }
+    function err(msg, code) { return Response.json({ success: false, error: msg }, { status: code, headers: CORS }); }
+    function auth(req) { return (req.headers.get('Authorization') || '') === 'Bearer laoshi:tangshi2026'; }
 
-    const path = url.pathname;
+    // ── HEALTH ──
+    if (p === '/api/health') { const d = (await env.LEADERBOARD.get('top20', 'json')) || []; return ok({ status: 'ok', entries: d.length }); }
 
-    // ──── AUTH middleware ────
-    function checkAuth(req) {
-      const auth = req.headers.get('Authorization') || '';
-      if (auth !== 'Bearer laoshi:tangshi2026') return false;
-      return true;
-    }
+    // ── LEADERBOARD ──
+    if (p === '/api/leaderboard' && request.method === 'GET') { return ok({ leaderboard: (await env.LEADERBOARD.get('top20', 'json')) || [] }); }
+    if (p === '/api/leaderboard' && request.method === 'POST') { return handleLBPost(request, env, CORS); }
 
-    // ──── ROUTES ────
-
-    // ==================== HEALTH ====================
-    if (path === '/api/health' && request.method === 'GET') {
-      const data = (await env.LEADERBOARD.get('top20', 'json')) || [];
-      return Response.json({ status: 'ok', entries: data.length }, { headers: CORS });
-    }
-
-    // ==================== LEADERBOARD (public) ====================
-    if (path === '/api/leaderboard' && request.method === 'GET') {
-      const data = (await env.LEADERBOARD.get('top20', 'json')) || [];
-      return Response.json({ success: true, leaderboard: data }, { headers: CORS });
-    }
-
-    if (path === '/api/leaderboard' && request.method === 'POST') {
-      return handleLeaderboardPost(request, env, CORS);
-    }
-
-    // ==================== ADMIN ====================
-    if (path === '/api/admin/login' && request.method === 'POST') {
+    // ── ADMIN LOGIN ──
+    if (p === '/api/admin/login' && request.method === 'POST') {
       const { username, password } = await request.json().catch(() => ({}));
-      if (username === 'laoshi' && password === 'tangshi2026') {
-        return Response.json({ success: true, token: 'laoshi:tangshi2026' }, { headers: CORS });
-      }
-      return Response.json({ success: false, error: 'Wrong credentials' }, { status: 401, headers: CORS });
+      return (username === 'laoshi' && password === 'tangshi2026') ? ok({ token: 'laoshi:tangshi2026' }) : err('Wrong credentials', 401);
     }
 
-    if (path === '/api/admin/leaderboard' && request.method === 'DELETE') {
-      if (!checkAuth(request)) {
-        return Response.json({ success: false, error: 'Unauthorized' }, { status: 401, headers: CORS });
-      }
+    // ── ADMIN DELETE LB ──
+    if (p === '/api/admin/leaderboard' && request.method === 'DELETE') {
+      if (!auth(request)) return err('Unauthorized', 401);
       const { index } = await request.json().catch(() => ({}));
       const lb = (await env.LEADERBOARD.get('top20', 'json')) || [];
-      if (index != null && index >= 0 && index < lb.length) {
-        lb.splice(index, 1);
-        await env.LEADERBOARD.put('top20', JSON.stringify(lb));
-        return Response.json({ success: true, leaderboard: lb }, { headers: CORS });
-      }
-      // clear all
+      if (index != null && index >= 0 && index < lb.length) { lb.splice(index, 1); await env.LEADERBOARD.put('top20', JSON.stringify(lb)); return ok({ leaderboard: lb }); }
       await env.LEADERBOARD.put('top20', JSON.stringify([]));
-      return Response.json({ success: true, leaderboard: [] }, { headers: CORS });
+      return ok({ leaderboard: [] });
     }
 
-    // ==================== SESSION ====================
-    // POST /api/session/create — teacher creates game session
-    if (path === '/api/session/create' && request.method === 'POST') {
-      if (!checkAuth(request)) {
-        return Response.json({ success: false, error: 'Unauthorized' }, { status: 401, headers: CORS });
-      }
+    // ── SESSION CREATE ──
+    if (p === '/api/session/create' && request.method === 'POST') {
+      if (!auth(request)) return err('Unauthorized', 401);
       const { grade } = await request.json().catch(() => ({}));
-      if (!['P4', 'P5', 'P6'].includes(grade)) {
-        return Response.json({ success: false, error: 'Invalid grade' }, { status: 400, headers: CORS });
-      }
+      if (!['P4', 'P5', 'P6'].includes(grade)) return err('Invalid grade', 400);
       const code = String(Math.floor(100000 + Math.random() * 900000));
       const session = {
         code, grade,
-        state: 'waiting',   // waiting | playing | finished
-        currentQ: 0,
-        questions: generateQuestions(grade),
-        players: {},
-        startedAt: null,
+        state: 'waiting', currentQ: 0,
+        questions: genQ(grade),
+        groups: { A: 0, B: 0, C: 0, D: 0 },
+        history: [],
         createdAt: new Date().toISOString(),
       };
       await env.SESSIONS.put(code, JSON.stringify(session), { expirationTtl: 7200 });
-      return Response.json({ success: true, code, grade }, { headers: CORS });
+      return ok({ code, grade });
     }
 
-    // POST /api/session/join — student joins
-    if (path === '/api/session/join' && request.method === 'POST') {
-      const { code, className, studentNo } = await request.json().catch(() => ({}));
-      if (!code || !className || !studentNo) {
-        return Response.json({ success: false, error: 'Missing fields' }, { status: 400, headers: CORS });
-      }
-      const raw = await env.SESSIONS.get(code);
-      if (!raw) {
-        return Response.json({ success: false, error: 'Session not found or expired' }, { status: 404, headers: CORS });
-      }
-      const session = JSON.parse(raw);
-      if (session.state !== 'waiting') {
-        return Response.json({ success: false, error: 'Game already started' }, { status: 400, headers: CORS });
-      }
-      const playerKey = `${className}_${studentNo}`;
-      if (!session.players[playerKey]) {
-        session.players[playerKey] = { className, studentNo, score: 0, joinedAt: new Date().toISOString() };
-      }
-      await env.SESSIONS.put(code, JSON.stringify(session), { expirationTtl: 7200 });
-      return Response.json({ success: true, playerKey, grade: session.grade }, { headers: CORS });
-    }
-
-    // GET /api/session/:code — poll game state (students + teacher)
-    const sessionMatch = path.match(/^\/api\/session\/(\d{6})$/);
-    if (sessionMatch && request.method === 'GET') {
-      const code = sessionMatch[1];
-      const raw = await env.SESSIONS.get(code);
-      if (!raw) {
-        return Response.json({ success: false, error: 'Session not found' }, { status: 404, headers: CORS });
-      }
-      const session = JSON.parse(raw);
-      const question = session.state === 'playing' && session.questions[session.currentQ]
-        ? { text: session.questions[session.currentQ].text, poem: session.questions[session.currentQ].poem, options: session.questions[session.currentQ].options }
+    // ── SESSION GET ──
+    const sm = p.match(/^\/api\/session\/(\d{6})$/);
+    if (sm && request.method === 'GET') {
+      const raw = await env.SESSIONS.get(sm[1]);
+      if (!raw) return err('Session not found', 404);
+      const s = JSON.parse(raw);
+      const q = s.state === 'playing' && s.questions[s.currentQ]
+        ? { poem: s.questions[s.currentQ].poem, text: s.questions[s.currentQ].text, options: s.questions[s.currentQ].options, answer: s.questions[s.currentQ].answer }
         : null;
-      return Response.json({
-        success: true,
-        code: session.code,
-        grade: session.grade,
-        state: session.state,
-        currentQ: session.currentQ,
-        totalQ: session.questions.length,
-        question,
-        players: session.players,
-      }, { headers: CORS });
+      return ok({ code: s.code, grade: s.grade, state: s.state, currentQ: s.currentQ, totalQ: s.questions.length, question: q, groups: s.groups, history: s.history });
     }
 
-    // POST /api/session/:code/start — teacher starts game
-    const startMatch = path.match(/^\/api\/session\/(\d{6})\/start$/);
-    if (startMatch && request.method === 'POST') {
-      if (!checkAuth(request)) {
-        return Response.json({ success: false, error: 'Unauthorized' }, { status: 401, headers: CORS });
-      }
-      const code = startMatch[1];
-      const raw = await env.SESSIONS.get(code);
-      if (!raw) return Response.json({ success: false, error: 'Session not found' }, { status: 404, headers: CORS });
-      const session = JSON.parse(raw);
-      session.state = 'playing';
-      session.currentQ = 0;
-      session.startedAt = new Date().toISOString();
-      await env.SESSIONS.put(code, JSON.stringify(session), { expirationTtl: 7200 });
-      return Response.json({ success: true }, { headers: CORS });
+    // ── SESSION START ──
+    const startM = p.match(/^\/api\/session\/(\d{6})\/start$/);
+    if (startM && request.method === 'POST') {
+      if (!auth(request)) return err('Unauthorized', 401);
+      const raw = await env.SESSIONS.get(startM[1]); if (!raw) return err('Not found', 404);
+      const s = JSON.parse(raw); s.state = 'playing'; s.currentQ = 0;
+      await env.SESSIONS.put(startM[1], JSON.stringify(s), { expirationTtl: 7200 });
+      return ok({});
     }
 
-    // POST /api/session/:code/next — teacher advances to next Q
-    const nextMatch = path.match(/^\/api\/session\/(\d{6})\/next$/);
-    if (nextMatch && request.method === 'POST') {
-      if (!checkAuth(request)) {
-        return Response.json({ success: false, error: 'Unauthorized' }, { status: 401, headers: CORS });
-      }
-      const code = nextMatch[1];
-      const raw = await env.SESSIONS.get(code);
-      if (!raw) return Response.json({ success: false, error: 'Session not found' }, { status: 404, headers: CORS });
-      const session = JSON.parse(raw);
-      session.currentQ++;
-      if (session.currentQ >= session.questions.length) {
-        session.state = 'finished';
-        // auto-save all players to leaderboard
+    // ── SCORE GROUP (per question) ──
+    const scoreM = p.match(/^\/api\/session\/(\d{6})\/score$/);
+    if (scoreM && request.method === 'POST') {
+      if (!auth(request)) return err('Unauthorized', 401);
+      const { group, type } = await request.json().catch(() => ({}));
+      if (!['A','B','C','D'].includes(group) || !['correct','wrong'].includes(type)) return err('Invalid params', 400);
+      const raw = await env.SESSIONS.get(scoreM[1]); if (!raw) return err('Not found', 404);
+      const s = JSON.parse(raw);
+      if (s.state !== 'playing') return err('Game not started', 400);
+      const delta = type === 'correct' ? 10 : -5;
+      s.groups[group] = Math.max(0, (s.groups[group] || 0) + delta);
+      s.history.push({ q: s.currentQ, group, type, delta, time: new Date().toISOString() });
+      await env.SESSIONS.put(scoreM[1], JSON.stringify(s), { expirationTtl: 7200 });
+      return ok({ groups: s.groups });
+    }
+
+    // ── NEXT QUESTION ──
+    const nextM = p.match(/^\/api\/session\/(\d{6})\/next$/);
+    if (nextM && request.method === 'POST') {
+      if (!auth(request)) return err('Unauthorized', 401);
+      const raw = await env.SESSIONS.get(nextM[1]); if (!raw) return err('Not found', 404);
+      const s = JSON.parse(raw); s.currentQ++;
+      if (s.currentQ >= s.questions.length) {
+        s.state = 'finished';
+        // Save groups to leaderboard
         const lb = (await env.LEADERBOARD.get('top20', 'json')) || [];
-        for (const [, p] of Object.entries(session.players)) {
-          lb.push({ grade: session.grade, className: p.className, studentNo: p.studentNo, score: p.score, time: new Date().toISOString() });
+        for (const [g, sc] of Object.entries(s.groups)) {
+          lb.push({ grade: s.grade, group: g, className: '第' + g + '組', studentNo: '', score: sc, time: new Date().toISOString() });
         }
         lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
         await env.LEADERBOARD.put('top20', JSON.stringify(lb.slice(0, 50)));
-      } else {
-        session.players = resetPlayerAnswered(session.players);
       }
-      await env.SESSIONS.put(code, JSON.stringify(session), { expirationTtl: 7200 });
-      return Response.json({ success: true, state: session.state, currentQ: session.currentQ }, { headers: CORS });
+      await env.SESSIONS.put(nextM[1], JSON.stringify(s), { expirationTtl: 7200 });
+      return ok({ state: s.state, currentQ: s.currentQ });
     }
 
-    // POST /api/session/:code/answer — student submits answer
-    const ansMatch = path.match(/^\/api\/session\/(\d{6})\/answer$/);
-    if (ansMatch && request.method === 'POST') {
-      const code = ansMatch[1];
-      const { playerKey, answer } = await request.json().catch(() => ({}));
-      if (playerKey == null || answer == null) {
-        return Response.json({ success: false, error: 'Missing fields' }, { status: 400, headers: CORS });
-      }
-      const raw = await env.SESSIONS.get(code);
-      if (!raw) return Response.json({ success: false, error: 'Session not found' }, { status: 404, headers: CORS });
-      const session = JSON.parse(raw);
-      if (session.state !== 'playing') {
-        return Response.json({ success: false, error: 'Game not in progress' }, { status: 400, headers: CORS });
-      }
-      const player = session.players[playerKey];
-      if (!player) return Response.json({ success: false, error: 'Player not found' }, { status: 400, headers: CORS });
-      if (player.answered) {
-        return Response.json({ success: false, error: 'Already answered' }, { status: 400, headers: CORS });
-      }
-      const q = session.questions[session.currentQ];
-      const correct = answer === q.answer;
-      if (correct) player.score += 10;
-      player.answered = true;
-      player.lastAnswer = answer;
-      player.lastCorrect = correct;
-      await env.SESSIONS.put(code, JSON.stringify(session), { expirationTtl: 7200 });
-      return Response.json({ success: true, correct, answer: q.answer, score: player.score }, { headers: CORS });
-    }
-
-    // POST /api/session/:code/end — teacher ends game early
-    const endMatch = path.match(/^\/api\/session\/(\d{6})\/end$/);
-    if (endMatch && request.method === 'POST') {
-      if (!checkAuth(request)) {
-        return Response.json({ success: false, error: 'Unauthorized' }, { status: 401, headers: CORS });
-      }
-      const code = endMatch[1];
-      const raw = await env.SESSIONS.get(code);
-      if (!raw) return Response.json({ success: false, error: 'Session not found' }, { status: 404, headers: CORS });
-      const session = JSON.parse(raw);
-      session.state = 'finished';
+    // ── END GAME ──
+    const endM = p.match(/^\/api\/session\/(\d{6})\/end$/);
+    if (endM && request.method === 'POST') {
+      if (!auth(request)) return err('Unauthorized', 401);
+      const raw = await env.SESSIONS.get(endM[1]); if (!raw) return err('Not found', 404);
+      const s = JSON.parse(raw); s.state = 'finished';
       const lb = (await env.LEADERBOARD.get('top20', 'json')) || [];
-      for (const [, p] of Object.entries(session.players)) {
-        lb.push({ grade: session.grade, className: p.className, studentNo: p.studentNo, score: p.score, time: new Date().toISOString() });
+      for (const [g, sc] of Object.entries(s.groups)) {
+        lb.push({ grade: s.grade, group: g, className: '第' + g + '組', studentNo: '', score: sc, time: new Date().toISOString() });
       }
       lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
       await env.LEADERBOARD.put('top20', JSON.stringify(lb.slice(0, 50)));
-      await env.SESSIONS.put(code, JSON.stringify(session), { expirationTtl: 7200 });
-      return Response.json({ success: true }, { headers: CORS });
+      await env.SESSIONS.put(endM[1], JSON.stringify(s), { expirationTtl: 7200 });
+      return ok({});
     }
 
-    // 404
-    return Response.json({ error: 'Not found' }, { status: 404, headers: CORS });
+    return err('Not found', 404);
   },
 };
 
-// ==================== HELPERS ====================
+// ========== HELPERS ==========
 
-function resetPlayerAnswered(players) {
-  const updated = {};
-  for (const [key, p] of Object.entries(players)) {
-    updated[key] = { ...p, answered: false, lastAnswer: null, lastCorrect: null };
-  }
-  return updated;
-}
-
-function generateQuestions(grade) {
+function genQ(grade) {
   const BANK = {
     P4: [
       { poem: '《靜夜思》李白', text: '「床前明月光，疑是地上霜」出自哪首詩？', options: ['春曉', '靜夜思', '登鸛雀樓', '憫農'], answer: 1 },
@@ -285,41 +176,22 @@ function generateQuestions(grade) {
       { poem: '《望洞庭》劉禹錫', text: '「遙望洞庭山水翠，白銀盤裡一青螺」把洞庭湖比作甚麼？', options: ['鏡子', '白銀盤', '青螺', '山水畫'], answer: 1 },
     ],
   };
-  const qs = BANK[grade] || BANK.P4;
-  // Fisher-Yates shuffle
-  for (let i = qs.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [qs[i], qs[j]] = [qs[j], qs[i]];
-  }
+  const qs = [...(BANK[grade] || BANK.P4)];
+  for (let i = qs.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [qs[i], qs[j]] = [qs[j], qs[i]]; }
   return qs.slice(0, 10);
 }
 
-async function handleLeaderboardPost(request, env, CORS) {
+async function handleLBPost(request, env, CORS) {
   try {
-    const entry = await request.json();
-    if (!entry.grade || !entry.className || !entry.studentNo || entry.score == null) {
-      return Response.json({ success: false, error: 'Missing fields' }, { status: 400, headers: CORS });
-    }
-    if (!['P4', 'P5', 'P6'].includes(entry.grade)) {
-      return Response.json({ success: false, error: 'Invalid grade' }, { status: 400, headers: CORS });
-    }
-    const score = Number(entry.score);
-    if (isNaN(score) || score < 0 || score > 100) {
-      return Response.json({ success: false, error: 'Invalid score' }, { status: 400, headers: CORS });
-    }
-    const record = {
-      grade: entry.grade,
-      className: String(entry.className).slice(0, 10),
-      studentNo: String(entry.studentNo).slice(0, 6),
-      score,
-      time: new Date().toISOString(),
-    };
+    const e = await request.json();
+    if (!e.grade || !e.className || e.score == null) return Response.json({ success: false, error: 'Missing fields' }, { status: 400, headers: CORS });
+    if (!['P4', 'P5', 'P6'].includes(e.grade)) return Response.json({ success: false, error: 'Invalid grade' }, { status: 400, headers: CORS });
+    const score = Number(e.score);
+    if (isNaN(score) || score < 0) return Response.json({ success: false, error: 'Invalid score' }, { status: 400, headers: CORS });
+    const rec = { grade: e.grade, className: String(e.className).slice(0, 20), studentNo: String(e.studentNo || '').slice(0, 10), score, time: new Date().toISOString() };
     const lb = (await env.LEADERBOARD.get('top20', 'json')) || [];
-    lb.push(record);
-    lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
+    lb.push(rec); lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
     await env.LEADERBOARD.put('top20', JSON.stringify(lb.slice(0, 50)));
     return Response.json({ success: true, leaderboard: lb.slice(0, 20) }, { headers: CORS });
-  } catch (_) {
-    return Response.json({ success: false, error: 'Invalid JSON' }, { status: 400, headers: CORS });
-  }
+  } catch (_) { return Response.json({ success: false, error: 'Invalid JSON' }, { status: 400, headers: CORS }); }
 }
