@@ -249,17 +249,23 @@ async function createSes(){
 }
 
 async function renderQuiz(groupsOverride){
+  const gc=ses.groupCount||4;
+  const letters='ABCDEF'.slice(0,gc);
+  const grid=document.getElementById('groupsGrid');
+  // Always set grid columns immediately so it never disappears
+  grid.style.gridTemplateColumns=`repeat(${gc}, 1fr)`;
+
   try{
     const r=await fetch(API+'/api/session/'+ses.code);
     const d=await r.json();
-    if(!d.success)return;
+    console.log('renderQuiz response:', d);
+    if(!d.success){console.error('renderQuiz: API fail', d);}
     if(d.state==='finished'){showFinal(d);return;}
 
-    const gc=d.groupCount||ses.groupCount||4;
-    const qi=d.currentQ+1;
-    document.getElementById('qCounter').textContent='第 '+qi+' / '+d.totalQ+' 題';
-    document.getElementById('qBar').style.width=(d.currentQ/d.totalQ*100)+'%';
-    const gs=groupsOverride||d.groups;
+    const qi=(d.currentQ||0)+1;
+    document.getElementById('qCounter').textContent='第 '+qi+' / '+(d.totalQ||10)+' 題';
+    document.getElementById('qBar').style.width=((d.currentQ||0)/(d.totalQ||10)*100)+'%';
+    const gs=groupsOverride||d.groups||{};
     const sum=Object.values(gs).reduce((a,b)=>a+b,0);
     document.getElementById('sumScore').textContent=sum;
 
@@ -268,16 +274,18 @@ async function renderQuiz(groupsOverride){
       document.getElementById('qText').textContent=d.question.text;
       document.getElementById('qAnswer').textContent='✅ 正確答案：'+String.fromCharCode(65+d.question.answer)+'. '+d.question.options[d.question.answer];
       document.getElementById('qAnswer').style.display='none';
+    } else {
+      document.getElementById('qPoem').textContent='';
+      document.getElementById('qText').textContent='載入題目...';
     }
 
     document.getElementById('btnNext').disabled=true;
     document.getElementById('btnReveal').disabled=false;
 
-    const letters = 'ABCDEF'.slice(0, gc);
-    const grid=document.getElementById('groupsGrid');
-    grid.style.gridTemplateColumns = `repeat(${gc}, 1fr)`;
+    // Render groups from API data or fallback to zeros
+    console.log('Rendering', gc, 'groups, scores:', gs);
     grid.innerHTML = letters.map(g=>`
-      <div class="group-card ${g}" style="border-color:${COLORS[g]};background:${COLORS[g]}15;">
+      <div class="group-card" style="border-color:${COLORS[g]};background:${COLORS[g]}25;">
         <div class="group-letter" style="background:${COLORS[g]};color:#fff;">${g}組</div>
         <div class="group-score-box">
           <div class="group-score" id="grpScore_${g}">${gs[g]||0}</div>
@@ -289,7 +297,23 @@ async function renderQuiz(groupsOverride){
         </div>
       </div>
     `).join('');
-  }catch(e){}
+  }catch(e){
+    console.error('renderQuiz error:', e);
+    // Fallback: render groups even if API fails
+    grid.innerHTML = letters.map(g=>`
+      <div class="group-card" style="border-color:${COLORS[g]};background:${COLORS[g]}25;">
+        <div class="group-letter" style="background:${COLORS[g]};color:#fff;">${g}組</div>
+        <div class="group-score-box">
+          <div class="group-score" id="grpScore_${g}">0</div>
+          <div class="group-score-label">當前得分</div>
+        </div>
+        <div class="group-btns">
+          <button class="group-btn correct" onclick="scoreGroup('${g}','correct',this)">✅ 答對</button>
+          <button class="group-btn wrong" onclick="scoreGroup('${g}','wrong',this)">❌ 答錯</button>
+        </div>
+      </div>
+    `).join('');
+  }
 }
 
 // ===== SOUND EFFECTS =====
