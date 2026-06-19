@@ -1289,7 +1289,6 @@ body::after{
       <div class="difficulty-row" id="difficultyRow" style="display:none;"></div>
       <div class="round-controls">
         <button class="pixel-btn btn-pink btn-block" onclick="beginSelectedRound()">開始回合</button>
-        <button class="pixel-btn btn-purple btn-block btn-sm" onclick="go('scrAdmin')">管理排行榜</button>
         <button class="pixel-btn btn-green btn-block btn-sm" onclick="go('scrRecord')">📊 積分紀錄</button>
       </div>
     </section>
@@ -1362,7 +1361,7 @@ body::after{
     </div>
     <div style="margin-top:8px;">
       <table class="admin-lb-table">
-        <thead><tr><th>#</th><th>組別</th><th>分數</th><th>回合</th><th>最後更新</th></tr></thead>
+        <thead><tr><th>#</th><th>組別</th><th>R1</th><th>R2</th><th>R3</th><th>總分</th></tr></thead>
         <tbody id="recordBody"></tbody>
       </table>
     </div>
@@ -1630,7 +1629,7 @@ async function goStart(){
       if(getRound().mode!=='single'){
         const scores=loadScores();
         const initial={};
-        getGroupKeys().forEach(g=>{initial[g]=scores[g]?scores[g].score:0;});
+        getGroupKeys().forEach(g=>{initial[g]=scores[g]?(scores[g].final||scores[g].r1||0):0;});
         createBody.initialScores=initial;
       }
       let r=await fetch(A+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify(createBody)});
@@ -1808,21 +1807,32 @@ const STORE_KEY='chinesepoetry_scores';
 function loadScores(){
   try{const raw=localStorage.getItem(STORE_KEY);return raw?JSON.parse(raw):{};}catch(e){return {};}
 }
-function saveScores(groups){
+function saveScores(groups, round){
   const store=loadScores();
-  const now=new Date().toLocaleString('zh-HK');
+  const r=round||activeRoundKey;
   const keys=getGroupKeys();
-  keys.forEach(g=>{const v=groups[g];if(v!==undefined){store[g]={score:v,round:activeRoundKey,time:now};}});
+  keys.forEach(g=>{
+    const v=groups[g];
+    if(v!==undefined){
+      if(!store[g]) store[g]={};
+      store[g][r]=v;
+      store[g].final=v;
+    }
+  });
   try{localStorage.setItem(STORE_KEY,JSON.stringify(store));}catch(e){}
 }
 function renderRecord(){
   const store=loadScores();
   const keys=getGroupKeys();
-  const arr=keys.map(g=>({group:g,...(store[g]||{score:0,round:'-',time:'-'})})).sort((a,b)=>b.score-a.score);
-  const rn={r1:'必答題',r2:'分組搶答題',r3:'至尊挑戰題'};
+  const arr=keys.map(g=>{
+    const d=store[g]||{};
+    const r1=d.r1||0, r2=d.r2||0, r3=d.r3||0;
+    const total=d.final||Math.max(r1,r2,r3);
+    return {group:g, r1, r2, r3, total};
+  }).sort((a,b)=>b.total-a.total);
   const tb=document.getElementById('recordBody');
-  if(!arr.length||arr.every(x=>x.score===0)){tb.innerHTML='<tr><td colspan="5" style="padding:20px;color:var(--muted);">未有積分紀錄</td></tr>';return;}
-  tb.innerHTML=arr.map((e,i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+e.group+'組</td><td>'+e.score+' 分</td><td>'+(rn[e.round]||e.round)+'</td><td>'+e.time+'</td></tr>').join('');
+  if(arr.every(x=>x.total===0)){tb.innerHTML='<tr><td colspan="6" style="padding:20px;color:var(--muted);">未有積分紀錄</td></tr>';return;}
+  tb.innerHTML=arr.map((e,i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+e.group+'組</td><td>'+e.r1+'</td><td>'+e.r2+'</td><td>'+e.r3+'</td><td style="font-weight:800;color:var(--accent)">'+e.total+'</td></tr>').join('');
 }
 function clearRecord(){
   if(!confirm('⚠️ 確定清除全部積分紀錄？'))return;
