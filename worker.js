@@ -13,7 +13,7 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
 
     const p = url.pathname;
-    function ok(data) { return Response.json(data, { headers: CORS }); }
+    function ok(data) { return Response.json({ success: true, ...data }, { headers: CORS }); }
     function err(msg, code) { return Response.json({ success: false, error: msg }, { status: code, headers: CORS }); }
     function auth(req) { return (req.headers.get('Authorization') || '') === 'Bearer lyt:lyt'; }
 
