@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>唐詩小狀元 🏮 趣味問答</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & BASE ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pink: #FFB5C2;
+  --pink-dark: #E8909E;
+  --blue: #B5D8FF;
+  --blue-dark: #8AB8E8;
+  --green: #B5FFC2;
+  --green-dark: #8AE89A;
+  --yellow: #FFF5B5;
+  --yellow-dark: #E8D98A;
+  --peach: #FFD8C2;
+  --peach-dark: #E8B89A;
+  --purple: #D8C2FF;
+  --purple-dark: #B89AE8;
+  --bg: #FFF8F0;
+  --text: #5C4033;
+  --text-light: #8B7355;
+  --white: #FFFAF5;
+  --shadow: 4px 4px 0px rgba(92,64,51,0.2);
+  --shadow-sm: 2px 2px 0px rgba(92,64,51,0.15);
+  --pixel-border: 4px solid var(--text);
+}
+
+body {
+  font-family: 'Press Start 2P', 'DotGothic16', monospace;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle, rgba(255,181,194,0.3) 1px, transparent 1px),
+    radial-gradient(circle, rgba(181,216,255,0.3) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  image-rendering: pixelated;
+}
+
+/* ============ FLOATING DECORATIONS ============ */
+.decorations {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.deco {
+  position: absolute;
+  font-size: 28px;
+  animation: floatAround 6s ease-in-out infinite;
+  opacity: 0.5;
+}
+.deco:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; }
+.deco:nth-child(2) { top: 8%; right: 8%; animation-delay: -2s; }
+.deco:nth-child(3) { bottom: 10%; left: 10%; animation-delay: -4s; }
+.deco:nth-child(4) { bottom: 8%; right: 5%; animation-delay: -1s; }
+.deco:nth-child(5) { top: 50%; left: 3%; animation-delay: -3s; font-size: 20px; }
+.deco:nth-child(6) { top: 40%; right: 4%; animation-delay: -5s; font-size: 22px; }
+.deco:nth-child(7) { top: 15%; left: 50%; animation-delay: -3.5s; font-size: 18px; }
+.deco:nth-child(8) { bottom: 20%; right: 50%; animation-delay: -1.5s; font-size: 24px; }
+
+@keyframes floatAround {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-12px) rotate(5deg); }
+  75% { transform: translateY(8px) rotate(-5deg); }
+}
+
+/* ============ MAIN CONTAINER ============ */
+.app-container {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 720px;
+  background: var(--white);
+  border: var(--pixel-border);
+  border-radius: 4px;
+  box-shadow:
+    var(--shadow),
+    0 0 0 4px var(--white),
+    0 0 0 8px var(--pink-dark),
+    inset 0 0 0 2px var(--pink);
+  padding: 28px 24px 32px;
+}
+
+/* ============ HEADER ============ */
+.app-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 3px dashed var(--pink-dark);
+}
+.app-header .icon-row {
+  font-size: 36px;
+  letter-spacing: 6px;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.app-header h1 {
+  font-size: 18px;
+  color: var(--pink-dark);
+  margin-top: 6px;
+  text-shadow: 2px 2px 0px rgba(255,181,194,0.4);
+  line-height: 1.6;
+}
+.app-header .subtitle {
+  font-size: 9px;
+  color: var(--text-light);
+  margin-top: 6px;
+}
+
+/* ============ STAGE INDICATOR ============ */
+.stage-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.stage-dot {
+  width: 16px; height: 16px;
+  border: 2px solid var(--pink-dark);
+  background: var(--white);
+  transition: all 0.3s;
+}
+.stage-dot.active {
+  background: var(--pink);
+  box-shadow: 0 0 8px var(--pink);
+}
+.stage-dot.done {
+  background: var(--green);
+  border-color: var(--green-dark);
+}
+.stage-line {
+  width: 32px; height: 2px;
+  background: var(--pink-dark);
+}
+
+/* ============ SCREENS ============ */
+.screen { display: none; }
+.screen.active { display: block; animation: fadeSlideIn 0.4s ease-out; }
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ GRADE SELECT SCREEN ============ */
+.grade-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.grade-card {
+  background: var(--white);
+  border: 3px solid;
+  padding: 20px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.grade-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.grade-card:active {
+  transform: translateY(0);
+  box-shadow: 1px 1px 0px rgba(92,64,51,0.15);
+}
+.grade-card.p4 { border-color: var(--pink-dark); background: #FFF0F3; }
+.grade-card.p5 { border-color: var(--blue-dark); background: #F0F6FF; }
+.grade-card.p6 { border-color: var(--green-dark); background: #F0FFF3; }
+.grade-card .grade-emoji { font-size: 40px; display: block; margin-bottom: 8px; }
+.grade-card .grade-label { font-size: 13px; color: var(--text); line-height: 1.6; }
+.grade-card .grade-desc { font-size: 8px; color: var(--text-light); margin-top: 6px; line-height: 1.4; }
+
+/* ============ FORM SCREEN ============ */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-size: 10px;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.form-group label .lbl-emoji { font-size: 16px; }
+.pixel-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 11px;
+  border: 3px solid var(--pink-dark);
+  background: var(--white);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.pixel-input:focus {
+  border-color: var(--blue-dark);
+  box-shadow: 0 0 0 3px rgba(181,216,255,0.4);
+}
+.pixel-input::placeholder {
+  color: var(--text-light);
+  font-size: 8px;
+}
+
+/* ============ BUTTONS ============ */
+.pixel-btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 14px 28px;
+  border: 3px solid;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  color: var(--text);
+  line-height: 1.4;
+}
+.pixel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.pixel-btn:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px rgba(92,64,51,0.1);
+}
+.pixel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.btn-pink { background: var(--pink); border-color: var(--pink-dark); }
+.btn-blue { background: var(--blue); border-color: var(--blue-dark); }
+.btn-green { background: var(--green); border-color: var(--green-dark); }
+.btn-yellow { background: var(--yellow); border-color: var(--yellow-dark); }
+.btn-peach { background: var(--peach); border-color: var(--peach-dark); }
+.btn-purple { background: var(--purple); border-color: var(--purple-dark); }
+.btn-block { display: block; width: 100%; }
+.btn-sm { font-size: 8px; padding: 10px 18px; }
+.btn-center { margin: 0 auto; display: block; }
+
+/* ============ QUIZ SCREEN ============ */
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--yellow);
+  border: 3px solid var(--yellow-dark);
+  font-size: 9px;
+  color: var(--text);
+}
+.quiz-header .q-counter { font-size: 10px; }
+.quiz-header .q-score { color: var(--pink-dark); }
+
+.quiz-progress {
+  width: 100%; height: 12px;
+  background: var(--bg);
+  border: 2px solid var(--pink-dark);
+  margin-bottom: 20px;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pink) 0px,
+    var(--pink-dark) 3px,
+    var(--pink) 6px
+  );
+  transition: width 0.4s ease-out;
+}
+
+.quiz-question-box {
+  background: #FFFBF5;
+  border: 3px solid var(--purple-dark);
+  padding: 18px 16px;
+  margin-bottom: 18px;
+}
+.quiz-question-box .q-poem-ref {
+  font-size: 8px;
+  color: var(--purple-dark);
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--purple);
+}
+.quiz-question-box .q-text {
+  font-size: 10px;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.options-grid {
+  display: grid;
+  gap: 10px;
+}
+.option-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1.7;
+  text-align: left;
+  border: 3px solid var(--blue-dark);
+  background: var(--white);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.option-btn:hover:not(.disabled) {
+  background: #F0F6FF;
+  border-color: var(--blue-dark);
+  transform: translateX(4px);
+}
+.option-btn .opt-letter {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--blue-dark);
+  font-size: 11px;
+  background: var(--blue);
+}
+.option-btn.correct {
+  border-color: var(--green-dark) !important;
+  background: #E8FFE8 !important;
+}
+.option-btn.correct .opt-letter {
+  background: var(--green);
+  border-color: var(--green-dark);
+}
+.option-btn.wrong {
+  border-color: var(--pink-dark) !important;
+  background: #FFE8E8 !important;
+}
+.option-btn.wrong .opt-letter {
+  background: var(--pink);
+  border-color: var(--pink-dark);
+}
+.option-btn.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.quiz-feedback {
+  text-align: center;
+  padding: 10px;
+  margin-top: 12px;
+  font-size: 9px;
+  line-height: 1.6;
+  min-height: 28px;
+}
+
+/* ============ RESULT SCREEN ============ */
+.result-box {
+  text-align: center;
+  padding: 24px 16px;
+  margin-bottom: 20px;
+  border: 3px solid var(--yellow-dark);
+  background: linear-gradient(135deg, var(--yellow), #FFF8DC);
+}
+.result-box .big-emoji {
+  font-size: 56px;
+  display: block;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+.result-box .score-number {
+  font-size: 36px;
+  color: var(--pink-dark);
+  margin: 8px 0;
+  text-shadow: 3px 3px 0px rgba(255,181,194,0.3);
+}
+.result-box .score-label {
+  font-size: 10px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.result-box .grade-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--purple);
+  border: 2px solid var(--purple-dark);
+  font-size: 9px;
+  margin-top: 10px;
+}
+
+/* ============ LEADERBOARD ============ */
+.leaderboard {
+  border: 3px solid var(--yellow-dark);
+  background: #FFFEFA;
+}
+.leaderboard-title {
+  font-size: 11px;
+  text-align: center;
+  padding: 12px;
+  background: var(--yellow);
+  border-bottom: 3px solid var(--yellow-dark);
+  color: var(--text);
+}
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8px;
+}
+.leaderboard-table th {
+  padding: 8px 4px;
+  background: var(--blue);
+  border-bottom: 2px solid var(--blue-dark);
+  color: var(--text);
+  font-size: 7px;
+  line-height: 1.4;
+}
+.leaderboard-table td {
+  padding: 8px 4px;
+  text-align: center;
+  border-bottom: 1px dashed var(--text-light);
+  color: var(--text);
+  line-height: 1.4;
+}
+.leaderboard-table .rank-1 { color: #FFD700; font-size: 14px; }
+.leaderboard-table .rank-2 { color: #C0C0C0; font-size: 12px; }
+.leaderboard-table .rank-3 { color: #CD7F32; font-size: 11px; }
+.leaderboard-table .highlight-row {
+  background: #FFF8E1;
+  animation: highlightPulse 1.5s ease-in-out infinite;
+}
+@keyframes highlightPulse {
+  0%, 100% { background: #FFF8E1; }
+  50% { background: #FFECB3; }
+}
+.leaderboard-table .no-rank {
+  color: var(--text-light);
+  font-size: 8px;
+}
+
+.leaderboard-empty {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-light);
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+/* ============ BACK LINK ============ */
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 8px;
+  color: var(--text-light);
+  cursor: pointer;
+  text-decoration: underline;
+  background: none; border: none;
+  font-family: inherit;
+  padding: 8px;
+}
+.back-link:hover { color: var(--pink-dark); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 600px) {
+  .app-container { padding: 16px 12px 20px; }
+  .grade-grid { grid-template-columns: 1fr; gap: 10px; }
+  .app-header h1 { font-size: 14px; }
+  .app-header .icon-row { font-size: 28px; }
+  .result-box .score-number { font-size: 28px; }
+  .pixel-btn { font-size: 10px; padding: 12px 20px; }
+  .quiz-header { font-size: 7px; }
+  .quiz-question-box .q-text { font-size: 9px; }
+  .option-btn { font-size: 8px; }
+  .leaderboard-table { font-size: 7px; }
+  .leaderboard-table th { font-size: 6px; }
+}
+
+/* ============ CONFETTI ============ */
+.confetti-container {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 999;
+}
+.confetti-piece {
+  position: absolute;
+  width: 10px; height: 10px;
+  animation: confettiFall 3s ease-out forwards;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Floating decorations -->
+<div class="decorations">
+  <span class="deco">🌸</span><span class="deco">⛩️</span><span class="deco">🏮</span>
+  <span class="deco">🎋</span><span class="deco">📜</span><span class="deco">🍂</span>
+  <span class="deco">🎐</span><span class="deco">🖌️</span>
+</div>
+
+<!-- Main App -->
+<div class="app-container" id="appContainer">
+  <!-- Header -->
+  <div class="app-header">
+    <div class="icon-row">🏮📜🎋</div>
+    <h1>唐詩小狀元</h1>
+    <div class="subtitle">～ 趣味問答挑戰 ～</div>
+  </div>
+
+  <!-- Stage Dots -->
+  <div class="stage-dots" id="stageDots">
+    <div class="stage-dot active" id="dot1"></div>
+    <div class="stage-line"></div>
+    <div class="stage-dot" id="dot2"></div>
+    <div class="stage-line"></div>
+    <div class="stage-dot" id="dot3"></div>
+    <div class="stage-line"></div>
+    <div class="stage-dot" id="dot4"></div>
+  </div>
+
+  <!-- SCREEN 1: Grade Selection -->
+  <div class="screen active" id="screenGrade">
+    <p style="font-size:10px;text-align:center;color:var(--text);margin-bottom:16px;line-height:1.8;">
+      🧑‍🎓 請選擇你的年級：
+    </p>
+    <div class="grade-grid">
+      <div class="grade-card p4" onclick="selectGrade('P4')">
+        <span class="grade-emoji">📗</span>
+        <span class="grade-label">四年級</span>
+        <span class="grade-desc">初識唐詩<br>打好基礎</span>
+      </div>
+      <div class="grade-card p5" onclick="selectGrade('P5')">
+        <span class="grade-emoji">📘</span>
+        <span class="grade-label">五年級</span>
+        <span class="grade-desc">進階賞析<br>深入理解</span>
+      </div>
+      <div class="grade-card p6" onclick="selectGrade('P6')">
+        <span class="grade-emoji">📙</span>
+        <span class="grade-label">六年級</span>
+        <span class="grade-desc">融會貫通<br>挑戰狀元</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Student Info -->
+  <div class="screen" id="screenInfo">
+    <p style="font-size:10px;text-align:center;color:var(--text);margin-bottom:20px;line-height:1.8;">
+      📝 <span id="selectedGradeLabel"></span> · 請填寫你的資料
+    </p>
+    <div class="form-group">
+      <label><span class="lbl-emoji">🏫</span> 你的班別：</label>
+      <input type="text" class="pixel-input" id="inputClass"
+             placeholder="例如：4A / 5B / 6C" maxlength="10">
+    </div>
+    <div class="form-group">
+      <label><span class="lbl-emoji">🔢</span> 你的學號：</label>
+      <input type="text" class="pixel-input" id="inputStudentNo"
+             placeholder="例如：12" maxlength="6">
+    </div>
+    <button class="pixel-btn btn-pink btn-block" onclick="startQuiz()" style="margin-top:8px;">
+      🚀 開始挑戰！
+    </button>
+    <button class="back-link" onclick="goToScreen('screenGrade')">← 返回選擇年級</button>
+  </div>
+
+  <!-- SCREEN 3: Quiz -->
+  <div class="screen" id="screenQuiz">
+    <div class="quiz-header">
+      <span class="q-counter" id="qCounter">第 1 / 10 題</span>
+      <span class="q-score" id="qScoreDisplay">🏆 0 分</span>
+    </div>
+    <div class="quiz-progress">
+      <div class="quiz-progress-fill" id="quizProgressBar" style="width:0%"></div>
+    </div>
+    <div class="quiz-question-box">
+      <div class="q-poem-ref" id="qPoemRef"></div>
+      <div class="q-text" id="qText"></div>
+    </div>
+    <div class="options-grid" id="optionsGrid"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <button class="pixel-btn btn-blue btn-block" id="btnNext" style="display:none;margin-top:12px;"
+            onclick="nextQuestion()">
+      ▶ 下一題
+    </button>
+  </div>
+
+  <!-- SCREEN 4: Result + Leaderboard -->
+  <div class="screen" id="screenResult">
+    <div class="result-box" id="resultBox"></div>
+    <div class="leaderboard">
+      <div class="leaderboard-title">🏆 積分排行榜 TOP 20</div>
+      <div id="leaderboardContent"></div>
+    </div>
+    <button class="pixel-btn btn-pink btn-block" onclick="restartApp()" style="margin-top:16px;">
+      🔄 再玩一次！
+    </button>
+  </div>
+</div>
+
+<!-- Confetti container -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<script>
+// ==================== QUESTION BANK ====================
+const questionBank = {
+  P4: [
+    {
+      poem: "《靜夜思》李白",
+      question: "「床前明月光，疑是地上霜」出自哪首詩？",
+      options: ["春曉", "靜夜思", "登鸛雀樓", "憫農"],
+      answer: 1
+    },
+    {
+      poem: "《靜夜思》李白",
+      question: "《靜夜思》的作者是誰？",
+      options: ["杜甫", "李白", "白居易", "王維"],
+      answer: 1
+    },
+    {
+      poem: "《靜夜思》李白",
+      question: "「舉頭望明月」的下一句是甚麼？",
+      options: ["疑是地上霜", "低頭思故鄉", "處處聞啼鳥", "粒粒皆辛苦"],
+      answer: 1
+    },
+    {
+      poem: "《春曉》孟浩然",
+      question: "「春眠不覺曉，處處聞啼鳥」中，詩人在哪個季節醒來？",
+      options: ["夏天", "秋天", "冬天", "春天"],
+      answer: 3
+    },
+    {
+      poem: "《春曉》孟浩然",
+      question: "「夜來風雨聲，花落知多少」的作者是誰？",
+      options: ["李白", "杜甫", "孟浩然", "王維"],
+      answer: 2
+    },
+    {
+      poem: "《登鸛雀樓》王之渙",
+      question: "「白日依山盡，黃河入海流」的下一句是？",
+      options: [
+        "欲窮千里目，更上一層樓",
+        "舉頭望明月，低頭思故鄉",
+        "夜來風雨聲，花落知多少",
+        "誰知盤中餐，粒粒皆辛苦"
+      ],
+      answer: 0
+    },
+    {
+      poem: "《憫農》李紳",
+      question: "「誰知盤中餐，粒粒皆辛苦」提醒我們應該怎樣做？",
+      options: ["多吃飯", "珍惜食物", "努力耕田", "好好讀書"],
+      answer: 1
+    },
+    {
+      poem: "《詠鵝》駱賓王",
+      question: "「鵝，鵝，鵝，曲項向天歌」中，駱賓王描寫鵝的甚麼特點？",
+      options: ["鵝在睡覺", "鵝彎著脖子向天唱歌", "鵝在吃東西", "鵝在飛翔"],
+      answer: 1
+    },
+    {
+      poem: "《相思》王維",
+      question: "「紅豆生南國，春來發幾枝」中的「紅豆」象徵甚麼？",
+      options: ["財富", "思念", "好運", "健康"],
+      answer: 1
+    },
+    {
+      poem: "《鹿柴》王維",
+      question: "「空山不見人，但聞人語響」描寫的是怎樣的環境？",
+      options: ["熱鬧的城市", "寧靜的山林", "廣闊的大海", "繁華的市場"],
+      answer: 1
+    }
+  ],
+  P5: [
+    {
+      poem: "《遊子吟》孟郊",
+      question: "「慈母手中線，遊子身上衣」出自下列哪首詩？",
+      options: ["回鄉偶書", "遊子吟", "楓橋夜泊", "望廬山瀑布"],
+      answer: 1
+    },
+    {
+      poem: "《遊子吟》孟郊",
+      question: "「誰言寸草心，報得三春暉」中的「寸草」比喻甚麼？",
+      options: ["小草", "子女", "母親", "春天"],
+      answer: 1
+    },
+    {
+      poem: "《回鄉偶書》賀知章",
+      question: "「少小離家老大回，鄉音無改鬢毛衰」表達了甚麼情感？",
+      options: ["興奮", "憤怒", "感慨時光流逝", "害怕"],
+      answer: 2
+    },
+    {
+      poem: "《望廬山瀑布》李白",
+      question: "「飛流直下三千尺，疑是銀河落九天」描寫的是甚麼？",
+      options: ["黃河", "長江", "廬山瀑布", "大海"],
+      answer: 2
+    },
+    {
+      poem: "《絕句》杜甫",
+      question: "「兩個黃鸝鳴翠柳，一行白鷺上青天」中，詩人描寫了幾種鳥？",
+      options: ["一種", "兩種", "三種", "四種"],
+      answer: 1
+    },
+    {
+      poem: "《楓橋夜泊》張繼",
+      question: "「姑蘇城外寒山寺」中的「姑蘇」是現今哪個城市？",
+      options: ["杭州", "南京", "蘇州", "揚州"],
+      answer: 2
+    },
+    {
+      poem: "《涼州詞》王翰",
+      question: "「葡萄美酒夜光杯，欲飲琵琶馬上催」描寫的是甚麼場景？",
+      options: ["家庭聚會", "邊塞軍旅宴飲", "皇宮宴會", "朋友送別"],
+      answer: 1
+    },
+    {
+      poem: "《送孟浩然之廣陵》李白",
+      question: "「煙花三月下揚州」中的「煙花」是指甚麼？",
+      options: ["煙火", "春天的繁華景色", "煙和花", "戰爭的烽火"],
+      answer: 1
+    },
+    {
+      poem: "《望天門山》李白",
+      question: "「兩岸青山相對出，孤帆一片日邊來」描寫的是哪條江河？",
+      options: ["黃河", "珠江", "長江", "淮河"],
+      answer: 2
+    },
+    {
+      poem: "《早發白帝城》李白",
+      question: "「千里江陵一日還」說明了甚麼？",
+      options: ["路程很遠", "船速很快", "詩人很累", "天氣很好"],
+      answer: 1
+    }
+  ],
+  P6: [
+    {
+      poem: "《送元二使安西》王維",
+      question: "「勸君更盡一杯酒，西出陽關無故人」表達了甚麼情感？",
+      options: ["喜悅", "依依不捨", "憤怒", "無所謂"],
+      answer: 1
+    },
+    {
+      poem: "《九月九日憶山東兄弟》王維",
+      question: "這首詩題目中的「九月九日」是甚麼節日？",
+      options: ["中秋節", "端午節", "重陽節", "元宵節"],
+      answer: 2
+    },
+    {
+      poem: "《贈汪倫》李白",
+      question: "「桃花潭水深千尺，不及汪倫送我情」中，詩人用甚麼來比喻友情？",
+      options: ["桃花", "潭水", "船隻", "山峰"],
+      answer: 1
+    },
+    {
+      poem: "《江雪》柳宗元",
+      question: "「千山鳥飛絕，萬徑人蹤滅」營造了怎樣的氣氛？",
+      options: ["熱鬧歡樂", "生機勃勃", "孤獨冷清", "憤怒悲傷"],
+      answer: 2
+    },
+    {
+      poem: "《江南春》杜牧",
+      question: "「南朝四百八十寺，多少樓臺煙雨中」的「南朝」指甚麼？",
+      options: ["唐朝", "宋朝", "魏晉南北朝時期的南方政權", "元朝"],
+      answer: 2
+    },
+    {
+      poem: "《泊秦淮》杜牧",
+      question: "「商女不知亡國恨，隔江猶唱後庭花」中，詩人實際上在諷刺誰？",
+      options: ["商女", "平民百姓", "沉迷享樂的達官貴人", "詩人自己"],
+      answer: 2
+    },
+    {
+      poem: "《山行》杜牧",
+      question: "「停車坐愛楓林晚，霜葉紅於二月花」中「坐」字的意思是？",
+      options: ["坐下", "因為", "乘坐", "座位"],
+      answer: 1
+    },
+    {
+      poem: "《樂遊原》李商隱",
+      question: "「夕陽無限好，只是近黃昏」表達了詩人甚麼心情？",
+      options: ["興奮雀躍", "心滿意足", "惋惜和感慨", "憤怒不滿"],
+      answer: 2
+    },
+    {
+      poem: "《烏衣巷》劉禹錫",
+      question: "「舊時王謝堂前燕，飛入尋常百姓家」反映了甚麼？",
+      options: ["燕子搬家了", "世事變遷、繁華不再", "春天來了", "人們喜歡燕子"],
+      answer: 1
+    },
+    {
+      poem: "《望洞庭》劉禹錫",
+      question: "「遙望洞庭山水翠，白銀盤裡一青螺」把洞庭湖比作甚麼？",
+      options: ["鏡子", "白銀盤", "青螺", "山水畫"],
+      answer: 1
+    }
+  ]
+};
+
+// ==================== APP STATE ====================
+let state = {
+  grade: null,
+  className: '',
+  studentNo: '',
+  questions: [],
+  currentQIndex: 0,
+  score: 0,
+  answered: false
+};
+
+// ==================== SCREEN MANAGEMENT ====================
+function goToScreen(screenId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+  updateStageDots(screenId);
+}
+
+function updateStageDots(screenId) {
+  const map = { screenGrade: 1, screenInfo: 2, screenQuiz: 3, screenResult: 4 };
+  const stage = map[screenId] || 1;
+  for (let i = 1; i <= 4; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.classList.remove('active', 'done');
+    if (i < stage) dot.classList.add('done');
+    if (i === stage) dot.classList.add('active');
+  }
+}
+
+// ==================== GRADE SELECTION ====================
+function selectGrade(grade) {
+  state.grade = grade;
+  document.getElementById('selectedGradeLabel').textContent =
+    '你選擇了：' + (grade === 'P4' ? '四年級 📗' : grade === 'P5' ? '五年級 📘' : '六年級 📙');
+  document.getElementById('inputClass').value = '';
+  document.getElementById('inputStudentNo').value = '';
+  goToScreen('screenInfo');
+}
+
+// ==================== START QUIZ ====================
+function startQuiz() {
+  const cls = document.getElementById('inputClass').value.trim();
+  const sno = document.getElementById('inputStudentNo').value.trim();
+
+  if (!cls) { alert('請輸入你的班別喔～ 📝'); return; }
+  if (!sno) { alert('請輸入你的學號喔～ 🔢'); return; }
+
+  state.className = cls;
+  state.studentNo = sno;
+  state.questions = shuffleArray([...questionBank[state.grade]]).slice(0, 10);
+  state.currentQIndex = 0;
+  state.score = 0;
+  state.answered = false;
+
+  goToScreen('screenQuiz');
+  renderQuestion();
+}
+
+// ==================== RENDER QUESTION ====================
+function renderQuestion() {
+  const q = state.questions[state.currentQIndex];
+  const total = state.questions.length;
+
+  document.getElementById('qCounter').textContent = `第 ${state.currentQIndex + 1} / ${total} 題`;
+  document.getElementById('qScoreDisplay').textContent = `🏆 ${state.score} 分`;
+  document.getElementById('quizProgressBar').style.width =
+    ((state.currentQIndex / total) * 100) + '%';
+  document.getElementById('qPoemRef').textContent = '📖 ' + q.poem;
+  document.getElementById('qText').textContent = q.question;
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('btnNext').style.display = 'none';
+
+  const optLabels = ['A', 'B', 'C', 'D'];
+  const grid = document.getElementById('optionsGrid');
+  grid.innerHTML = '';
+
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="opt-letter">${optLabels[i]}</span><span>${opt}</span>`;
+    btn.onclick = () => selectAnswer(i);
+    grid.appendChild(btn);
+  });
+
+  state.answered = false;
+}
+
+// ==================== SELECT ANSWER ====================
+function selectAnswer(chosen) {
+  if (state.answered) return;
+  state.answered = true;
+
+  const q = state.questions[state.currentQIndex];
+  const correct = q.answer;
+  const buttons = document.querySelectorAll('#optionsGrid .option-btn');
+
+  buttons.forEach((btn, i) => {
+    btn.classList.add('disabled');
+    if (i === correct) btn.classList.add('correct');
+  });
+
+  if (chosen === correct) {
+    state.score += 10;
+    document.getElementById('quizFeedback').innerHTML =
+      '<span style="color:var(--green-dark)">✅ 答對了！好叻呀！(+10分)</span>';
+    document.getElementById('qScoreDisplay').textContent = `🏆 ${state.score} 分`;
+    spawnMiniConfetti();
+  } else {
+    buttons[chosen].classList.add('wrong');
+    document.getElementById('quizFeedback').innerHTML =
+      `<span style="color:var(--pink-dark)">❌ 答錯了～ 正確答案是 ${['A','B','C','D'][correct]}</span>`;
+  }
+
+  const isLast = state.currentQIndex >= state.questions.length - 1;
+  const btnNext = document.getElementById('btnNext');
+  btnNext.style.display = 'block';
+  btnNext.textContent = isLast ? '🏁 睇結果！' : '▶ 下一題';
+  document.getElementById('quizProgressBar').style.width =
+    (((state.currentQIndex + 1) / state.questions.length) * 100) + '%';
+}
+
+// ==================== NEXT QUESTION ====================
+function nextQuestion() {
+  if (state.currentQIndex >= state.questions.length - 1) {
+    showResult();
+    return;
+  }
+  state.currentQIndex++;
+  state.answered = false;
+  renderQuestion();
+}
+
+// ==================== SHOW RESULT ====================
+function showResult() {
+  goToScreen('screenResult');
+  saveScore();
+  renderResult();
+  renderLeaderboard();
+  spawnConfetti();
+}
+
+function renderResult() {
+  const score = state.score;
+  let emoji, message;
+  if (score === 100) { emoji = '👑'; message = '狀元之才！全部答對！'; }
+  else if (score >= 80) { emoji = '🌟'; message = '好厲害！繼續努力！'; }
+  else if (score >= 60) { emoji = '📚'; message = '不錯喔～再溫習一下會更好！'; }
+  else if (score >= 40) { emoji = '💪'; message = '加油！多讀唐詩會有進步！'; }
+  else { emoji = '🌱'; message = '別灰心！唐詩很有趣的，再試一次吧！'; }
+
+  document.getElementById('resultBox').innerHTML = `
+    <span class="big-emoji">${emoji}</span>
+    <div class="score-number">${score} 分</div>
+    <div class="score-label">${message}</div>
+    <div class="grade-badge">${state.grade === 'P4' ? '四年級' : state.grade === 'P5' ? '五年級' : '六年級'} · ${state.className} · ${state.studentNo}</div>
+  `;
+}
+
+// ==================== LEADERBOARD ====================
+function getLeaderboard() {
+  try {
+    return JSON.parse(localStorage.getItem('tangPoetryLB') || '[]');
+  } catch { return []; }
+}
+
+function saveScore() {
+  const lb = getLeaderboard();
+  lb.push({
+    grade: state.grade,
+    className: state.className,
+    studentNo: state.studentNo,
+    score: state.score,
+    time: new Date().toISOString()
+  });
+  lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
+  const top20 = lb.slice(0, 20);
+  localStorage.setItem('tangPoetryLB', JSON.stringify(top20));
+}
+
+function renderLeaderboard() {
+  const lb = getLeaderboard();
+  const container = document.getElementById('leaderboardContent');
+
+  if (lb.length === 0) {
+    container.innerHTML = '<div class="leaderboard-empty">🏮 未有紀錄～<br>快啲玩成為第一名啦！</div>';
+    return;
+  }
+
+  const gradeMap = { P4: '四年級', P5: '五年級', P6: '六年級' };
+  const rankEmoji = ['🥇', '🥈', '🥉'];
+  const currentKey = `${state.grade}|${state.className}|${state.studentNo}`;
+
+  let html = `<table class="leaderboard-table">
+    <thead><tr>
+      <th>排名</th><th>年級</th><th>班別</th><th>學號</th><th>分數</th>
+    </tr></thead><tbody>`;
+
+  lb.forEach((entry, i) => {
+    const entryKey = `${entry.grade}|${entry.className}|${entry.studentNo}`;
+    const isCurrent = entryKey === currentKey &&
+                      entry.score === state.score;
+    const rankDisplay = i < 3
+      ? `<span class="rank-${i+1}">${rankEmoji[i]}</span>`
+      : `<span class="no-rank">${i + 1}</span>`;
+
+    html += `<tr class="${isCurrent ? 'highlight-row' : ''}">
+      <td>${rankDisplay}</td>
+      <td>${gradeMap[entry.grade] || entry.grade}</td>
+      <td>${entry.className}</td>
+      <td>${entry.studentNo}</td>
+      <td>${entry.score}</td>
+    </tr>`;
+  });
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+// ==================== RESTART ====================
+function restartApp() {
+  state = { grade: null, className: '', studentNo: '', questions: [], currentQIndex: 0, score: 0, answered: false };
+  goToScreen('screenGrade');
+}
+
+// ==================== CONFETTI ====================
+function spawnConfetti() {
+  const container = document.getElementById('confettiContainer');
+  const colors = ['#FFB5C2','#B5D8FF','#B5FFC2','#FFF5B5','#FFD8C2','#D8C2FF','#FFD700','#FF8C94'];
+  const pieces = [];
+  for (let i = 0; i < 60; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 2 + 's';
+    piece.style.animationDuration = (2.5 + Math.random() * 3) + 's';
+    piece.style.width = (6 + Math.random() * 10) + 'px';
+    piece.style.height = (6 + Math.random() * 10) + 'px';
+    container.appendChild(piece);
+    pieces.push(piece);
+  }
+  setTimeout(() => pieces.forEach(p => p.remove()), 5500);
+}
+
+function spawnMiniConfetti() {
+  const container = document.getElementById('confettiContainer');
+  const colors = ['#B5FFC2','#FFD700','#B5D8FF'];
+  const pieces = [];
+  for (let i = 0; i < 15; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = (30 + Math.random() * 40) + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 0.5 + 's';
+    piece.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
+    piece.style.width = (4 + Math.random() * 6) + 'px';
+    piece.style.height = (4 + Math.random() * 6) + 'px';
+    container.appendChild(piece);
+    pieces.push(piece);
+  }
+  setTimeout(() => pieces.forEach(p => p.remove()), 3000);
+}
+
+// ==================== UTILS ====================
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+</script>
+</body>
+</html>
