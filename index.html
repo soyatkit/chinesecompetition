@@ -293,7 +293,7 @@ body::after{
   box-shadow:0 8px 24px rgba(10,132,255,.10);
   flex-shrink:0;
 }
-.big-timer.urgent{color:#ff3b30;border-color:rgba(255,59,48,.4);animation:pulse .5s ease infinite alternate}
+.big-timer.urgent{color:#ff3b30;border-color:rgba(255,59,48,.4);animation:timerPulse .5s ease infinite alternate}
 .times-up-overlay{
   position:fixed;inset:0;z-index:999;
   background:rgba(0,0,0,.55);
@@ -618,6 +618,7 @@ body::after{
 .highlight-row{background:rgba(10,132,255,.08)}
 .highlight-row td{border-bottom-color:rgba(10,132,255,.12)}
 @keyframes pulse{0%,100%{background:rgba(10,132,255,.08)}50%{background:rgba(10,132,255,.14)}}
+@keyframes timerPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 .admin-lb-table{
   width:100%;
   border-collapse:collapse;
@@ -1311,8 +1312,8 @@ body::after{
     <div class="times-up-overlay" id="timesUpOverlay" style="display:none;">
       <div class="times-up-box">
         <div class="times-up-icon">⏰</div>
-        <div class="times-up-title">停止作答</div>
-        <div class="times-up-sub">時間到！請切換下一組或下一題。</div>
+        <div class="times-up-title">作答完結</div>
+        <div class="times-up-sub">時間到！請切換至下一組繼續作答。</div>
         <button class="pixel-btn btn-pink btn-block" onclick="dismissTimesUp()">知道了</button>
       </div>
     </div>
@@ -1541,25 +1542,6 @@ function renderQuizMode(){
   if(r1)r1.style.display=isSingle?'grid':'none';
   if(grid)grid.style.display=isSingle?'none':'grid';
   if(isSingle) renderR1Scores();
-}
-function startRoundTimer(){
-  const round=getRound();
-  timerRemaining=round.duration;
-  stopRoundTimer();
-  timerRunning=true;
-  syncTimerUI();
-  timerHandle=setInterval(()=>{
-    timerRemaining-=1;
-    if(timerRemaining<=0){
-      timerRemaining=0;
-      syncTimerUI();
-      stopRoundTimer();
-      const detail=document.getElementById('roundDetail');
-      if(detail) detail.querySelector('.round-detail-desc')?.insertAdjacentHTML('afterend','<div class="soft-chip" style="justify-self:flex-start;background:#fff5d6;color:#8a5e00;">時間到，請老師切換下一步。</div>');
-      return;
-    }
-    syncTimerUI();
-  },1000);
 }
 function setGroupButtons(){
   const round=getRound();
