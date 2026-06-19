@@ -17,6 +17,13 @@ export default {
     function err(msg, code) { return Response.json({ success: false, error: msg }, { status: code, headers: CORS }); }
     function auth(req) { return (req.headers.get('Authorization') || '') === 'Bearer lyt:lyt'; }
 
+    // ── SERVE WEBSITE (no cache, no CDN) ──
+    if (request.method === 'GET' && (p === '/' || p === '/index.html' || p === '')) {
+      return new Response(INDEX_HTML, {
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store, max-age=0' },
+      });
+    }
+
     // ── HEALTH ──
     if (p === '/api/health') { const d = (await env.LEADERBOARD.get('top20', 'json')) || []; return ok({ status: 'ok', entries: d.length }); }
 
@@ -185,17 +192,306 @@ function genQ(grade) {
   return qs.slice(0, 10);
 }
 
-async function handleLBPost(request, env, CORS) {
-  try {
-    const e = await request.json();
-    if (!e.grade || !e.className || e.score == null) return Response.json({ success: false, error: 'Missing fields' }, { status: 400, headers: CORS });
-    if (!['P4', 'P5', 'P6'].includes(e.grade)) return Response.json({ success: false, error: 'Invalid grade' }, { status: 400, headers: CORS });
-    const score = Number(e.score);
-    if (isNaN(score) || score < 0) return Response.json({ success: false, error: 'Invalid score' }, { status: 400, headers: CORS });
-    const rec = { grade: e.grade, className: String(e.className).slice(0, 20), studentNo: String(e.studentNo || '').slice(0, 10), score, time: new Date().toISOString() };
-    const lb = (await env.LEADERBOARD.get('top20', 'json')) || [];
-    lb.push(rec); lb.sort((a, b) => b.score - a.score || new Date(a.time) - new Date(b.time));
-    await env.LEADERBOARD.put('top20', JSON.stringify(lb.slice(0, 50)));
-    return Response.json({ success: true, leaderboard: lb.slice(0, 20) }, { headers: CORS });
-  } catch (_) { return Response.json({ success: false, error: 'Invalid JSON' }, { status: 400, headers: CORS }); }
+const INDEX_HTML = `<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>唐詩小狀元 v3 — 課堂搶答系統</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--pink:#FFB5C2;--pink-dark:#E8909E;--blue:#B5D8FF;--blue-dark:#8AB8E8;--green:#B5FFC2;--green-dark:#8AE89A;--yellow:#FFF5B5;--yellow-dark:#E8D98A;--purple:#D8C2FF;--purple-dark:#B89AE8;--bg:#FFF8F0;--text:#5C4033;--text-light:#8B7355;--white:#FFFAF5;}
+body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.app-container{width:100%;max-width:1120px;aspect-ratio:16/9;max-height:calc(100vh - 40px);background:var(--white);border:4px solid var(--text);border-radius:8px;box-shadow:4px 4px 0px rgba(92,64,51,0.15),0 0 0 4px var(--white),0 0 0 8px var(--pink-dark);padding:24px 28px;display:flex;flex-direction:column;overflow:hidden;}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:3px dashed var(--pink-dark);margin-bottom:12px;flex-shrink:0;}
+.app-header h1{font-size:24px;color:var(--pink-dark);}
+.ver{font-size:10px;color:var(--text-light);}
+
+.screen{display:none;flex:1;overflow-y:auto;flex-direction:column;min-height:0;}
+.screen.active{display:flex;animation:fadeIn .3s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.form-group{margin-bottom:12px;}
+.form-group label{display:block;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.pixel-input{width:100%;padding:10px 14px;font-family:inherit;font-size:16px;border:3px solid var(--pink-dark);background:var(--white);color:var(--text);outline:none;border-radius:6px;}
+.pixel-btn{display:inline-block;font-family:inherit;font-size:15px;font-weight:700;padding:12px 24px;border:3px solid;cursor:pointer;box-shadow:3px 3px 0px rgba(92,64,51,0.12);border-radius:6px;color:var(--text);}
+.pixel-btn:hover{transform:translateY(-2px);box-shadow:5px 5px 0px rgba(92,64,51,0.18);}
+.pixel-btn:active{transform:translateY(1px);}
+.pixel-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+.btn-pink{background:var(--pink);border-color:var(--pink-dark);}
+.btn-blue{background:var(--blue);border-color:var(--blue-dark);}
+.btn-green{background:var(--green);border-color:var(--green-dark);}
+.btn-yellow{background:var(--yellow);border-color:var(--yellow-dark);}
+.btn-purple{background:var(--purple);border-color:var(--purple-dark);}
+.btn-danger{background:#FFE0E0;border-color:#E89090;}
+.btn-block{display:block;width:100%;}
+.btn-sm{font-size:13px;padding:8px 16px;}
+
+.dash-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:500px;margin:0 auto;}
+
+.quiz-top{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--yellow);border:3px solid var(--yellow-dark);border-radius:6px;font-size:16px;font-weight:700;margin-bottom:8px;flex-shrink:0;}
+.quiz-bar{height:10px;background:var(--bg);border:2px solid var(--pink-dark);border-radius:5px;margin-bottom:10px;flex-shrink:0;}
+.quiz-bar-fill{height:100%;background:var(--pink);border-radius:4px;transition:width .3s;}
+.quiz-q-box{border:3px solid var(--purple-dark);padding:16px;margin-bottom:10px;border-radius:8px;background:#FFFBF5;flex-shrink:0;}
+.quiz-q-box .q-poem{font-size:14px;color:var(--purple-dark);margin-bottom:6px;padding-bottom:6px;border-bottom:2px dashed var(--purple);}
+.quiz-q-box .q-text{font-size:24px;font-weight:900;color:var(--text);line-height:1.4;text-align:center;}
+.quiz-q-box .q-answer{font-size:16px;color:var(--green-dark);margin-top:10px;font-weight:900;text-align:center;padding:6px;border:3px solid var(--green-dark);border-radius:6px;background:#E8FFE8;display:none;}
+
+.groups-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;flex:1;min-height:140px;}
+.group-card{border:3px solid;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;background:var(--white);min-height:120px;overflow:hidden;}
+.group-head{width:100%;text-align:center;padding:6px 0;font-size:20px;font-weight:900;color:#fff;}
+.group-body{flex:1;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;color:var(--text);}
+.group-foot{display:flex;flex-direction:column;gap:3px;width:100%;padding:4px 6px;}
+.gbtn{padding:8px;border:3px solid;border-radius:6px;font-family:inherit;font-size:13px;font-weight:900;cursor:pointer;width:100%;}
+.gbtn:active{transform:scale(.95);}
+.gbtn.good{background:#E8FFE8;border-color:var(--green-dark);color:#2d7a2d;}
+.gbtn.bad{background:#FFE8E8;border-color:#E89090;color:#a33;}
+.gbtn.flash{animation:btnFlash .3s;}
+@keyframes btnFlash{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+.next-q-bar{display:flex;gap:10px;justify-content:center;margin-top:8px;flex-shrink:0;}
+
+.result-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;}
+.result-summary{text-align:center;padding:16px;border:3px solid var(--yellow-dark);border-radius:8px;background:linear-gradient(135deg,var(--yellow),#FFF8DC);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.result-summary .trophy{font-size:52px;}
+.result-summary .winner{font-size:20px;font-weight:900;margin:4px 0;}
+.result-summary .winner-score{font-size:32px;color:var(--pink-dark);font-weight:900;}
+.lb-panel{border:3px solid var(--yellow-dark);border-radius:8px;background:#FFFEFA;overflow-y:auto;}
+.lb-title{font-size:16px;font-weight:700;text-align:center;padding:8px;background:var(--yellow);border-bottom:3px solid var(--yellow-dark);}
+.lb-table{width:100%;border-collapse:collapse;font-size:14px;}
+.lb-table th{padding:6px;background:var(--blue);border-bottom:2px solid var(--blue-dark);font-weight:700;font-size:13px;}
+.lb-table td{padding:6px;text-align:center;border-bottom:1px dashed var(--text-light);}
+.lb-table .r-1{color:#FFD700;font-size:22px;font-weight:900;}
+.lb-table .r-2{color:#C0C0C0;font-size:18px;font-weight:900;}
+.lb-table .r-3{color:#CD7F32;font-size:16px;font-weight:900;}
+.highlight-row{background:#FFF8E1;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{background:#FFF8E1}50%{background:#FFECB3}}
+.admin-lb-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;}
+.admin-lb-table th{padding:6px;background:var(--purple);border-bottom:2px solid var(--purple-dark);font-size:13px;}
+.admin-lb-table td{padding:6px;text-align:center;border-bottom:1px dashed var(--text-light);}
+@media(max-width:800px){.app-container{aspect-ratio:auto;max-height:none;padding:14px 10px;}.groups-grid{grid-template-columns:1fr;}.result-layout{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="app-container" id="app">
+  <div class="app-header"><h1>📜 唐詩小狀元</h1><span class="ver">v3.0</span></div>
+
+  <!-- ====== DASHBOARD ====== -->
+  <div class="screen active" id="scrDash">
+    <div class="dash-center">
+      <h2 style="color:var(--purple-dark);margin-bottom:16px;">🎮 開設搶答遊戲</h2>
+      <div class="form-group" style="width:100%;"><label>選擇年級</label>
+        <select class="pixel-input" id="sesGrade"><option value="P4">📗 四年級</option><option value="P5">📘 五年級</option><option value="P6">📙 六年級</option></select>
+      </div>
+      <div class="form-group" style="width:100%;"><label>分組數量</label>
+        <div style="display:flex;gap:8px;" id="groupCountBtns">
+          <button class="pixel-btn btn-sm" onclick="setGC(2)" data-gc="2">2 組</button>
+          <button class="pixel-btn btn-sm" onclick="setGC(3)" data-gc="3">3 組</button>
+          <button class="pixel-btn btn-sm btn-blue" onclick="setGC(4)" data-gc="4">4 組</button>
+          <button class="pixel-btn btn-sm" onclick="setGC(5)" data-gc="5">5 組</button>
+          <button class="pixel-btn btn-sm" onclick="setGC(6)" data-gc="6">6 組</button>
+        </div>
+      </div>
+      <button class="pixel-btn btn-pink btn-block" onclick="goStart()">🚀 開始遊戲</button>
+      <button class="pixel-btn btn-purple btn-block btn-sm" style="margin-top:10px;" onclick="go('scrAdmin')">📊 管理排行榜</button>
+    </div>
+  </div>
+
+  <!-- ====== QUIZ ====== -->
+  <div class="screen" id="scrQuiz">
+    <div class="quiz-top"><span id="qCounter">第 1 / 10 題</span><span>總分：<strong id="sumScore" style="color:var(--pink-dark);">0</strong></span></div>
+    <div class="quiz-bar"><div class="quiz-bar-fill" id="qBar" style="width:0%"></div></div>
+    <div class="quiz-q-box">
+      <div class="q-poem" id="qPoem">📖 載入中...</div>
+      <div class="q-text" id="qText">正在連接伺服器...</div>
+      <div class="q-answer" id="qAnswer" style="display:none;">✅ 正確答案：</div>
+    </div>
+    <div class="groups-grid" id="groupsGrid">
+      <!-- Groups rendered by JS, fallback shows 4 groups as placeholder -->
+    </div>
+    <div class="next-q-bar">
+      <button class="pixel-btn btn-blue btn-sm" onclick="reveal()">👁 揭示答案</button>
+      <button class="pixel-btn btn-yellow btn-block" onclick="nextQ()" id="btnNext" disabled>▶ 下一題</button>
+    </div>
+  </div>
+
+  <!-- ====== RESULT ====== -->
+  <div class="screen" id="scrResult">
+    <div class="result-layout">
+      <div class="result-summary" id="resultSummary"></div>
+      <div class="lb-panel"><div class="lb-title">🏆 小組排行榜</div><table class="lb-table"><thead><tr><th>#</th><th>組別</th><th>分數</th></tr></thead><tbody id="lbBody"></tbody></table></div>
+    </div>
+    <button class="pixel-btn btn-pink btn-block btn-sm" style="margin-top:8px;" onclick="go('scrDash')">🔄 開新遊戲</button>
+  </div>
+
+  <!-- ====== ADMIN ====== -->
+  <div class="screen" id="scrAdmin">
+    <h2 style="text-align:center;color:var(--purple-dark);margin-bottom:10px;">📊 管理積分排行榜</h2>
+    <div style="overflow-y:auto;flex:1;"><table class="admin-lb-table"><thead><tr><th>#</th><th>年級</th><th>組別</th><th>分數</th><th>操作</th></tr></thead><tbody id="adminBody"></tbody></table></div>
+    <div style="display:flex;gap:8px;margin-top:8px;">
+      <button class="pixel-btn btn-danger btn-block btn-sm" onclick="clearAll()">🗑 清除全部</button>
+      <button class="pixel-btn btn-purple btn-block btn-sm" onclick="go('scrDash')">← 返回</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const A='https://chinesepoetry-api.chinesepoetry-api.workers.dev';
+const T='lyt:lyt';
+const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'};
+let GC=4, SES={code:'',grade:'',groupCount:4,groups:{A:0,B:0,C:0,D:0}};
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>{s.style.display='none';s.classList.remove('active');});
+  document.getElementById(id).style.display='flex';
+  document.getElementById(id).classList.add('active');
+  if(id==='scrAdmin')admin();
 }
+function setGC(n){GC=n;document.querySelectorAll('#groupCountBtns .pixel-btn').forEach(b=>b.classList.toggle('btn-blue',+b.dataset.gc===n));}
+function ph(){return 'ABCDEF'.slice(0,GC).split('').map(g=>\`<div class="group-card" style="border-color:\${C[g]}"><div class="group-head" style="background:\${C[g]}">\${g}組</div><div class="group-body" id="s_\${g}">0</div><div class="group-foot"><button class="gbtn good" onclick="sc('\${g}','correct',this)">✅ 答對</button><button class="gbtn bad" onclick="sc('\${g}','wrong',this)">❌ 答錯</button></div></div>\`).join('');}
+function draw(){
+  const g=document.getElementById('groupsGrid');
+  if(!g)return;
+  g.style.gridTemplateColumns='repeat('+GC+',1fr)';
+  g.innerHTML=ph();
+}
+
+// ====== START GAME ======
+async function goStart(){
+  const grade=document.getElementById('sesGrade').value;
+  GC=GC||4; SES.groupCount=GC; SES.grade=grade; SES.groups={};
+  'ABCDEF'.slice(0,GC).forEach(l=>SES.groups[l]=0);
+  
+  // Switch screens
+  document.getElementById('scrDash').style.display='none';
+  document.getElementById('scrDash').classList.remove('active');
+  document.getElementById('scrQuiz').style.display='flex';
+  document.getElementById('scrQuiz').classList.add('active');
+  
+  // Draw groups
+  draw();
+  
+  // Set text
+  document.getElementById('qPoem').textContent='📖 載入中...';
+  document.getElementById('qText').textContent='正在連接伺服器...';
+  document.getElementById('qAnswer').style.display='none';
+  
+  // Fetch from API
+  try{
+    let r=await fetch(A+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({grade,groupCount:GC})});
+    let d=await r.json();
+    if(!d.success)throw new Error(d.error||'create fail');
+    SES.code=d.code; SES.groupCount=d.groupCount||GC;
+    await fetch(A+'/api/session/'+SES.code+'/start',{method:'POST',headers:{Authorization:'Bearer '+T}});
+    await loadQ();
+  }catch(e){
+    document.getElementById('qPoem').textContent='📖 離線模式';
+    document.getElementById('qText').textContent='伺服器連接失敗。可按下方按鈕手動計分（不存排行榜）。';
+    document.getElementById('btnNext').disabled=true;
+  }
+}
+
+// ====== LOAD QUESTION FROM API ======
+async function loadQ(){
+  try{
+    let r=await fetch(A+'/api/session/'+SES.code);
+    let d=await r.json();
+    if(!d.success)throw new Error(d.error);
+    if(d.state==='finished'){finish(d);return;}
+    
+    document.getElementById('qCounter').textContent='第 '+((d.currentQ||0)+1)+' / '+(d.totalQ||10)+' 題';
+    document.getElementById('qBar').style.width=((d.currentQ||0)/(d.totalQ||10)*100)+'%';
+    
+    // update group scores from API
+    const gs=d.groups||{};
+    let sum=0;
+    for(let g of 'ABCDEF'.slice(0,GC)){
+      const v=gs[g]||0; sum+=v;
+      const el=document.getElementById('s_'+g); if(el)el.textContent=v;
+    }
+    document.getElementById('sumScore').textContent=sum;
+    
+    if(d.question){
+      document.getElementById('qPoem').textContent='📖 '+d.question.poem;
+      document.getElementById('qText').textContent=d.question.text;
+      document.getElementById('qAnswer').textContent='✅ 正確答案：'+String.fromCharCode(65+d.question.answer)+'. '+d.question.options[d.question.answer];
+      document.getElementById('qAnswer').style.display='none';
+    }
+    document.getElementById('btnNext').disabled=true;
+  }catch(e){console.warn(e);}
+}
+
+// ====== SCORE GROUP ======
+async function sc(group,type,btn){
+  if(btn)btn.classList.add('flash');
+  (new (window.AudioContext||window.webkitAudioContext)()).resume();
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator(); const g=ctx.createGain();
+    o.connect(g); g.connect(ctx.destination); const n=ctx.currentTime;
+    g.gain.setValueAtTime(0.25,n); g.gain.exponentialRampToValueAtTime(0.01,n+(type==='correct'?0.7:0.4));
+    if(type==='correct'){o.type='triangle';[523,659,784,1047].forEach((f,i)=>o.frequency.setValueAtTime(f,n+i*0.13));o.start(n);o.stop(n+0.9);}
+    else{o.type='sawtooth';o.frequency.setValueAtTime(247,n);o.frequency.exponentialRampToValueAtTime(98,n+0.35);o.start(n);o.stop(n+0.45);}
+  }catch(e){}
+  
+  try{
+    let r=await fetch(A+'/api/session/'+SES.code+'/score',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({group,type})});
+    let d=await r.json();
+    if(d.success){
+      const el=document.getElementById('s_'+group); if(el)el.textContent=d.groups[group];
+      document.getElementById('sumScore').textContent=Object.values(d.groups).reduce((a,b)=>a+b,0);
+      document.getElementById('btnNext').disabled=false;
+    }
+  }catch(e){ 
+    // Offline fallback: update locally
+    const el=document.getElementById('s_'+group);
+    if(el){
+      let cur=parseInt(el.textContent)||0;
+      cur=Math.max(0,cur+(type==='correct'?10:-5));
+      el.textContent=cur;
+      SES.groups[group]=cur;
+      document.getElementById('sumScore').textContent=Object.values(SES.groups).reduce((a,b)=>a+b,0);
+      document.getElementById('btnNext').disabled=false;
+    }
+  }
+}
+
+function reveal(){document.getElementById('qAnswer').style.display='block';}
+
+async function nextQ(){
+  const btn=document.getElementById('btnNext'); btn.disabled=true; btn.textContent='載入中...';
+  try{
+    let r=await fetch(A+'/api/session/'+SES.code+'/next',{method:'POST',headers:{Authorization:'Bearer '+T}});
+    let d=await r.json();
+    if(d.success){
+      if(d.state==='finished'){r=await fetch(A+'/api/session/'+SES.code);finish(await r.json());}
+      else await loadQ();
+    }
+  }catch(e){console.warn(e);}
+  btn.disabled=false; btn.textContent='▶ 下一題';
+}
+
+function finish(d){
+  go('scrResult');
+  const gs=d.groups||SES.groups; const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]); const w=arr[0];
+  document.getElementById('resultSummary').innerHTML='<div class="trophy">🏆</div><div class="winner">第'+w[0]+'組 冠軍！</div><div class="winner-score">'+w[1]+' 分</div>';
+  document.getElementById('lbBody').innerHTML=arr.map(([g,s],i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td class="'+(i<3?'r-'+(i+1):'')+'">'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+g+'組</td><td>'+s+' 分</td></tr>').join('');
+}
+
+async function admin(){
+  try{
+    let r=await fetch(A+'/api/leaderboard'); let d=await r.json(); let lb=d.leaderboard||[];
+    const gM={P4:'四年級',P5:'五年級',P6:'六年級'}; const tb=document.getElementById('adminBody');
+    if(!lb.length){tb.innerHTML='<tr><td colspan="5" style="padding:20px;color:var(--text-light);">未有紀錄</td></tr>';return;}
+    tb.innerHTML=lb.map((e,i)=>'<tr><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>'+(gM[e.grade]||e.grade)+'</td><td>'+(e.className||'第'+e.group+'組')+'</td><td>'+e.score+'</td><td><button class="pixel-btn btn-danger btn-sm" onclick="del('+i+')" style="padding:4px 8px;font-size:11px;">刪除</button></td></tr>').join('');
+  }catch(e){}
+}
+async function del(i){if(!confirm('確定刪除？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({index:i})});admin();}
+async function clearAll(){if(!confirm('⚠️ 確定清除全部紀錄？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({})});admin();}
+
+// ====== INIT ======
+document.querySelector('.ver').textContent='v3.1 | JS ✓';
+</script>
+</body>
+</html>
+`;
