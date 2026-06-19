@@ -1234,15 +1234,15 @@ body::after{
         <div class="home-rules">
           <div class="rule-row">
             <strong>第一回合 · 必答題</strong>
-            <p>每組 5 分鐘。答對 +20，答錯 -10，不設補答。</p>
+            <p>每組 3:30。答對 +20，答錯 -10，不設補答。</p>
           </div>
           <div class="rule-row">
             <strong>第二回合 · 分組搶答題</strong>
-            <p>限時 15 分鐘。答對 +30，答錯 -20；其他組可補答一次，補答答中 +20。</p>
+            <p>限時 15 分鐘。答對 +30，答錯 -20，不設補答。須舉手後老師指名才可回答。</p>
           </div>
           <div class="rule-row">
-            <strong>第三回合 · 至尊挑戰題</strong>
-            <p>限時約 20 分鐘。可自選基礎 / 中階 / 進階三種信封難度，分數各不相同。</p>
+            <strong>第三回合 · 至尊搶答題</strong>
+            <p>限時 20 分鐘。答對 +50，答錯 -30，不設補答。須舉手後老師指名才可回答。</p>
           </div>
         </div>
         <div class="home-cta">
@@ -1282,7 +1282,7 @@ body::after{
         </button>
         <button class="round-card" data-round="r3" onclick="selectRound('r3')">
           <span class="round-tag">ROUND 3</span>
-          <span class="round-name">至尊挑戰題</span>
+          <span class="round-name">至尊搶答題</span>
         </button>
       </div>
 
@@ -1397,11 +1397,7 @@ const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'
 const ROUNDS={
   r1:{key:'r1',tag:'ROUND 1',name:'必答題',duration:210,summary:'每組 3:30 輪流作答，答對 +20，答錯 -10。',points:{correct:20,wrong:-10},mode:'single'},
   r2:{key:'r2',tag:'ROUND 2',name:'分組搶答題',duration:15*60,summary:'答對 +30，答錯 -20。不設補答。',points:{correct:30,wrong:-20},mode:'bonus'},
-  r3:{key:'r3',tag:'ROUND 3',name:'至尊挑戰題',duration:20*60,summary:'可自選基礎、中階、進階三種封信難度。',mode:'difficulty',difficulties:{
-    basic:{name:'基礎挑戰',correct:30,wrong:-10},
-    medium:{name:'中階挑戰',correct:50,wrong:-30},
-    advanced:{name:'進階挑戰',correct:80,wrong:-50},
-  }},
+  r3:{key:'r3',tag:'ROUND 3',name:'至尊搶答題',duration:20*60,summary:'答對 +50，答錯 -30。不設補答。',points:{correct:50,wrong:-30},mode:'bonus'},
 };
 let GC=5, SES={code:'',grade:'',groupCount:5,groups:{A:0,B:0,C:0,D:0,E:0}};
 let activeRoundKey='r1';
