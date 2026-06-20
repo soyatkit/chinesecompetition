@@ -1247,6 +1247,7 @@ body::after{
         </div>
         <div class="home-cta">
           <button class="pixel-btn btn-pink btn-block" onclick="go('scrDash')">進入遊戲</button>
+          <button class="pixel-btn btn-green btn-block" onclick="go('scrRecord')">📊 積分紀錄</button>
         </div>
       </section>
     </div>
@@ -1608,10 +1609,11 @@ async function goStart(){
     if(!sessionReady){
       const createBody={grade,groupCount:GC,round:activeRoundKey};
       if(getRound().mode!=='single'){
-        const scores=loadScores();
-        const initial={};
-        getGroupKeys().forEach(g=>{initial[g]=scores[g]?(scores[g].final||scores[g].r1||0):0;});
-        createBody.initialScores=initial;
+        // Stop passing initialScores so each round tracks its own points
+        // const scores=loadScores();
+        // const initial={};
+        // getGroupKeys().forEach(g=>{initial[g]=scores[g]?(scores[g].final||scores[g].r1||0):0;});
+        // createBody.initialScores=initial;
       }
       let r=await fetch(A+'/api/session/create',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify(createBody)});
       let d=await r.json();
@@ -1765,8 +1767,17 @@ function finish(d){
   sessionReady=false;
   go('scrResult');
   const gs=d.groups||SES.groups; saveScores(gs);
-  const arr=Object.entries(gs).sort((a,b)=>b[1]-a[1]); const w=arr[0];
-  document.getElementById('resultSummary').innerHTML='<div class="trophy">🏆</div><div class="winner">第'+w[0]+'組 冠軍！</div><div class="winner-score">'+w[1]+' 分</div>';
+  
+  // Calculate total cumulative scores for the result page
+  const store = loadScores();
+  const totalScores = {};
+  getGroupKeys().forEach(g => {
+    const dStore = store[g] || {};
+    totalScores[g] = (dStore.r1||0) + (dStore.r2||0) + (dStore.r3||0);
+  });
+  
+  const arr=Object.entries(totalScores).sort((a,b)=>b[1]-a[1]); const w=arr[0];
+  document.getElementById('resultSummary').innerHTML='<div class="trophy">🏆</div><div class="winner">第'+w[0]+'組 總冠軍！</div><div class="winner-score">'+w[1]+' 分</div>';
   document.getElementById('lbBody').innerHTML=arr.map(([g,s],i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td class="'+(i<3?'r-'+(i+1):'')+'">'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+g+'組</td><td>'+s+' 分</td></tr>').join('');
 }
 
@@ -1806,12 +1817,16 @@ function renderRecord(){
   const arr=keys.map(g=>{
     const d=store[g]||{};
     const r1=d.r1||0, r2=d.r2||0, r3=d.r3||0;
-    const total=d.final||Math.max(r1,r2,r3);
+    const total=r1+r2+r3;
     return {group:g, r1, r2, r3, total};
   }).sort((a,b)=>b.total-a.total);
+  
+  const html = arr.every(x=>x.total===0) 
+    ? '<tr><td colspan="6" style="padding:20px;color:var(--muted);">未有積分紀錄</td></tr>'
+    : arr.map((e,i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+e.group+'組</td><td>'+e.r1+'</td><td>'+e.r2+'</td><td>'+e.r3+'</td><td style="font-weight:800;color:var(--accent)">'+e.total+'</td></tr>').join('');
+    
   const tb=document.getElementById('recordBody');
-  if(arr.every(x=>x.total===0)){tb.innerHTML='<tr><td colspan="6" style="padding:20px;color:var(--muted);">未有積分紀錄</td></tr>';return;}
-  tb.innerHTML=arr.map((e,i)=>'<tr class="'+(i===0?'highlight-row':'')+'"><td>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</td><td>第'+e.group+'組</td><td>'+e.r1+'</td><td>'+e.r2+'</td><td>'+e.r3+'</td><td style="font-weight:800;color:var(--accent)">'+e.total+'</td></tr>').join('');
+  if(tb) tb.innerHTML = html;
 }
 function clearRecord(){
   if(!confirm('⚠️ 確定清除全部積分紀錄？'))return;
