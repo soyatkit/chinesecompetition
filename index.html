@@ -1391,7 +1391,7 @@ body::after{
 </div>
 
 <script>
-const A=(location.origin&&location.origin!=='null'&&location.origin.startsWith('http'))?location.origin:'https://chinesepoetry-api.chinesepoetry-api.workers.dev';
+const A=(location.origin&&location.origin!=='null'&&location.origin.startsWith('http'))?location.origin:'https://chinesepoetry-api.workers.dev';
 const T='lyt:lyt';
 const C={A:'#FF8C94',B:'#8AB8E8',C:'#8AE89A',D:'#FFD98A',E:'#D8C2FF',F:'#FFB5C2'};
 const ROUNDS={
@@ -1407,6 +1407,12 @@ let timerRunning=false;
 let timerHandle=null;
 let sessionReady=false;
 let savedScores=loadScores();
+let audioCtx=null;
+function getAudioCtx(){
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended') audioCtx.resume();
+  return audioCtx;
+}
 
 function go(id){
   document.getElementById('scrDash').style.display='none';
@@ -1457,11 +1463,11 @@ function syncTimerUI(){
 }
 function playBeep(){
   try{
-    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const ctx=getAudioCtx();
     const o=ctx.createOscillator();const g=ctx.createGain();
     o.connect(g);g.connect(ctx.destination);
     o.type='square';o.frequency.setValueAtTime(880,ctx.currentTime);
-    g.gain.setValueAtTime(timerRemaining<=5?.3:.15,ctx.currentTime);
+    g.gain.setValueAtTime(timerRemaining <= 5 ? .3 : .15, ctx.currentTime);
     g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.15);
     o.start(ctx.currentTime);o.stop(ctx.currentTime+.18);
   }catch(e){}
@@ -1540,28 +1546,15 @@ function draw(){
     g.innerHTML='';
     return;
   }
-  g.style.gridTemplateColumns='repeat(5,minmax(0,1fr))';
+  g.style.gridTemplateColumns='repeat('+GC+',minmax(0,1fr))';
   g.innerHTML=ph();
-}
-function renderDifficultyRow(){
-  const row=document.getElementById('difficultyRow');
-  if(!row)return;
-  const round=getRound();
-  if(round.mode!=='difficulty'){
-    row.style.display='none';
-    row.innerHTML='';
-    return;
-  }
-  row.style.display='grid';
-  const diffs=round.difficulties;
-  row.innerHTML=Object.entries(diffs).map(([key,val])=>`<button class="difficulty-btn ${activeDifficulty===key?'active':''}" onclick="selectDifficulty('${key}')"><span class="name">${val.name}</span><span class="pts">答對 +${val.correct} / 答錯 ${val.wrong}</span></button>`).join('');
 }
 function renderRoundDetail(){
   const round=getRound();
   const detail=document.getElementById('roundDetail');
   if(!detail)return;
-  const pack=round.mode==='difficulty' ? round.difficulties[activeDifficulty] : round.points;
-  const topRight=round.mode==='difficulty' ? `<span class="soft-chip">信封：${round.difficulties[activeDifficulty].name}</span>` : `<span class="soft-chip">${round.duration/60} 分鐘</span>`;
+  const pack=round.points;
+  const topRight=`<span class="soft-chip">${round.duration/60} 分鐘</span>`;
   detail.innerHTML=`
     <div class="round-detail-top">
       <div>
@@ -1576,21 +1569,13 @@ function renderRoundDetail(){
       <div class="detail-box"><span>答對</span><strong>+${pack.correct ?? round.points.correct}</strong></div>
       <div class="detail-box"><span>答錯</span><strong>${pack.wrong ?? round.points.wrong}</strong></div>
     </div>`;
-  renderDifficultyRow();
   syncTimerUI();
 }
 function selectRound(key){
   activeRoundKey=key;
-  if(key!=='r3')activeDifficulty='basic';
   stopRoundTimer();
   timerRemaining=getRound().duration;
   document.querySelectorAll('.round-card').forEach(btn=>btn.classList.toggle('active',btn.dataset.round===key));
-  renderRoundDetail();
-  draw();
-  renderQuizMode();
-}
-function selectDifficulty(key){
-  activeDifficulty=key;
   renderRoundDetail();
   draw();
   renderQuizMode();
@@ -1697,17 +1682,15 @@ async function loadQ(){
 }
 
 function getScoringPack(){
-  const round=getRound();
-  if(round.mode==='difficulty')return round.difficulties[activeDifficulty];
-  return round.points;
+  return getRound().points;
 }
 
 // ====== SCORE GROUP ======
 async function sc(group,type,btn){
   if(btn)btn.classList.add('flash');
-  (new (window.AudioContext||window.webkitAudioContext)()).resume();
+  getAudioCtx();
   try{
-    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const ctx=getAudioCtx();
     const o=ctx.createOscillator(); const g=ctx.createGain();
     o.connect(g); g.connect(ctx.destination); const n=ctx.currentTime;
     g.gain.setValueAtTime(0.25,n); g.gain.exponentialRampToValueAtTime(0.01,n+(type==='correct'?0.7:0.4));
@@ -1799,7 +1782,7 @@ async function del(i){if(!confirm('確定刪除？'))return;await fetch(A+'/api/
 async function clearAll(){if(!confirm('⚠️ 確定清除全部紀錄？'))return;await fetch(A+'/api/admin/leaderboard',{method:'DELETE',headers:{'Content-Type':'application/json',Authorization:'Bearer '+T},body:JSON.stringify({})});admin();}
 
 // ====== LOCAL STORAGE ======
-const STORE_KEY='chinesepoetry_scores';
+const STORE_KEY='chinesecompetition_scores';
 function loadScores(){
   try{const raw=localStorage.getItem(STORE_KEY);return raw?JSON.parse(raw):{};}catch(e){return {};}
 }

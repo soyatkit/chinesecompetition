@@ -257,7 +257,7 @@ npm run dev  # node --watch server.js
 
 ## 12. 快速啟動 Checklist
 
-1. `git clone` → `cd 唐詩問答`
+1. `git clone` → `cd 中文至叻挑戰賽`
 2. 確認 `wrangler.toml` 中 KV namespace ID 正確
 3. `npx wrangler deploy` 部署 Worker
 4. 瀏覽器打開 Worker URL 即可使用

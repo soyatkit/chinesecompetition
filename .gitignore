@@ -3,4 +3,6 @@ leaderboard.json
 .env
 .wrangler/
 .dev.vars
+dist/
 
+.DS_Store
