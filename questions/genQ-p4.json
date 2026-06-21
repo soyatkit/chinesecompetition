@@ -1,6 +1,5 @@
 [
   {
-    "poem": "【部首】",
     "text": "「湖」的部首是甚麼？",
     "options": [
       "木",
@@ -8,10 +7,14 @@
       "火",
       "口"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-001",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「湖」的部首是「氵」。"
   },
   {
-    "poem": "【部首】",
     "text": "「橋」的部首是甚麼？",
     "options": [
       "林",
@@ -19,10 +22,14 @@
       "禾",
       "木"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-002",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「橋」的部首是「木」。"
   },
   {
-    "poem": "【部首】",
     "text": "「跑」的部首是甚麼？",
     "options": [
       "土",
@@ -30,10 +37,14 @@
       "走",
       "止"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-003",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「跑」的部首是「足」。"
   },
   {
-    "poem": "【部首】",
     "text": "「唱」的部首是甚麼？",
     "options": [
       "日",
@@ -41,10 +52,14 @@
       "口",
       "曰"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-004",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「唱」的部首是「口」。"
   },
   {
-    "poem": "【部首】",
     "text": "「校」的部首是甚麼？",
     "options": [
       "本",
@@ -52,10 +67,14 @@
       "禾",
       "木"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-005",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「校」的部首是「木」。"
   },
   {
-    "poem": "【部首】",
     "text": "「海」的部首是甚麼？",
     "options": [
       "火",
@@ -63,10 +82,14 @@
       "氵",
       "口"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-006",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「海」的部首是「氵」。"
   },
   {
-    "poem": "【部首】",
     "text": "「燈」的部首是甚麼？",
     "options": [
       "木",
@@ -74,10 +97,14 @@
       "大",
       "火"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-007",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「燈」的部首是「火」。"
   },
   {
-    "poem": "【部首】",
     "text": "「問」的部首是甚麼？",
     "options": [
       "阝",
@@ -85,10 +112,14 @@
       "食",
       "門"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-008",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「問」的部首是「門」。"
   },
   {
-    "poem": "【部首】",
     "text": "「姐」的部首是甚麼？",
     "options": [
       "子",
@@ -96,10 +127,14 @@
       "又",
       "女"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-009",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「姐」的部首是「女」。"
   },
   {
-    "poem": "【部首】",
     "text": "「想」的部首是甚麼？",
     "options": [
       "思",
@@ -107,10 +142,14 @@
       "心",
       "必"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-010",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「想」的部首是「心」。"
   },
   {
-    "poem": "【部首】",
     "text": "「遠」的部首是甚麼？",
     "options": [
       "辶",
@@ -118,10 +157,14 @@
       "足",
       "走"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-011",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「遠」的部首是「辶」。"
   },
   {
-    "poem": "【部首】",
     "text": "「船」的部首是甚麼？",
     "options": [
       "辶",
@@ -129,10 +172,14 @@
       "冂",
       "船"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-012",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「船」的部首是「舟」。"
   },
   {
-    "poem": "【部首】",
     "text": "「跳」的部首是甚麼？",
     "options": [
       "止",
@@ -140,10 +187,14 @@
       "足",
       "土"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-013",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「跳」的部首是「足」。"
   },
   {
-    "poem": "【部首】",
     "text": "「飯」的部首是甚麼？",
     "options": [
       "良",
@@ -151,10 +202,14 @@
       "食",
       "飠"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-014",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「飯」的部首是「食」。"
   },
   {
-    "poem": "【部首】",
     "text": "「樹」的部首是甚麼？",
     "options": [
       "本",
@@ -162,10 +217,14 @@
       "林",
       "禾"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-015",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「樹」的部首是「木」。"
   },
   {
-    "poem": "【部首】",
     "text": "「房」的部首是甚麼？",
     "options": [
       "户",
@@ -173,10 +232,14 @@
       "尸",
       "扇"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-016",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「房」的部首是「戶」。"
   },
   {
-    "poem": "【部首】",
     "text": "「狗」的部首是甚麼？",
     "options": [
       "犬",
@@ -184,10 +247,14 @@
       "太",
       "丶"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-017",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「狗」的部首是「犬」。"
   },
   {
-    "poem": "【部首】",
     "text": "「語」的部首是甚麼？",
     "options": [
       "音",
@@ -195,10 +262,14 @@
       "舌",
       "言"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-018",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「語」的部首是「言」。"
   },
   {
-    "poem": "【部首】",
     "text": "「星」的部首是甚麼？",
     "options": [
       "田",
@@ -206,10 +277,14 @@
       "日",
       "月"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-019",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「星」的部首是「日」。"
   },
   {
-    "poem": "【部首】",
     "text": "「藍」的部首是甚麼？",
     "options": [
       "艸",
@@ -217,10 +292,14 @@
       "十",
       "廾"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-020",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「藍」的部首是「艹」。"
   },
   {
-    "poem": "【部首】",
     "text": "「課」的部首是甚麼？",
     "options": [
       "音",
@@ -228,10 +307,14 @@
       "言",
       "舌"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-021",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「課」的部首是「言」。"
   },
   {
-    "poem": "【部首】",
     "text": "「媽」的部首是甚麼？",
     "options": [
       "大",
@@ -239,10 +322,14 @@
       "子",
       "又"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-022",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「媽」的部首是「女」。"
   },
   {
-    "poem": "【部首】",
     "text": "「清」的部首是甚麼？",
     "options": [
       "火",
@@ -250,10 +337,14 @@
       "氵",
       "口"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-023",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「清」的部首是「氵」。"
   },
   {
-    "poem": "【部首】",
     "text": "「筆」的部首是甚麼？",
     "options": [
       "木",
@@ -261,10 +352,14 @@
       "竹",
       "林"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-024",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「筆」的部首是「竹」。"
   },
   {
-    "poem": "【部首】",
     "text": "「院」的部首是甚麼？",
     "options": [
       "邑",
@@ -272,10 +367,14 @@
       "卩",
       "阝"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-025",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「院」的部首是「阝」。"
   },
   {
-    "poem": "【部首】",
     "text": "「病」的部首是甚麼？",
     "options": [
       "病",
@@ -283,10 +382,14 @@
       "疒",
       "广"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-026",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「病」的部首是「疒」。"
   },
   {
-    "poem": "【部首】",
     "text": "「睡」的部首是甚麼？",
     "options": [
       "日",
@@ -294,10 +397,14 @@
       "月",
       "田"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-027",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「睡」的部首是「目」。"
   },
   {
-    "poem": "【部首】",
     "text": "「第」的部首是甚麼？",
     "options": [
       "林",
@@ -305,10 +412,14 @@
       "木",
       "艹"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-028",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「第」的部首是「竹」。"
   },
   {
-    "poem": "【部首】",
     "text": "「裝」的部首是甚麼？",
     "options": [
       "農",
@@ -316,10 +427,14 @@
       "辰",
       "衣"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-029",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「裝」的部首是「衣」。"
   },
   {
-    "poem": "【部首】",
     "text": "「跑道」中「跑」的部首是甚麼？",
     "options": [
       "走",
@@ -327,10 +442,14 @@
       "足",
       "土"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "部首",
+    "id": "Q-P4-R1-BS-030",
+    "difficulty": 1,
+    "timeLimit": 10,
+    "explanation": "「跑道」的部首是「足」。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「高興」的近義詞是甚麼？",
     "options": [
       "愉快",
@@ -338,10 +457,14 @@
       "生氣",
       "難過"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-031",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「愉快」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「美麗」的近義詞是甚麼？",
     "options": [
       "漂亮",
@@ -349,32 +472,44 @@
       "秀麗",
       "優美"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-032",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「漂亮」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「安靜」的反義詞是甚麼？",
     "options": [
       "吵鬧",
       "寧靜",
       "安靜",
-      "顛倒"
+      "安寧"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-033",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「吵鬧」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「勇敢」的反義詞是甚麼？",
     "options": [
       "勇敢",
       "膽小",
       "懦弱",
-      "對立"
+      "堅毅"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-034",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「膽小」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「快速」的近義詞是甚麼？",
     "options": [
       "疾速",
@@ -382,10 +517,14 @@
       "迅速",
       "急速"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-035",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「迅速」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「寒冷」的反義詞是甚麼？",
     "options": [
       "溫煦",
@@ -393,21 +532,29 @@
       "炎熱",
       "暖和"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-036",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「炎熱」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「明亮」的反義詞是甚麼？",
     "options": [
-      "對立",
-      "相反",
+      "光耀",
+      "明亮",
       "黑暗",
-      "顛倒"
+      "光亮"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-037",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「黑暗」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「幫助」的近義詞是甚麼？",
     "options": [
       "支援",
@@ -415,32 +562,44 @@
       "幫忙",
       "協助"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-038",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「協助」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「仔細」的反義詞是甚麼？",
     "options": [
       "仔細",
       "馬虎",
-      "顛倒",
-      "對立"
+      "細緻",
+      "周到"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-039",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「馬虎」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「誠實」的反義詞是甚麼？",
     "options": [
-      "對立",
+      "坦白",
       "謊話",
       "誠實",
       "說謊"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-040",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「說謊」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「傷心」的近義詞是甚麼？",
     "options": [
       "難過",
@@ -448,21 +607,29 @@
       "憂傷",
       "哀傷"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-041",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「難過」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「整齊」的反義詞是甚麼？",
     "options": [
-      "顛倒",
+      "潔淨",
       "凌亂",
       "整齊",
-      "對立"
+      "齊整"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-042",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「凌亂」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「聰明」的近義詞是甚麼？",
     "options": [
       "智慧",
@@ -470,10 +637,14 @@
       "聰慧",
       "伶俐"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-043",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「機靈」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「溫暖」的反義詞是甚麼？",
     "options": [
       "嚴寒",
@@ -481,21 +652,29 @@
       "冰凍",
       "酷寒"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-044",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「寒冷」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「寬闊」的反義詞是甚麼？",
     "options": [
-      "相反",
+      "遼闊",
       "狹窄",
-      "顛倒",
-      "對立"
+      "寬敞",
+      "開廣"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-045",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「狹窄」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「專心」的近義詞是甚麼？",
     "options": [
       "專注",
@@ -503,87 +682,119 @@
       "投入",
       "用心"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-046",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「用心」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「和平」的反義詞是甚麼？",
     "options": [
       "戰亂",
-      "顛倒",
-      "相反",
+      "安穩",
+      "太平",
       "和平"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-047",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「戰亂」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「新鮮」的反義詞是甚麼？",
     "options": [
-      "相反",
+      "新穎",
       "新鮮",
-      "對立",
+      "簇新",
       "陳舊"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-048",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「陳舊」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「熱鬧」的反義詞是甚麼？",
     "options": [
-      "對立",
+      "沸騰",
       "熱鬧",
-      "顛倒",
+      "熙攘",
       "冷清"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-049",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「冷清」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「簡單」的反義詞是甚麼？",
     "options": [
       "困難",
       "簡單",
-      "顛倒",
-      "對立"
+      "輕巧",
+      "淺易"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-050",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「困難」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「安全」的反義詞是甚麼？",
     "options": [
       "危險",
       "安全",
-      "相反",
-      "對立"
+      "安妥",
+      "穩當"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-051",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「危險」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「進步」的反義詞是甚麼？",
     "options": [
       "進步",
-      "顛倒",
-      "相反",
+      "躍進",
+      "提升",
       "退步"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-052",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「退步」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「勤勞」的反義詞是甚麼？",
     "options": [
-      "對立",
+      "奮發",
       "勤勞",
       "懶惰",
-      "相反"
+      "刻苦"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-053",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「懶惰」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「清楚」的近義詞是甚麼？",
     "options": [
       "清晰",
@@ -591,21 +802,29 @@
       "明瞭",
       "透徹"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-054",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「明白」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「容易」的反義詞是甚麼？",
     "options": [
-      "對立",
+      "輕巧",
       "困難",
-      "相反",
+      "淺易",
       "簡單"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-055",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「困難」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「友善」的近義詞是甚麼？",
     "options": [
       "慈祥",
@@ -613,54 +832,74 @@
       "友好",
       "和善"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-056",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「親切」與題目詞語意義最相近。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「節省」的反義詞是甚麼？",
     "options": [
       "浪費",
-      "相反",
+      "儉省",
       "節省",
-      "顛倒"
+      "愛惜"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-057",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「浪費」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「平靜」的反義詞是甚麼？",
     "options": [
       "激動",
-      "對立",
-      "顛倒",
-      "相反"
+      "淡定",
+      "平和",
+      "沉靜"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-058",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「激動」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「喜歡」的反義詞是甚麼？",
     "options": [
-      "顛倒",
+      "鍾情",
       "喜歡",
-      "相反",
+      "偏愛",
       "討厭"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-059",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "反義詞：「討厭」與題目詞語意義相反。"
   },
   {
-    "poem": "【詞義辨析】",
     "text": "「認真」的近義詞是甚麼？",
     "options": [
-      "相近",
+      "勤勉",
       "用功",
-      "類似",
-      "相似"
+      "專心",
+      "刻苦"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞義辨析",
+    "id": "Q-P4-R1-CY-060",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "近義詞：「用功」與題目詞語意義最相近。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「一心一意」是形容甚麼？",
     "options": [
       "見識短淺",
@@ -668,10 +907,14 @@
       "詳細說出",
       "專心做事"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-061",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「專心做事」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「井底之蛙」比喻甚麼人？",
     "options": [
       "念念不忘",
@@ -679,10 +922,14 @@
       "見識短淺的人",
       "見識短淺"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-062",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「見識短淺的人」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「畫龍點睛」比喻甚麼？",
     "options": [
       "非常乾淨",
@@ -690,10 +937,14 @@
       "想盡辦法",
       "在關鍵地方加上精彩一筆"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-063",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「在關鍵地方加上精彩一筆」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「全神貫注」形容甚麼？",
     "options": [
       "專心做事",
@@ -701,10 +952,14 @@
       "自己說話",
       "理由充分"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-064",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「非常專心」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「自言自語」是甚麼意思？",
     "options": [
       "非常驚訝",
@@ -712,10 +967,14 @@
       "來之不易",
       "自己跟自己說話"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-065",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「自己跟自己說話」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「七上八下」形容甚麼心情？",
     "options": [
       "不約而同",
@@ -723,10 +982,14 @@
       "保守秘密",
       "非常乾淨"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-066",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「心情不安」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「有條有理」形容甚麼？",
     "options": [
       "完全相同",
@@ -734,10 +997,14 @@
       "做事或說話有次序",
       "專心看"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-067",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「做事或說話有次序」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「心直口快」形容甚麼？",
     "options": [
       "反覆思考",
@@ -745,10 +1012,14 @@
       "自己承受後果",
       "非常專心"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-068",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「性格直率，說話爽快」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「大吃一驚」表示甚麼？",
     "options": [
       "非常專心",
@@ -756,10 +1027,14 @@
       "做事不專心",
       "非常驚訝"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-069",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「非常驚訝」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「目不轉睛」形容甚麼？",
     "options": [
       "反覆思考",
@@ -767,10 +1042,14 @@
       "專心做事",
       "專心地看"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-070",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「專心地看」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「一五一十」是甚麼意思？",
     "options": [
       "完全相同",
@@ -778,10 +1057,14 @@
       "做事慌亂",
       "完整而詳細地說出來"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-071",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「完整而詳細地說出來」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「不約而同」是甚麼意思？",
     "options": [
       "保守秘密",
@@ -789,10 +1072,14 @@
       "到處張望",
       "沒有事先約定而做出同樣行動"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-072",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「沒有事先約定而做出同樣行動」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「千方百計」形容甚麼？",
     "options": [
       "一見如故",
@@ -800,10 +1087,14 @@
       "念念不忘",
       "想盡各種辦法"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-073",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「想盡各種辦法」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「東張西望」形容甚麼？",
     "options": [
       "關鍵一筆",
@@ -811,10 +1102,14 @@
       "到處張望",
       "排名靠前"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-074",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「到處張望」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「三心兩意」形容甚麼？",
     "options": [
       "非常乾淨",
@@ -822,10 +1117,14 @@
       "心不在焉",
       "沉着鎮定"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-075",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「做事不專心」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「一見如故」是甚麼意思？",
     "options": [
       "力不從心",
@@ -833,10 +1132,14 @@
       "很有味道",
       "初次見面卻像老朋友一樣"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-076",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「初次見面卻像老朋友一樣」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「半信半疑」形容甚麼？",
     "options": [
       "有些相信又有些懷疑",
@@ -844,10 +1147,14 @@
       "非常乾淨",
       "專心做事"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-077",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「有些相信又有些懷疑」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「津津有味」通常形容甚麼？",
     "options": [
       "吃得或讀得很有味道",
@@ -855,10 +1162,14 @@
       "不約而同",
       "做事慌亂"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-078",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「吃得或讀得很有味道」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「手忙腳亂」形容甚麼？",
     "options": [
       "做事慌亂",
@@ -866,10 +1177,14 @@
       "到處張望",
       "非常乾淨"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-079",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「做事慌亂」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「自作自受」是甚麼意思？",
     "options": [
       "自己說話",
@@ -877,10 +1192,14 @@
       "心情不安",
       "半信半疑"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-080",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「自己做錯事，自己承受後果」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「理直氣壯」形容甚麼？",
     "options": [
       "關鍵一筆",
@@ -888,10 +1207,14 @@
       "力不從心",
       "詳細說出"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-081",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「理由充分，說話有氣勢」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「左思右想」是甚麼意思？",
     "options": [
       "非常乾淨",
@@ -899,10 +1222,14 @@
       "非常驚訝",
       "反覆思考"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-082",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反覆思考」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「一乾二淨」形容甚麼？",
     "options": [
       "很有味道",
@@ -910,10 +1237,14 @@
       "非常乾淨",
       "見識短淺"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-083",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「非常乾淨」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「來之不易」表示甚麼？",
     "options": [
       "得來很不容易",
@@ -921,10 +1252,14 @@
       "非常驚訝",
       "排名靠前"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-084",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「得來很不容易」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「名列前茅」是甚麼意思？",
     "options": [
       "排名靠前",
@@ -932,10 +1267,14 @@
       "理由充分",
       "專心做事"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-085",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「排名靠前」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「不慌不忙」形容甚麼？",
     "options": [
       "詳細說出",
@@ -943,10 +1282,14 @@
       "不約而同",
       "沉着鎮定"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-086",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「沉着鎮定」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「守口如瓶」是甚麼意思？",
     "options": [
       "不約而同",
@@ -954,10 +1297,14 @@
       "非常保守秘密",
       "非常驚訝"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-087",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「非常保守秘密」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「力不從心」形容甚麼？",
     "options": [
       "心裡想做卻沒有能力做到",
@@ -965,10 +1312,14 @@
       "排名靠前",
       "做事有次序"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-088",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「心裡想做卻沒有能力做到」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「一模一樣」表示甚麼？",
     "options": [
       "完全相同",
@@ -976,10 +1327,14 @@
       "詳細說出",
       "來之不易"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-089",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「完全相同」。"
   },
   {
-    "poem": "【成語運用】",
     "text": "「念念不忘」形容甚麼？",
     "options": [
       "理由充分",
@@ -987,10 +1342,14 @@
       "非常乾淨",
       "來之不易"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "成語運用",
+    "id": "Q-P4-R1-CY2-090",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「一直記着，不會忘記」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "同學發言時，我們要＿＿聆聽。",
     "options": [
       "專心",
@@ -998,10 +1357,14 @@
       "有趣",
       "勇敢"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-091",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「專心」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "爸爸做事很＿＿，所以大家都信任他。",
     "options": [
       "馬虎",
@@ -1009,10 +1372,14 @@
       "鮮明",
       "可靠"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-092",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「可靠」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "這本故事書內容十分＿＿。",
     "options": [
       "晴朗",
@@ -1020,10 +1387,14 @@
       "精彩",
       "繼續"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-093",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「精彩」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "我們要＿＿公物，不可隨便破壞。",
     "options": [
       "愛護",
@@ -1031,10 +1402,14 @@
       "心意",
       "清晰"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-094",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「愛護」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "天氣十分＿＿，適合到郊外活動。",
     "options": [
       "順利",
@@ -1042,10 +1417,14 @@
       "晴朗",
       "堅定"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-095",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「晴朗」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "她做事很＿＿，所以很少出錯。",
     "options": [
       "興奮",
@@ -1053,10 +1432,14 @@
       "細心",
       "保持"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-096",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「細心」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "遇到困難時，我們要＿＿面對。",
     "options": [
       "保持",
@@ -1064,10 +1447,14 @@
       "勇敢",
       "珍惜"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-097",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「勇敢」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "學校舉行運動會，同學們都很＿＿。",
     "options": [
       "興奮",
@@ -1075,10 +1462,14 @@
       "望向",
       "耐性"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-098",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「興奮」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "這篇文章條理＿＿，容易明白。",
     "options": [
       "細心",
@@ -1086,10 +1477,14 @@
       "清晰",
       "鼓勵"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-099",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「清晰」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "哥哥每天都＿＿溫習，所以成績不錯。",
     "options": [
       "鮮明",
@@ -1097,10 +1492,14 @@
       "努力",
       "馬虎"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-100",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「努力」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "老師常常＿＿我們多閱讀課外書。",
     "options": [
       "堅定",
@@ -1108,10 +1507,14 @@
       "整潔",
       "尊重"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-101",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「鼓勵」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "圖書館裡要保持＿＿。",
     "options": [
       "興奮",
@@ -1119,10 +1522,14 @@
       "堅定",
       "有秩序"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-102",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「安靜」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "這份禮物雖然簡單，卻很有＿＿。",
     "options": [
       "心意",
@@ -1130,10 +1537,14 @@
       "望向",
       "信任"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-103",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「心意」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "經過反覆練習，她的朗誦技巧明顯＿＿了。",
     "options": [
       "進步",
@@ -1141,10 +1552,14 @@
       "順利",
       "尊重"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-104",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「進步」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "這位同學十分＿＿，常主動幫助別人。",
     "options": [
       "堅持",
@@ -1152,10 +1567,14 @@
       "熱心",
       "有秩序"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-105",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「熱心」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "我們應該＿＿時間，不要浪費光陰。",
     "options": [
       "珍惜",
@@ -1163,10 +1582,14 @@
       "努力",
       "清晰"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-106",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「珍惜」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "面對失敗，不應灰心，要＿＿再試。",
     "options": [
       "進步",
@@ -1174,10 +1597,14 @@
       "耐性",
       "繼續"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-107",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「繼續」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "班長做事公平，深受同學＿＿。",
     "options": [
       "望向",
@@ -1185,10 +1612,14 @@
       "努力",
       "信任"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-108",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「信任」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "校園裡種了很多花草，環境十分＿＿。",
     "options": [
       "進步",
@@ -1196,10 +1627,14 @@
       "優美",
       "細心"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-109",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「優美」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "他回答問題時聲音＿＿，大家都聽不見。",
     "options": [
       "整潔",
@@ -1207,10 +1642,14 @@
       "微弱",
       "等待"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-110",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「微弱」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "這篇童話故事非常＿＿，小朋友都喜歡看。",
     "options": [
       "有趣",
@@ -1218,10 +1657,14 @@
       "等待",
       "安全"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-111",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「有趣」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "過馬路前要先看清楚，注意＿＿。",
     "options": [
       "有趣",
@@ -1229,10 +1672,14 @@
       "馬虎",
       "安全"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-112",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「安全」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "小明上課不專心，常常＿＿窗外。",
     "options": [
       "鼓勵",
@@ -1240,10 +1687,14 @@
       "望向",
       "有秩序"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-113",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「望向」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "經過老師解釋後，我終於＿＿了這道題目。",
     "options": [
       "勇敢",
@@ -1251,10 +1702,14 @@
       "堅定",
       "明白"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-114",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「明白」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "下課鐘聲一響，同學們便＿＿地走出課室。",
     "options": [
       "優美",
@@ -1262,10 +1717,14 @@
       "明白",
       "有秩序"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-115",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「有秩序」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "這幅圖畫色彩＿＿，十分吸引。",
     "options": [
       "鮮明",
@@ -1273,10 +1732,14 @@
       "興奮",
       "停止"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-116",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「鮮明」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "同學們互相合作，終於＿＿完成任務。",
     "options": [
       "忘記",
@@ -1284,10 +1747,14 @@
       "望向",
       "順利"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-117",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「順利」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "爸爸提醒我做事要有＿＿，不要急躁。",
     "options": [
       "珍惜",
@@ -1295,10 +1762,14 @@
       "微弱",
       "耐性"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-118",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「耐性」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "我們要＿＿別人的意見，學會尊重。",
     "options": [
       "勇敢",
@@ -1306,10 +1777,14 @@
       "愛護",
       "專心"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-119",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「尊重」。"
   },
   {
-    "poem": "【詞語填充】",
     "text": "媽媽把房間整理得十分＿＿。",
     "options": [
       "繼續",
@@ -1317,10 +1792,14 @@
       "安靜",
       "整潔"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "詞語填充",
+    "id": "Q-P4-R1-OT-120",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「整潔」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「月亮像一隻彎彎的小船。」用了甚麼修辭？",
     "options": [
       "反覆",
@@ -1328,10 +1807,14 @@
       "比喻",
       "對偶"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-121",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「花兒在風中點頭微笑。」用了甚麼修辭？",
     "options": [
       "設問",
@@ -1339,10 +1822,14 @@
       "擬人",
       "排比"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-122",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「他跑得比風還快。」用了甚麼修辭？",
     "options": [
       "比喻",
@@ -1350,10 +1837,14 @@
       "誇張",
       "擬人"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-123",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「誇張」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「我愛閱讀，愛思考，愛寫作。」用了甚麼修辭？",
     "options": [
       "擬人",
@@ -1361,10 +1852,14 @@
       "對偶",
       "排比"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-124",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「排比」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「這樣的景色，怎能不叫人喜愛呢？」用了甚麼修辭？",
     "options": [
       "擬人",
@@ -1372,10 +1867,14 @@
       "反問",
       "設問"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-125",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「甚麼是真正的勇氣？真正的勇氣是跌倒後再站起來。」用了甚麼修辭？",
     "options": [
       "對偶",
@@ -1383,10 +1882,14 @@
       "設問",
       "擬人"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-126",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「設問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「盼呀，盼呀，春天終於來了。」用了甚麼修辭？",
     "options": [
       "比喻",
@@ -1394,10 +1897,14 @@
       "反覆",
       "排比"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-127",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反覆」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「書像一把鑰匙，打開知識的大門。」用了甚麼修辭？",
     "options": [
       "擬人",
@@ -1405,10 +1912,14 @@
       "比喻",
       "排比"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-128",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「小鳥在枝頭唱歌。」用了甚麼修辭？",
     "options": [
       "擬人",
@@ -1416,10 +1927,14 @@
       "對偶",
       "排比"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-129",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「教室裡安靜得連一根針掉下來也聽得見。」用了甚麼修辭？",
     "options": [
       "誇張",
@@ -1427,10 +1942,14 @@
       "擬人",
       "對偶"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-130",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「誇張」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「天更藍了，草更綠了，花更紅了。」用了甚麼修辭？",
     "options": [
       "反覆",
@@ -1438,10 +1957,14 @@
       "比喻",
       "排比"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-131",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「排比」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「誰不想把事情做好呢？」用了甚麼修辭？",
     "options": [
       "反問",
@@ -1449,10 +1972,14 @@
       "對偶",
       "設問"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-132",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「甚麼是幸福？幸福是和家人一起吃晚飯。」用了甚麼修辭？",
     "options": [
       "設問",
@@ -1460,10 +1987,14 @@
       "對偶",
       "反問"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-133",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「設問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「想啊，想啊，我終於想出答案了。」用了甚麼修辭？",
     "options": [
       "排比",
@@ -1471,10 +2002,14 @@
       "反覆",
       "比喻"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-134",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反覆」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「太陽公公露出了笑臉。」用了甚麼修辭？",
     "options": [
       "反覆",
@@ -1482,10 +2017,14 @@
       "擬人",
       "排比"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-135",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「母愛像陽光一樣溫暖。」用了甚麼修辭？",
     "options": [
       "反問",
@@ -1493,10 +2032,14 @@
       "比喻",
       "誇張"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-136",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「這條路長得走也走不完。」用了甚麼修辭？",
     "options": [
       "反覆",
@@ -1504,10 +2047,14 @@
       "比喻",
       "擬人"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-137",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「誇張」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「他愛看書，愛畫畫，愛旅行。」用了甚麼修辭？",
     "options": [
       "擬人",
@@ -1515,10 +2062,14 @@
       "對偶",
       "排比"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-138",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「排比」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「難道我們不應珍惜時間嗎？」用了甚麼修辭？",
     "options": [
       "設問",
@@ -1526,10 +2077,14 @@
       "反覆",
       "比喻"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-139",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「甚麼叫努力？努力就是每天進步一點點。」用了甚麼修辭？",
     "options": [
       "比喻",
@@ -1537,10 +2092,14 @@
       "誇張",
       "設問"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-140",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「設問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「看啊，看啊，煙花升上天空了。」用了甚麼修辭？",
     "options": [
       "比喻",
@@ -1548,10 +2107,14 @@
       "對偶",
       "反覆"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-141",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反覆」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「白雲像棉花糖。」用了甚麼修辭？",
     "options": [
       "誇張",
@@ -1559,10 +2122,14 @@
       "比喻",
       "擬人"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-142",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「風兒輕輕地唱着歌。」用了甚麼修辭？",
     "options": [
       "擬人",
@@ -1570,10 +2137,14 @@
       "對偶",
       "反覆"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-143",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「餓得可以吃下一頭牛。」用了甚麼修辭？",
     "options": [
       "對偶",
@@ -1581,10 +2152,14 @@
       "反覆",
       "誇張"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-144",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「誇張」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「老師是園丁，學生是花朵。」用了甚麼修辭？",
     "options": [
       "比喻",
@@ -1592,10 +2167,14 @@
       "反問",
       "反覆"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-145",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「山朗潤起來了，水漲起來了，太陽的臉紅起來了。」用了甚麼修辭？",
     "options": [
       "誇張",
@@ -1603,10 +2182,14 @@
       "比喻",
       "排比"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-146",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「排比」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「這點小事，怎會難倒我呢？」用了甚麼修辭？",
     "options": [
       "對偶",
@@ -1614,10 +2197,14 @@
       "誇張",
       "排比"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-147",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「為甚麼要讀書？因為讀書能增長知識。」用了甚麼修辭？",
     "options": [
       "反問",
@@ -1625,10 +2212,14 @@
       "反覆",
       "設問"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-148",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「設問」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「等啊，等啊，巴士終於來了。」用了甚麼修辭？",
     "options": [
       "比喻",
@@ -1636,10 +2227,14 @@
       "擬人",
       "誇張"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-149",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反覆」。"
   },
   {
-    "poem": "【修辭辨識】",
     "text": "「雨點在窗上跳舞。」用了甚麼修辭？",
     "options": [
       "反問",
@@ -1647,10 +2242,14 @@
       "擬人",
       "比喻"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "修辭辨識",
+    "id": "Q-P4-R1-OT-150",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《靜夜思》的作者是誰？",
     "options": [
       "張繼",
@@ -1658,10 +2257,14 @@
       "孟浩然",
       "李白"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-151",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「李白」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「舉頭望明月」的下一句是甚麼？",
     "options": [
       "疑是地上霜",
@@ -1669,10 +2272,14 @@
       "粒粒皆辛苦",
       "處處聞啼鳥"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-152",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「低頭思故鄉」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「白日依山盡」的下一句是甚麼？",
     "options": [
       "花落知多少",
@@ -1680,10 +2287,14 @@
       "更上一層樓",
       "黃河入海流"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-153",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「黃河入海流」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《登鸛雀樓》的作者是誰？",
     "options": [
       "駱賓王",
@@ -1691,10 +2302,14 @@
       "楊萬里",
       "王之渙"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-154",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「王之渙」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「春眠不覺曉」出自哪一首詩？",
     "options": [
       "《尋隱者不遇》",
@@ -1702,10 +2317,14 @@
       "《出塞》",
       "《春曉》"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-155",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「《春曉》」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《春曉》的作者是誰？",
     "options": [
       "孟浩然",
@@ -1713,10 +2332,14 @@
       "李商隱",
       "蘇軾"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-156",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「孟浩然」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「夜來風雨聲」的下一句是甚麼？",
     "options": [
       "千里江陵一日還",
@@ -1724,10 +2347,14 @@
       "更上一層樓",
       "黃河入海流"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-157",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「花落知多少」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《鹿柴》的作者是誰？",
     "options": [
       "王維",
@@ -1735,10 +2362,14 @@
       "白居易",
       "王之渙"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-158",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「王維」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「空山不見人」的下一句是甚麼？",
     "options": [
       "各詩不同",
@@ -1746,10 +2377,14 @@
       "以上皆是",
       "無從得知"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-159",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「但聞人語響」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《梅花》的作者是誰？",
     "options": [
       "王安石",
@@ -1757,10 +2392,14 @@
       "駱賓王",
       "王之渙"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-160",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「王安石」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「牆角數枝梅」的下一句是甚麼？",
     "options": [
       "凌寒獨自開",
@@ -1768,10 +2407,14 @@
       "各詩不同",
       "無從得知"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-161",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「凌寒獨自開」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《江雪》的作者是誰？",
     "options": [
       "杜甫",
@@ -1779,10 +2422,14 @@
       "賀知章",
       "蘇軾"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-162",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「柳宗元」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「千山鳥飛絕」的下一句是甚麼？",
     "options": [
       "黃河入海流",
@@ -1790,10 +2437,14 @@
       "更上一層樓",
       "千山鳥飛絕"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-163",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「萬徑人蹤滅」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《憫農》的作者是誰？",
     "options": [
       "杜甫",
@@ -1801,10 +2452,14 @@
       "李商隱",
       "李紳"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-164",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「李紳」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「鋤禾日當午」的下一句是甚麼？",
     "options": [
       "無從得知",
@@ -1812,10 +2467,14 @@
       "以上皆是",
       "各詩不同"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-165",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「汗滴禾下土」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「誰知盤中餐」的下一句是甚麼？",
     "options": [
       "疑是地上霜",
@@ -1823,10 +2482,14 @@
       "處處聞啼鳥",
       "粒粒皆辛苦"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-166",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「粒粒皆辛苦」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《夜宿山寺》的作者是誰？",
     "options": [
       "李白",
@@ -1834,10 +2497,14 @@
       "王勃",
       "孟浩然"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-167",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「李白」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「危樓高百尺」的下一句是甚麼？",
     "options": [
       "手可摘星辰",
@@ -1845,10 +2512,14 @@
       "各詩不同",
       "無從得知"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-168",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「手可摘星辰」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《尋隱者不遇》的作者是誰？",
     "options": [
       "王維",
@@ -1856,10 +2527,14 @@
       "賈島",
       "劉禹錫"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-169",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「賈島」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「松下問童子」的下一句是甚麼？",
     "options": [
       "無從得知",
@@ -1867,10 +2542,14 @@
       "以上皆是",
       "言師採藥去"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-170",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「言師採藥去」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《池上》的作者是誰？",
     "options": [
       "柳宗元",
@@ -1878,10 +2557,14 @@
       "白居易",
       "駱賓王"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-171",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「白居易」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「小娃撐小艇」的下一句是甚麼？",
     "options": [
       "無從得知",
@@ -1889,10 +2572,14 @@
       "以上皆是",
       "偷採白蓮回"
     ],
-    "answer": 3
+    "answer": 3,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-172",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「偷採白蓮回」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《早發白帝城》的作者是誰？",
     "options": [
       "李白",
@@ -1900,10 +2587,14 @@
       "王之渙",
       "王維"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-173",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「李白」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「朝辭白帝彩雲間」的下一句是甚麼？",
     "options": [
       "花落知多少",
@@ -1911,10 +2602,14 @@
       "更上一層樓",
       "黃河入海流"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-174",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「千里江陵一日還」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《絕句》「兩個黃鸝鳴翠柳」的作者是誰？",
     "options": [
       "杜牧",
@@ -1922,10 +2617,14 @@
       "杜甫",
       "王勃"
     ],
-    "answer": 2
+    "answer": 2,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-175",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「杜甫」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「一行白鷺上青天」的上一句是甚麼？",
     "options": [
       "兩個黃鸝鳴翠柳",
@@ -1933,10 +2632,14 @@
       "各詩不同",
       "無從得知"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-176",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「兩個黃鸝鳴翠柳」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《山行》的作者是誰？",
     "options": [
       "杜牧",
@@ -1944,10 +2647,14 @@
       "李白",
       "張繼"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-177",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「杜牧」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「遠上寒山石徑斜」的下一句是甚麼？",
     "options": [
       "以上皆是",
@@ -1955,10 +2662,14 @@
       "各詩不同",
       "無從得知"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-178",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「白雲生處有人家」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "《回鄉偶書》的作者是誰？",
     "options": [
       "賈島",
@@ -1966,10 +2677,14 @@
       "王翰",
       "孟浩然"
     ],
-    "answer": 1
+    "answer": 1,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-179",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「賀知章」。"
   },
   {
-    "poem": "【唐詩理解】",
     "text": "「少小離家老大回」的下一句是甚麼？",
     "options": [
       "鄉音無改鬢毛衰",
@@ -1977,292 +2692,401 @@
       "以上皆是",
       "各詩不同"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "唐詩理解",
+    "id": "Q-P4-R1-OT-180",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「鄉音無改鬢毛衰」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：妹妹最喜歡吃平果。",
     "options": [
-      "不需改正",
       "平→蘋",
       "蘋→平",
-      "另有其他錯字"
+      "貞→真",
+      "美→羙"
     ],
-    "answer": 1
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-181",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「平→蘋」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：同學們在操塲上做早操。",
     "options": [
       "塲→場",
-      "另有其他錯字",
       "場→塲",
-      "不需改正"
+      "羙→美",
+      "諒→量"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-182",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「塲→場」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：圖書館裡十分安靖。",
     "options": [
-      "不需改正",
       "靖→靜",
-      "另有其他錯字",
-      "靜→靖"
+      "靜→靖",
+      "聽→聼",
+      "苑→怨"
     ],
-    "answer": 1
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-183",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「靖→靜」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：今天的天氣很晴郎。",
     "options": [
       "郎→朗",
-      "不需改正",
-      "另有其他錯字",
-      "朗→郎"
+      "朗→郎",
+      "購→構",
+      "恃→持"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-184",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「郎→朗」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：他做事十分認貞。",
     "options": [
-      "不需改正",
       "貞→真",
       "真→貞",
-      "另有其他錯字"
+      "息→色",
+      "色→息"
     ],
-    "answer": 1
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-185",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「貞→真」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：我們要遵首規則。",
     "options": [
       "首→守",
       "守→首",
-      "另有其他錯字",
-      "不需改正"
+      "簿→薄",
+      "象→像"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-186",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「首→守」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：妹妹專心聆聼老師講課。",
     "options": [
-      "不需改正",
       "聼→聽",
       "聽→聼",
-      "另有其他錯字"
+      "絫→累",
+      "象→像"
     ],
-    "answer": 1
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-187",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「聼→聽」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：同學們互相古勵。",
     "options": [
-      "不需改正",
-      "另有其他錯字",
+      "古→鼓",
       "鼓→古",
-      "古→鼓"
+      "正→證",
+      "重→種"
     ],
-    "answer": 3
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-188",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「古→鼓」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：弟弟喜歡看童話固事。",
     "options": [
+      "固→故",
       "故→固",
-      "不需改正",
-      "另有其他錯字",
-      "固→故"
+      "象→像",
+      "案→安"
     ],
-    "answer": 3
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-189",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「固→故」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：媽媽把房間收拾得很整其。",
     "options": [
       "其→齊",
       "齊→其",
-      "另有其他錯字",
-      "不需改正"
+      "采→彩",
+      "閲→閱"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-190",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「其→齊」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：這條小路十分完曲。",
     "options": [
-      "另有其他錯字",
+      "完→彎",
       "彎→完",
-      "不需改正",
-      "完→彎"
+      "閱→閲",
+      "遵→尊"
     ],
-    "answer": 3
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-191",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「完→彎」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：他常常忘記帶手冊子。",
     "options": [
       "冊子→冊",
-      "不需改正",
-      "另有其他錯字",
-      "冊→冊子"
+      "冊→冊子",
+      "側→策",
+      "澈→轍"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-192",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「冊子→冊」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：請你保恃課室清潔。",
     "options": [
       "恃→持",
       "持→恃",
-      "不需改正",
-      "另有其他錯字"
+      "閲→閱",
+      "洽→恰"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-193",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「恃→持」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：校園裡種滿了花草樹木，環境很優羙。",
     "options": [
-      "美→羙",
-      "另有其他錯字",
       "羙→美",
-      "不需改正"
+      "美→羙",
+      "證→正",
+      "豐→豊"
     ],
-    "answer": 2
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-194",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「羙→美」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：老師稱贊我們表現良好。",
     "options": [
+      "贊→讚",
       "讚→贊",
-      "另有其他錯字",
-      "不需改正",
-      "贊→讚"
+      "重→種",
+      "美→羙"
     ],
-    "answer": 3
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-195",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「贊→讚」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：這本書非常精采。",
     "options": [
       "采→彩",
       "彩→采",
-      "另有其他錯字",
-      "不需改正"
+      "謹→僅",
+      "洞→侗"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-196",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「采→彩」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：同學們在禮堂參加表演比塞。",
     "options": [
       "塞→賽",
-      "另有其他錯字",
-      "不需改正",
-      "賽→塞"
+      "賽→塞",
+      "理→李",
+      "洽→恰"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-197",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「塞→賽」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：我每天都準時番學。",
     "options": [
-      "另有其他錯字",
-      "不需改正",
+      "番→返",
       "返→番",
-      "番→返"
+      "鼓→古",
+      "其→齊"
     ],
-    "answer": 3
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-198",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「番→返」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：媽媽煮的湯十分鮮甛。",
     "options": [
-      "不需改正",
-      "另有其他錯字",
       "甛→甜",
-      "甜→甛"
+      "甜→甛",
+      "躁→燥",
+      "恰→洽"
     ],
-    "answer": 2
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-199",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「甛→甜」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：他把地上掉落的垃極拾起。",
     "options": [
-      "圾→極",
-      "不需改正",
       "極→圾",
-      "另有其他錯字"
+      "圾→極",
+      "懇→墾",
+      "侖→論"
     ],
-    "answer": 2
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-200",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「極→圾」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：我會把今天的事情牢牢記着，不會忘紀。",
     "options": [
       "紀→記",
-      "不需改正",
       "記→紀",
-      "另有其他錯字"
+      "辨→辯",
+      "閲→閱"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-201",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「紀→記」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：她的歌聲很柔和，十分月耳。",
     "options": [
       "月→悅",
-      "不需改正",
       "悅→月",
-      "另有其他錯字"
+      "式→試",
+      "甜→甛"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-202",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「月→悅」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：爸爸工作很芒，所以很晚才回家。",
     "options": [
       "芒→忙",
       "忙→芒",
-      "不需改正",
-      "另有其他錯字"
+      "成→誠",
+      "毫→豪"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-203",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「芒→忙」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：校長在台上至詞。",
     "options": [
-      "另有其他錯字",
       "至→致",
       "致→至",
-      "不需改正"
+      "懇→墾",
+      "紀→記"
     ],
-    "answer": 1
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-204",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「至→致」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：他把作業薄交給老師。",
     "options": [
       "薄→簿",
       "簿→薄",
-      "不需改正",
-      "另有其他錯字"
+      "絡→洛",
+      "建→鍵"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-205",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「薄→簿」。"
   },
   {
-    "poem": "【找錯字】",
     "text": "句子中有一個錯字：這個答安非常清楚。",
     "options": [
-      "不需改正",
+      "安→案",
       "案→安",
-      "另有其他錯字",
-      "安→案"
+      "週→周",
+      "僻→闢"
     ],
-    "answer": 3
+    "answer": 0,
+    "category": "找錯字",
+    "id": "Q-P4-R1-OT-206",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「安→案」。"
   }
 ]
