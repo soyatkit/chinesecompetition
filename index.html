@@ -1446,6 +1446,26 @@ function setGC(){GC=5;}
 function getRound(){return ROUNDS[activeRoundKey]||ROUNDS.r1;}
 function getGroupKeys(){return 'ABCDEF'.slice(0,GC).split('');}
 function getR1Group(){return document.getElementById('r1GroupSelect')?.value || 'A';}
+
+// Category display mapping
+const CATEGORY_ICONS = {
+  '部首':'🔤 部首挑戰',
+  '詞義辨析':'📝 詞義辨析',
+  '成語運用':'🎯 成語運用',
+  '詞語填充':'📝 選詞填充',
+  '成語填充':'🧩 成語填空',
+  '排句成段':'📋 排句成段',
+  '唐詩理解':'📜 唐詩理解',
+  '找錯字':'🔍 捉錯字',
+  '中國諺語':'📖 中國諺語',
+  '歇後語':'💡 歇後語',
+  '文學名著常識':'📚 文學常識',
+  '修辭辨識':'🖋️ 修辭辨識',
+  '修辭手法':'🖋️ 修辭手法',
+  '錯別字辨析':'🔍 錯別字辨析',
+  '標點符號':'❓ 標點符號',
+  '詩句填充':'📜 詩句填充',
+};
 function formatTime(sec){
   const s=Math.max(0,Math.floor(sec));
   const m=Math.floor(s/60);
@@ -1657,7 +1677,8 @@ async function loadQ(){
     if(getRound().mode==='single') renderR1Scores(gs, d);
     
     if(d.question){
-      document.getElementById('qPoem').textContent='📖 '+d.question.poem;
+      const cat = d.question.category || d.question.poem || '';
+      document.getElementById('qPoem').textContent=CATEGORY_ICONS[cat]||'📖 '+cat;
       document.getElementById('qText').textContent=d.question.text;
       const correctAnswerText=d.question.options[d.question.answer];
       const isRound1=getRound().mode==='single';
