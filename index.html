@@ -1688,7 +1688,6 @@ async function loadQ(){
       document.getElementById('qAnswer').style.display='none';
       const optsContainer=document.getElementById('qOptions');
       if(optsContainer && d.question.options){
-        // Both rounds show options. R1 = clickable with auto-score, R2/R3 = visible for class display
         if(isRound1){
           const currGroup=getR1Group();
           const correctIdx=d.question.answer;
@@ -1698,12 +1697,9 @@ async function loadQ(){
           }).join('');
           optsContainer.style.display='grid';
         } else {
-          // Round 2/3: show options as read-only labels for class viewing
-          // Teacher scores using the group buttons below
-          optsContainer.innerHTML=d.question.options.map((o,i)=>{
-            return `<div class="opt-item" style="cursor:default;opacity:1"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="opt-text">${o}</span></div>`;
-          }).join('');
-          optsContainer.style.display='grid';
+          // Round 2/3: 搶答題，不顯示選項
+          // 老師用小組計分按鈕計分後即可按「下一題」
+          optsContainer.style.display='none';
         }
       }
     }
