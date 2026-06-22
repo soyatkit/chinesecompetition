@@ -1,0 +1,602 @@
+[
+  {
+    "category": "錯別字辨析",
+    "text": "「＿費苦心」的正確寫法是？",
+    "options": [
+      "枉費苦心",
+      "往費苦心",
+      "旺費苦心",
+      "妄費苦心"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-001",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「枉費苦心」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿指氣使」中應填入哪個字？",
+    "options": [
+      "頤",
+      "夷",
+      "胰",
+      "姨"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-002",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「頤」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿竹難書」中應填入哪個字？",
+    "options": [
+      "罄",
+      "馨",
+      "磬",
+      "謦"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-003",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「罄」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿及池魚」的正確寫法是？",
+    "options": [
+      "殃及池魚",
+      "央及池魚",
+      "秧及池魚",
+      "鴦及池魚"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-004",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「殃及池魚」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿往開來」中應填入哪個字？",
+    "options": [
+      "繼",
+      "既",
+      "寄",
+      "紀"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-005",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「繼」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿惑人心」的正確寫法是？",
+    "options": [
+      "蠱惑人心",
+      "鼓惑人心",
+      "古惑人心",
+      "估惑人心"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-006",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「蠱惑人心」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿不知恥」中應填入哪個字？",
+    "options": [
+      "恬",
+      "甜",
+      "忝",
+      "添"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-007",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「恬」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿莫如深」中應填入哪個字？",
+    "options": [
+      "諱",
+      "違",
+      "偉",
+      "煒"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-008",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「諱」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿兵秣馬」的正確寫法是？",
+    "options": [
+      "厲兵秣馬",
+      "勵兵秣馬",
+      "礪兵秣馬",
+      "利兵秣馬"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-009",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「厲兵秣馬」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿為觀止」中應填入哪個字？",
+    "options": [
+      "嘆",
+      "炭",
+      "碳",
+      "探"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-CB-010",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「嘆」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「感時花濺淚，恨別鳥驚心」的最主要修辭手法是？",
+    "options": [
+      "擬人",
+      "比喻",
+      "對比",
+      "排比"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-011",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「忽如一夜春風來，千樹萬樹梨花開」用了甚麼修辭手法？",
+    "options": [
+      "比喻（借喻）",
+      "擬人",
+      "誇張",
+      "排比"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-012",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻（借喻）」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「問世間，情是何物，直教生死相許」中的「問」用了甚麼修辭？",
+    "options": [
+      "設問",
+      "反問",
+      "呼告",
+      "感嘆"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-013",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「設問」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「枯藤、老樹、昏鴉，小橋、流水、人家」用了甚麼修辭？",
+    "options": [
+      "列錦（意象並列）",
+      "排比",
+      "對偶",
+      "層遞"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-014",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「列錦（意象並列）」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「以你的聰明，這點小事還辦不到嗎？」用了甚麼修辭？",
+    "options": [
+      "反問",
+      "設問",
+      "誇張",
+      "反語"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-015",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反問」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「圓圓的月亮像白玉盤，又像一面明鏡」用了甚麼修辭？",
+    "options": [
+      "博喻",
+      "明喻",
+      "隱喻",
+      "借喻"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-016",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「博喻」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「沉默啊，沉默啊！不在沉默中爆發，就在沉默中滅亡」主要修辭是？",
+    "options": [
+      "反覆和對比",
+      "排比和比喻",
+      "對偶和誇張",
+      "擬人和反覆"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-017",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反覆和對比」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「這筆買賣可真是虧大了——虧得我連褲子都賠進去了」用了甚麼修辭？",
+    "options": [
+      "誇飾（誇張）",
+      "比喻",
+      "對比",
+      "雙關"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-018",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「誇飾（誇張）」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「東邊日出西邊雨，道是無晴卻有晴」用了甚麼修辭？",
+    "options": [
+      "雙關",
+      "比喻",
+      "對比",
+      "誇張"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-019",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「雙關」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「舊時王謝堂前燕，飛入尋常百姓家」用了甚麼修辭手法？",
+    "options": [
+      "對比",
+      "比喻",
+      "擬人",
+      "排比"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-020",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「對比」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "以下哪句標點符號使用完全正確？",
+    "options": [
+      "他問：「你去過北京、上海，還是廣州？」",
+      "他問：「你去過北京、上海、還是廣州」？",
+      "他問，「你去過北京、上海，還是廣州？」",
+      "他問：「你去過北京，上海，還是廣州？」"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-021",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「他問：「你去過北京、上海，還是廣州？」」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「中國四大名著包括＿＿三國演義＿＿水滸傳＿＿西遊記＿＿和＿＿紅樓夢＿＿」中應用的標點依次為？",
+    "options": [
+      "《、》、《、》、《、》、《》",
+      "「、」、「、」、「、」、「」",
+      "書名號皆可",
+      "無標點，用空格分隔"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-022",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「《、》、《、》、《、》、《》」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "選擇題中，頓號（、）和逗號（，）的主要區別是甚麼？",
+    "options": [
+      "頓號用於並列詞語之間，逗號用於分句之間",
+      "頓號用於分句之間，逗號用於詞語之間",
+      "兩者用法完全相同",
+      "頓號只用於數字之間"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-023",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「頓號用於並列詞語之間，逗號用於分句之間」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「這句話真有道理＿＿真是發人深省＿＿」兩處＿＿依次應用甚麼標點？",
+    "options": [
+      "破折號和感嘆號",
+      "逗號和句號",
+      "分號和感嘆號",
+      "冒號和句號"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-024",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「破折號和感嘆號」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「我查閱了多種資料＿＿包括字典、百科全書和網上資源＿＿」兩處＿＿依次應用甚麼？",
+    "options": [
+      "逗號和句號",
+      "——和——",
+      "破折號和逗號",
+      "逗號和破折號"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-025",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「逗號和句號」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "以下哪項標點用法正確表示書信開頭的稱呼？",
+    "options": [
+      "親愛的媽媽：",
+      "親愛的媽媽，",
+      "親愛的媽媽。",
+      "親愛的媽媽！"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-026",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「親愛的媽媽：」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「古人云＿＿學而不思則罔＿＿思而不學則殆＿＿」三處＿＿依次應標甚麼？",
+    "options": [
+      "冒號、逗號、句號",
+      "逗號、分號、句號",
+      "冒號、分號、句號",
+      "逗號、逗號、感嘆號"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-027",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「冒號、逗號、句號」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "間隔號（·）的正確用法是甚麼？",
+    "options": [
+      "分隔外國人名中的姓和名",
+      "表示省略",
+      "分隔並列詞語",
+      "結束句子"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-028",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「分隔外國人名中的姓和名」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「他＿＿作為班長＿＿理應以身作則。」兩處＿＿依次應用甚麼標點？",
+    "options": [
+      "逗號和逗號",
+      "破折號和破折號",
+      "無標點",
+      "括號和括號"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-029",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「逗號和逗號」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "連接號（—）和破折號（——）的區別是？",
+    "options": [
+      "連接號較短，連接相關詞語；破折號較長，標示解釋或轉折",
+      "兩者用法完全相同",
+      "連接號用於對話，破折號用於書名",
+      "沒有區別，只是長度不同"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-BD-030",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「連接號較短，連接相關詞語；破折號較長，標示解釋或轉折」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，不破樓蘭終不還。」出自哪位詩人？",
+    "options": [
+      "王昌齡",
+      "李白",
+      "杜甫",
+      "王之渙"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-031",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「王昌齡」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「商女不知亡國恨，＿＿＿＿＿。」",
+    "options": [
+      "隔江猶唱後庭花",
+      "隔江猶唱後庭曲",
+      "夜泊秦淮近酒家",
+      "煙籠寒水月籠沙"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-032",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「隔江猶唱後庭花」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，蠟炬成灰淚始乾。」的作者是？",
+    "options": [
+      "李商隱",
+      "杜甫",
+      "李白",
+      "白居易"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-033",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「李商隱」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「此情可待成追憶，＿＿＿＿＿。」",
+    "options": [
+      "只是當時已惘然",
+      "只是當時已茫然",
+      "只是當時已枉然",
+      "只是當時已往然"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-034",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「只是當時已惘然」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，千里共嬋娟。」",
+    "options": [
+      "但願人長久",
+      "月有陰晴圓缺",
+      "人有悲歡離合",
+      "不知天上宮闕"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-035",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「但願人長久」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「醉臥沙場君莫笑，＿＿＿＿＿。」",
+    "options": [
+      "古來征戰幾人回",
+      "不破樓蘭終不還",
+      "春風不度玉門關",
+      "古來征戰幾人還"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-036",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「古來征戰幾人回」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，鐵馬冰河入夢來。」",
+    "options": [
+      "夜闌臥聽風吹雨",
+      "僵臥孤村不自哀",
+      "尚思為國戍輪台",
+      "王師北定中原日"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-037",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「夜闌臥聽風吹雨」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「人生自古誰無死，＿＿＿＿＿。」出自誰手？",
+    "options": [
+      "文天祥",
+      "陸游",
+      "岳飛",
+      "辛棄疾"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-038",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「文天祥」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，蠟炬成灰淚始乾。」後半句應為？",
+    "options": [
+      "春蠶到死絲方盡",
+      "相見時難別亦難",
+      "東風無力百花殘",
+      "曉鏡但愁雲鬢改"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-039",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「春蠶到死絲方盡」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「落紅不是無情物，＿＿＿＿＿。」",
+    "options": [
+      "化作春泥更護花",
+      "化作春泥更護根",
+      "零落成泥碾作塵",
+      "隨風飄落化作塵"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-TS-040",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「化作春泥更護花」。"
+  }
+]

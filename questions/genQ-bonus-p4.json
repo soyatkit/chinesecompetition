@@ -1,0 +1,602 @@
+[
+  {
+    "category": "錯別字辨析",
+    "text": "「再接再＿」中應填入哪個字？",
+    "options": [
+      "厲",
+      "勵",
+      "礪",
+      "厲"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-CB-001",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「厲」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿然一新」中應填入哪個字？",
+    "options": [
+      "渙",
+      "換",
+      "煥",
+      "喚"
+    ],
+    "answer": 2,
+    "id": "Q-P4-R4-CB-002",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「煥」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「按＿就班」中應填入哪個字？",
+    "options": [
+      "步",
+      "部",
+      "佈",
+      "不"
+    ],
+    "answer": 1,
+    "id": "Q-P4-R4-CB-003",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「部」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「一＿莫展」中應填入哪個字？",
+    "options": [
+      "籌",
+      "愁",
+      "仇",
+      "綢"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-CB-004",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「籌」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿流不息」中應填入哪個字？",
+    "options": [
+      "穿",
+      "川",
+      "串",
+      "傳"
+    ],
+    "answer": 1,
+    "id": "Q-P4-R4-CB-005",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「川」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「走＿無路」中應填入哪個字？",
+    "options": [
+      "頭",
+      "途",
+      "投",
+      "圖"
+    ],
+    "answer": 1,
+    "id": "Q-P4-R4-CB-006",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「途」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「迫不＿待」中應填入哪個字？",
+    "options": [
+      "急",
+      "及",
+      "級",
+      "極"
+    ],
+    "answer": 1,
+    "id": "Q-P4-R4-CB-007",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「及」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿然開朗」中應填入哪個字？",
+    "options": [
+      "豁",
+      "或",
+      "惑",
+      "霍"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-CB-008",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「豁」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿綱＿領」的正確寫法是？",
+    "options": [
+      "提綱挈領",
+      "題綱切領",
+      "提綱切領",
+      "題綱挈領"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-CB-009",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「提綱挈領」。"
+  },
+  {
+    "category": "錯別字辨析",
+    "text": "「＿寢忘食」中應填入哪個字？",
+    "options": [
+      "廢",
+      "費",
+      "肺",
+      "痱"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-CB-010",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「廢」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「太陽像一個大火球掛在天上」用了甚麼修辭手法？",
+    "options": [
+      "比喻",
+      "擬人",
+      "排比",
+      "反問"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-011",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「花兒在風中向我們點頭微笑」用了甚麼修辭手法？",
+    "options": [
+      "擬人",
+      "比喻",
+      "誇張",
+      "對比"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-012",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「他的心像被刀割一樣痛」用了甚麼修辭手法？",
+    "options": [
+      "比喻",
+      "擬人",
+      "排比",
+      "設問"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-013",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「我愛春天的花，夏天的雨，秋天的風，冬天的雪」用了甚麼修辭手法？",
+    "options": [
+      "排比",
+      "比喻",
+      "擬人",
+      "對偶"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-014",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「排比」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「這麼簡單的道理，難道你不明白嗎？」用了甚麼修辭手法？",
+    "options": [
+      "反問",
+      "設問",
+      "比喻",
+      "誇張"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-015",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「反問」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「他的心胸像大海一樣寬闊」用了甚麼修辭手法？",
+    "options": [
+      "比喻",
+      "擬人",
+      "誇張",
+      "排比"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-016",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「星星在夜空中眨着眼睛」用了甚麼修辭手法？",
+    "options": [
+      "擬人",
+      "比喻",
+      "反問",
+      "對比"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-017",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「擬人」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「書是人類進步的階梯」用了甚麼修辭手法？",
+    "options": [
+      "比喻",
+      "擬人",
+      "排比",
+      "設問"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-018",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「比喻」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「教室裏靜得連一根針掉在地上都聽得見」用了甚麼修辭手法？",
+    "options": [
+      "誇張",
+      "比喻",
+      "擬人",
+      "排比"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-019",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「誇張」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「甚麼是幸福？幸福就是和家人在一起」用了甚麼修辭手法？",
+    "options": [
+      "設問",
+      "反問",
+      "比喻",
+      "擬人"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-XC-020",
+    "difficulty": 2,
+    "timeLimit": 15,
+    "explanation": "正確答案：「設問」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「今天的天氣真好」句末應加上甚麼標點符號？",
+    "options": [
+      "。",
+      "！",
+      "？",
+      "，"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-021",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「。」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「你吃飯了嗎」句末應加上甚麼標點符號？",
+    "options": [
+      "？",
+      "。",
+      "！",
+      "、"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-022",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「？」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「媽媽買了蘋果、橙、＿和梨」中應填入甚麼標點？",
+    "options": [
+      "香蕉",
+      "香蕉，",
+      "沒有標點",
+      "香蕉。"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-023",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「香蕉」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「中秋節那天＿我們一家人一起賞月」中＿處應填甚麼標點？",
+    "options": [
+      "，",
+      "。",
+      "！",
+      "、"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-024",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「，」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「他說：＿我明天會來。＿」對話中的＿應用甚麼標點？",
+    "options": [
+      "引號",
+      "書名號",
+      "括號",
+      "省略號"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-025",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「引號」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "書名《西遊記》所用的標點叫甚麼？",
+    "options": [
+      "書名號",
+      "引號",
+      "括號",
+      "破折號"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-026",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「書名號」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「她唱歌＿跳舞＿彈琴都很好」兩處＿應填甚麼標點？",
+    "options": [
+      "、和、",
+      "、和，",
+      "，和、",
+      "，和，"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-027",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「、和、」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「花園裏有紅的、黃的、紫的＿＿各種顏色的花。」＿＿處應用甚麼？",
+    "options": [
+      "……",
+      "。",
+      "，",
+      "！"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-028",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「……」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「啊＿多美的景色」中＿應填甚麼標點？",
+    "options": [
+      "，",
+      "！",
+      "。",
+      "……"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-029",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「，」。"
+  },
+  {
+    "category": "標點符號",
+    "text": "「我喜歡運動＿例如跑步、游泳和打球」中＿應填甚麼標點？",
+    "options": [
+      "，",
+      "。",
+      "：",
+      "；"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-BD-030",
+    "difficulty": 1,
+    "timeLimit": 15,
+    "explanation": "正確答案：「，」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「床前明月光，＿＿＿＿＿。」",
+    "options": [
+      "疑是地上霜",
+      "低頭思故鄉",
+      "舉頭望明月",
+      "月是故鄉明"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-031",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「疑是地上霜」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，處處聞啼鳥。」",
+    "options": [
+      "春眠不覺曉",
+      "春風吹又生",
+      "春色滿園關不住",
+      "春江水暖鴨先知"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-032",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「春眠不覺曉」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「誰言寸草心，＿＿＿＿＿。」",
+    "options": [
+      "報得三春暉",
+      "粒粒皆辛苦",
+      "處處聞啼鳥",
+      "更上一層樓"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-033",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「報得三春暉」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「欲窮千里目，＿＿＿＿＿。」",
+    "options": [
+      "更上一層樓",
+      "低頭思故鄉",
+      "粒粒皆辛苦",
+      "春風吹又生"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-034",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「更上一層樓」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，春風吹又生。」",
+    "options": [
+      "離離原上草",
+      "春眠不覺曉",
+      "床前明月光",
+      "白日依山盡"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-035",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「離離原上草」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，粒粒皆辛苦。」",
+    "options": [
+      "誰知盤中飧",
+      "鋤禾日當午",
+      "春種一粒粟",
+      "四海無閒田"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-036",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「誰知盤中飧」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「舉頭望明月，＿＿＿＿＿。」",
+    "options": [
+      "低頭思故鄉",
+      "疑是地上霜",
+      "月是故鄉明",
+      "疑是銀河落九天"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-037",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「低頭思故鄉」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，處處聞啼鳥。」的作者是誰？",
+    "options": [
+      "孟浩然",
+      "李白",
+      "杜甫",
+      "王維"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-038",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「孟浩然」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「＿＿＿＿＿，萬條垂下綠絲絛。」",
+    "options": [
+      "碧玉妝成一樹高",
+      "春風又綠江南岸",
+      "兩個黃鸝鳴翠柳",
+      "人間四月芳菲盡"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-039",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「碧玉妝成一樹高」。"
+  },
+  {
+    "category": "唐詩填充",
+    "text": "「飛流直下三千尺，＿＿＿＿＿。」",
+    "options": [
+      "疑是銀河落九天",
+      "疑是地上霜",
+      "春風吹又生",
+      "萬條垂下綠絲絛"
+    ],
+    "answer": 0,
+    "id": "Q-P4-R4-TS-040",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「疑是銀河落九天」。"
+  }
+]

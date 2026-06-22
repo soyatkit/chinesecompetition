@@ -1,722 +1,1352 @@
 [
   {
-    "poem": "【文學名著常識】",
     "text": "《論語》主要記錄了誰的言行？",
     "options": [
-      "孔子"
+      "孔子",
+      "孟子",
+      "老子",
+      "莊子"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-001",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「孔子」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《論語》屬於甚麼體裁？",
     "options": [
-      "語錄體"
+      "語錄體",
+      "豬八戒",
+      "武松",
+      "《西遊記》"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-002",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「語錄體」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "「學而時習之」中的「習」是甚麼意思？",
     "options": [
-      "溫習"
+      "溫習",
+      "唐僧",
+      "張飛",
+      "莊子"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-003",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「溫習」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《論語》中提倡做人要重視甚麼？",
     "options": [
-      "仁"
+      "仁",
+      "《大學》",
+      "林沖",
+      "趙雲"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-004",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「仁」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《西遊記》中陪唐僧取經的猴子是誰？",
     "options": [
-      "孫悟空"
+      "孫悟空",
+      "豬八戒",
+      "沙僧",
+      "唐僧"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-005",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「孫悟空」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《西遊記》中使用九齒釘耙的是誰？",
     "options": [
-      "豬八戒"
+      "豬八戒",
+      "孫悟空",
+      "沙僧",
+      "唐僧"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-006",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「豬八戒」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《西遊記》中一直忠心護送唐僧的是哪位徒弟？",
     "options": [
-      "沙僧"
+      "沙僧",
+      "孫悟空",
+      "豬八戒",
+      "唐僧"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-007",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「沙僧」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "唐僧取經的目的地是哪裡？",
     "options": [
-      "西天（天竺）"
+      "西天（天竺）",
+      "魯智深",
+      "豬八戒",
+      "沙僧"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-008",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「西天（天竺）」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "孫悟空最著名的兵器是甚麼？",
     "options": [
-      "如意金箍棒"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "孫悟空最初被壓在哪座山下？",
-    "options": [
-      "五行山"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "《三國演義》中桃園結義的三人是誰？",
-    "options": [
-      "劉備、關羽、張飛"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "《三國演義》中被稱為「臥龍」的是誰？",
-    "options": [
-      "諸葛亮"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "「草船借箭」主要與哪位人物有關？",
-    "options": [
-      "諸葛亮"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "「空城計」主要與哪位人物有關？",
-    "options": [
-      "諸葛亮"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "《三國演義》中蜀國的建立者是誰？",
-    "options": [
-      "劉備"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "關羽以哪一種形象最為人熟知？",
-    "options": [
-      "忠義"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "《水滸傳》中梁山泊有多少位好漢？",
-    "options": [
-      "一百零八位"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "《水滸傳》中被稱為「及時雨」的是誰？",
-    "options": [
-      "宋江"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【文學名著常識】",
-    "text": "《水滸傳》中以打虎聞名的是誰？",
-    "options": [
+      "如意金箍棒",
+      "宋江",
+      "孫悟空",
       "武松"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-009",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「如意金箍棒」。"
   },
   {
-    "poem": "【文學名著常識】",
-    "text": "《水滸傳》中綽號「黑旋風」的是誰？",
+    "text": "孫悟空最初被壓在哪座山下？",
     "options": [
+      "五行山",
+      "吳用",
+      "曹操",
+      "諸葛亮"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-010",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「五行山」。"
+  },
+  {
+    "text": "《三國演義》中桃園結義的三人是誰？",
+    "options": [
+      "劉備、關羽、張飛",
+      "曹操",
+      "孫權",
+      "諸葛亮"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-011",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「劉備、關羽、張飛」。"
+  },
+  {
+    "text": "《三國演義》中被稱為「臥龍」的是誰？",
+    "options": [
+      "諸葛亮",
+      "周瑜",
+      "曹操",
+      "司馬懿"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-012",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「諸葛亮」。"
+  },
+  {
+    "text": "「草船借箭」主要與哪位人物有關？",
+    "options": [
+      "諸葛亮",
+      "周瑜",
+      "曹操",
+      "司馬懿"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-013",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「諸葛亮」。"
+  },
+  {
+    "text": "「空城計」主要與哪位人物有關？",
+    "options": [
+      "諸葛亮",
+      "周瑜",
+      "曹操",
+      "司馬懿"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-014",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「諸葛亮」。"
+  },
+  {
+    "text": "《三國演義》中蜀國的建立者是誰？",
+    "options": [
+      "劉備",
+      "曹操",
+      "孫權",
+      "諸葛亮"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-015",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「劉備」。"
+  },
+  {
+    "text": "關羽以哪一種形象最為人熟知？",
+    "options": [
+      "忠義",
+      "《大學》",
+      "宋江",
+      "豬八戒"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-016",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「忠義」。"
+  },
+  {
+    "text": "《水滸傳》中梁山泊有多少位好漢？",
+    "options": [
+      "一百零八位",
+      "《水滸傳》",
+      "老子",
+      "《大學》"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-017",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「一百零八位」。"
+  },
+  {
+    "text": "《水滸傳》中被稱為「及時雨」的是誰？",
+    "options": [
+      "宋江",
+      "吳用",
+      "武松",
       "李逵"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-018",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「宋江」。"
   },
   {
-    "poem": "【文學名著常識】",
+    "text": "《水滸傳》中以打虎聞名的是誰？",
+    "options": [
+      "武松",
+      "宋江",
+      "吳用",
+      "李逵"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-019",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「武松」。"
+  },
+  {
+    "text": "《水滸傳》中綽號「黑旋風」的是誰？",
+    "options": [
+      "李逵",
+      "宋江",
+      "吳用",
+      "武松"
+    ],
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-020",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「李逵」。"
+  },
+  {
     "text": "《水滸傳》中梁山泊的首領是誰？",
     "options": [
-      "宋江"
+      "宋江",
+      "吳用",
+      "武松",
+      "李逵"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-021",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「宋江」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《西遊記》屬於甚麼類型小說？",
     "options": [
-      "神魔小說"
+      "神魔小說",
+      "宋江",
+      "李逵",
+      "《中庸》"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-022",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「神魔小說」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《三國演義》主要寫哪一段歷史時期？",
     "options": [
-      "三國時期"
+      "三國時期",
+      "老子",
+      "李逵",
+      "莊子"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-023",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「三國時期」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《水滸傳》主要寫哪一群人物聚義的故事？",
     "options": [
-      "梁山好漢"
+      "梁山好漢",
+      "孟子",
+      "趙雲",
+      "周瑜"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-024",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「梁山好漢」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《論語》中的「三人行，必有我師焉」強調甚麼？",
     "options": [
-      "要虛心向別人學習"
+      "要虛心向別人學習",
+      "周瑜",
+      "《大學》",
+      "李逵"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-025",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「要虛心向別人學習」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《西遊記》中白龍馬原本是甚麼？",
     "options": [
-      "龍王三太子"
+      "龍王三太子",
+      "老子",
+      "《三國演義》",
+      "李逵"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-026",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「龍王三太子」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《三國演義》中「過五關斬六將」主要講的是誰？",
     "options": [
-      "關羽"
+      "關羽",
+      "張飛",
+      "劉備",
+      "趙雲"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-027",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「關羽」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《水滸傳》中「智取生辰綱」與哪位人物有關？",
     "options": [
-      "吳用"
+      "吳用",
+      "宋江",
+      "武松",
+      "李逵"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-028",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「吳用」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《論語》強調學與思應怎樣？",
     "options": [
-      "結合並重"
+      "結合並重",
+      "《三國演義》",
+      "周瑜",
+      "李逵"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-029",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「結合並重」。"
   },
   {
-    "poem": "【文學名著常識】",
     "text": "《論語》、《西遊記》、《三國演義》、《水滸傳》中，哪一部是儒家經典著作？",
     "options": [
-      "《論語》"
+      "《論語》",
+      "《孟子》",
+      "《大學》",
+      "《中庸》"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "文學名著常識",
+    "id": "Q-P6-R3-WX-030",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「《論語》」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：不經一番寒徹骨，＿＿＿＿。",
     "options": [
-      "怎得梅花撲鼻香"
+      "怎得梅花撲鼻香",
+      "二回熟",
+      "更進一步",
+      "始於足下"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-031",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「怎得梅花撲鼻香」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：操千曲而後曉聲，＿＿＿＿。",
     "options": [
-      "觀千劍而後識器"
+      "觀千劍而後識器",
+      "不許百姓點燈",
+      "曲不離口",
+      "事不可做絕"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-032",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「觀千劍而後識器」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：讀萬卷書，＿＿＿＿。",
     "options": [
-      "行萬里路"
+      "行萬里路",
+      "惡語傷人六月寒",
+      "不進則退",
+      "不怕沒柴燒"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-033",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「行萬里路」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：兼聽則明，＿＿＿＿。",
     "options": [
-      "偏信則暗"
+      "偏信則暗",
+      "非一日之寒",
+      "長一智",
+      "泰山移"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-034",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「偏信則暗」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：機不可失，＿＿＿＿。",
     "options": [
-      "時不再來"
+      "時不再來",
+      "豐年",
+      "非一日之寒",
+      "只怕站"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-035",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「時不再來」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：前事不忘，＿＿＿＿。",
     "options": [
-      "後事之師"
+      "後事之師",
+      "二回熟",
+      "寸金難買寸光陰",
+      "修行在個人"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-036",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「後事之師」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：人無信不立，＿＿＿＿。",
     "options": [
-      "業無信不興"
+      "業無信不興",
+      "二回熟",
+      "長一智",
+      "鐵杵磨成針"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-037",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「業無信不興」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：言必信，＿＿＿＿。",
     "options": [
-      "行必果"
+      "行必果",
+      "見不善如探湯",
+      "下筆如有神",
+      "台下十年功"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-038",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「行必果」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：知己知彼，＿＿＿＿。",
     "options": [
-      "百戰不殆"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：工欲善其事，＿＿＿＿。",
-    "options": [
-      "必先利其器"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：千里之堤，＿＿＿＿。",
-    "options": [
-      "潰於蟻穴"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：水能載舟，＿＿＿＿。",
-    "options": [
-      "亦能覆舟"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：塞翁失馬，＿＿＿＿。",
-    "options": [
-      "焉知非福"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：近水知魚性，＿＿＿＿。",
-    "options": [
-      "近山識鳥音"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：金無足赤，＿＿＿＿。",
-    "options": [
-      "人無完人"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：路遙知馬力，＿＿＿＿。",
-    "options": [
+      "百戰不殆",
+      "非一日之功",
+      "利於病",
       "日久見人心"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-039",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「百戰不殆」。"
   },
   {
-    "poem": "【中國諺語】",
+    "text": "補全諺語：工欲善其事，＿＿＿＿。",
+    "options": [
+      "必先利其器",
+      "只怕站",
+      "黃土變成金",
+      "早入林"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-040",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「必先利其器」。"
+  },
+  {
+    "text": "補全諺語：千里之堤，＿＿＿＿。",
+    "options": [
+      "潰於蟻穴",
+      "近墨者黑",
+      "終有成功時",
+      "成事在天"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-041",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「潰於蟻穴」。"
+  },
+  {
+    "text": "補全諺語：水能載舟，＿＿＿＿。",
+    "options": [
+      "亦能覆舟",
+      "只怕站",
+      "更進一步",
+      "人不學要落後"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-042",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「亦能覆舟」。"
+  },
+  {
+    "text": "補全諺語：塞翁失馬，＿＿＿＿。",
+    "options": [
+      "焉知非福",
+      "行行出狀元",
+      "事竟成",
+      "曲不離口"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-043",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「焉知非福」。"
+  },
+  {
+    "text": "補全諺語：近水知魚性，＿＿＿＿。",
+    "options": [
+      "近山識鳥音",
+      "更進一步",
+      "不得不低頭",
+      "種豆得豆"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-044",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「近山識鳥音」。"
+  },
+  {
+    "text": "補全諺語：金無足赤，＿＿＿＿。",
+    "options": [
+      "人無完人",
+      "人不學要落後",
+      "事竟成",
+      "近墨者黑"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-045",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「人無完人」。"
+  },
+  {
+    "text": "補全諺語：路遙知馬力，＿＿＿＿。",
+    "options": [
+      "日久見人心",
+      "行行出狀元",
+      "惡語傷人六月寒",
+      "更進一步"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-046",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「日久見人心」。"
+  },
+  {
     "text": "補全諺語：人而無信，＿＿＿＿。",
     "options": [
-      "不知其可"
+      "不知其可",
+      "不怕沒柴燒",
+      "一分收穫",
+      "終有成功時"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-047",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「不知其可」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：不入虎穴，＿＿＿＿。",
     "options": [
-      "焉得虎子"
+      "焉得虎子",
+      "成事在天",
+      "除非己莫為",
+      "自然直"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-048",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「焉得虎子」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：失之毫釐，＿＿＿＿。",
     "options": [
-      "謬以千里"
+      "謬以千里",
+      "惡語傷人六月寒",
+      "台下十年功",
+      "非一日之寒"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-049",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「謬以千里」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：尺有所短，＿＿＿＿。",
     "options": [
-      "寸有所長"
+      "寸有所長",
+      "下筆如有神",
+      "後人乘涼",
+      "自然直"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-050",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「寸有所長」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：精誠所至，＿＿＿＿。",
     "options": [
-      "金石為開"
+      "金石為開",
+      "火焰高",
+      "種豆得豆",
+      "終身為父"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-051",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「金石為開」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：欲窮千里目，＿＿＿＿。",
     "options": [
-      "更上一層樓"
+      "更上一層樓",
+      "好辦事",
+      "只怕有心人",
+      "當湧泉相報"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-052",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「更上一層樓」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：桃李不言，＿＿＿＿。",
     "options": [
-      "下自成蹊"
+      "下自成蹊",
+      "再借不難",
+      "事不可做絕",
+      "只怕站"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-053",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「下自成蹊」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：學而不思則罔，＿＿＿＿。",
     "options": [
-      "思而不學則殆"
+      "思而不學則殆",
+      "萬事興",
+      "黃土變成金",
+      "火焰高"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-054",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「思而不學則殆」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：海內存知己，＿＿＿＿。",
     "options": [
-      "天涯若比鄰"
+      "天涯若比鄰",
+      "寸金難買寸光陰",
+      "只怕有心人",
+      "黃土變成金"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-055",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「天涯若比鄰」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：讀書百遍，＿＿＿＿。",
     "options": [
-      "其義自見"
+      "其義自見",
+      "必有我師焉",
+      "終有成功時",
+      "吃虧在眼前"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-056",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「其義自見」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：鍥而不捨，＿＿＿＿。",
     "options": [
-      "金石可鏤"
+      "金石可鏤",
+      "當湧泉相報",
+      "見不善如探湯",
+      "長一智"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-057",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「金石可鏤」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：天下興亡，＿＿＿＿。",
     "options": [
-      "匹夫有責"
+      "匹夫有責",
+      "惡語傷人六月寒",
+      "成事在天",
+      "萬事興"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-058",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「匹夫有責」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：滿招損，＿＿＿＿。",
     "options": [
-      "謙受益"
+      "謙受益",
+      "再借不難",
+      "不得不低頭",
+      "始於足下"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-059",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「謙受益」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：他山之石，＿＿＿＿。",
     "options": [
-      "可以攻玉"
+      "可以攻玉",
+      "行行出狀元",
+      "成事在天",
+      "當湧泉相報"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P6-R3-YY-060",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「可以攻玉」。"
   },
   {
-    "poem": "【歇後語】",
     "text": "補全歇後語：諸葛亮借東風——＿＿＿＿。",
     "options": [
-      "將計就計"
+      "將計就計",
+      "團團轉",
+      "自身難保",
+      "照舊"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-061",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「將計就計」。"
   },
   {
-    "poem": "【歇後語】",
     "text": "補全歇後語：周瑜打黃蓋——＿＿＿＿。",
     "options": [
-      "一個願打，一個願挨"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：司馬昭之心——＿＿＿＿。",
-    "options": [
-      "路人皆知"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：姜太公釣魚——＿＿＿＿。",
-    "options": [
-      "願者上鉤"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：孔夫子搬家——＿＿＿＿。",
-    "options": [
-      "淨是書"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：八仙過海——＿＿＿＿。",
-    "options": [
-      "各顯神通"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：貓哭老鼠——＿＿＿＿。",
-    "options": [
-      "假慈悲"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：狗咬呂洞賓——＿＿＿＿。",
-    "options": [
-      "不識好人心"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：黃鼠狼給雞拜年——＿＿＿＿。",
-    "options": [
-      "沒安好心"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：泥菩薩過江——＿＿＿＿。",
-    "options": [
-      "自身難保"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：丈二和尚——＿＿＿＿。",
-    "options": [
-      "摸不着頭腦"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：瞎子點燈——＿＿＿＿。",
-    "options": [
+      "一個願打，一個願挨",
+      "自賣自誇",
+      "淨是書",
       "白費蠟"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-062",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一個願打，一個願挨」。"
   },
   {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：兔子尾巴——＿＿＿＿。",
+    "text": "補全歇後語：司馬昭之心——＿＿＿＿。",
     "options": [
-      "長不了"
+      "路人皆知",
+      "一清二白",
+      "不識好人心",
+      "照舊"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-063",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「路人皆知」。"
   },
   {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：老鼠過街——＿＿＿＿。",
+    "text": "補全歇後語：姜太公釣魚——＿＿＿＿。",
     "options": [
-      "人人喊打"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：熱鍋上的螞蟻——＿＿＿＿。",
-    "options": [
-      "團團轉"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：和尚打傘——＿＿＿＿。",
-    "options": [
-      "無法無天"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：牆上掛門簾——＿＿＿＿。",
-    "options": [
-      "沒門"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：擀麵杖吹火——＿＿＿＿。",
-    "options": [
-      "一竅不通"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：十五個吊桶打水——＿＿＿＿。",
-    "options": [
-      "七上八下"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：小蔥拌豆腐——＿＿＿＿。",
-    "options": [
+      "願者上鉤",
+      "照舊",
+      "自身難保",
       "一清二白"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-064",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「願者上鉤」。"
   },
   {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：王婆賣瓜——＿＿＿＿。",
+    "text": "補全歇後語：孔夫子搬家——＿＿＿＿。",
     "options": [
-      "自賣自誇"
+      "淨是書",
+      "摸不着頭腦",
+      "功到自然成",
+      "人人喊打"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-065",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「淨是書」。"
   },
   {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：肉包子打狗——＿＿＿＿。",
+    "text": "補全歇後語：八仙過海——＿＿＿＿。",
     "options": [
-      "有去無回"
+      "各顯神通",
+      "一個願打，一個願挨",
+      "有苦說不出",
+      "照舊"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-066",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「各顯神通」。"
   },
   {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：老虎屁股——＿＿＿＿。",
+    "text": "補全歇後語：貓哭老鼠——＿＿＿＿。",
     "options": [
-      "摸不得"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：打破砂鍋——＿＿＿＿。",
-    "options": [
-      "問到底"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：騎驢看唱本——＿＿＿＿。",
-    "options": [
-      "走着瞧"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：老牛拉破車——＿＿＿＿。",
-    "options": [
+      "假慈悲",
+      "問到底",
+      "路人皆知",
       "慢吞吞"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-067",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「假慈悲」。"
   },
   {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：竹籃打水——＿＿＿＿。",
+    "text": "補全歇後語：狗咬呂洞賓——＿＿＿＿。",
     "options": [
-      "一場空"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：芝麻開花——＿＿＿＿。",
-    "options": [
+      "不識好人心",
+      "一竅不通",
+      "走着瞧",
       "節節高"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-068",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「不識好人心」。"
   },
   {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：井底青蛙——＿＿＿＿。",
+    "text": "補全歇後語：黃鼠狼給雞拜年——＿＿＿＿。",
     "options": [
+      "沒安好心",
+      "假慈悲",
+      "無法無天",
+      "沒門"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-069",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「沒安好心」。"
+  },
+  {
+    "text": "補全歇後語：泥菩薩過江——＿＿＿＿。",
+    "options": [
+      "自身難保",
+      "淨是書",
+      "人人喊打",
+      "七上八下"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-070",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「自身難保」。"
+  },
+  {
+    "text": "補全歇後語：丈二和尚——＿＿＿＿。",
+    "options": [
+      "摸不着頭腦",
+      "各顯神通",
+      "走着瞧",
+      "問到底"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-071",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「摸不着頭腦」。"
+  },
+  {
+    "text": "補全歇後語：瞎子點燈——＿＿＿＿。",
+    "options": [
+      "白費蠟",
+      "問到底",
+      "各顯神通",
+      "路人皆知"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-072",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「白費蠟」。"
+  },
+  {
+    "text": "補全歇後語：兔子尾巴——＿＿＿＿。",
+    "options": [
+      "長不了",
+      "目光短淺",
+      "功到自然成",
+      "節節高"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-073",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「長不了」。"
+  },
+  {
+    "text": "補全歇後語：老鼠過街——＿＿＿＿。",
+    "options": [
+      "人人喊打",
+      "一竅不通",
+      "白費蠟",
+      "團團轉"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-074",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「人人喊打」。"
+  },
+  {
+    "text": "補全歇後語：熱鍋上的螞蟻——＿＿＿＿。",
+    "options": [
+      "團團轉",
+      "路人皆知",
+      "有苦說不出",
+      "假慈悲"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-075",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「團團轉」。"
+  },
+  {
+    "text": "補全歇後語：和尚打傘——＿＿＿＿。",
+    "options": [
+      "無法無天",
+      "照舊",
+      "自賣自誇",
+      "團團轉"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-076",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「無法無天」。"
+  },
+  {
+    "text": "補全歇後語：牆上掛門簾——＿＿＿＿。",
+    "options": [
+      "沒門",
+      "各顯神通",
+      "七上八下",
+      "一場空"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-077",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「沒門」。"
+  },
+  {
+    "text": "補全歇後語：擀麵杖吹火——＿＿＿＿。",
+    "options": [
+      "一竅不通",
+      "沒安好心",
+      "沒門",
+      "摸不得"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-078",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一竅不通」。"
+  },
+  {
+    "text": "補全歇後語：十五個吊桶打水——＿＿＿＿。",
+    "options": [
+      "七上八下",
+      "目光短淺",
+      "一清二白",
+      "路人皆知"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-079",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「七上八下」。"
+  },
+  {
+    "text": "補全歇後語：小蔥拌豆腐——＿＿＿＿。",
+    "options": [
+      "一清二白",
+      "淨是書",
+      "有去無回",
+      "一場空"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-080",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一清二白」。"
+  },
+  {
+    "text": "補全歇後語：王婆賣瓜——＿＿＿＿。",
+    "options": [
+      "自賣自誇",
+      "願者上鉤",
+      "摸不着頭腦",
+      "不識好人心"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-081",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「自賣自誇」。"
+  },
+  {
+    "text": "補全歇後語：肉包子打狗——＿＿＿＿。",
+    "options": [
+      "有去無回",
+      "節節高",
+      "問到底",
       "目光短淺"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-082",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「有去無回」。"
   },
   {
-    "poem": "【歇後語】",
+    "text": "補全歇後語：老虎屁股——＿＿＿＿。",
+    "options": [
+      "摸不得",
+      "願者上鉤",
+      "淨是書",
+      "無法無天"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-083",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「摸不得」。"
+  },
+  {
+    "text": "補全歇後語：打破砂鍋——＿＿＿＿。",
+    "options": [
+      "問到底",
+      "各顯神通",
+      "長不了",
+      "功到自然成"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-084",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「問到底」。"
+  },
+  {
+    "text": "補全歇後語：騎驢看唱本——＿＿＿＿。",
+    "options": [
+      "走着瞧",
+      "有苦說不出",
+      "摸不着頭腦",
+      "一竅不通"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-085",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「走着瞧」。"
+  },
+  {
+    "text": "補全歇後語：老牛拉破車——＿＿＿＿。",
+    "options": [
+      "慢吞吞",
+      "長不了",
+      "有苦說不出",
+      "一竅不通"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-086",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「慢吞吞」。"
+  },
+  {
+    "text": "補全歇後語：竹籃打水——＿＿＿＿。",
+    "options": [
+      "一場空",
+      "長不了",
+      "自身難保",
+      "摸不得"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-087",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一場空」。"
+  },
+  {
+    "text": "補全歇後語：芝麻開花——＿＿＿＿。",
+    "options": [
+      "節節高",
+      "沒門",
+      "長不了",
+      "一場空"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-088",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「節節高」。"
+  },
+  {
+    "text": "補全歇後語：井底青蛙——＿＿＿＿。",
+    "options": [
+      "目光短淺",
+      "路人皆知",
+      "白費蠟",
+      "人人喊打"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-089",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「目光短淺」。"
+  },
+  {
     "text": "補全歇後語：啞巴吃黃連——＿＿＿＿。",
     "options": [
-      "有苦說不出"
+      "有苦說不出",
+      "一個願打，一個願挨",
+      "摸不着頭腦",
+      "無法無天"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P6-R3-XH-090",
+    "difficulty": 3,
+    "timeLimit": 20,
+    "explanation": "正確答案：「有苦說不出」。"
   }
 ]

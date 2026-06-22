@@ -1,7 +1,7 @@
 // 中文至叻挑戰賽 — Cloudflare Worker (固定五組 / 三回合版)
 // Admin: lyt / lyt
 
-import { BANKS, BANKS_R2, BANKS_R3 } from './questions/banks.js';
+import { ROUND_1, ROUND_2, ROUND_3, ROUND_BONUS, BANKS, BANKS_R2, BANKS_R3 } from './questions/banks.js';
 
 export default {
   async fetch(request, env) {
@@ -109,7 +109,7 @@ export default {
         }
         if (idx >= 0 && idx < s.questions.length) {
           const qq = s.questions[idx];
-          q = { poem: qq.poem, text: qq.text, options: qq.options, answer: qq.answer };
+          q = { poem: qq.category || qq.poem, category: qq.category || qq.poem, text: qq.text, options: qq.options, answer: qq.answer };
           qIndex = idx;
         }
       }
@@ -194,7 +194,7 @@ export default {
  * Returns a shuffled copy of the question bank.
  */
 function getQuestions(round, grade) {
-  const bank = round === 'r2' ? BANKS_R2 : round === 'r3' ? BANKS_R3 : BANKS;
+  const bank = round === 'r2' ? ROUND_2 : round === 'r3' ? ROUND_3 : round === 'r4' || round === 'bonus' ? ROUND_BONUS : ROUND_1;
   const qs = [...(bank[grade] || bank.P4)];
   for (let i = qs.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

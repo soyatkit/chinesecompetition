@@ -1,482 +1,902 @@
 [
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：三百六十行，＿＿＿＿。",
     "options": [
-      "行行出狀元"
+      "行行出狀元",
+      "修行在個人",
+      "不進則退",
+      "利於行"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-001",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「行行出狀元」。"
   },
   {
-    "poem": "【中國諺語】",
     "text": "補全諺語：只要功夫深，＿＿＿＿。",
     "options": [
-      "鐵杵磨成針"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：千里之行，＿＿＿＿。",
-    "options": [
-      "始於足下"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：學如逆水行舟，＿＿＿＿。",
-    "options": [
-      "不進則退"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：前人栽樹，＿＿＿＿。",
-    "options": [
-      "後人乘涼"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：人多＿＿＿＿。",
-    "options": [
-      "好辦事"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：一寸光陰一寸金，＿＿＿＿。",
-    "options": [
-      "寸金難買寸光陰"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：人外有人，＿＿＿＿。",
-    "options": [
-      "天外有天"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：不經一事，＿＿＿＿。",
-    "options": [
-      "不長一智"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：好事多磨，＿＿＿＿。",
-    "options": [
-      "終有成功時"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：船到橋頭＿＿＿＿。",
-    "options": [
-      "自然直"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：有借有還，＿＿＿＿。",
-    "options": [
-      "再借不難"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：吃一塹，＿＿＿＿。",
-    "options": [
-      "長一智"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：人在屋簷下，＿＿＿＿。",
-    "options": [
-      "不得不低頭"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：一日為師，＿＿＿＿。",
-    "options": [
-      "終身為父"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：百尺竿頭，＿＿＿＿。",
-    "options": [
-      "更進一步"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：眾人一條心，＿＿＿＿。",
-    "options": [
+      "鐵杵磨成針",
+      "好辦事",
+      "曲不離口",
       "黃土變成金"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-002",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「鐵杵磨成針」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：良言一句三冬暖，＿＿＿＿。",
+    "text": "補全諺語：千里之行，＿＿＿＿。",
     "options": [
-      "惡語傷人六月寒"
+      "始於足下",
+      "只怕站",
+      "台下十年功",
+      "利於行"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-003",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「始於足下」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：師父領進門，＿＿＿＿。",
+    "text": "補全諺語：學如逆水行舟，＿＿＿＿。",
     "options": [
-      "修行在個人"
+      "不進則退",
+      "台下十年功",
+      "利於病",
+      "黃土變成金"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-004",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「不進則退」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：不聽老人言，＿＿＿＿。",
+    "text": "補全諺語：前人栽樹，＿＿＿＿。",
     "options": [
-      "吃虧在眼前"
+      "後人乘涼",
+      "惡語傷人六月寒",
+      "不進則退",
+      "謙受益"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-005",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「後人乘涼」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：笨鳥先飛，＿＿＿＿。",
+    "text": "補全諺語：人多＿＿＿＿。",
     "options": [
-      "早入林"
+      "好辦事",
+      "二回熟",
+      "下筆如有神",
+      "利於行"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-006",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「好辦事」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：萬事開頭＿＿＿＿。",
+    "text": "補全諺語：一寸光陰一寸金，＿＿＿＿。",
     "options": [
-      "難"
+      "寸金難買寸光陰",
+      "見不善如探湯",
+      "鐵杵磨成針",
+      "利於行"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-007",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「寸金難買寸光陰」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：一人計短，＿＿＿＿。",
+    "text": "補全諺語：人外有人，＿＿＿＿。",
     "options": [
-      "二人計長"
+      "天外有天",
+      "不得不低頭",
+      "終身為父",
+      "利於病"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-008",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「天外有天」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：見善如不及，＿＿＿＿。",
+    "text": "補全諺語：不經一事，＿＿＿＿。",
     "options": [
-      "見不善如探湯"
+      "不長一智",
+      "一分收穫",
+      "人不學要落後",
+      "必有近憂"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-009",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「不長一智」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：刀不磨要生鏽，＿＿＿＿。",
+    "text": "補全諺語：好事多磨，＿＿＿＿。",
     "options": [
-      "人不學要落後"
+      "終有成功時",
+      "利於病",
+      "學海無涯苦作舟",
+      "不長一智"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-010",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「終有成功時」。"
   },
   {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：話不可說盡，＿＿＿＿。",
+    "text": "補全諺語：船到橋頭＿＿＿＿。",
     "options": [
-      "事不可做絕"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：一回生，＿＿＿＿。",
-    "options": [
-      "二回熟"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：滴水之恩，＿＿＿＿。",
-    "options": [
-      "當湧泉相報"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【中國諺語】",
-    "text": "補全諺語：只許州官放火，＿＿＿＿。",
-    "options": [
+      "自然直",
+      "利於病",
+      "利於行",
       "不許百姓點燈"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-011",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「自然直」。"
   },
   {
-    "poem": "【中國諺語】",
+    "text": "補全諺語：有借有還，＿＿＿＿。",
+    "options": [
+      "再借不難",
+      "日久見人心",
+      "修行在個人",
+      "吃虧在眼前"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-012",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「再借不難」。"
+  },
+  {
+    "text": "補全諺語：吃一塹，＿＿＿＿。",
+    "options": [
+      "長一智",
+      "不進則退",
+      "學海無涯苦作舟",
+      "寸金難買寸光陰"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-013",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「長一智」。"
+  },
+  {
+    "text": "補全諺語：人在屋簷下，＿＿＿＿。",
+    "options": [
+      "不得不低頭",
+      "利於行",
+      "黃土變成金",
+      "非一日之功"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-014",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「不得不低頭」。"
+  },
+  {
+    "text": "補全諺語：一日為師，＿＿＿＿。",
+    "options": [
+      "終身為父",
+      "台下十年功",
+      "非一日之功",
+      "人不學要落後"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-015",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「終身為父」。"
+  },
+  {
+    "text": "補全諺語：百尺竿頭，＿＿＿＿。",
+    "options": [
+      "更進一步",
+      "後人乘涼",
+      "非一日之寒",
+      "長一智"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-016",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「更進一步」。"
+  },
+  {
+    "text": "補全諺語：眾人一條心，＿＿＿＿。",
+    "options": [
+      "黃土變成金",
+      "只怕有心人",
+      "人不學要落後",
+      "修行在個人"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-017",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「黃土變成金」。"
+  },
+  {
+    "text": "補全諺語：良言一句三冬暖，＿＿＿＿。",
+    "options": [
+      "惡語傷人六月寒",
+      "見不善如探湯",
+      "吃虧在眼前",
+      "必有我師焉"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-018",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「惡語傷人六月寒」。"
+  },
+  {
+    "text": "補全諺語：師父領進門，＿＿＿＿。",
+    "options": [
+      "修行在個人",
+      "事竟成",
+      "惡語傷人六月寒",
+      "必有我師焉"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-019",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「修行在個人」。"
+  },
+  {
+    "text": "補全諺語：不聽老人言，＿＿＿＿。",
+    "options": [
+      "吃虧在眼前",
+      "萬事興",
+      "鐵杵磨成針",
+      "事竟成"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-020",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「吃虧在眼前」。"
+  },
+  {
+    "text": "補全諺語：笨鳥先飛，＿＿＿＿。",
+    "options": [
+      "早入林",
+      "不進則退",
+      "二人計長",
+      "長一智"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-021",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「早入林」。"
+  },
+  {
+    "text": "補全諺語：萬事開頭＿＿＿＿。",
+    "options": [
+      "難",
+      "謙受益",
+      "終身為父",
+      "學海無涯苦作舟"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-022",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「難」。"
+  },
+  {
+    "text": "補全諺語：一人計短，＿＿＿＿。",
+    "options": [
+      "二人計長",
+      "不怕沒柴燒",
+      "成事在天",
+      "吃虧在眼前"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-023",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「二人計長」。"
+  },
+  {
+    "text": "補全諺語：見善如不及，＿＿＿＿。",
+    "options": [
+      "見不善如探湯",
+      "老大徒傷悲",
+      "當湧泉相報",
+      "只怕站"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-024",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「見不善如探湯」。"
+  },
+  {
+    "text": "補全諺語：刀不磨要生鏽，＿＿＿＿。",
+    "options": [
+      "人不學要落後",
+      "事不可做絕",
+      "非一日之寒",
+      "只怕站"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-025",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「人不學要落後」。"
+  },
+  {
+    "text": "補全諺語：話不可說盡，＿＿＿＿。",
+    "options": [
+      "事不可做絕",
+      "自然直",
+      "非一日之寒",
+      "萬事興"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-026",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「事不可做絕」。"
+  },
+  {
+    "text": "補全諺語：一回生，＿＿＿＿。",
+    "options": [
+      "二回熟",
+      "鐵杵磨成針",
+      "天外有天",
+      "人不學要落後"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-027",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「二回熟」。"
+  },
+  {
+    "text": "補全諺語：滴水之恩，＿＿＿＿。",
+    "options": [
+      "當湧泉相報",
+      "一分收穫",
+      "鐵杵磨成針",
+      "始於足下"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-028",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「當湧泉相報」。"
+  },
+  {
+    "text": "補全諺語：只許州官放火，＿＿＿＿。",
+    "options": [
+      "不許百姓點燈",
+      "當湧泉相報",
+      "必有我師焉",
+      "鐵杵磨成針"
+    ],
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-029",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「不許百姓點燈」。"
+  },
+  {
     "text": "補全諺語：謀事在人，＿＿＿＿。",
     "options": [
-      "成事在天"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：姜太公釣魚——＿＿＿＿。",
-    "options": [
-      "願者上鉤"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：周瑜打黃蓋——＿＿＿＿。",
-    "options": [
-      "一個願打，一個願挨"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：孔夫子搬家——＿＿＿＿。",
-    "options": [
-      "淨是書"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：狗咬呂洞賓——＿＿＿＿。",
-    "options": [
-      "不識好人心"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：黃鼠狼給雞拜年——＿＿＿＿。",
-    "options": [
-      "沒安好心"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：竹籃打水——＿＿＿＿。",
-    "options": [
-      "一場空"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：老鼠過街——＿＿＿＿。",
-    "options": [
-      "人人喊打"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：熱鍋上的螞蟻——＿＿＿＿。",
-    "options": [
-      "團團轉"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：啞巴吃黃連——＿＿＿＿。",
-    "options": [
-      "有苦說不出"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：丈二和尚——＿＿＿＿。",
-    "options": [
-      "摸不着頭腦"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：外甥打燈籠——＿＿＿＿。",
-    "options": [
-      "照舊"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：王婆賣瓜——＿＿＿＿。",
-    "options": [
-      "自賣自誇"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：十五個吊桶打水——＿＿＿＿。",
-    "options": [
-      "七上八下"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：瞎子點燈——＿＿＿＿。",
-    "options": [
-      "白費蠟"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：泥菩薩過江——＿＿＿＿。",
-    "options": [
-      "自身難保"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：騎驢看唱本——＿＿＿＿。",
-    "options": [
-      "走着瞧"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：貓哭老鼠——＿＿＿＿。",
-    "options": [
-      "假慈悲"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：兔子尾巴——＿＿＿＿。",
-    "options": [
-      "長不了"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：芝麻開花——＿＿＿＿。",
-    "options": [
-      "節節高"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：牆上掛門簾——＿＿＿＿。",
-    "options": [
-      "沒門"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：老虎屁股——＿＿＿＿。",
-    "options": [
-      "摸不得"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：打破砂鍋——＿＿＿＿。",
-    "options": [
-      "問到底"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：和尚打傘——＿＿＿＿。",
-    "options": [
-      "無法無天"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：擀麵杖吹火——＿＿＿＿。",
-    "options": [
-      "一竅不通"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：小蔥拌豆腐——＿＿＿＿。",
-    "options": [
-      "一清二白"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：八仙過海——＿＿＿＿。",
-    "options": [
-      "各顯神通"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：老牛拉破車——＿＿＿＿。",
-    "options": [
-      "慢吞吞"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：井底青蛙——＿＿＿＿。",
-    "options": [
-      "目光短淺"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：肉包子打狗——＿＿＿＿。",
-    "options": [
-      "有去無回"
-    ],
-    "answer": 0
-  },
-  {
-    "poem": "【歇後語】",
-    "text": "補全歇後語：船到橋頭——＿＿＿＿。",
-    "options": [
+      "成事在天",
+      "不長一智",
+      "終身為父",
       "自然直"
     ],
-    "answer": 0
+    "answer": 0,
+    "category": "中國諺語",
+    "id": "Q-P5-R3-YY-030",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「成事在天」。"
+  },
+  {
+    "text": "補全歇後語：姜太公釣魚——＿＿＿＿。",
+    "options": [
+      "願者上鉤",
+      "一竅不通",
+      "人人喊打",
+      "自賣自誇"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-031",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「願者上鉤」。"
+  },
+  {
+    "text": "補全歇後語：周瑜打黃蓋——＿＿＿＿。",
+    "options": [
+      "一個願打，一個願挨",
+      "淨是書",
+      "走着瞧",
+      "自賣自誇"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-032",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一個願打，一個願挨」。"
+  },
+  {
+    "text": "補全歇後語：孔夫子搬家——＿＿＿＿。",
+    "options": [
+      "淨是書",
+      "白費蠟",
+      "願者上鉤",
+      "一清二白"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-033",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「淨是書」。"
+  },
+  {
+    "text": "補全歇後語：狗咬呂洞賓——＿＿＿＿。",
+    "options": [
+      "不識好人心",
+      "一竅不通",
+      "問到底",
+      "人人喊打"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-034",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「不識好人心」。"
+  },
+  {
+    "text": "補全歇後語：黃鼠狼給雞拜年——＿＿＿＿。",
+    "options": [
+      "沒安好心",
+      "無法無天",
+      "人人喊打",
+      "各顯神通"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-035",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「沒安好心」。"
+  },
+  {
+    "text": "補全歇後語：竹籃打水——＿＿＿＿。",
+    "options": [
+      "一場空",
+      "人人喊打",
+      "路人皆知",
+      "目光短淺"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-036",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一場空」。"
+  },
+  {
+    "text": "補全歇後語：老鼠過街——＿＿＿＿。",
+    "options": [
+      "人人喊打",
+      "問到底",
+      "白費蠟",
+      "一場空"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-037",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「人人喊打」。"
+  },
+  {
+    "text": "補全歇後語：熱鍋上的螞蟻——＿＿＿＿。",
+    "options": [
+      "團團轉",
+      "無法無天",
+      "自賣自誇",
+      "有苦說不出"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-038",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「團團轉」。"
+  },
+  {
+    "text": "補全歇後語：啞巴吃黃連——＿＿＿＿。",
+    "options": [
+      "有苦說不出",
+      "各顯神通",
+      "團團轉",
+      "長不了"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-039",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「有苦說不出」。"
+  },
+  {
+    "text": "補全歇後語：丈二和尚——＿＿＿＿。",
+    "options": [
+      "摸不着頭腦",
+      "一個願打，一個願挨",
+      "淨是書",
+      "有去無回"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-040",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「摸不着頭腦」。"
+  },
+  {
+    "text": "補全歇後語：外甥打燈籠——＿＿＿＿。",
+    "options": [
+      "照舊",
+      "願者上鉤",
+      "一場空",
+      "不識好人心"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-041",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「照舊」。"
+  },
+  {
+    "text": "補全歇後語：王婆賣瓜——＿＿＿＿。",
+    "options": [
+      "自賣自誇",
+      "節節高",
+      "淨是書",
+      "目光短淺"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-042",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「自賣自誇」。"
+  },
+  {
+    "text": "補全歇後語：十五個吊桶打水——＿＿＿＿。",
+    "options": [
+      "七上八下",
+      "摸不得",
+      "人人喊打",
+      "白費蠟"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-043",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「七上八下」。"
+  },
+  {
+    "text": "補全歇後語：瞎子點燈——＿＿＿＿。",
+    "options": [
+      "白費蠟",
+      "功到自然成",
+      "一清二白",
+      "一個願打，一個願挨"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-044",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「白費蠟」。"
+  },
+  {
+    "text": "補全歇後語：泥菩薩過江——＿＿＿＿。",
+    "options": [
+      "自身難保",
+      "沒安好心",
+      "有苦說不出",
+      "照舊"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-045",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「自身難保」。"
+  },
+  {
+    "text": "補全歇後語：騎驢看唱本——＿＿＿＿。",
+    "options": [
+      "走着瞧",
+      "沒門",
+      "問到底",
+      "願者上鉤"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-046",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「走着瞧」。"
+  },
+  {
+    "text": "補全歇後語：貓哭老鼠——＿＿＿＿。",
+    "options": [
+      "假慈悲",
+      "沒門",
+      "慢吞吞",
+      "人人喊打"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-047",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「假慈悲」。"
+  },
+  {
+    "text": "補全歇後語：兔子尾巴——＿＿＿＿。",
+    "options": [
+      "長不了",
+      "白費蠟",
+      "自賣自誇",
+      "問到底"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-048",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「長不了」。"
+  },
+  {
+    "text": "補全歇後語：芝麻開花——＿＿＿＿。",
+    "options": [
+      "節節高",
+      "功到自然成",
+      "一竅不通",
+      "摸不得"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-049",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「節節高」。"
+  },
+  {
+    "text": "補全歇後語：牆上掛門簾——＿＿＿＿。",
+    "options": [
+      "沒門",
+      "無法無天",
+      "長不了",
+      "摸不得"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-050",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「沒門」。"
+  },
+  {
+    "text": "補全歇後語：老虎屁股——＿＿＿＿。",
+    "options": [
+      "摸不得",
+      "不識好人心",
+      "無法無天",
+      "摸不着頭腦"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-051",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「摸不得」。"
+  },
+  {
+    "text": "補全歇後語：打破砂鍋——＿＿＿＿。",
+    "options": [
+      "問到底",
+      "願者上鉤",
+      "有苦說不出",
+      "白費蠟"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-052",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「問到底」。"
+  },
+  {
+    "text": "補全歇後語：和尚打傘——＿＿＿＿。",
+    "options": [
+      "無法無天",
+      "團團轉",
+      "沒安好心",
+      "淨是書"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-053",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「無法無天」。"
+  },
+  {
+    "text": "補全歇後語：擀麵杖吹火——＿＿＿＿。",
+    "options": [
+      "一竅不通",
+      "路人皆知",
+      "走着瞧",
+      "照舊"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-054",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一竅不通」。"
+  },
+  {
+    "text": "補全歇後語：小蔥拌豆腐——＿＿＿＿。",
+    "options": [
+      "一清二白",
+      "有去無回",
+      "自賣自誇",
+      "一竅不通"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-055",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「一清二白」。"
+  },
+  {
+    "text": "補全歇後語：八仙過海——＿＿＿＿。",
+    "options": [
+      "各顯神通",
+      "白費蠟",
+      "無法無天",
+      "長不了"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-056",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「各顯神通」。"
+  },
+  {
+    "text": "補全歇後語：老牛拉破車——＿＿＿＿。",
+    "options": [
+      "慢吞吞",
+      "人人喊打",
+      "照舊",
+      "淨是書"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-057",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「慢吞吞」。"
+  },
+  {
+    "text": "補全歇後語：井底青蛙——＿＿＿＿。",
+    "options": [
+      "目光短淺",
+      "假慈悲",
+      "一竅不通",
+      "照舊"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-058",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「目光短淺」。"
+  },
+  {
+    "text": "補全歇後語：肉包子打狗——＿＿＿＿。",
+    "options": [
+      "有去無回",
+      "長不了",
+      "七上八下",
+      "假慈悲"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-059",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「有去無回」。"
+  },
+  {
+    "text": "補全歇後語：船到橋頭——＿＿＿＿。",
+    "options": [
+      "自然直",
+      "七上八下",
+      "願者上鉤",
+      "節節高"
+    ],
+    "answer": 0,
+    "category": "歇後語",
+    "id": "Q-P5-R3-XH-060",
+    "difficulty": 2,
+    "timeLimit": 20,
+    "explanation": "正確答案：「自然直」。"
   }
 ]
