@@ -151,78 +151,123 @@
   },
   {
     "category": "修辭手法",
-    "text": "「感時花濺淚，恨別鳥驚心」的最主要修辭手法是？",
+    "text": "「春蠶到死絲方盡」中「絲」與「思」諧音，用了甚麼修辭？",
     "options": [
-      "擬人",
-      "比喻",
-      "對比",
-      "排比"
+      "借代",
+      "轉品",
+      "互文",
+      "雙關"
     ],
-    "answer": 0,
+    "answer": 3,
     "id": "Q-P6-R4-XC-011",
     "difficulty": 3,
     "timeLimit": 15,
-    "explanation": "正確答案：「擬人」。"
+    "explanation": "正確答案：「雙關」。"
   },
   {
     "category": "修辭手法",
-    "text": "「忽如一夜春風來，千樹萬樹梨花開」用了甚麼修辭手法？",
+    "text": "「東邊日出西邊雨，道是無晴卻有晴」中的「晴」用了甚麼修辭？",
     "options": [
-      "比喻（借喻）",
+      "比喻",
+      "雙關",
       "擬人",
-      "誇張",
-      "排比"
+      "對偶"
     ],
-    "answer": 0,
+    "answer": 1,
     "id": "Q-P6-R4-XC-012",
     "difficulty": 3,
     "timeLimit": 15,
-    "explanation": "正確答案：「比喻（借喻）」。"
+    "explanation": "正確答案：「雙關」。"
   },
   {
     "category": "修辭手法",
-    "text": "「問世間，情是何物，直教生死相許」中的「問」用了甚麼修辭？",
+    "text": "「他是一個活雷鋒」中的「雷鋒」用了甚麼修辭？",
     "options": [
-      "設問",
-      "反問",
-      "呼告",
-      "感嘆"
+      "比喻",
+      "擬人",
+      "誇張",
+      "借代"
     ],
-    "answer": 0,
+    "answer": 3,
     "id": "Q-P6-R4-XC-013",
     "difficulty": 3,
     "timeLimit": 15,
-    "explanation": "正確答案：「設問」。"
+    "explanation": "正確答案：「借代」。"
   },
   {
     "category": "修辭手法",
-    "text": "「枯藤、老樹、昏鴉，小橋、流水、人家」用了甚麼修辭？",
+    "text": "「朱門酒肉臭」中的「朱門」用了甚麼修辭？",
     "options": [
-      "列錦（意象並列）",
-      "排比",
-      "對偶",
-      "層遞"
+      "借代",
+      "比喻",
+      "雙關",
+      "轉品"
     ],
     "answer": 0,
     "id": "Q-P6-R4-XC-014",
     "difficulty": 3,
     "timeLimit": 15,
-    "explanation": "正確答案：「列錦（意象並列）」。"
+    "explanation": "正確答案：「借代」。"
   },
   {
     "category": "修辭手法",
-    "text": "「以你的聰明，這點小事還辦不到嗎？」用了甚麼修辭？",
+    "text": "「春風又綠江南岸」中「綠」字由形容詞變動詞，用了甚麼修辭？",
     "options": [
-      "反問",
-      "設問",
-      "誇張",
-      "反語"
+      "轉品",
+      "雙關",
+      "借代",
+      "互文"
     ],
     "answer": 0,
     "id": "Q-P6-R4-XC-015",
     "difficulty": 3,
     "timeLimit": 15,
-    "explanation": "正確答案：「反問」。"
+    "explanation": "正確答案：「轉品」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「春蠶到死絲方盡，蠟炬成灰淚始乾」上下句互相補充，用了甚麼修辭？",
+    "options": [
+      "對偶",
+      "互文",
+      "比喻",
+      "雙關"
+    ],
+    "answer": 1,
+    "id": "Q-P6-R4-XC-016",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「互文」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「秦時明月漢時關」意思是秦漢時的明月和關塞，用了甚麼修辭？",
+    "options": [
+      "互文",
+      "借代",
+      "雙關",
+      "對偶"
+    ],
+    "answer": 0,
+    "id": "Q-P6-R4-XC-017",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「互文」。"
+  },
+  {
+    "category": "修辭手法",
+    "text": "「枯藤、老樹、昏鴉，小橋、流水、人家」用了甚麼修辭？",
+    "options": [
+      "排比",
+      "列錦",
+      "對偶",
+      "層遞"
+    ],
+    "answer": 1,
+    "id": "Q-P6-R4-XC-018",
+    "difficulty": 3,
+    "timeLimit": 15,
+    "explanation": "正確答案：「列錦」。"
   },
   {
     "category": "修辭手法",
@@ -234,70 +279,25 @@
       "借喻"
     ],
     "answer": 0,
-    "id": "Q-P6-R4-XC-016",
+    "id": "Q-P6-R4-XC-019",
     "difficulty": 3,
     "timeLimit": 15,
     "explanation": "正確答案：「博喻」。"
   },
   {
     "category": "修辭手法",
-    "text": "「沉默啊，沉默啊！不在沉默中爆發，就在沉默中滅亡」主要修辭是？",
+    "text": "「她瘦得皮包骨頭」中的「皮包骨」用了甚麼修辭？",
     "options": [
-      "反覆和對比",
-      "排比和比喻",
-      "對偶和誇張",
-      "擬人和反覆"
-    ],
-    "answer": 0,
-    "id": "Q-P6-R4-XC-017",
-    "difficulty": 3,
-    "timeLimit": 15,
-    "explanation": "正確答案：「反覆和對比」。"
-  },
-  {
-    "category": "修辭手法",
-    "text": "「這筆買賣可真是虧大了——虧得我連褲子都賠進去了」用了甚麼修辭？",
-    "options": [
-      "誇飾（誇張）",
       "比喻",
-      "對比",
-      "雙關"
-    ],
-    "answer": 0,
-    "id": "Q-P6-R4-XC-018",
-    "difficulty": 3,
-    "timeLimit": 15,
-    "explanation": "正確答案：「誇飾（誇張）」。"
-  },
-  {
-    "category": "修辭手法",
-    "text": "「東邊日出西邊雨，道是無晴卻有晴」用了甚麼修辭？",
-    "options": [
+      "借代",
       "雙關",
-      "比喻",
-      "對比",
-      "誇張"
+      "誇飾"
     ],
-    "answer": 0,
-    "id": "Q-P6-R4-XC-019",
-    "difficulty": 3,
-    "timeLimit": 15,
-    "explanation": "正確答案：「雙關」。"
-  },
-  {
-    "category": "修辭手法",
-    "text": "「舊時王謝堂前燕，飛入尋常百姓家」用了甚麼修辭手法？",
-    "options": [
-      "對比",
-      "比喻",
-      "擬人",
-      "排比"
-    ],
-    "answer": 0,
+    "answer": 3,
     "id": "Q-P6-R4-XC-020",
     "difficulty": 3,
     "timeLimit": 15,
-    "explanation": "正確答案：「對比」。"
+    "explanation": "正確答案：「誇飾」。"
   },
   {
     "category": "標點符號",
